@@ -1,0 +1,14 @@
+
+.container_main{
+    margin-top: 30px;
+    padding: 0 220px;
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+.header{
+    font-family: var(--font-involve);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-2xl);
+    color: #000;
+}
