@@ -1,3 +1,4 @@
+import Header from '../shared/ui/Header/Header';
 import styles from  './App.module.css';
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
   return (
     <>
       <div className={styles.container_main}>
-        <p className={styles.header}>Лого</p>
+        <Header/>
       </div>
     </>
   )

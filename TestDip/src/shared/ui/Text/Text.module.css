@@ -1,0 +1,45 @@
+.Text {
+    margin: 0;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+}
+
+.xs { font-size: var(--fs-xs); }
+.sm { font-size: var(--fs-sm); }
+.base { font-size: var(--fs-base); }
+.lg { font-size: var(--fs-lg); }
+.xl { font-size: var(--fs-xl); }
+.xl2 { font-size: var(--fs-2xl); }
+.xl3 { font-size: var(--fs-3xl); }
+.xl4 { font-size: var(--fs-4xl); }
+.xl5 { font-size: var(--fs-5xl); }
+
+
+.regular { font-weight: var(--fw-regular); }
+.medium { font-weight: var(--fw-medium); }
+.semibold { font-weight: var(--fw-semibold); }
+.bold { font-weight: var(--fw-bold); }
+
+.black { color: var(--color-black); }
+.white { color: var(--color-white); }
+
+
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
+
+
+.font-involve { font-family: var(--font-involve); }
+.font-onest { font-family: var(--font-onest); }
+
+
+.uppercase { text-transform: uppercase; }
+.italic { font-style: italic; }
+.underline { text-decoration: underline; }
+
+
+.Text[style*="-webkit-line-clamp"] {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
