@@ -9,10 +9,12 @@
 .base { font-size: var(--fs-base); }
 .lg { font-size: var(--fs-lg); }
 .xl { font-size: var(--fs-xl); }
+.xl22 {font-size: var(--fs-xl22)}
 .xl2 { font-size: var(--fs-2xl); }
 .xl3 { font-size: var(--fs-3xl); }
 .xl4 { font-size: var(--fs-4xl); }
 .xl5 { font-size: var(--fs-5xl); }
+.xl9 {font-size: var(--fs-9xl);}
 
 
 .regular { font-weight: var(--fw-regular); }

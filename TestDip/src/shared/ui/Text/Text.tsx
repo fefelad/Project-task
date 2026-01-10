@@ -10,10 +10,12 @@ export const TextSizes = {
     BASE: 'base',
     LG: 'lg',
     XL: 'xl',
+    xl22: 'xl22',
     XL2: 'xl2',
     XL3: 'xl3',
     XL4: 'xl4',
-    XL5: 'xl5'
+    XL5: 'xl5',
+    XL9: 'xl9'
 } as const;
 
 

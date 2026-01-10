@@ -1,8 +1,7 @@
-
 import styles from './Header.module.css';
 import logo from '../../../assets/Logo/123123 1.png';
-import Text, { TextSizes } from '../Text/Text';
-import { Link } from 'react-router-dom';
+import Text, { TextSizes, TextWeight } from '../Text/Text';
+import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/App';
 
 
@@ -19,12 +18,17 @@ function Header() {
                         AppRoutes
                         .filter(route => route.path !== '/')
                         .map((route) =>(
-                            <li className={styles.header_items} key={route.path}  >
-                                <Link to={route.path}>
-                                    <Text size={TextSizes.XL2} weight='medium'>
+                            <li className={styles.header_items} key={route.path}>
+                                <NavLink 
+                                    to={route.path}
+                                    className={({ isActive }) => 
+                                        `${styles.navLink} ${isActive ? styles.active : ''}`
+                                    }
+                                >
+                                    <Text size={TextSizes.XL2} weight={TextWeight.REGULAR}>
                                         {route.name}
                                     </Text>
-                                </Link>
+                                </NavLink>
                             </li>
                         ))
                         }

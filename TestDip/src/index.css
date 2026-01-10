@@ -38,10 +38,12 @@
     --fs-base: 16px;
     --fs-lg: 18px;
     --fs-xl: 20px;
+    --fs-xl22: 22px;
     --fs-2xl: 24px;
     --fs-3xl: 32px;
     --fs-4xl: 40px;
     --fs-5xl: 48px;
+    --fs-9xl: 96px;
 
     /*Цвета*/
     --color-black: #000000;
