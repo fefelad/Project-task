@@ -1,4 +1,79 @@
 
 .container_homepage{
     margin-top: 150px;
+    max-width: 100%;
+   
+    position: relative;
+}
+
+.imageWrapper {
+    position: absolute;
+    top: 150px;
+    right: 30px;
+    transform: rotate(0deg);
+
+    height: auto;
+    z-index: 0;
+}
+
+.peopleImage {
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.schoolsContainer {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+}
+
+.schoolsBlock {
+    display: inline-flex;
+    border-radius: 10px;
+    width: 355px;
+    height: 114px;
+    background: #f1642e;
+    transform: rotate(1deg);
+    align-items: center;
+    justify-content: center;
+}
+
+.schoolsText {
+    color: white;
+    margin-top: -20px;
+    line-height: 1;
+}
+
+.shoolText_desc{
+    max-width: 823px;
+    width: 100%;
+    font-family: var(--font-onest);
+    padding-top: 15px;
+}
+
+.buttonContainer {
+    margin-top: 76px;
+}
+
+.coursesBtn {
+    border-radius: 10px;
+    width: 480px;
+    height: 62px;
+    font-weight: 400;
+    font-size: 24px;
+    color: #fff;
+    font-family: var(--font-onest);
+}
+
+.popupInfo {
+    flex-shrink: 0;
+}
+
+.popoverPos{
+    position: absolute;
+    left: 570px;
+    bottom: 50px;
 }

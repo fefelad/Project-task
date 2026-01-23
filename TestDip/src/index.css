@@ -51,4 +51,12 @@
     --color-orange: #F1642E;
     --color-blue: #5758A6;
     --color-opasity-blue: #EAE9F5;
+
+    /* Hover btn */
+    --color-blue-hover: #6263d8;
+    --color-orange-hover:  #e4551e;
+
+    /*active */
+    --color-blue-active :#222373;
+    --color-orange-active: #cf4510;
 }

@@ -1,23 +1,42 @@
 
 import Btn from '../../shared/ui/Btn/Btn'
 import Text, { TextSizes } from '../../shared/ui/Text/Text'
+import PopupInfo from '../../shared/ui/PopupInfo/PopupInfo'
 import styles from './HomePage.module.css'
+import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
 
 export default function HomePage() {
   return (
       <>
         <div className={styles.container_homepage}>
-          <Text size={TextSizes.XL9}>
+          <div className={styles.imageWrapper}>
+            <img src={PeopleHomePage} alt="Ребенок" className={styles.peopleImage} />
+          </div>
+          <Text size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
             Повысьте уровень ребенка <br/> с помощью нашей
           </Text>
-          <Text size={TextSizes.XL9}>
-            школы дизайна
+          <div className={styles.schoolsContainer}>
+            <div className={styles.schoolsBlock}>
+              <Text size={TextSizes.XL9} className={styles.schoolsText}>
+                школы
+              </Text>
+            </div>
+            <Text size={TextSizes.XL9}>
+              дизайна
+            </Text>
+          </div>
+          <Text size={TextSizes.xl22} className={styles.shoolText_desc}>
+            Ваш ребенок освоит основы композиции, цвета и шрифтов — <br/> то, 
+            на чем держится и веб‑дизайн, и графика. На занятиях он сделает проекты руками и собирает первые работы в портфолио
           </Text>
-          <Text size={TextSizes.xl22}>
-            Ваш ребенок освоит основы композиции, цвета и шрифтов — то, 
-            на чем держится и веб‑дизайн, и графика. На занятиях он сделает проекты руками и собирает первые работы в портфолио,
-          </Text>
-          <Btn chidren='Посмотреть все курсы' color={''} widht={''}/>
+          <div className={styles.buttonContainer}>
+            <Btn color="blue" className={styles.coursesBtn}>Посмотреть все курсы</Btn>
+          </div>
+          <div className={styles.popoverPos}>
+            <PopupInfo color="orange" textSize={TextSizes.XL} className={styles.popupInfo}>
+              Карьера за ребенком
+            </PopupInfo>
+          </div>
         </div>
       </>
   )

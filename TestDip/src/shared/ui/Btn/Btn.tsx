@@ -1,13 +1,30 @@
+import { memo } from 'react';
+import classNames from 'classnames';
 import styles from './Btn.module.css'
 
+export type BtnColor = 'blue' | 'orange';
+
 interface BtnProps {
-    chidren: string,
-    color: string,
-    widht: string,
+    children: string;
+    color: BtnColor;
+    width?: string;
+    onClick?: () => void;
+    className?: string;
 }
 
-export default function Btn({chidren, color, widht }:BtnProps) {
+export const Btn = memo(({ children, color, width, onClick, className }: BtnProps) => {
+  const buttonStyle = width ? { width } : undefined;
+  
   return (
-    <button className={styles.Btn}>{chidren}</button>
+    <button 
+      className={classNames(styles.Btn, styles[color], className)}
+      style={buttonStyle}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   )
-}
+});
+
+Btn.displayName = 'Btn';
+export default Btn;

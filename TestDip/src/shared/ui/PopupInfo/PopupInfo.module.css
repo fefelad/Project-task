@@ -1,0 +1,33 @@
+.popupInfo {
+    position: relative;
+    width: 296px;
+    height: 93px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    position: relative;
+    top: 10px;
+    z-index: 1;
+    text-align: center;
+    padding: 10px 20px;
+    font-family: var(--font-onest);
+}
+
+.blue {
+    color: var(--color-blue);
+}
+
+.orange {
+    color: var(--color-orange);
+}
