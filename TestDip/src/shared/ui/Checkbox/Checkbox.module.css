@@ -1,0 +1,63 @@
+.CheckboxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    cursor: pointer;
+    user-select: none;
+}
+
+.hiddenInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.customCheckbox {
+    width: 38px;
+    height: 38px;
+    background-color: var(--color-black);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+
+.CheckboxWrapper input:checked ~ .customCheckbox {
+    background-color: var(--color-black);
+}
+
+.checkIcon {
+    pointer-events: none;
+    animation: checkAnim 0.3s ease;
+}
+
+.labelText {
+    font-family: var(--font-onest);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-regular);
+}
+
+@keyframes checkAnim {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Опционально: стили для disabled состояния */
+.CheckboxWrapper.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.CheckboxWrapper.disabled .customCheckbox {
+    background-color: #ccc;
+}
