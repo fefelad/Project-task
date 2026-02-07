@@ -33,7 +33,7 @@ export const PopupInfo = memo(({ children, color, className, textSize, textStyle
                 />
             </svg>
             <div className={styles.content}>
-                <Text size={textSize} style={textStyle} fontFamily='onest'>
+                <Text className={styles.textContent} size={textSize} style={textStyle}>
                     {children}
                 </Text>
             </div>

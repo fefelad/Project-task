@@ -17,11 +17,8 @@
 
 .content {
     position: relative;
-    top: 10px;
     z-index: 1;
     text-align: center;
-    padding: 10px 20px;
-    font-family: var(--font-onest);
 }
 
 .blue {
@@ -30,4 +27,13 @@
 
 .orange {
     color: var(--color-orange);
+}
+
+.textContent{
+    position: relative;
+    top: 10px;
+    left: 5px;
+    font-family: var(--font-onest);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-regular);
 }

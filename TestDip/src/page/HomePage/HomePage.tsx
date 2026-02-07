@@ -25,18 +25,19 @@ export default function HomePage() {
               дизайна
             </Text>
           </div>
-          <Text size={TextSizes.xl22} className={styles.shoolText_desc}>
-            Ваш ребенок освоит основы композиции, цвета и шрифтов — <br/> то, 
+          <Text size={TextSizes.XL2} className={styles.shoolText_desc}>
+            Ваш ребенок освоит основы композиции, цвета и шрифтов <br/> — то, 
             на чем держится и веб‑дизайн, и графика. На занятиях он сделает проекты руками и собирает первые работы в портфолио
           </Text>
           <div className={styles.buttonContainer}>
             <Btn color="blue" className={styles.coursesBtn}>Посмотреть все курсы</Btn>
           </div>
-          <div className={styles.popoverPos}>
-            <PopupInfo color="orange" textSize={TextSizes.XL} className={styles.popupInfo}>
+            <PopupInfo color="orange" textSize={TextSizes.BASE} className={styles.popupInfo}>
               Карьера за ребенком
             </PopupInfo>
-          </div>
+            <PopupInfo color="blue" textSize={TextSizes.BASE} className={styles.popupInfoBestCourse}>
+              Лучшие курсы
+            </PopupInfo>
         </div>
       </>
   )

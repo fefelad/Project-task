@@ -9,7 +9,7 @@
 .imageWrapper {
     position: absolute;
     top: 150px;
-    right: 30px;
+    right: 40px;
     transform: rotate(0deg);
 
     height: auto;
@@ -17,9 +17,8 @@
 }
 
 .peopleImage {
+    height: 550px;
     border-radius: 15px;
-    width: 100%;
-    height: auto;
     object-fit: contain;
     display: block;
 }
@@ -48,18 +47,21 @@
 }
 
 .shoolText_desc{
-    max-width: 823px;
+    max-width: 833px;
     width: 100%;
     font-family: var(--font-onest);
-    padding-top: 15px;
+    margin-top: 18px;
 }
 
 .buttonContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
     margin-top: 76px;
 }
 
 .coursesBtn {
-    border-radius: 10px;
+    border-radius: 15px;
     width: 480px;
     height: 62px;
     font-weight: 400;
@@ -69,11 +71,11 @@
 }
 
 .popupInfo {
-    flex-shrink: 0;
+    bottom: 130px;
+    left: 550px;
 }
 
-.popoverPos{
-    position: absolute;
-    left: 570px;
-    bottom: 50px;
+.popupInfoBestCourse{
+    bottom: 640px;
+    left: 1210px;
 }
