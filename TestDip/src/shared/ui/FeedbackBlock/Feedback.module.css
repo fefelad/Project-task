@@ -1,0 +1,47 @@
+.FeedbackWrapper {
+    padding: 40px;
+    background: #f8f9fa;
+    margin: 150px 0;
+}
+
+.FeedbackContent {
+
+}
+
+.FeedbackWrapper.fullWidth {
+    width: 99vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 100px 0;
+    background: var(--color-opasity-blue);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
+    
+    box-sizing: border-box;
+}
+
+.FeedbackWrapper.fullWidth .FeedbackContent {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.FeedbackContentTitle{
+    width: 48%;
+}
+
+.FeedbackContentDescritpion{
+    margin-top: 30px;
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .FeedbackWrapper.fullWidth {
+        padding: 40px 0;
+    }
+    
+    .FeedbackWrapper {
+        padding: 30px;
+        margin: 30px 0;
+    }
+}

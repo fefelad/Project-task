@@ -1,0 +1,126 @@
+.mapContainer {
+    width: 100%;
+    margin-top: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.map {
+    width: 100%;
+    height: 450px;
+}
+
+.addressCard {
+    padding: 24px 32px;
+    background: white;
+    border-top: 1px solid #f0f0f0;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.markerIcon {
+    font-size: 24px;
+}
+
+.cardTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+
+.cardAddress {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 36px; /* Выравнивание с иконкой */
+}
+
+.cardActions {
+    display: flex;
+    gap: 12px;
+    padding-left: 36px;
+}
+
+.actionButton {
+    padding: 10px 20px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.actionButton:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* Стили для попапа */
+.popupContent {
+    min-width: 200px;
+}
+
+.popupTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+}
+
+.popupAddress {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.popupDetails {
+    font-size: 13px;
+    color: #888;
+}
+
+.popupDetails p {
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .mapContainer {
+        margin-top: 30px;
+        border-radius: 15px;
+    }
+    
+    .map {
+        height: 350px;
+    }
+    
+    .addressCard {
+        padding: 20px;
+    }
+    
+    .cardTitle {
+        font-size: 18px;
+    }
+    
+    .cardAddress {
+        font-size: 15px;
+    }
+}

@@ -1,41 +1,41 @@
 import styles from './Checkbox.module.css';
-import { useState } from 'react';
 
 interface CheckboxProps {
-    label?: string; // Текст справа от чекбокса
-    defaultChecked?: boolean; // Начальное состояние (опционально)
-    onChange?: (checked: boolean) => void; // Колбэк при изменении (опционально)
-    className?: string; // Дополнительные классы (опционально)
+    label?: string;
+    checked: boolean;
+    onChange: (checked: boolean) => void;
+    className?: string;
+    type?: 'checkbox' | 'radio';
+    groupName?: string;
 }
 
 export default function Checkbox({ 
     label, 
-    defaultChecked = false,
+    checked,
     onChange,
-    className = ''
+    className = '',
+    type = 'checkbox',
+    groupName
 }: CheckboxProps) {
-    const [isChecked, setIsChecked] = useState(defaultChecked);
-
-    const handleCheckboxChange = () => {
-        const newChecked = !isChecked;
-        setIsChecked(newChecked);
-        
-        // Вызываем колбэк, если он передан
-        if (onChange) {
-            onChange(newChecked);
+    const handleChange = () => {
+        if (type === 'radio') {
+            onChange(true);
+        } else {
+            onChange(!checked);
         }
     };
 
     return (
         <label className={`${styles.CheckboxWrapper} ${className}`}>
             <input 
-                type="checkbox" 
-                checked={isChecked}
-                onChange={handleCheckboxChange}
+                type={type}
+                name={groupName}
+                checked={checked}
+                onChange={handleChange}
                 className={styles.hiddenInput}
             />
-            <div className={styles.customCheckbox}>
-                {isChecked && (
+            <div className={`${styles.customCheckbox} ${type === 'radio' ? styles.radio : ''}`}>
+                {checked && (
                     <svg 
                         className={styles.checkIcon} 
                         width="21" 
