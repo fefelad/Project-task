@@ -1,6 +1,6 @@
 .Text {
     margin: 0;
-    line-height: 1.5;
+    line-height: normal;
     transition: color 0.2s ease;
 }
 

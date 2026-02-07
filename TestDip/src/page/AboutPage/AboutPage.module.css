@@ -1,0 +1,51 @@
+.ContainerAboutPage {
+    margin-top: 140px;
+}
+
+.ContainerAboutPageTitle {
+    font-size: 64px;
+    font-weight: var(--fw-regular);
+    color: #000;
+}
+
+.MainContent {
+    margin-top: 50px;
+}
+
+.ColumnsContainer {
+    display: flex;
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+
+.ColumFirst, 
+.ColumSecondery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.TitleText {
+    width: 50%;
+}
+
+
+.TextDesctiption {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ArrowElements{
+    position: absolute;
+    top: 335px;
+    right: 320px;
+}
