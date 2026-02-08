@@ -1,0 +1,88 @@
+.FormCheckboxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    cursor: pointer;
+    user-select: none;
+}
+
+.CheckboxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hiddenInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.customCheckbox {
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-black);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.customCheckbox:hover {
+    background-color: #333;
+}
+
+.FormCheckboxWrapper input:checked ~ .customCheckbox {
+    background-color: var(--color-black);
+}
+
+.checkIcon {
+    pointer-events: none;
+    animation: checkAnim 0.3s ease;
+}
+
+.labelText {
+    font-family: var(--font-onest);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    line-height: 1.4;
+    color: #333;
+    position: relative;
+}
+
+.requiredStar {
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 3px;
+    position: relative;
+    top: -1px;
+}
+
+@keyframes checkAnim {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.FormCheckboxWrapper.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ErrorText {
+    color: #e53e3e;
+    font-size: 14px;
+    font-family: var(--font-onest);
+}
+
+.FormCheckboxWrapper.disabled .customCheckbox {
+    background-color: #ccc;
+}

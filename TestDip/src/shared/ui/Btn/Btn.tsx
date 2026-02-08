@@ -10,9 +10,19 @@ interface BtnProps {
     width?: string;
     onClick?: () => void;
     className?: string;
+    type?: 'button' | 'submit' | 'reset'; 
+    disabled?: boolean; 
 }
 
-export const Btn = memo(({ children, color, width, onClick, className }: BtnProps) => {
+export const Btn = memo(({ 
+    children, 
+    color, 
+    width, 
+    onClick, 
+    className, 
+    type = 'button',
+    disabled = false 
+}: BtnProps) => {
   const buttonStyle = width ? { width } : undefined;
   
   return (
@@ -20,6 +30,8 @@ export const Btn = memo(({ children, color, width, onClick, className }: BtnProp
       className={classNames(styles.Btn, styles[color], className)}
       style={buttonStyle}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       {children}
     </button>

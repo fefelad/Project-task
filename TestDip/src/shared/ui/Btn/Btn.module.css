@@ -34,3 +34,20 @@
 .orange:active {
     background-color: var(--color-orange-active);
 }
+
+.Btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.Btn:disabled:hover {
+    transform: none;
+}
+
+.blue:disabled:hover {
+    background-color: var(--color-blue) !important;
+}
+
+.orange:disabled:hover {
+    background-color: var(--color-orange) !important;
+}

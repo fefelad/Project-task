@@ -5,7 +5,6 @@
 }
 
 .FeedbackContent {
-
 }
 
 .FeedbackWrapper.fullWidth {
@@ -13,11 +12,9 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    
     padding: 100px 0;
     background: var(--color-opasity-blue);
     box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
-    
     box-sizing: border-box;
 }
 
@@ -26,22 +23,162 @@
     box-sizing: border-box;
 }
 
-.FeedbackContentTitle{
-    width: 48%;
+.FeedbackGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 80px; 
+    align-items: start;
 }
 
-.FeedbackContentDescritpion{
+.TextColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.FeedbackContentTitle {
+    width: 100%; 
+}
+
+.FeedbackContentDescription {
+    width: 95%; 
+}
+
+.FormColumn {
+    width: 100%;
+}
+
+.FeedbackForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.FormGroup {
+    display: flex;
+    flex-direction: column;
+    min-height: 20px;
+    position: relative;
+}
+
+.FormLabel {
+    font-family: var(--font-onest);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    color: #000;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.CheckboxGroup {
+    margin-top: 5px;
+}
+
+.ButtonContainer{
     margin-top: 30px;
-    width: 50%;
+}
+
+.SubmitButton {
+    padding: 18px 40px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: var(--font-onest);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-regular);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 480px;
+}
+
+.FormNote {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 5px;
+    color: #856404;
+    font-size: 14px;
+    font-family: var(--font-onest);
+}
+
+
+.FormGroup:nth-child(-n+2) .FormLabel::after {
+    content: "*";
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+
+.FormLabel.required::after {
+    content: "*";
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+
+@media (max-width: 1200px) {
+    .FeedbackGrid {
+        gap: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .FeedbackGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .TextColumn,
+    .FormColumn {
+        width: 100%;
+    }
+    
+    .FeedbackContentTitle,
+    .FeedbackContentDescription {
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) {
+    .FeedbackWrapper.fullWidth {
+        padding: 60px 0;
+    }
+    
+    .FeedbackWrapper {
+        padding: 30px;
+        margin: 60px 0;
+    }
+    
+    .FeedbackGrid {
+        gap: 30px;
+    }
+    
+    .FormGroup {
+        min-height: 85px; 
+    }
+}
+
+@media (max-width: 480px) {
     .FeedbackWrapper.fullWidth {
         padding: 40px 0;
     }
     
     .FeedbackWrapper {
-        padding: 30px;
-        margin: 30px 0;
+        padding: 20px;
+        margin: 40px 0;
+    }
+    
+    .FormGroup {
+        min-height: 80px;
+        gap: 8px;
+    }
+    
+    .CheckboxGroup {
+        min-height: 65px;
     }
 }
