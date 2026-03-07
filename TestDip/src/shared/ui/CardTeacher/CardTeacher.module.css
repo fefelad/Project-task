@@ -1,0 +1,21 @@
+.CardTeacherWrapper {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+}
+
+.CardTeacher {
+    display: flex;
+    gap: 20px;
+}
+
+.CardTeacherContent {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.BtnFooterContent {
+    margin-top: auto;
+}

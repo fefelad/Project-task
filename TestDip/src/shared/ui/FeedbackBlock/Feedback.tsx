@@ -16,6 +16,7 @@ interface FeedbackProps {
     contentPadding?: string | number;
     showForm?: boolean;
     onSubmitSuccess?: (data: FeedbackFormData) => void;
+    textBtn?: string;
 }
 
 export default function Feedback({ 
@@ -24,7 +25,8 @@ export default function Feedback({
     fullWidth = false,
     contentPadding = '220px',
     showForm = true,
-    onSubmitSuccess
+    onSubmitSuccess,
+    textBtn,
 }: FeedbackProps) {
     const {
         control,
@@ -144,7 +146,7 @@ export default function Feedback({
                                         disabled={!agreement || isSubmitting || !isValid || name.length < 2 || !email}
                                         className={styles.SubmitButton}
                                     >
-                                        {isSubmitting ? 'Отправка...' : 'Оставить заявку'}
+                                        {isSubmitting ? 'Отправка...' : (textBtn || 'Оставить заявку')}
                                     </Btn>
                                 </div>
                             </form>
