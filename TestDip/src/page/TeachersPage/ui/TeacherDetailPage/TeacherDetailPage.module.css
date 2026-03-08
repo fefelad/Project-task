@@ -1,0 +1,127 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.teacherProfile {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.name {
+    color: #333;
+}
+
+.role {
+    color: #666;
+}
+
+.experience {
+    background: #f0f7ff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.education,
+.qualifications,
+.professionalPath,
+.teachingApproach {
+    margin-bottom: 10px;
+}
+
+.educationItem {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.specialization {
+    color: #666;
+    margin-top: 5px;
+    font-size: 0.95em;
+}
+
+.qualificationsList {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.qualificationsList li {
+    margin-bottom: 8px;
+}
+
+.learningPoints {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.learningPoints ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+}
+
+.learningPoints li {
+    margin-bottom: 5px;
+}
+
+.approachNote {
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.actions {
+    margin-top: 30px;
+}
+
+.notFound {
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.feedback {
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .teacherProfile {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .imageSection {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

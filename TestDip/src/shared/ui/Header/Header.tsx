@@ -4,8 +4,11 @@ import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/App';
 
-
 function Header() {
+    const navRoutes = AppRoutes.filter(route => 
+        route.path !== '/' && !route.path.includes(':')
+    );
+
     return(
         <>
             <header className={styles.containrer_header}>
@@ -14,10 +17,7 @@ function Header() {
                 </Link>
                 <nav className={styles.navigation_list}>
                     <ul className={styles.list_item}>
-                        {
-                        AppRoutes
-                        .filter(route => route.path !== '/')
-                        .map((route) =>(
+                        {navRoutes.map((route) => (
                             <li className={styles.header_items} key={route.path}>
                                 <NavLink 
                                     to={route.path}
@@ -30,8 +30,7 @@ function Header() {
                                     </Text>
                                 </NavLink>
                             </li>
-                        ))
-                        }
+                        ))}
                     </ul>
                 </nav>
             </header>
