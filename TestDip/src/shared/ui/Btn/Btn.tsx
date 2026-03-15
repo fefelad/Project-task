@@ -12,6 +12,7 @@ interface BtnProps {
     className?: string;
     type?: 'button' | 'submit' | 'reset'; 
     disabled?: boolean; 
+    hasBackground?: boolean;
 }
 
 export const Btn = memo(({ 
@@ -21,13 +22,14 @@ export const Btn = memo(({
     onClick, 
     className, 
     type = 'button',
-    disabled = false 
+    disabled = false,
+    hasBackground = true
 }: BtnProps) => {
   const buttonStyle = width ? { width } : undefined;
   
   return (
     <button 
-      className={classNames(styles.Btn, styles[color], className)}
+      className={classNames(styles.Btn, hasBackground && styles[color], !hasBackground && styles.noBackground, className)}
       style={buttonStyle}
       onClick={onClick}
       type={type}

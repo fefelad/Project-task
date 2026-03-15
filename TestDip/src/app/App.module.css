@@ -1,12 +1,13 @@
-
-.container_main{
-    padding-top: 30px;
-    margin: 0 220px;
-    max-width: 100%; 
+.container_main {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 30px 0px;
     box-sizing: border-box;
+    ;
 }
 
-.header{
+.header {
     font-family: var(--font-involve);
     font-weight: var(--fw-regular);
     font-size: var(--fs-2xl);

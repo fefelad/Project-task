@@ -1,0 +1,39 @@
+.card {
+    width: 480px;
+    height: 518px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.cardTitle {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 109%;
+    color: #000;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.cardSecondTitle {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 109%;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.cardDescription {
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.infoContainer {
+    display: flex;
+    gap: 10px;
+}

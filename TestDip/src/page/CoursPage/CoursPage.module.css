@@ -1,0 +1,73 @@
+.container {
+    padding-top: 140px;
+}
+
+.TitleCourse {
+    font-size: 86px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.tab:hover {
+    background: #f0f0f0;
+}
+
+.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.courseCard {
+    width: 480px;
+    height: 518px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.cardTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.cardDescription {
+    font-size: 16px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.infoContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.course p {
+    margin: 0;
+    color: #666;
+}

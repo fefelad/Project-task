@@ -1,0 +1,29 @@
+.Info {
+    border-radius: 5px;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-onest);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+}
+
+.whiteBg {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.orangeBg {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+.whiteText {
+    color: white;
+}
+
+.blackText {
+    color: black;
+}
