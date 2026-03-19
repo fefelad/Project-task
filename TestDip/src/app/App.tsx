@@ -2,6 +2,7 @@ import Header from '../shared/ui/Header/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from '../page/HomePage/HomePage';
 import CoursPage from '../page/CoursPage/CoursPage';
+import CourseDetailPage from '../page/CoursPage/ui/CourseDetailPage/CourseDetailPage';
 import TeachersPage from '../page/TeachersPage/TeachersPage';
 import TeacherDetailPage from '../page/TeachersPage/ui/TeacherDetailPage/TeacherDetailPage'; 
 import PortfolioPage from '../page/PortfolioPage/PortfolioPage';
@@ -18,6 +19,7 @@ interface RouteConfig  {
 export const AppRoutes: RouteConfig[] = [
   { path: '/', name: 'Главная', component: HomePage },
   { path: '/cours', name: 'Курсы', component: CoursPage },
+  { path: '/cours/:courseId', name: 'Курс', component: CourseDetailPage },
   { path: '/teachers', name: 'Преподаватели', component: TeachersPage },
   { path: '/teachers/:teacherId', name: 'Преподаватель', component: TeacherDetailPage },
   { path: '/portfolio', name: 'Портфолио', component: PortfolioPage },

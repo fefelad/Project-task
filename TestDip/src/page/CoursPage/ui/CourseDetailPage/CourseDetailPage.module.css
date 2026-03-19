@@ -1,0 +1,48 @@
+.container {
+    padding: 20px;
+    margin-top: 150px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    color: var(--color-orange);
+}
+
+.description {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.details {
+    margin-bottom: 30px;
+}
+
+.detailItem {
+    margin-bottom: 10px;
+}
+
+.detailItem Text:first-child {
+    margin-right: 10px;
+}
+
+.program,
+.teachers {
+    margin-bottom: 20px;
+}
+
+.sectionTitle {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
