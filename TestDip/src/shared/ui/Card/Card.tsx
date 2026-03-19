@@ -8,17 +8,19 @@ interface CardProps {
     description: string;
     secondtitle: string;
     infoTexts: [string, string];
+    className?: string;
 }
 
 export const Card = memo(({ 
     title, 
     description,
     secondtitle,
-    infoTexts
+    infoTexts,
+    className
 }: CardProps) => {
     const [info1, info2] = infoTexts;
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${className || ''}`}>
             <Text fontFamily='onest' className={styles.cardTitle}>{title}</Text>
                 <Text fontFamily='onest' className={styles.cardSecondTitle}>{secondtitle}</Text>
             <Text fontFamily='onest' className={styles.cardDescription}>{description}</Text>

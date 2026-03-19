@@ -24,13 +24,14 @@ export default function CoursPage() {
         ))}
       </div>
       <div className={styles.courses}>
-        {courseCards.map(card => (
+        {courseCards.map((card, index) => (
           <Card
             key={card.id}
             title={card.title}
             secondtitle={card.secodetitle}
             description={card.description}
             infoTexts={getInfoTexts(card.title)}
+            className={(index === 1 || index === 4) ? styles.offsetCard : ''}
           />
         ))}
       </div>

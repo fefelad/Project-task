@@ -31,9 +31,11 @@
     font-size: 24px;
     color: #000;
     margin-bottom: 20px;
+    flex-grow: 1;
 }
 
 .infoContainer {
     display: flex;
     gap: 10px;
+    margin-bottom: 20px;
 }
