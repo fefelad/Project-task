@@ -68,7 +68,6 @@ export default function ContactPage() {
             
             <ContactMap address={selectedAddress} />
 
-
             <div>
               <Feedback title='Можем ответить на все ваши вопросы' fullWidth={true}>
                 Оставьте свои данные, мы свяжемся с вами и ответим на все ваши вопросы.

@@ -1,7 +1,7 @@
 .CheckboxWrapper {
     display: flex;
     align-items: center;
-    gap: 10px; 
+    gap: 10px;
     cursor: pointer;
     user-select: none;
 }
@@ -26,7 +26,7 @@
 }
 
 
-.CheckboxWrapper input:checked ~ .customCheckbox {
+.CheckboxWrapper input:checked~.customCheckbox {
     background-color: var(--color-black);
 }
 
@@ -46,6 +46,7 @@
         transform: scale(0);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -60,4 +61,32 @@
 
 .CheckboxWrapper.disabled .customCheckbox {
     background-color: #ccc;
+}
+
+@media (max-width: 1200px) {
+    .labelText {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 834px) {
+    .labelText {
+        font-size: 20px;
+    }
+
+    .customCheckbox {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .labelText {
+        font-size: 16px;
+    }
+
+    .customCheckbox {
+        width: 25px;
+        height: 25px;
+    }
 }

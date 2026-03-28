@@ -2,9 +2,12 @@
     padding: 40px;
     background: #f8f9fa;
     margin: 150px 0;
+    box-sizing: border-box;
 }
 
 .FeedbackContent {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .FeedbackWrapper.fullWidth {
@@ -14,19 +17,21 @@
     transform: translateX(-50%);
     padding: 100px 0;
     background: var(--color-opasity-blue);
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
 }
 
 .FeedbackWrapper.fullWidth .FeedbackContent {
     max-width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
+    padding: 0 130px;
 }
 
 .FeedbackGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 80px; 
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
     align-items: start;
 }
 
@@ -37,11 +42,11 @@
 }
 
 .FeedbackContentTitle {
-    width: 100%; 
+    width: 100%;
 }
 
 .FeedbackContentDescription {
-    width: 95%; 
+    width: 95%;
 }
 
 .FormColumn {
@@ -75,7 +80,7 @@
     margin-top: 5px;
 }
 
-.ButtonContainer{
+.ButtonContainer {
     margin-top: 30px;
 }
 
@@ -104,26 +109,75 @@
     font-family: var(--font-onest);
 }
 
+.FormGroup:nth-child(-n + 2) .FormLabel::after {
+    content: '*';
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 3px;
+}
 
-.FormGroup:nth-child(-n+2) .FormLabel::after {
-    content: "*";
+.FormLabel.required::after {
+    content: '*';
     color: #ff0000;
     font-weight: bold;
     margin-left: 3px;
 }
 
 
-.FormLabel.required::after {
-    content: "*";
-    color: #ff0000;
-    font-weight: bold;
-    margin-left: 3px;
+@media (max-width: 1440px) {
+    .FeedbackWrapper {
+        margin: 120px 0;
+    }
+
+    .FeedbackWrapper.fullWidth {
+        width: 100vw;
+    }
+
+    .FeedbackWrapper.fullWidth .FeedbackContent {
+        padding: 0 80px;
+    }
+
+    .FeedbackGrid {
+        gap: 20px;
+    }
+
+    .FeedbackContentTitle {
+        font-size: 46px;
+    }
+
+    .FeedbackForm {
+        gap: 20px;
+    }
+
+    .ButtonContainer {
+        margin-top: 10px;
+    }
+
+    .SubmitButton {
+        padding: 16px 32px;
+    }
 }
 
 
 @media (max-width: 1200px) {
-    .FeedbackGrid {
-        gap: 60px;
+    .FeedbackWrapper.fullWidth .FeedbackContent {
+        padding: 0 130px;
+    }
+
+    .FeedbackWrapper {
+        margin: 100px 0;
+    }
+
+    .FeedbackContentTitle {
+        font-size: 32px;
+    }
+
+    .SubmitButton {
+        width: 300px;
+        height: 52px;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 10px;
     }
 }
 
@@ -132,53 +186,96 @@
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .TextColumn,
     .FormColumn {
         width: 100%;
     }
-    
+
     .FeedbackContentTitle,
     .FeedbackContentDescription {
         width: 100%;
     }
 }
 
+@media (max-width: 834px) {
+    .FeedbackWrapper.fullWidth .FeedbackContent {
+        padding: 0 108px;
+    }
+
+    .FeedbackContentTitle {
+        font-size: 31px;
+    }
+
+    .TextColumn {
+        gap: 20px;
+    }
+
+    .FeedbackContentDescription {
+        font-size: 18px;
+    }
+
+    .FeedbackGrid {
+        gap: 36px;
+    }
+}
+
 @media (max-width: 768px) {
+
+    .FeedbackWrapper.fullWidth .FeedbackContent {
+        padding: 0 16px;
+    }
+
     .FeedbackWrapper.fullWidth {
         padding: 60px 0;
     }
-    
+
     .FeedbackWrapper {
         padding: 30px;
         margin: 60px 0;
     }
-    
+
     .FeedbackGrid {
         gap: 30px;
     }
-    
+
     .FormGroup {
-        min-height: 85px; 
+        min-height: 85px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .FeedbackWrapper.fullWidth {
         padding: 40px 0;
     }
-    
+
     .FeedbackWrapper {
         padding: 20px;
-        margin: 40px 0;
+        margin: 60px 0;
     }
-    
+
     .FormGroup {
         min-height: 80px;
         gap: 8px;
     }
-    
-    .CheckboxGroup {
-        min-height: 65px;
+
+    .FeedbackWrapper.fullWidth .FeedbackContent {
+        padding: 0 16px;
+    }
+
+    .SubmitButton {
+        max-width: 100%;
+    }
+
+    .FeedbackContentTitle {
+        font-size: 28px;
+    }
+
+    .FeedbackContentDescription {
+        font-size: 16px;
+    }
+
+    .ButtonContainer {
+        margin-top: 0px;
     }
 }

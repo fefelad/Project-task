@@ -1,7 +1,7 @@
 .FormCheckboxWrapper {
     display: flex;
     align-items: center;
-    gap: 12px; 
+    gap: 12px;
     cursor: pointer;
     user-select: none;
 }
@@ -35,7 +35,7 @@
     background-color: #333;
 }
 
-.FormCheckboxWrapper input:checked ~ .customCheckbox {
+.FormCheckboxWrapper input:checked~.customCheckbox {
     background-color: var(--color-black);
 }
 
@@ -66,6 +66,7 @@
         transform: scale(0);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -85,4 +86,17 @@
 
 .FormCheckboxWrapper.disabled .customCheckbox {
     background-color: #ccc;
+}
+
+@media (max-width: 1440px) {
+    .labelText {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .labelText {
+        font-size: 16px;
+    }
+
 }

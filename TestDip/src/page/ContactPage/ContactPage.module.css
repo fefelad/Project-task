@@ -1,14 +1,14 @@
-.ContacPageContainer{
+.ContacPageContainer {
     margin-top: 140px;
 }
 
-.ContactPageTitle{
+.ContactPageTitle {
     font-size: 64px;
     font-weight: var(--fw-regular);
     color: #000;
 }
 
-.MainContentContactPage{
+.MainContentContactPage {
     margin-top: 50px;
 }
 
@@ -21,6 +21,90 @@
 .checkboxColumn {
     display: flex;
     flex-direction: column;
-    gap: 40px; 
-    flex: 1; 
+    gap: 40px;
+    flex: 1;
+}
+
+@media (max-width: 1440px) {
+    .ContacPageContainer {
+        margin-top: 120px;
+    }
+
+    .MainContentContactPage>* {
+        display: inline;
+    }
+
+    .MainContentContactPage {
+        margin-top: 40px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .ContacPageContainer {
+        margin-top: 100px;
+    }
+
+    .ContactPageTitle {
+        font-size: 52px;
+    }
+
+    .MainContentContactPage>p {
+        font-size: 20px;
+    }
+
+    .checkboxColumn {
+        flex: auto;
+    }
+}
+
+@media (max-width: 834px) {
+    .ContacPageContainer {
+        margin-top: 80px;
+    }
+
+    .ContactPageTitle {
+        font-size: 48px;
+    }
+
+    .MainContentContactPage>p {
+        font-size: 18px;
+    }
+
+    .checkboxContainer {
+        margin-top: 30px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .checkboxColumn {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ContacPageContainer {
+        margin-top: 60px;
+    }
+
+    .ContactPageTitle {
+        font-size: 36px;
+    }
+
+    .MainContentContactPage {
+        margin-top: 20px;
+    }
+
+    .MainContentContactPage>p {
+        font-size: 16px;
+    }
+
+    .checkboxContainer {
+        margin-top: 20px;
+        gap: 15px;
+    }
+
+    .checkboxColumn {
+        gap: 15px;
+    }
 }
