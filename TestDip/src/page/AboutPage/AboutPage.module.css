@@ -14,12 +14,12 @@
 
 .ColumnsContainer {
     display: flex;
-    gap: 20px; 
+    gap: 20px;
     margin-top: 20px;
 }
 
 
-.ColumFirst, 
+.ColumFirst,
 .ColumSecondery {
     flex: 1;
     display: flex;
@@ -44,8 +44,173 @@
     object-fit: cover;
 }
 
-.ArrowElements{
+.ArrowElements {
     position: absolute;
     top: 335px;
     right: 320px;
+}
+
+.mobileBreak {
+    display: inline;
+}
+
+@media (max-width: 1440px) {
+
+    .ContainerAboutPage {
+        margin-top: 120px;
+    }
+
+    .ContainerAboutPageTitle {
+        font-size: 52px;
+    }
+
+    .MainContent {
+        margin-top: 40px;
+    }
+
+    .TitleText {
+        font-size: 22px;
+    }
+
+    .TextDesctiption {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+
+    .ArrowElements {
+        top: 332px;
+        right: 264px;
+    }
+
+    .ArrowElements svg {
+        width: 470px;
+    }
+
+    .TextClassesShool {
+        font-size: 28px;
+    }
+
+    .mobileBreak {
+        display: none;
+    }
+
+    .CreateShoolText {
+        font-size: 22px;
+    }
+
+    .lastBlockImg2 {
+        height: 438px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .ContainerAboutPage {
+        margin-top: 100px;
+    }
+
+    .TitleText {
+        font-size: 20px;
+
+    }
+
+    .CreateShoolText {
+        font-size: 20px;
+    }
+
+    .TextDesctiption {
+        font-size: 20px;
+        margin-top: 20px;
+
+    }
+
+    .TextClassesShool {
+        font-size: 26px;
+    }
+
+    .ArrowElements {
+        top: 300px;
+        right: 210px;
+    }
+
+    .ArrowElements svg {
+        width: 380px;
+        height: 200px;
+    }
+
+    .lastBlockImg {
+        height: 460px;
+    }
+
+    .lastBlockImg2 {
+        height: 430px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ArrowElements {
+        display: none;
+    }
+
+    .TitleText {
+        width: 100%;
+    }
+
+    .mobileBreak2 {
+        display: none;
+    }
+
+    .ContainerAboutPage {
+        margin-top: 80px;
+    }
+
+    .MainContent {
+        margin-top: 40px;
+    }
+
+    .TitleText {
+        font-size: 18px;
+    }
+
+    .CreateShoolText {
+        font-size: 18px;
+    }
+
+    .TextDesctiption {
+        font-size: 18px;
+        margin-top: 20px;
+
+    }
+
+    .TextClassesShool {
+        font-size: 22px;
+    }
+
+    .lastBlockImg2 {
+        height: 415px;
+    }
+}
+
+@media (max-width: 576px) {
+    .MainContent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ColumnsContainer {
+        display: block;
+    }
+
+    .TitleText {
+        font-size: 16px;
+    }
+
+    .CreateShoolText {
+        font-size: 16px;
+    }
+
+    .TextDesctiption {
+        font-size: 16px;
+        margin-top: 20px;
+
+    }
 }

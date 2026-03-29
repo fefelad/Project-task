@@ -4,6 +4,7 @@ import content1 from '../../assets/AboutPage/1.png';
 import content2 from '../../assets/AboutPage/2.png';
 import content3 from '../../assets/AboutPage/3.png';
 import content4 from '../../assets/AboutPage/4.png';
+import classNames from 'classnames';
 
 
 export default function AboutPage() {
@@ -15,7 +16,7 @@ export default function AboutPage() {
       <div className={styles.MainContent}>
         <Text className={styles.TitleText} fontFamily='onest' size={TextSizes.XL2}>
           Мы — школа дизайна для детей 7–12 лет, где творчество превращается в понятный навык 
-          и реальный результат. Обучаем веб и графическому дизайну через практику:<br/>
+          и реальный результат. Обучаем веб и графическому дизайну через практику:<br className={styles.mobileBreak2}/>
           от первых идей до аккуратных digital‑проектов.
         </Text>
         <div className={styles.ArrowElements}>
@@ -26,13 +27,13 @@ export default function AboutPage() {
 
         <div className={styles.ColumnsContainer}>
           <div className={styles.ColumFirst}>
-            <img className={styles.img} src={content1} alt="people1" />
+            <img className={classNames(styles.img, styles.lastBlockImg)} src={content1} alt="people1" />
             <div>
               <Text className={styles.TextClassesShool} fontFamily='onest' weight={TextWeight.MEDIUM} size={TextSizes.XL3}>
                 Занятия в нашей школе
               </Text>
               <Text className={styles.TextDesctiption} fontFamily='onest' weight={TextWeight.REGULAR} size={TextSizes.XL2}>
-                Занятия проходят онлайн или офлайн, в комфортном темпе <br/>
+                Занятия проходят онлайн или офлайн, в комфортном темпе<br className={styles.mobileBreak} />
                 и с большим количеством практики. По ходу обучения ребенок собирает готовые работы, 
                 а родители видят прогресс по понятным результатам, а не по ощущениям.
               </Text>
@@ -48,14 +49,14 @@ export default function AboutPage() {
               <Text className={styles.TextDesctiption} fontFamily='onest' weight={TextWeight.REGULAR} size={TextSizes.XL2}>
                 Наша школа помогает детям развивать вкус, мышление 
                 и уверенность через дизайн — в веб‑направлении и графике. Мы учим не «просто рисовать», а понимать, как работает композиция, цвет, шрифты и идея, чтобы ребенок 
-                <br/> мог осознанно создавать свои проекты.
+                <br className={styles.mobileBreak} /> мог осознанно создавать свои проекты.
               </Text>
             </div>
-            <img className={styles.img} src={content2} alt="people2" />
+            <img className={classNames(styles.img, styles.lastBlockImg2)} src={content2} alt="people2" />
             <div>
-              <Text fontFamily='onest' weight={TextWeight.REGULAR} size={TextSizes.XL2}>
+              <Text className={styles.CreateShoolText} fontFamily='onest' weight={TextWeight.REGULAR} size={TextSizes.XL2}>
                 Мы создавали школу как место, где детям интересно учиться и не страшно ошибаться — 
-                потому что именно <br/> так быстрее растут навыки.
+                потому что именно <br className={styles.mobileBreak} /> так быстрее растут навыки.
               </Text>
             </div>
             <img className={styles.img} src={content4} alt="people4" />
