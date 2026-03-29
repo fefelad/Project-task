@@ -38,7 +38,7 @@ export default function AboutPage() {
                 а родители видят прогресс по понятным результатам, а не по ощущениям.
               </Text>
             </div>
-            <img className={styles.img} src={content3} alt="people3" />
+            <img className={classNames(styles.img, styles.BlockImg3)} src={content3} alt="people3" />
           </div>
 
           <div className={styles.ColumSecondery}>

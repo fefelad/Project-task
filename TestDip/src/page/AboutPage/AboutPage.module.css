@@ -8,6 +8,7 @@
     color: #000;
 }
 
+
 .MainContent {
     margin-top: 50px;
 }
@@ -155,6 +156,10 @@
         width: 100%;
     }
 
+    .ContainerAboutPageTitle {
+        font-size: 48px;
+    }
+
     .mobileBreak2 {
         display: none;
     }
@@ -191,26 +196,46 @@
 }
 
 @media (max-width: 576px) {
-    .MainContent {
-        display: flex;
-        flex-direction: column;
+
+
+    .ContainerAboutPage {
+        margin-top: 60px;
     }
 
-    .ColumnsContainer {
+    .ContainerAboutPageTitle {
+        font-size: 36px;
+    }
+
+    .MainContent {
         display: block;
     }
 
+    .ColumnsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
     .TitleText {
+        width: 100%;
         font-size: 16px;
+        line-height: 1.4;
     }
 
     .CreateShoolText {
         font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .TextClassesShool {
+        font-size: 20px;
+        line-height: 1.4;
     }
 
     .TextDesctiption {
         font-size: 16px;
-        margin-top: 20px;
-
+        line-height: 1.45;
+        margin-top: 16px;
     }
+
 }
