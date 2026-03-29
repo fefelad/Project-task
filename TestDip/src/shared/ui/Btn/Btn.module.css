@@ -3,7 +3,7 @@
     border-radius: 10px;
     padding: 16px 32px;
     font-family: var(--font-onest);
-    font-size: var(--fs-base);
+    font-size: 24px;
     font-weight: var(--fw-medium);
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
@@ -60,4 +60,32 @@
 
 .noBackground:hover {
     background-color: #EBEFF3;
+}
+
+/* 1440 */
+@media (max-width: 1440px) {
+    .Btn {
+        font-size: 22px;
+    }
+}
+
+/* 1193 */
+@media (max-width: 1193px) {
+    .Btn {
+        font-size: 20px;
+    }
+}
+
+/* 834 */
+@media (max-width: 992px) {
+    .Btn {
+        font-size: 18px;
+    }
+}
+
+/* 393 */
+@media (max-width: 393px) {
+    .Btn {
+        font-size: 16px;
+    }
 }

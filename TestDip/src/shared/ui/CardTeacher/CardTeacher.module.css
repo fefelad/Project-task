@@ -19,3 +19,77 @@
 .BtnFooterContent {
     margin-top: auto;
 }
+
+@media (max-width: 1440px) {
+    .CardTeacherWrapper {
+        padding-top: 50px;
+    }
+
+    .TeacherName {
+        font-size: 36px;
+    }
+
+    .TeacherDesc {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .CardTeacherWrapper {
+        padding-top: 50px;
+    }
+
+    .TeacherName {
+        font-size: 36px;
+    }
+
+    .TeacherDesc {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .CardTeacherWrapper {
+        padding-top: 40px;
+    }
+
+    .TeacherName {
+        font-size: 32px;
+    }
+
+    .TeacherDesc {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 800px) {
+    .CardTeacher {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .CardTeacherWrapper {
+        padding-top: 40px;
+        gap: 20px;
+    }
+
+    .CardTeacherContent {
+        gap: 20px;
+    }
+
+    .TeacherName {
+        font-size: 28px;
+    }
+
+    .TeacherDesc {
+        font-size: 16px;
+    }
+
+    .BtnFooter {
+        width: 100% !important;
+    }
+}
