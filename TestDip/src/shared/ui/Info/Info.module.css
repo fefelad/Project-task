@@ -1,13 +1,22 @@
 .Info {
     border-radius: 5px;
-    width: 100%;
-    height: 46px;
+    min-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-onest);
     font-size: var(--fs-base);
     font-weight: var(--fw-medium);
+    box-sizing: border-box;
+}
+
+.fullWidth {
+    padding: 10px;
+}
+
+.withPadding {
+    width: fit-content;
+    padding: 10px;
 }
 
 .whiteBg {

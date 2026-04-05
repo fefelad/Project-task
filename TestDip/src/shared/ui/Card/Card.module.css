@@ -1,5 +1,5 @@
 .card {
-    width: 480px;
+    /* width: 480px; */
     height: 518px;
     border: 1px solid #ddd;
     padding: 20px;
@@ -38,4 +38,70 @@
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+/* Большие десктопы */
+@media (max-width: 1440px) {
+
+    .card {
+        width: 380px;
+    }
+
+    .cardTitle {
+        padding-top: 0px;
+    }
+
+    .cardDescription {
+        font-size: 20px;
+    }
+
+    .infoContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Ноутбуки / маленькие десктопы */
+@media (max-width: 1200px) {
+    .cardTitle {
+        font-size: 40px;
+    }
+
+    .cardSecondTitle {
+        font-size: 20px;
+    }
+
+    .cardDescription {
+        font-size: 18px;
+    }
+
+    .card {
+        width: 300px;
+    }
+}
+
+/* Планшеты горизонтально */
+@media (max-width: 992px) {
+    .container_main {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 60px 0;
+        box-sizing: border-box;
+    }
+}
+
+/* Планшеты вертикально / большие телефоны */
+@media (max-width: 768px) {
+    .container_main {
+        max-width: 100%;
+        padding: 16px 16px;
+    }
+}
+
+/* Мобильные */
+@media (max-width: 576px) {
+    .container_main {
+        padding: 16px 16px;
+    }
 }

@@ -27,8 +27,8 @@ export const Card = memo(({
                 <Text fontFamily='onest' className={styles.cardSecondTitle}>{secondtitle}</Text>
             <Text fontFamily='onest' className={styles.cardDescription}>{description}</Text>
             <div className={styles.infoContainer}>
-                <Info hasWhiteBg={true} isTextWhite={true}>{info1}</Info>
-                <Info hasWhiteBg={false} isTextWhite={false}>{info2}</Info>
+                <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>{info1}</Info>
+                <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>{info2}</Info>
             </div>
         </div>
     );
