@@ -15,9 +15,22 @@
 
 .teacherHero {
     display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 40px;
-    align-items: stretch;
+    grid-template-columns: 400px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rightColumn {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .imageSection {
@@ -34,67 +47,66 @@
     display: block;
 }
 
-.mainInfo {
-    background: #EAE9F5;
-    border-radius: 24px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 24px;
+.videoButtonWrap {
+    width: 100%;
 }
 
-.mainInfoTop {
+.teacherTitle {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.palka {
+    font-size: 24px;
+    line-height: 1;
+    color: #575757;
 }
 
 .name {
-    color: #111;
+    color: var(--color-black);
+    font-size: 36px;
+    line-height: 100%;
 }
 
 .role {
     color: #575757;
 }
 
-.metaRow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.metaCard {
-    min-width: 220px;
-    padding: 18px 20px;
-    background: #fff;
-    border-radius: 16px;
-}
-
-.metaLabel {
-    color: #666;
-    margin-bottom: 8px;
-}
-
-.metaValue {
-    color: #111;
-}
-
-.actions {
-    margin-top: auto;
-}
-
 .infoGrid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "education approach"
+        "qualifications approach"
+        "path approach";
     gap: 20px;
+    align-items: stretch;
+}
+
+.educationBlock {
+    grid-area: education;
+}
+
+.qualificationsBlock {
+    grid-area: qualifications;
+}
+
+.pathBlock {
+    grid-area: path;
+}
+
+.approachBlock {
+    grid-area: approach;
+    height: 100%;
 }
 
 .infoBlock {
     background: #fff;
     border: 1px solid #E7E7E7;
     border-radius: 24px;
-    padding: 28px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -149,7 +161,7 @@
 }
 
 .approachNote {
-    margin-top: 8px;
+    margin-top: auto;
     font-style: italic;
     color: #555;
     background: #f9f9f9;
@@ -171,9 +183,10 @@
 }
 
 .coursesTitle {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 400;
     line-height: 100%;
+    padding-bottom: 50px;
 }
 
 .sliderButtons {
@@ -209,7 +222,6 @@
 }
 
 .courseSlide {
-    flex: 0 0 420px;
     scroll-snap-align: start;
 }
 
@@ -236,7 +248,16 @@
 
 @media (max-width: 1200px) {
     .teacherHero {
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "education"
+            "qualifications"
+            "path"
+            "approach";
     }
 
     .coursesTitle {
@@ -257,12 +278,21 @@
         grid-template-columns: 1fr;
     }
 
-    .imageSection {
+    .leftColumn {
         max-width: 480px;
+    }
+
+    .rightColumn {
+        width: 100%;
     }
 
     .infoGrid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "education"
+            "qualifications"
+            "path"
+            "approach";
     }
 
     .coursesTitle {
@@ -275,8 +305,12 @@
         padding-top: 80px;
     }
 
-    .mainInfo {
-        padding: 24px;
+    .teacherTitle {
+        gap: 12px;
+    }
+
+    .name {
+        font-size: 30px;
     }
 
     .infoBlock {
@@ -302,19 +336,23 @@
         padding-top: 60px;
     }
 
-    .mainInfo {
-        padding: 20px;
-        border-radius: 18px;
+    .teacherTitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .palka {
+        display: none;
+    }
+
+    .name {
+        font-size: 26px;
     }
 
     .infoBlock {
         padding: 18px;
         border-radius: 18px;
-    }
-
-    .metaCard {
-        width: 100%;
-        min-width: auto;
     }
 
     .coursesTitle {

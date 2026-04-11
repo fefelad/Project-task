@@ -56,23 +56,34 @@ export default function TeacherDetailPage() {
 
       <div className={styles.teacherWrapper}>
         <div className={styles.teacherHero}>
-          <div className={styles.imageSection}>
-            <img
-              src={teacher.image}
-              alt={teacher.name}
-              className={styles.image}
-            />
+          <div className={styles.leftColumn}>
+            <div className={styles.imageSection}>
+              <img
+                src={teacher.image}
+                alt={teacher.name}
+                className={styles.image}
+              />
+            </div>
+
+            <div className={styles.videoButtonWrap}>
+              <Btn color="blue" width="100%">
+                Видеовизитка
+              </Btn>
+            </div>
           </div>
 
-          <div className={styles.mainInfo}>
-            <div className={styles.mainInfoTop}>
+          <div className={styles.rightColumn}>
+            <div className={styles.teacherTitle}>
               <Text
                 size={TextSizes.XL}
                 weight={TextWeight.BOLD}
                 className={styles.name}
+                fontFamily="involve"
               >
                 {teacher.name}
               </Text>
+
+              <span className={styles.palka}>|</span>
 
               <Text
                 size={TextSizes.XL2}
@@ -83,115 +94,93 @@ export default function TeacherDetailPage() {
               </Text>
             </div>
 
-            <div className={styles.metaRow}>
-              <div className={styles.metaCard}>
-                <Text className={styles.metaLabel}>Опыт в профессии</Text>
-                <Text weight={TextWeight.BOLD} className={styles.metaValue}>
-                  {teacher.experience}
+            <div className={styles.infoGrid}>
+              <div className={`${styles.infoBlock} ${styles.educationBlock}`}>
+                <Text
+                  weight={TextWeight.MEDIUM}
+                  size={TextSizes.XL2}
+                  className={styles.blockTitle}
+                >
+                  Образование
                 </Text>
-              </div>
 
-              {teacher.teachingExperience && (
-                <div className={styles.metaCard}>
-                  <Text className={styles.metaLabel}>Опыт преподавания</Text>
-                  <Text weight={TextWeight.BOLD} className={styles.metaValue}>
-                    {teacher.teachingExperience}
-                  </Text>
-                </div>
-              )}
-            </div>
-
-            <div className={styles.actions}>
-              <Btn color="blue" width="300px">
-                Записаться на пробное занятие
-              </Btn>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.infoGrid}>
-          <div className={styles.infoBlock}>
-            <Text
-              weight={TextWeight.BOLD}
-              size={TextSizes.XL2}
-              className={styles.blockTitle}
-            >
-              Образование
-            </Text>
-
-            {teacher.education.map((edu, index) => (
-              <div key={index} className={styles.educationItem}>
-                <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
-                <Text className={styles.specialization}>
-                  Направление: {edu.specialization}
-                </Text>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.infoBlock}>
-            <Text
-              weight={TextWeight.BOLD}
-              size={TextSizes.XL2}
-              className={styles.blockTitle}
-            >
-              Повышение квалификации
-            </Text>
-
-            <ul className={styles.qualificationsList}>
-              {teacher.qualifications.map((qual, index) => (
-                <li key={index}>
-                  <Text>• {qual}</Text>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.infoBlock}>
-            <Text
-              weight={TextWeight.BOLD}
-              size={TextSizes.XL2}
-              className={styles.blockTitle}
-            >
-              Профессиональный путь
-            </Text>
-
-            <div className={styles.textGroup}>
-              {teacher.professionalPath.split('\n').map((item, index) => (
-                <Text key={index}>{item}</Text>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.infoBlock}>
-            <Text
-              weight={TextWeight.BOLD}
-              size={TextSizes.XL2}
-              className={styles.blockTitle}
-            >
-              Как строит обучение
-            </Text>
-
-            <Text className={styles.textParagraph}>
-              {teacher.teachingApproach}
-            </Text>
-
-            <div className={styles.learningPoints}>
-              <Text weight={TextWeight.MEDIUM}>Дети:</Text>
-              <ul className={styles.learningList}>
-                {teacher.learningPoints.map((point, index) => (
-                  <li key={index}>
-                    <Text>— {point}</Text>
-                  </li>
+                {teacher.education.map((edu, index) => (
+                  <div key={index} className={styles.educationItem}>
+                    <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
+                    <Text className={styles.specialization}>
+                      Направление: {edu.specialization}
+                    </Text>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
 
-            {teacher.approachNote && (
-              <Text className={styles.approachNote}>
-                {teacher.approachNote}
-              </Text>
-            )}
+              <div
+                className={`${styles.infoBlock} ${styles.qualificationsBlock}`}
+              >
+                <Text
+                  weight={TextWeight.MEDIUM}
+                  size={TextSizes.XL2}
+                  className={styles.blockTitle}
+                >
+                  Повышение квалификации
+                </Text>
+
+                <ul className={styles.qualificationsList}>
+                  {teacher.qualifications.map((qual, index) => (
+                    <li key={index}>
+                      <Text>• {qual}</Text>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={`${styles.infoBlock} ${styles.pathBlock}`}>
+                <Text
+                  weight={TextWeight.MEDIUM}
+                  size={TextSizes.XL2}
+                  className={styles.blockTitle}
+                >
+                  Профессиональный путь
+                </Text>
+
+                <div className={styles.textGroup}>
+                  {teacher.professionalPath.split('\n').map((item, index) => (
+                    <Text key={index}>{item}</Text>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`${styles.infoBlock} ${styles.approachBlock}`}>
+                <Text
+                  weight={TextWeight.MEDIUM}
+                  size={TextSizes.XL2}
+                  className={styles.blockTitle}
+                >
+                  Как строит обучение
+                </Text>
+
+                <Text className={styles.textParagraph}>
+                  {teacher.teachingApproach}
+                </Text>
+
+                <div className={styles.learningPoints}>
+                  <Text weight={TextWeight.MEDIUM}>Дети:</Text>
+                  <ul className={styles.learningList}>
+                    {teacher.learningPoints.map((point, index) => (
+                      <li key={index}>
+                        <Text>— {point}</Text>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {teacher.approachNote && (
+                  <Text className={styles.approachNote}>
+                    {teacher.approachNote}
+                  </Text>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
