@@ -1,5 +1,11 @@
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import Text, { TextSizes, TextWeight } from '../../../../shared/ui/Text/Text';
 import Btn from '../../../../shared/ui/Btn/Btn';
 import Card from '../../../../shared/ui/Card/Card';
@@ -10,7 +16,6 @@ import { getTeacherById } from '../modal/modal';
 export default function TeacherDetailPage() {
   const { teacherId } = useParams();
   const navigate = useNavigate();
-  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const teacher = getTeacherById(teacherId);
 
@@ -19,21 +24,6 @@ export default function TeacherDetailPage() {
 
     return courseCards.filter(course => teacher.courseIds?.includes(course.id));
   }, [teacher]);
-
-  const scrollCourses = (direction: 'left' | 'right') => {
-    if (!sliderRef.current) return;
-
-    const firstCard = sliderRef.current.querySelector(
-      `.${styles.courseSlide}`
-    ) as HTMLDivElement | null;
-
-    const scrollAmount = firstCard ? firstCard.offsetWidth + 20 : 420;
-
-    sliderRef.current.scrollBy({
-      left: direction === 'right' ? scrollAmount : -scrollAmount,
-      behavior: 'smooth',
-    });
-  };
 
   if (!teacher) {
     return (
@@ -190,41 +180,95 @@ export default function TeacherDetailPage() {
           <Text fontFamily="involve" className={styles.coursesTitle}>
             Курсы преподавателя
           </Text>
-
-          {teacherCourses.length > 1 && (
-            <div className={styles.sliderButtons}>
-              <button
-                type="button"
-                className={styles.sliderButton}
-                onClick={() => scrollCourses('left')}
-              >
-                ←
-              </button>
-              <button
-                type="button"
-                className={styles.sliderButton}
-                onClick={() => scrollCourses('right')}
-              >
-                →
-              </button>
-            </div>
-          )}
         </div>
 
         {teacherCourses.length > 0 ? (
-          <div ref={sliderRef} className={styles.coursesTrack}>
-            {teacherCourses.map(card => (
-              <div key={card.id} className={styles.courseSlide}>
-                <Card
-                  title={card.title}
-                  secondtitle={card.secodetitle}
-                  description={card.description}
-                  infoTexts={getInfoTexts(card.title)}
-                  onClick={() => navigate(`/cours/${card.id}`)}
-                />
-              </div>
-            ))}
-          </div>
+          <>
+            <Swiper
+              modules={[Navigation, A11y]}
+              className={styles.teacherCoursesSwiper}
+              navigation={{
+                prevEl: '.teacher-courses-prev',
+                nextEl: '.teacher-courses-next',
+              }}
+              spaceBetween={20}
+              slidesPerView={3}
+              slidesPerGroup={3}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                  slidesPerGroup: 1,
+                  spaceBetween: 16,
+                },
+                768: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 20,
+                },
+                1200: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 20,
+                },
+              }}
+            >
+              {teacherCourses.map(card => (
+                <SwiperSlide key={card.id} className={styles.courseSlide}>
+                  <Card
+                    title={card.title}
+                    secondtitle={card.secodetitle}
+                    description={card.description}
+                    infoTexts={getInfoTexts(card.title)}
+                    onClick={() => navigate(`/cours/${card.id}`)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div className={styles.bottomNavigation}>
+              <button
+                type="button"
+                className={`${styles.bottomNavButton} teacher-courses-prev`}
+                aria-label="Предыдущие курсы"
+              >
+                <svg
+                  className={styles.bottomNavIcon}
+                  width="106"
+                  height="15"
+                  viewBox="0 0 106 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M0.2929 8.07039C-0.0976257 7.67986 -0.0976257 7.0467 0.2929 6.65617L6.65686 0.292213C7.04739 -0.0983109 7.68055 -0.0983109 8.07108 0.292213C8.4616 0.682738 8.4616 1.3159 8.07108 1.70643L2.41422 7.36328L8.07108 13.0201C8.4616 13.4107 8.4616 14.0438 8.07108 14.4343C7.68055 14.8249 7.04739 14.8249 6.65686 14.4343L0.2929 8.07039ZM106 7.36328V8.36328H1.00001V7.36328V6.36328H106V7.36328Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                className={`${styles.bottomNavButton} teacher-courses-next`}
+                aria-label="Следующие курсы"
+              >
+                <svg
+                  className={styles.bottomNavIcon}
+                  width="106"
+                  height="15"
+                  viewBox="0 0 106 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M105.707 8.07039C106.098 7.67986 106.098 7.0467 105.707 6.65617L99.3431 0.292213C98.9526 -0.0983109 98.3195 -0.0983109 97.9289 0.292213C97.5384 0.682738 97.5384 1.3159 97.9289 1.70643L103.586 7.36328L97.9289 13.0201C97.5384 13.4107 97.5384 14.0438 97.9289 14.4343C98.3195 14.8249 98.9526 14.8249 99.3431 14.4343L105.707 8.07039ZM0 7.36328V8.36328H105V7.36328V6.36328H0V7.36328Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+            </div>
+          </>
         ) : (
           <div className={styles.emptyCourses}>
             <Text>Для этого преподавателя пока не добавлены курсы.</Text>

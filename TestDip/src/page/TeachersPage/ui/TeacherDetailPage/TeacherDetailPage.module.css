@@ -186,43 +186,65 @@
     font-size: 50px;
     font-weight: 400;
     line-height: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
-.sliderButtons {
-    display: flex;
-    gap: 12px;
-}
-
-.sliderButton {
-    width: 52px;
-    height: 52px;
-    border: none;
-    border-radius: 50%;
-    background: #EAE9F5;
-    cursor: pointer;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.coursesTrack {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-    scrollbar-width: none;
-}
-
-.coursesTrack::-webkit-scrollbar {
-    display: none;
+.teacherCoursesSwiper {
+    padding: 10px 0 0;
 }
 
 .courseSlide {
-    scroll-snap-align: start;
+    min-width: 0;
+    height: auto;
+}
+
+.teacherCoursesSwiper :global(.swiper-slide) {
+    height: auto;
+}
+
+.teacherCoursesSwiper :global(.swiper-wrapper) {
+    align-items: stretch;
+}
+
+/* стандартные стрелки swiper не показываем */
+.teacherCoursesSwiper :global(.swiper-button-prev),
+.teacherCoursesSwiper :global(.swiper-button-next) {
+    display: none;
+}
+
+.bottomNavigation {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+}
+
+.bottomNavButton {
+    border: none;
+    background: transparent;
+    padding: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bottomNavButton:hover {
+    transform: translateY(-2px);
+}
+
+.bottomNavIcon {
+    display: block;
+    width: 106px;
+    height: 15px;
+}
+
+.bottomNavButton:global(.swiper-button-disabled) {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .emptyCourses {
@@ -262,10 +284,6 @@
 
     .coursesTitle {
         font-size: 48px;
-    }
-
-    .courseSlide {
-        flex: 0 0 360px;
     }
 }
 
@@ -317,17 +335,17 @@
         padding: 22px;
     }
 
-    .sectionHead {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .courseSlide {
-        flex: 0 0 320px;
-    }
-
     .image {
         min-height: 420px;
+    }
+
+    .bottomNavigation {
+        gap: 20px;
+    }
+
+    .bottomNavIcon {
+        width: 82px;
+        height: 12px;
     }
 }
 
@@ -359,15 +377,17 @@
         font-size: 32px;
     }
 
-    .sliderButtons {
-        display: none;
-    }
-
-    .courseSlide {
-        flex: 0 0 100%;
-    }
-
     .image {
         min-height: 340px;
+    }
+
+    .bottomNavigation {
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    .bottomNavIcon {
+        width: 68px;
+        height: 10px;
     }
 }
