@@ -10,6 +10,9 @@ import Text, { TextSizes, TextWeight } from '../../../../shared/ui/Text/Text';
 import Btn from '../../../../shared/ui/Btn/Btn';
 import Card from '../../../../shared/ui/Card/Card';
 import styles from './TeacherDetailPage.module.css';
+import photo1 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo1.png';
+import photo2 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo2.png';
+import photo3 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo3.png';
 import { courseCards, getInfoTexts } from '../../../CoursPage/modal';
 import { getTeacherById } from '../modal/modal';
 
@@ -274,6 +277,33 @@ export default function TeacherDetailPage() {
             <Text>Для этого преподавателя пока не добавлены курсы.</Text>
           </div>
         )}
+      </div>
+
+      <div className={styles.teacherCoursesPhoto}>
+        <Text className={styles.teacherCoursesTitle} weight={TextWeight.REGULAR}>
+          Фотографии занятий с  {teacher.name}
+        </Text>
+        <div className={styles.rowContainer}>
+          <div className={styles.teacherCoursesContainer}>
+            <img src={photo1} alt="#" />
+          </div>
+          <div className={styles.teacherRow2}>
+            <Text size={TextSizes.XL2}>
+              На занятиях дети работают в живой и вовлечённой атмосфере:
+              обсуждают идеи, учатся замечать детали, пробуют разные подходы и
+              закрепляют новые навыки на практике. Каждое занятие строится так,
+              чтобы ребёнок не просто выполнил задание, а понял ход работы и увидел
+              собственный результат.
+            </Text>
+            <img src={photo2} alt="#" />
+          </div>
+        </div>
+        <div className={styles.teacherCoursesfooterContainer}>
+          <img src={photo3} alt="#" />
+          <Btn  width='100%' color='blue'>
+            Записаться
+          </Btn>
+        </div>
       </div>
     </div>
   );

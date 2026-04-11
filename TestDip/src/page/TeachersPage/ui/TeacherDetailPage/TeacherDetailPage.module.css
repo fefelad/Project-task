@@ -262,6 +262,39 @@
     gap: 30px;
 }
 
+.teacherCoursesPhoto {
+    padding-top: 100px;
+}
+
+.teacherCoursesTitle {
+    font-size: 50px;
+}
+
+.rowContainer {
+    padding-top: 100px;
+    display: flex;
+    gap: 20px;
+}
+
+.teacherCoursesContainer img {
+    max-width: none;
+}
+
+.teacherRow2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.teacherCoursesfooterContainer {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding-left: 250px;
+    padding-top: 20px;
+}
+
+
 @media (max-width: 1440px) {
     .coursesTitle {
         font-size: 56px;
