@@ -95,11 +95,10 @@ li {
 .coursePhoto {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: 16px;
 }
-
-
 
 .CoursInfoStep {
     font-size: 50px;
@@ -198,6 +197,9 @@ li {
         margin-bottom: 0;
     }
 
+    .container {
+        margin-top: 100px;
+    }
 
 
     .imageBox {
@@ -224,9 +226,16 @@ li {
 /* планшеты */
 @media (max-width: 992px) {
 
-    .imageBox,
-    .secondImageBox {
-        width: 100%;
+    .container {
+        margin-top: 80px;
+    }
+
+    .DetailCardDecription {
+        font-size: 18px;
+    }
+
+    .buttonWrapper {
+        margin-top: 16px;
     }
 }
 
@@ -238,7 +247,11 @@ li {
     }
 
     .DetailCardDecription {
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .buttonWrapper {
+        margin-top: 50px;
     }
 
     .slideImage {
@@ -247,24 +260,39 @@ li {
 }
 
 @media (max-width: 576px) {
+
     .container {
-        margin-top: 100px;
-        padding: 16px;
+        padding: 0px;
+        margin-top: 60px;
+    }
+
+    .cardWrapper {
+        display: block;
     }
 
     .DetailCardDecription {
-        font-size: 18px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .WrapperColums {
+        margin-top: 20px;
+        gap: 16px;
+    }
+
+    .WrapperText {
+        gap: 20px;
+    }
+
+    .buttonWrapper {
+        margin-top: 0px;
     }
 
     .CoursInfoStep {
         font-size: 30px;
-        margin-top: 50px;
+        margin-top: 60px;
     }
 
-    .slideImage {
-        height: 240px;
-        border-radius: 16px;
-    }
 
     .slideCard {
         border-radius: 16px;

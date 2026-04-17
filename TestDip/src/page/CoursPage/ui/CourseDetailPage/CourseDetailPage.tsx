@@ -116,8 +116,12 @@ export default function CourseDetailPage() {
               slidesPerView: 1,
               spaceBetween: 16,
             },
-            768: {
+            380:{
               slidesPerView: 2,
+              spaceBetween: 16,
+            },
+            768: {
+              slidesPerView: 3,
               spaceBetween: 20,
             },
             1200: {
