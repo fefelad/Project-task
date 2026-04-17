@@ -47,10 +47,15 @@ li {
     margin-bottom: 5px;
 }
 
+
 .cardWrapper {
     display: flex;
     gap: 20px;
     margin-top: 50px;
+}
+
+.contentBlock {
+    display: block;
 }
 
 .DetailCardDecription {
@@ -63,11 +68,13 @@ li {
     margin-top: 50px;
 }
 
+/* левая колонка (десктоп) */
 .WrapperColumsOne {
     display: flex;
     flex-direction: column;
 }
 
+/* хештеги */
 .WrapperText {
     display: flex;
     flex-direction: column;
@@ -75,6 +82,24 @@ li {
     margin-top: 20px;
     margin-bottom: auto;
 }
+
+.buttonWrapper {
+    width: 100%;
+}
+
+.imageBox,
+.secondImageBox {
+    display: block;
+}
+
+.coursePhoto {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+
 
 .CoursInfoStep {
     font-size: 50px;
@@ -110,6 +135,7 @@ li {
     border-radius: 20px;
 }
 
+/* стрелки по центру */
 .bottomNavigation {
     width: fit-content;
     display: flex;
@@ -138,24 +164,73 @@ li {
     cursor: default;
 }
 
-@media (max-width: 1440px) {}
-
 @media (max-width: 1200px) {
+
+    .contentBlock {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .DetailCardDecription {
+        font-size: 20px;
+    }
+
+    .hestag {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .WrapperColums {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 24px;
+    }
+
+    .WrapperColumsOne {
+        display: contents;
+    }
+
+    .WrapperText {
+        order: 2;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+
+    .imageBox {
+        order: 3;
+        width: calc(50% - 10px);
+    }
+
+    .secondImageBox {
+        order: 4;
+        width: calc(50% - 10px);
+    }
+
+    .buttonWrapper {
+        order: 5;
+        width: 100%;
+        margin-top: 24px;
+    }
+
     .slideImage {
         height: 340px;
     }
 }
 
+/* планшеты */
 @media (max-width: 992px) {
-    .cardWrapper {
-        flex-direction: column;
-    }
 
-    .WrapperColums {
-        flex-direction: column;
+    .imageBox,
+    .secondImageBox {
+        width: 100%;
     }
 }
 
+/* мобильные */
 @media (max-width: 768px) {
     .CoursInfoStep {
         font-size: 38px;

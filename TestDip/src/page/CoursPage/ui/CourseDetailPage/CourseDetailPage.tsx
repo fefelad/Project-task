@@ -9,6 +9,7 @@ import Text, { TextSizes } from '../../../../shared/ui/Text/Text';
 import Card from '../../../../shared/ui/Card/Card';
 import { courseCards, getInfoTexts } from '../../modal';
 import Btn from '../../../../shared/ui/Btn/Btn';
+import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 
 import photoCur1 from './../../../../assets/CoursePage/CoursePageDeatil/photo1DetailCours.png';
 import photoCur2 from './../../../../assets/CoursePage/CoursePageDeatil/photo2DetailCours.png';
@@ -17,7 +18,6 @@ import Carusel2 from './../../../../assets/CoursePage/CoursePageDeatil/carusel2.
 import Carusel3 from './../../../../assets/CoursePage/CoursePageDeatil/carusel3.png';
 
 import styles from './CourseDetailPage.module.css';
-import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 
 export default function CourseDetailPage() {
   const { courseId } = useParams<{ courseId: string }>();
@@ -51,7 +51,7 @@ export default function CourseDetailPage() {
           widthPercent={80}
         />
 
-        <div>
+        <div className={styles.contentBlock}>
           <Text fontFamily="onest" className={styles.DetailCardDecription}>
             Ребенок учится видеть в изображении структуру, а не просто красивую картинку.
             Он начинает понимать, из чего состоит визуальная работа и почему одни решения
@@ -60,24 +60,36 @@ export default function CourseDetailPage() {
 
           <div className={styles.WrapperColums}>
             <div className={styles.WrapperColumsOne}>
-              <img src={photoCur1} alt="Фото курса 1" />
+              <div className={styles.imageBox}>
+                <img
+                  src={photoCur1}
+                  alt="Фото курса 1"
+                  className={styles.coursePhoto}
+                />
+              </div>
 
               <div className={styles.WrapperText}>
-                <Text size={TextSizes.XL2} fontFamily="onest">
+                <Text className={styles.hestag} size={TextSizes.XL2} fontFamily="onest">
                   #ЮныйВебДизайнер
                 </Text>
-                <Text size={TextSizes.XL2} fontFamily="onest">
+                <Text className={styles.hestag} size={TextSizes.XL2} fontFamily="onest">
                   #ГрафДизайнДетям
                 </Text>
               </div>
 
-              <Btn color="orange">
-                Записаться на курс
-              </Btn>
+              <div className={styles.buttonWrapper}>
+                <Btn color="orange" width="100%">
+                  Записаться на курс
+                </Btn>
+              </div>
             </div>
 
-            <div>
-              <img src={photoCur2} alt="Фото курса 2" />
+            <div className={styles.secondImageBox}>
+              <img
+                src={photoCur2}
+                alt="Фото курса 2"
+                className={styles.coursePhoto}
+              />
             </div>
           </div>
         </div>
@@ -127,6 +139,7 @@ export default function CourseDetailPage() {
           ))}
         </Swiper>
 
+        {/* стрелки по центру */}
         <div className={styles.bottomNavigation}>
           <button
             type="button"
@@ -172,7 +185,11 @@ export default function CourseDetailPage() {
         </div>
       </section>
 
-      <Feedback fullWidth title='Если не смогли найти нужную информацию' textBtn='Отправить свои данные'>
+      <Feedback
+        fullWidth
+        title="Если не смогли найти нужную информацию"
+        textBtn="Отправить свои данные"
+      >
         Наш оператор свяжется с вами в течении часа. Ответы на все ваши вопросы, которые будут.
       </Feedback>
     </div>
