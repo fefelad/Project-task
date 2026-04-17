@@ -10,22 +10,34 @@ interface CardProps {
     infoTexts: [string, string];
     className?: string;
     onClick?: () => void;
+    widthPercent?: number;
 }
 
-export const Card = memo(({ 
-    title, 
+export const Card = memo(({
+    title,
     description,
     secondtitle,
     infoTexts,
     className,
-    onClick
+    onClick,
+    widthPercent
 }: CardProps) => {
     const [info1, info2] = infoTexts;
+
     return (
-        <div className={`${styles.card} ${className || ''}`} onClick={onClick}>
+        <div
+            className={`${styles.card} ${className || ''}`}
+            onClick={onClick}
+            style={
+                widthPercent
+                    ? ({ '--card-width': `${widthPercent}%` } as React.CSSProperties)
+                    : undefined
+            }
+        >
             <Text fontFamily='onest' className={styles.cardTitle}>{title}</Text>
-                <Text fontFamily='onest' className={styles.cardSecondTitle}>{secondtitle}</Text>
+            <Text fontFamily='onest' className={styles.cardSecondTitle}>{secondtitle}</Text>
             <Text fontFamily='onest' className={styles.cardDescription}>{description}</Text>
+
             <div className={styles.infoContainer}>
                 <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>{info1}</Info>
                 <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>{info2}</Info>

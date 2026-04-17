@@ -1,5 +1,5 @@
 .card {
-    width: auto;
+    width: var(--card-width, auto);
     height: 518px;
     border: 1px solid #ddd;
     padding: 20px;
@@ -40,11 +40,11 @@
     margin-bottom: 20px;
 }
 
-/* Большие десктопы */
+/* ❗ начиная с 1440 — отключаем пропс */
 @media (max-width: 1440px) {
-
     .card {
         width: 380px;
+        /* 👈 перебивает var */
     }
 
     .cardTitle {
@@ -56,13 +56,10 @@
     }
 
     .infoContainer {
-        display: flex;
         flex-direction: column;
-        gap: 10px;
     }
 }
 
-/* Ноутбуки / маленькие десктопы */
 @media (max-width: 1200px) {
     .cardTitle {
         font-size: 40px;
@@ -81,7 +78,6 @@
     }
 }
 
-/* Планшеты горизонтально */
 @media (max-width: 992px) {
     .card {
         width: 100%;
@@ -89,26 +85,15 @@
     }
 }
 
-/* Планшеты вертикально / большие телефоны */
 @media (max-width: 768px) {
-    .container_main {
-        max-width: 100%;
-        padding: 16px 16px;
-    }
-
     .card {
         height: 100%;
     }
 }
 
-/* Мобильные */
 @media (max-width: 576px) {
     .cardTitle {
         font-size: 36px;
-    }
-
-    .card {
-        height: 100%;
     }
 
     .cardSecondTitle {
@@ -117,5 +102,9 @@
 
     .cardDescription {
         font-size: 18px;
+    }
+
+    .card {
+        height: 100%;
     }
 }
