@@ -285,21 +285,21 @@ export default function TeacherDetailPage() {
         </Text>
         <div className={styles.rowContainer}>
           <div className={styles.teacherCoursesContainer}>
-            <img src={photo1} alt="#" />
+            <img className={styles.photo1} src={photo1} alt="#" />
           </div>
           <div className={styles.teacherRow2}>
-            <Text size={TextSizes.XL2}>
+            <Text className={styles.textTeacherRow} size={TextSizes.XL2}>
               На занятиях дети работают в живой и вовлечённой атмосфере:
               обсуждают идеи, учатся замечать детали, пробуют разные подходы и
               закрепляют новые навыки на практике. Каждое занятие строится так,
               чтобы ребёнок не просто выполнил задание, а понял ход работы и увидел
               собственный результат.
             </Text>
-            <img src={photo2} alt="#" />
+            <img className={styles.photo2} src={photo2} alt="#" />
           </div>
         </div>
         <div className={styles.teacherCoursesfooterContainer}>
-          <img src={photo3} alt="#" />
+          <img className={styles.photo3} src={photo3} alt="#" />
           <Btn  width='100%' color='blue'>
             Записаться
           </Btn>

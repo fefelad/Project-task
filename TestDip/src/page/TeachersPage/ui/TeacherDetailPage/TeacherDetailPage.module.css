@@ -299,6 +299,26 @@
     .coursesTitle {
         font-size: 56px;
     }
+
+    .photo1 {
+        width: 620px;
+    }
+
+    .photo2 {
+        width: auto;
+    }
+
+    .textTeacherRow {
+        font-size: 22px;
+    }
+
+    .teacherCoursesfooterContainer {
+        padding-left: 100px;
+    }
+
+    .photo3 {
+        width: 680px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -318,19 +338,52 @@
     .coursesTitle {
         font-size: 48px;
     }
+
+    .coursesTitle {
+        font-size: 40px;
+        padding: 0px;
+    }
+
+    .sectionHead {
+        margin-bottom: 40px;
+    }
+
+    .teacherCoursesTitle {
+        font-size: 36px;
+    }
+
+    .rowContainer {
+        padding-top: 40px;
+    }
+
+    .photo1 {
+        width: 450px;
+    }
+
+    .textTeacherRow {
+        font-size: 20px;
+    }
+
+    .photo2 {
+        width: 450px;
+    }
+
+    .photo3 {
+        width: 450px;
+    }
+
+    .teacherCoursesfooterContainer {
+        padding-left: 0px;
+    }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
     .container {
         padding-top: 100px;
     }
 
     .teacherHero {
         grid-template-columns: 1fr;
-    }
-
-    .leftColumn {
-        max-width: 480px;
     }
 
     .rightColumn {
@@ -348,6 +401,42 @@
 
     .coursesTitle {
         font-size: 40px;
+    }
+
+    .teacherCoursesPhoto {
+        padding-top: 50px;
+    }
+
+    .rowContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .teacherRow2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .teacherCoursesfooterContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .textTeacherRow {
+        font-size: 18px;
+    }
+
+    .photo1 {
+        width: 100%;
+    }
+
+    .photo2 {
+        width: 100%;
+    }
+
+    .photo3 {
+        width: 100%;
     }
 }
 
@@ -383,6 +472,15 @@
 }
 
 @media (max-width: 576px) {
+
+    .teacherCoursesSection {
+        margin-top: 60px;
+    }
+
+    .sectionHead {
+        margin-bottom: 20px;
+    }
+
     .container {
         padding-top: 60px;
     }
@@ -407,7 +505,7 @@
     }
 
     .coursesTitle {
-        font-size: 32px;
+        font-size: 36px;
     }
 
     .image {
