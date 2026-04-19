@@ -39,9 +39,49 @@
     width: 100%;
 }
 
+.portfolioGallery {
+    margin-top: 50px;
+}
+
+.portfolioCard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.portfolioCardImage {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+.portfolioCardText {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.35;
+    color: #000;
+}
+
 .promoblockBtn {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-top: 30px;
+}
+
+.wrapperrTopworkText {
+    margin-top: 150px;
+}
+
+.topWork {
+    font-weight: 400;
+    font-size: 52px;
+    color: #000;
+}
+
+.promoblockBtnfooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
