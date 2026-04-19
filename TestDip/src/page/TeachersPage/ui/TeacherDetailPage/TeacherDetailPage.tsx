@@ -281,7 +281,7 @@ export default function TeacherDetailPage() {
 
       <div className={styles.teacherCoursesPhoto}>
         <Text className={styles.teacherCoursesTitle} weight={TextWeight.REGULAR}>
-          Фотографии занятий с  {teacher.name}
+          Фотографии занятий
         </Text>
         <div className={styles.rowContainer}>
           <div className={styles.teacherCoursesContainer}>

@@ -1,0 +1,47 @@
+.continerPortfolio {
+    margin-top: 140px;
+}
+
+.PageTitle {
+    font-weight: 400;
+    font-size: 64px;
+    color: #000;
+}
+
+.promoProtfolioBlock {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.promoblock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    width: 600px;
+}
+
+.posSvg {
+    position: absolute;
+    right: 10px;
+    top: 80px;
+}
+
+.promoProtfoliodesk {
+    width: 90%;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+}
+
+.promoblock img {
+    width: 100%;
+}
+
+.promoblockBtn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 30px;
+}
