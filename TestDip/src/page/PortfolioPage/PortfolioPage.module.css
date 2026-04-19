@@ -6,12 +6,14 @@
     font-weight: 400;
     font-size: 64px;
     color: #000;
+    line-height: 1.1;
 }
 
 .promoProtfolioBlock {
     display: flex;
     gap: 20px;
     margin-top: 50px;
+    align-items: flex-start;
 }
 
 .promoblock {
@@ -20,6 +22,19 @@
     gap: 20px;
     position: relative;
     width: 600px;
+    flex-shrink: 0;
+}
+
+.sideImage {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.centerImage {
+    width: 100%;
+    display: block;
+    height: auto;
 }
 
 .posSvg {
@@ -32,11 +47,8 @@
     width: 90%;
     font-weight: 400;
     font-size: 24px;
+    line-height: 1.35;
     color: #000;
-}
-
-.promoblock img {
-    width: 100%;
 }
 
 .portfolioGallery {
@@ -53,6 +65,7 @@
     width: 100%;
     display: block;
     border-radius: 20px;
+    height: auto;
 }
 
 .portfolioCardText {
@@ -77,6 +90,7 @@
     font-weight: 400;
     font-size: 52px;
     color: #000;
+    line-height: 1.1;
 }
 
 .promoblockBtnfooter {
@@ -84,4 +98,261 @@
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+}
+
+
+/* Большие десктопы */
+@media (max-width: 1440px) {
+    .continerPortfolio {
+        margin-top: 120px;
+    }
+
+    .PageTitle {
+        font-size: 58px;
+    }
+
+    .promoProtfoliodesk {
+        font-size: 22px;
+    }
+
+    .topWork {
+        font-size: 48px;
+    }
+
+    .portfolioCardText {
+        font-size: 21px;
+    }
+}
+
+/* Ноутбуки / маленькие десктопы */
+@media (max-width: 1200px) {
+    .continerPortfolio {
+        margin-top: 100px;
+    }
+
+    .promoProtfolioBlock {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .promoblock {
+        width: 100%;
+        max-width: 620px;
+        order: 1;
+    }
+
+    .sideImage {
+        width: calc(50% - 12px);
+        object-fit: contain;
+    }
+
+    .promoProtfoliodesk {
+        width: 100%;
+        font-size: 22px;
+    }
+
+    .PageTitle {
+        font-size: 52px;
+    }
+
+    .topWork {
+        font-size: 44px;
+    }
+
+    .wrapperrTopworkText {
+        margin-top: 120px;
+    }
+
+    .portfolioCardText {
+        font-size: 20px;
+    }
+
+    .promoblockBtn {
+        justify-content: center;
+    }
+}
+
+/* Планшеты горизонтально */
+@media (max-width: 992px) {
+    .continerPortfolio {
+        margin-top: 80px;
+    }
+
+    .PageTitle {
+        font-size: 46px;
+    }
+
+    .promoProtfolioBlock {
+        gap: 20px;
+    }
+
+    .promoblock {
+        max-width: 100%;
+    }
+
+    .sideImage {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .promoProtfoliodesk {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .posSvg {
+        width: 90px;
+        right: 8px;
+        top: 70px;
+    }
+
+    .wrapperrTopworkText {
+        margin-top: 100px;
+    }
+
+    .topWork {
+        font-size: 40px;
+    }
+
+    .portfolioCardText {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .promoblockBtnfooter {
+        margin-top: 40px;
+    }
+}
+
+/* Планшеты вертикально / большие телефоны */
+@media (max-width: 768px) {
+    .continerPortfolio {
+        margin-top: 60px;
+    }
+
+    .PageTitle {
+        font-size: 38px;
+    }
+
+    .promoProtfolioBlock {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 32px;
+    }
+
+    .promoblock {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .sideImage {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .promoProtfoliodesk {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .posSvg {
+        position: absolute;
+        right: 0;
+        top: 58px;
+        width: 72px;
+    }
+
+    .promoblockBtn {
+        margin-top: 24px;
+        justify-content: center;
+    }
+
+    .wrapperrTopworkText {
+        margin-top: 70px;
+    }
+
+    .topWork {
+        font-size: 34px;
+    }
+
+    .portfolioGallery {
+        margin-top: 32px;
+    }
+
+    .portfolioCard {
+        gap: 12px;
+    }
+
+    .portfolioCardImage {
+        border-radius: 16px;
+    }
+
+    .portfolioCardText {
+        font-size: 17px;
+    }
+
+    .promoblockBtnfooter {
+        margin-top: 32px;
+    }
+}
+
+/* Мобильные */
+@media (max-width: 576px) {
+    .continerPortfolio {
+        margin-top: 48px;
+    }
+
+    .PageTitle {
+        font-size: 32px;
+    }
+
+    .promoProtfolioBlock {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .promoblock {
+        gap: 14px;
+    }
+
+    .promoProtfoliodesk {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+
+    .posSvg {
+        top: 52px;
+        width: 60px;
+    }
+
+    .wrapperrTopworkText {
+        margin-top: 56px;
+    }
+
+    .topWork {
+        font-size: 28px;
+    }
+
+    .portfolioGallery {
+        margin-top: 24px;
+    }
+
+    .portfolioCardText {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+
+    .portfolioCardImage {
+        border-radius: 14px;
+    }
+
+    .promoblockBtn {
+        margin-top: 20px;
+    }
+
+    .promoblockBtnfooter {
+        margin-top: 28px;
+    }
 }
