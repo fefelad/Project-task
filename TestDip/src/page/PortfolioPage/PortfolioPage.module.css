@@ -100,6 +100,90 @@
     margin-top: 50px;
 }
 
+.deskPortfolio {
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+}
+
+.titlePortfolio {
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.WrapperPromo {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+    align-items: stretch;
+}
+
+.WrapperPromo>* {
+    flex: 1;
+    min-width: 0;
+}
+
+.pauk,
+.wrapperPromoRow,
+.wrapperPromoRow2 {
+    width: 100%;
+}
+
+.pauk img,
+.wrapperPromoRow2 img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.wrapperPromoRow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.deskPortfolio {
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+    line-height: 1.35;
+    flex-shrink: 0;
+}
+
+.wrapperPromoRow img {
+
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: block;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.wrapperPromoRow2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wrapperPromoRow2>div {
+    flex-shrink: 0;
+}
+
+.possvg {
+    position: absolute;
+    right: 0;
+    top: 80px;
+}
+
+.wrapperPromoRow2 {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
 
 /* Большие десктопы */
 @media (max-width: 1440px) {
@@ -121,6 +205,23 @@
 
     .portfolioCardText {
         font-size: 21px;
+    }
+
+    .deskPortfolio {
+        font-size: 20px;
+    }
+
+    .possvg {
+        right: -17px;
+        top: 64px;
+    }
+
+    .titlePortfolio {
+        font-size: 64px;
+    }
+
+    .topWork {
+        font-size: 52px;
     }
 }
 
@@ -165,11 +266,27 @@
     }
 
     .portfolioCardText {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .promoblockBtn {
         justify-content: center;
+    }
+
+    .deskPortfolio {
+        font-size: 18px;
+    }
+
+    .possvg {
+        display: none;
+    }
+
+    .titlePortfolio {
+        font-size: 52px;
+    }
+
+    .topWork {
+        font-size: 48px;
     }
 }
 
@@ -223,6 +340,14 @@
 
     .promoblockBtnfooter {
         margin-top: 40px;
+    }
+
+    .titlePortfolio {
+        font-size: 48px;
+    }
+
+    .topWork {
+        font-size: 36px;
     }
 }
 
@@ -296,12 +421,20 @@
     .promoblockBtnfooter {
         margin-top: 32px;
     }
+
+    .titlePortfolio {
+        font-size: 40px;
+    }
+
+    .topWork {
+        font-size: 36px;
+    }
 }
 
 /* Мобильные */
 @media (max-width: 576px) {
     .continerPortfolio {
-        margin-top: 48px;
+        margin-top: 60px;
     }
 
     .PageTitle {
@@ -354,5 +487,13 @@
 
     .promoblockBtnfooter {
         margin-top: 28px;
+    }
+
+    .titlePortfolio {
+        font-size: 36px;
+    }
+
+    .topWork {
+        font-size: 32px;
     }
 }
