@@ -5,10 +5,12 @@ import styles from './HomePage.module.css';
 import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
 import HomePageCrad from '../../shared/ui/HomePageCard/HomePageCrad';
 import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
+import lenta from '../../assets/HomePage/lenta.svg?react';
 
 export default function HomePage() {
   return (
     <>
+      {/* HERO */}
       <div className={styles.container_homepage}>
         <div className={styles.imageWrapper}>
           <img
@@ -66,9 +68,25 @@ export default function HomePage() {
         </Text>
 
         <div className={styles.teacherGrid}>
-          {homePageTeachers.map((teacher) => (
-            <HomePageCrad key={teacher.id} teacher={teacher} />
-          ))}
+          <div className={styles.card1}>
+            <HomePageCrad teacher={homePageTeachers[0]} />
+          </div>
+
+          <div className={styles.card2}>
+            <HomePageCrad teacher={homePageTeachers[1]} />
+          </div>
+
+          <div className={styles.centerBtn}>
+            <Btn width="100%" color="blue">Все преподаватели</Btn>
+          </div>
+
+          <div className={styles.card3}>
+            <HomePageCrad teacher={homePageTeachers[2]} />
+          </div>
+
+          <div className={styles.card4}>
+            <HomePageCrad teacher={homePageTeachers[3]} />
+          </div>
         </div>
       </div>
     </>
