@@ -1,23 +1,20 @@
-
-.container_homepage{
+.container_homepage {
     margin-top: 150px;
     max-width: 100%;
-   
+    height: 760px;
     position: relative;
 }
 
 .imageWrapper {
     position: absolute;
     top: 150px;
-    right: 40px;
+    right: 116px;
     transform: rotate(0deg);
-
     height: auto;
     z-index: 0;
 }
 
 .peopleImage {
-    height: 550px;
     border-radius: 15px;
     object-fit: contain;
     display: block;
@@ -46,7 +43,7 @@
     line-height: 1;
 }
 
-.shoolText_desc{
+.shoolText_desc {
     max-width: 833px;
     width: 100%;
     font-family: var(--font-onest);
@@ -72,10 +69,16 @@
 
 .popupInfo {
     bottom: 130px;
-    left: 550px;
+    left: 616px;
 }
 
-.popupInfoBestCourse{
-    bottom: 640px;
-    left: 1210px;
+.popupInfoBestCourse {
+    bottom: 619px;
+    left: 1277px;
+}
+
+.MyTeacher {
+    font-weight: 400;
+    font-size: 86px;
+    color: #000;
 }
