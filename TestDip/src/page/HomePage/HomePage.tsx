@@ -5,12 +5,11 @@ import styles from './HomePage.module.css';
 import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
 import HomePageCrad from '../../shared/ui/HomePageCard/HomePageCrad';
 import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
-import lenta from '../../assets/HomePage/lenta.svg?react';
+import Lenta from '../../assets/HomePage/lenta.svg';
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
       <div className={styles.container_homepage}>
         <div className={styles.imageWrapper}>
           <img
@@ -66,6 +65,10 @@ export default function HomePage() {
         <Text fontFamily="involve" className={styles.MyTeacher}>
           Наши преподаватели
         </Text>
+
+        <div className={styles.lenta}>
+          <img src={Lenta} alt="" />
+        </div>
 
         <div className={styles.teacherGrid}>
           <div className={styles.card1}>

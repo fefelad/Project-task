@@ -4,6 +4,11 @@
     width: 480px;
     height: 484px;
     padding: 20px;
+    background-color: #fff;
+
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
 }
 
 .top {
