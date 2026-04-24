@@ -87,3 +87,32 @@
     width: 360px;
     margin-left: 520px;
 }
+
+.arrows {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.arrow1,
+.arrow2,
+.arrow3 {
+    position: absolute;
+    display: block;
+}
+
+.arrow1 {
+    top: 571px;
+    left: 54px;
+}
+
+.arrow2 {
+    top: 392px;
+    left: 1037px;
+}
+
+.arrow3 {
+    top: 981px;
+    left: 662px
+}

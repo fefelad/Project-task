@@ -32,6 +32,12 @@ export default function HomeCoursesBlock() {
           #Курсы для ваших детей
         </Text>
 
+        <div className={styles.arrows}>
+          <img src={arrow1} className={styles.arrow1} alt="" />
+          <img src={arrow2} className={styles.arrow2} alt="" />
+          <img src={arrow3} className={styles.arrow3} alt="" />
+        </div>
+
         <div className={styles.cardsRow}>
           <div className={styles.card1}>
             <Card
