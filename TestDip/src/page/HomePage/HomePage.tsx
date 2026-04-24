@@ -8,6 +8,13 @@ import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
 import Lenta from '../../assets/HomePage/lenta.svg';
 import HomeCoursesBlock from '../../shared/ui/HomeCoursesBlock/HomeCoursesBlock';
 
+import work1 from '../../assets/HomePage/work1.png';
+import work2 from '../../assets/HomePage/work2.png';
+import work3 from '../../assets/HomePage/work3.png';
+import work4 from '../../assets/HomePage/work4.png';
+import work5 from '../../assets/HomePage/wokr5.png';
+
+
 export default function HomePage() {
   return (
     <>
@@ -96,6 +103,21 @@ export default function HomePage() {
       </div>
       <div>
         <HomeCoursesBlock />
+      </div>
+
+      <div>
+        <div>
+          <Text fontFamily='involve' className={styles.WorkKids}>
+            Работы сделанные нашими учениками
+          </Text>
+          <Text fontFamily='onest' className={styles.WorkKidsDesk}>
+            Это не просто домашние задания, а полноценные проекты, которые 
+            не стыдно добавить в портфолио. Каждый проект — это решение конкретной задачи
+          </Text>
+        </div>
+        <div>
+
+        </div>
       </div>
     </>
   );
