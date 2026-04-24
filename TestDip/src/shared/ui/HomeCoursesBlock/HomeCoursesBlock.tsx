@@ -6,6 +6,9 @@ import Text from '../Text/Text';
 import Card from '../Card/Card';
 import Btn from '../Btn/Btn';
 import PopupInfo from '../PopupInfo/PopupInfo';
+import arrow1 from '../../../assets/HomePage/arrow1.svg';
+import arrow2 from '../../../assets/HomePage/arrow2.svg';
+import arrow3 from '../../../assets/HomePage/arrow3.svg';
 
 export default function HomeCoursesBlock() {
   const navigate = useNavigate();
