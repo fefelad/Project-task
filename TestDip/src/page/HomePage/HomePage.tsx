@@ -6,6 +6,7 @@ import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
 import HomePageCrad from '../../shared/ui/HomePageCard/HomePageCrad';
 import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
 import Lenta from '../../assets/HomePage/lenta.svg';
+import HomeCoursesBlock from '../../shared/ui/HomeCoursesBlock/HomeCoursesBlock';
 
 export default function HomePage() {
   return (
@@ -91,6 +92,10 @@ export default function HomePage() {
             <HomePageCrad teacher={homePageTeachers[3]} />
           </div>
         </div>
+
+      </div>
+      <div>
+        <HomeCoursesBlock />
       </div>
     </>
   );

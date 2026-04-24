@@ -1,0 +1,100 @@
+.coursesSection {
+    margin-top: 140px;
+}
+
+.title {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 6px;
+    background: #f1642e;
+    font-weight: 400;
+    font-size: 64px;
+    color: #fff;
+    transform: rotate(1deg);
+}
+
+.coursesGrid {
+    position: relative;
+    margin-top: 40px;
+}
+
+.cardsRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.card1 {
+    margin-top: 0;
+    position: relative;
+    z-index: 3;
+}
+
+.card2 {
+    margin-top: 360px;
+    position: relative;
+    z-index: 2;
+}
+
+.card3 {
+    margin-top: 720px;
+    position: relative;
+    z-index: 1;
+}
+
+.card1,
+.card2,
+.card3 {
+    flex: 0 0 480px;
+    /* ширина карточки */
+}
+
+.descriptionTop {
+    position: absolute;
+    top: 0;
+    left: 520px;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+}
+
+.hashTitle {
+    position: absolute;
+    top: 120px;
+    left: 520px;
+    font-weight: 400;
+    font-size: 64px;
+    color: #000;
+    margin-top: 30px;
+}
+
+.bestLabel {
+    margin-top: -120px;
+    margin-left: 90px;
+    width: 250px;
+    height: 58px;
+    border: 2px solid #5c5bb3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: var(--font-onest);
+    font-size: 18px;
+    transform: rotate(-5deg);
+}
+
+.descriptionBottom {
+    margin-top: 50px;
+    max-width: 410px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+}
+
+.buttonWrapper {
+    width: 360px;
+    margin-left: 520px;
+    margin-top: -20px;
+}
