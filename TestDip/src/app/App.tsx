@@ -9,6 +9,7 @@ import PortfolioPage from '../page/PortfolioPage/PortfolioPage';
 import AboutPage from '../page/AboutPage/AboutPage';
 import ContactPage from '../page/ContactPage/ContactPage';
 import styles from  './App.module.css';
+import { Footer } from '../shared/ui/Footer/Footer';
 
 interface RouteConfig  {
   path: string;
@@ -43,6 +44,7 @@ function App() {
             ))}
           </Routes>
         </div>
+        <Footer/>
       </BrowserRouter>
     </>
   )

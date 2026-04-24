@@ -27,33 +27,15 @@ export const FAQItem = ({ title, text }: FAQItemProps) => {
                 </Text>
 
                 <span className={styles.icon}>
-                    {isOpen ? (
-                        // минус
-                        <svg
-                            viewBox="0 0 27 2"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M1 1L26 1"
-                                stroke="black"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                            />
-                        </svg>
-                    ) : (
-                        // плюс
-                        <svg
-                            viewBox="0 0 27 26"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M1 13H26M13.5 1V25"
-                                stroke="black"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                            />
-                        </svg>
-                    )}
+                    <svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1 13H26M13.5 1V25"
+                            stroke="black"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
                 </span>
             </button>
 
