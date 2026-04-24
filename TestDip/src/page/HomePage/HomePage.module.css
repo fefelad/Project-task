@@ -205,3 +205,20 @@
     font-size: 24px;
     color: #000;
 }
+
+.containerFaq {
+    margin-top: 150px;
+}
+
+.faqTitle {
+    font-weight: 400;
+    font-size: 50px;
+    color: #000;
+}
+
+.faqContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
