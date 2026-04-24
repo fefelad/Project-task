@@ -105,18 +105,33 @@ export default function HomePage() {
         <HomeCoursesBlock />
       </div>
 
-      <div>
-        <div>
-          <Text fontFamily='involve' className={styles.WorkKids}>
-            Работы сделанные нашими учениками
-          </Text>
-          <Text fontFamily='onest' className={styles.WorkKidsDesk}>
-            Это не просто домашние задания, а полноценные проекты, которые 
-            не стыдно добавить в портфолио. Каждый проект — это решение конкретной задачи
-          </Text>
+      <div className={styles.containerRow}>
+        <div className={styles.wrapperRowOne}>
+          <div className={styles.containerText}>
+            <Text fontFamily='involve' className={styles.WorkKids}>
+              Работы сделанные нашими учениками
+            </Text>
+            <Text fontFamily='onest' className={styles.WorkKidsDesk}>
+              Это не просто домашние задания, а полноценные проекты, которые 
+              не стыдно добавить в портфолио. Каждый проект — это решение конкретной задачи
+            </Text>
+          </div>
+          <div className={styles.mainRow}>
+            <img src={work1} alt="#" />
+            <div className={styles.row1}>
+              <img src={work2} alt="#" />
+              <img src={work3} alt="#" />
+            </div>
+          </div>
         </div>
-        <div>
 
+        <div className={styles.row2}>
+          <img src={work4} alt="#" />
+          <Text className={styles.row2Text} fontFamily='onest'>
+            Мы гордимся прогрессом наших учеников! 
+              В этих работах — не только навыки, но и первый шаг в профессию
+          </Text>
+          <img src={work5} alt="#" />
         </div>
       </div>
     </>
