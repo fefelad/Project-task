@@ -18,6 +18,7 @@ import Carusel2 from './../../../../assets/CoursePage/CoursePageDeatil/carusel2.
 import Carusel3 from './../../../../assets/CoursePage/CoursePageDeatil/carusel3.png';
 
 import styles from './CourseDetailPage.module.css';
+import LearningSteps from '../../../../shared/ui/LearningSteps/LearningSteps';
 
 export default function CourseDetailPage() {
   const { courseId } = useParams<{ courseId: string }>();
@@ -93,6 +94,10 @@ export default function CourseDetailPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        <LearningSteps />
       </div>
 
       <section className={styles.stepsSection}>
