@@ -222,3 +222,307 @@
     flex-direction: column;
     gap: 20px;
 }
+
+@media (max-width: 1440px) {
+    .imageWrapper {
+        right: 0;
+        top: 170px;
+        width: 520px;
+    }
+
+    .peopleImage {
+        width: 100%;
+    }
+
+    .popupInfoBestCourse {
+        left: auto;
+        right: 40px;
+    }
+
+    .containerText {
+        width: 720px;
+    }
+
+    .containerRow img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1193px) {
+    .container_homepage {
+        height: auto;
+        min-height: 720px;
+    }
+
+    .imageWrapper {
+        width: 420px;
+        top: 230px;
+        opacity: 0.9;
+    }
+
+    .schoolsContainer {
+        gap: 30px;
+    }
+
+    .schoolsBlock {
+        width: 300px;
+        height: 100px;
+    }
+
+    .shoolText_desc {
+        max-width: 650px;
+    }
+
+    .coursesBtn {
+        width: 420px;
+    }
+
+    .popupInfo {
+        left: 450px;
+        bottom: 80px;
+    }
+
+    .popupInfoBestCourse {
+        bottom: 560px;
+        right: 20px;
+    }
+
+    .MyTeacher {
+        font-size: 70px;
+    }
+
+    .lenta {
+        width: 1400px;
+        top: 150px;
+    }
+
+    .teacherGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card1 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .card2 {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .card3 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .card4 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .centerBtn {
+        grid-column: 1 / 3;
+        grid-row: 3;
+    }
+
+    .containerRow {
+        flex-direction: column;
+    }
+
+    .containerText {
+        width: 100%;
+    }
+
+    .mainRow {
+        width: 100%;
+    }
+
+    .mainRow>img,
+    .row1,
+    .row2 {
+        flex: 1;
+    }
+}
+
+@media (max-width: 834px) {
+    .container_homepage {
+        margin-top: 80px;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .imageWrapper {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        order: 4;
+        margin-top: 40px;
+    }
+
+    .peopleImage {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+    }
+
+    .schoolsContainer {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .schoolsBlock {
+        width: 240px;
+        height: 82px;
+    }
+
+    .shoolText_desc {
+        max-width: 100%;
+        margin-top: 24px;
+    }
+
+    .buttonContainer {
+        margin-top: 40px;
+    }
+
+    .coursesBtn {
+        width: 100%;
+        height: 58px;
+        font-size: 20px;
+    }
+
+    .popupInfo,
+    .popupInfoBestCourse {
+        display: none;
+    }
+
+    .teacherSection {
+        margin-top: 90px;
+    }
+
+    .MyTeacher {
+        font-size: 52px;
+    }
+
+    .teacherGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .card1,
+    .card2,
+    .card3,
+    .card4,
+    .centerBtn {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .lenta {
+        display: none;
+    }
+
+    .containerRow {
+        margin-top: 100px;
+    }
+
+    .WorkKids {
+        font-size: 42px;
+    }
+
+    .WorkKidsDesk,
+    .row2Text {
+        font-size: 20px;
+    }
+
+    .mainRow {
+        flex-direction: column;
+    }
+
+    .row1 {
+        flex-direction: row;
+    }
+
+    .containerFaq {
+        margin-top: 100px;
+    }
+
+    .faqTitle {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 393px) {
+    .container_homepage {
+        margin-top: 50px;
+    }
+
+    .schoolsContainer {
+        gap: 10px;
+    }
+
+    .schoolsBlock {
+        width: 160px;
+        height: 60px;
+        border-radius: 8px;
+    }
+
+    .shoolText_desc {
+        font-size: 18px;
+    }
+
+    .buttonContainer {
+        margin-top: 30px;
+    }
+
+    .coursesBtn {
+        height: 54px;
+        font-size: 18px;
+    }
+
+    .peopleImage {
+        max-height: 300px;
+    }
+
+    .teacherSection {
+        margin-top: 70px;
+    }
+
+    .MyTeacher {
+        font-size: 36px;
+    }
+
+    .teacherGrid {
+        margin-top: 30px;
+    }
+
+    .containerRow {
+        margin-top: 70px;
+    }
+
+    .WorkKids {
+        font-size: 32px;
+    }
+
+    .WorkKidsDesk,
+    .row2Text {
+        font-size: 18px;
+    }
+
+    .row1 {
+        flex-direction: column;
+    }
+
+    .containerFaq {
+        margin-top: 70px;
+    }
+
+    .faqTitle {
+        font-size: 32px;
+    }
+
+    .faqContainer {
+        margin-top: 30px;
+    }
+}
