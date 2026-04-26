@@ -36,3 +36,10 @@
 .blackText {
     color: black;
 }
+
+
+@media (max-width: 1440px) {
+    .infoText {
+        font-size: 14px !important;
+    }
+}

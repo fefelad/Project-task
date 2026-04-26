@@ -2,7 +2,6 @@ import Text, { TextSizes, TextWeight } from '../Text/Text';
 import Info from '../Info/Info';
 import styles from './HomePageCard.module.css';
 import type { HomePageTeacher } from './modal';
-import { tr } from 'zod/v4/locales';
 
 interface HomePageCradProps {
   teacher: HomePageTeacher;

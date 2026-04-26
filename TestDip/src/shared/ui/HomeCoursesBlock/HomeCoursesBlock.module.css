@@ -116,3 +116,84 @@
     top: 981px;
     left: 662px
 }
+
+@media (max-width: 1440px) {
+    .coursesSection {
+        margin-top: 120px;
+        overflow: hidden;
+    }
+
+    .title {
+        font-size: 56px;
+    }
+
+    .coursesGrid {
+        min-height: 1160px;
+        margin-top: 36px;
+    }
+
+    .cardsRow {
+        gap: 20px;
+        width: 100%;
+    }
+
+    .card1,
+    .card2,
+    .card3 {
+        flex: 0 0 calc((100% - 40px) / 3);
+        max-width: calc((100% - 40px) / 3);
+    }
+
+    .card2 {
+        margin-top: 320px;
+    }
+
+    .card3 {
+        margin-top: 640px;
+    }
+
+    .descriptionTop {
+        left: calc((100% - 40px) / 3 + 20px);
+        font-size: 22px;
+    }
+
+    .hashTitle {
+        top: 145px;
+        left: calc((100% - 40px) / 3 + 20px);
+        font-size: 56px;
+    }
+
+    .bestLabel {
+        top: 820px;
+        left: 110px;
+    }
+
+    .descriptionBottom {
+        bottom: 40px;
+        max-width: 600px;
+        font-size: 22px;
+    }
+
+    .buttonWrapper {
+        width: 340px;
+        margin-left: calc((100% - 40px) / 3 + 20px);
+    }
+
+    .arrow1 {
+        top: 550px;
+        left: 10px;
+    }
+
+    .arrow2 {
+        top: 320px;
+        left: auto;
+        right: 80px;
+    }
+
+    .arrow3 {
+        width: 229px;
+        top: 960px;
+        left: 49%;
+    }
+
+}

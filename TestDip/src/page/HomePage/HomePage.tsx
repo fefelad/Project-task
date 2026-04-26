@@ -70,7 +70,7 @@ export default function HomePage() {
         </PopupInfo>
       </div>
 
-      <div className={styles.teacherSection}>
+      {/* <div className={styles.teacherSection}>
         <Text fontFamily="involve" className={styles.MyTeacher}>
           Наши преподаватели
         </Text>
@@ -101,7 +101,7 @@ export default function HomePage() {
           </div>
         </div>
 
-      </div>
+      </div> */}
       <div>
         <HomeCoursesBlock />
       </div>
