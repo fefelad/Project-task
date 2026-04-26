@@ -28,7 +28,7 @@ export default function HomePage() {
           />
         </div>
 
-        <Text size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
+        <Text className={styles.HomePageTitle} size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
           Повысьте уровень ребенка <br /> с помощью нашей
         </Text>
 
@@ -39,7 +39,7 @@ export default function HomePage() {
             </Text>
           </div>
 
-          <Text size={TextSizes.XL9}>дизайна</Text>
+          <Text className={styles.shoolsTextDesign} size={TextSizes.XL9}>дизайна</Text>
         </div>
 
         <Text size={TextSizes.XL2} className={styles.shoolText_desc}>
@@ -70,7 +70,7 @@ export default function HomePage() {
         </PopupInfo>
       </div>
 
-      {/* <div className={styles.teacherSection}>
+      <div className={styles.teacherSection}>
         <Text fontFamily="involve" className={styles.MyTeacher}>
           Наши преподаватели
         </Text>
@@ -101,7 +101,7 @@ export default function HomePage() {
           </div>
         </div>
 
-      </div> */}
+      </div>
       <div>
         <HomeCoursesBlock />
       </div>

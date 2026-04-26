@@ -224,10 +224,17 @@
 }
 
 @media (max-width: 1440px) {
+
+    .container_homepage {
+        margin-top: 120px;
+        height: 580px;
+    }
+
     .imageWrapper {
-        right: 0;
-        top: 170px;
-        width: 520px;
+        right: 110px;
+        top: 120px;
+        width: 415px;
+        height: 435px;
     }
 
     .peopleImage {
@@ -235,8 +242,8 @@
     }
 
     .popupInfoBestCourse {
-        left: auto;
-        right: 40px;
+        left: 950px;
+        bottom: 545px;
     }
 
     .containerText {
@@ -246,6 +253,68 @@
     .containerRow img {
         max-width: 100%;
     }
+
+    .lenta {
+        width: 1900px;
+        left: 50%;
+        top: 310px;
+
+        transform: translateX(-50%) scale(0.76);
+        transform-origin: top center;
+    }
+
+    .HomePageTitle {
+        font-weight: 400;
+        font-size: 72px;
+        color: #000;
+    }
+
+    .schoolsBlock {
+        border-radius: 10px;
+        width: 269px;
+        height: 86px;
+    }
+
+    .schoolsContainer {
+        gap: 20px;
+    }
+
+    .schoolsText {
+        font-weight: 400;
+        font-size: 72px;
+    }
+
+    .shoolsTextDesign {
+        font-weight: 400;
+        font-size: 72px;
+    }
+
+    .shoolText_desc {
+        margin-top: 50px;
+        width: 677px;
+        font-weight: 400;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .buttonContainer {
+        margin-top: 50px;
+    }
+
+    .coursesBtn {
+        width: 380px;
+    }
+
+    .popupInfo {
+        bottom: 89px;
+        left: 412px;
+    }
+
+    .containerRow {
+        margin-top: 120px;
+    }
+
+
 }
 
 @media (max-width: 1193px) {
