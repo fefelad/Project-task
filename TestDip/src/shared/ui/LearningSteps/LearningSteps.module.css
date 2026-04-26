@@ -21,9 +21,6 @@
     border-radius: 15px;
     padding: 24px;
     background: #fff;
-    font-weight: 400;
-    font-size: 24px;
-    color: #000;
     font-family: var(--font-onest);
     box-sizing: border-box;
 }
@@ -33,6 +30,7 @@
     height: 251px;
 }
 
+/* позиции */
 .step1 {
     top: 0;
     left: 0;
@@ -53,6 +51,7 @@
     left: 500px;
 }
 
+/* результат */
 .resultCard {
     left: 0;
     right: 0;
@@ -60,6 +59,26 @@
     height: 251px;
 }
 
+/* текст */
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+}
+
+.cardText {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #000;
+}
+
+/* стрелки */
 .arrow1,
 .arrow2,
 .arrow3,
@@ -90,11 +109,8 @@
     left: 244px;
 }
 
+/* адаптив */
 @media (max-width: 1200px) {
-    .learnSection {
-        max-width: 100%;
-    }
-
     .learnGrid {
         display: flex;
         flex-direction: column;
@@ -127,10 +143,17 @@
         margin-bottom: 30px;
     }
 
+    .cardTitle {
+        font-size: 22px;
+    }
+
+    .cardText {
+        font-size: 18px;
+    }
+
     .learnCard,
     .resultCard {
         height: auto;
         min-height: 180px;
-        font-size: 20px;
     }
 }
