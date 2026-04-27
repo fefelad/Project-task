@@ -43,3 +43,10 @@
         font-size: 14px !important;
     }
 }
+
+
+@media(max-width: 1202px) {
+    .infoText {
+        font-size: 16px !important;
+    }
+}
