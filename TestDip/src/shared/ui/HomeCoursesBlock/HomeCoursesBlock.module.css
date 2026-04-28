@@ -394,3 +394,31 @@
         order: 4;
     }
 }
+
+@media (max-width: 500px) {
+
+    .descriptionTop {
+        font-weight: 400;
+        font-size: 16px;
+        color: #000;
+    }
+
+    .descriptionBottom {
+        display: none;
+    }
+
+    .title {
+        font-weight: 400;
+        font-size: 28px;
+        color: #fff;
+        border-radius: 10px;
+        height: 64px;
+        background: #f1642e;
+        transform: rotate(-1deg);
+    }
+
+    .coursesSection {
+        overflow: visible;
+        margin-top: 60px;
+    }
+}

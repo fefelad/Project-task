@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
 
         <Text className={styles.HomePageTitle} size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
-          Повысьте уровень ребенка <br /> с помощью нашей
+          Повысьте уровень ребенка <br className={styles.br1} /> с помощью нашей
         </Text>
 
         <div className={styles.schoolsContainer}>
