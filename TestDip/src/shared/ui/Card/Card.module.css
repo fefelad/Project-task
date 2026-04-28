@@ -40,6 +40,19 @@
     margin-bottom: 20px;
 }
 
+.directions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.directionTag {
+    font-size: 14px;
+    color: #666;
+}
+
 /* ❗ начиная с 1440 — отключаем пропс */
 @media (max-width: 1440px) {
     .card {

@@ -70,6 +70,7 @@ export default function CoursPage() {
             secondtitle={card.secodetitle}
             description={card.description}
             infoTexts={getInfoTexts(card.title)}
+            directions={card.directions}
             className={(index === 1 || index === 4) ? styles.offsetCard : ''}
             onClick={() => navigate(`/cours/${card.id}`)}
           />

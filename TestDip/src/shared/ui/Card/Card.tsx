@@ -8,6 +8,7 @@ interface CardProps {
     description: string;
     secondtitle: string;
     infoTexts: [string, string];
+    directions?: string[];
     className?: string;
     onClick?: () => void;
     widthPercent?: number;
@@ -18,6 +19,7 @@ export const Card = memo(({
     description,
     secondtitle,
     infoTexts,
+    directions = [],
     className,
     onClick,
     widthPercent
@@ -34,17 +36,45 @@ export const Card = memo(({
                     : undefined
             }
         >
-            <Text fontFamily='onest' className={styles.cardTitle}>{title}</Text>
-            <Text fontFamily='onest' className={styles.cardSecondTitle}>{secondtitle}</Text>
-            <Text fontFamily='onest' className={styles.cardDescription}>{description}</Text>
+            <Text fontFamily="onest" className={styles.cardTitle}>
+                {title}
+            </Text>
+
+            <Text fontFamily="onest" className={styles.cardSecondTitle}>
+                {secondtitle}
+            </Text>
+
+            {directions.length > 0 && (
+                <div className={styles.directions}>
+                    {directions.map((dir, index) => (
+                        <Text
+                            key={`${dir}-${index}`}
+                            className={styles.directionTag}
+                            fontFamily="onest"
+                        >
+                            #{dir}
+                        </Text>
+                    ))}
+                </div>
+            )}
+
+            <Text fontFamily="onest" className={styles.cardDescription}>
+                {description}
+            </Text>
 
             <div className={styles.infoContainer}>
-                <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>{info1}</Info>
-                <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>{info2}</Info>
+                <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>
+                    {info1}
+                </Info>
+
+                <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>
+                    {info2}
+                </Info>
             </div>
         </div>
     );
 });
 
 Card.displayName = 'Card';
+
 export default Card;
