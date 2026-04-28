@@ -159,7 +159,7 @@
     }
 }
 
-@media (max-width: 393px) {
+@media (max-width: 500px) {
     .card {
         padding: 14px;
         border-radius: 12px;

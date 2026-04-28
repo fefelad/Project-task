@@ -56,3 +56,18 @@
     font-size: 24px;
     color: #000;
 }
+
+@media (max-width: 500px) {
+    .title {
+        font-weight: 500;
+        font-size: 18px;
+        color: #000;
+    }
+
+    .text {
+        font-weight: 400;
+        font-size: 16px;
+        color: #000;
+        padding: 0 20px 20px 20px;
+    }
+}
