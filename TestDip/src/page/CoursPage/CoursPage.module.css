@@ -14,6 +14,12 @@
     gap: 10px;
 }
 
+.topCard {
+    position: relative;
+    z-index: 5;
+    /* выше чем у svg */
+}
+
 .tab {
     padding: 10px 20px;
     border: 1px solid #ccc;
@@ -100,6 +106,19 @@
     text-align: center;
 }
 
+.courses {
+    position: relative;
+}
+
+.podves {
+    position: absolute;
+    width: 1920px;
+    top: 520px;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* Большие десктопы */
 @media (max-width: 1440px) {
     .courses {
@@ -112,6 +131,10 @@
 
     .container {
         padding-top: 120px;
+    }
+
+    .podves {
+        display: none;
     }
 }
 
@@ -127,6 +150,10 @@
 
     .container {
         padding-top: 100px;
+    }
+
+    .podves {
+        display: none;
     }
 }
 

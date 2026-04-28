@@ -5,6 +5,7 @@ import Text from '../../shared/ui/Text/Text'
 import Card from '../../shared/ui/Card/Card'
 import { courseCards, tabs, getInfoTexts } from './modal'
 import { useNavigate } from 'react-router-dom'
+import podves from '../../assets/CoursePage/podves.svg';
 
 export default function CoursPage() {
   const [activeTab, setActiveTab] = useState('Все')
@@ -62,6 +63,7 @@ export default function CoursPage() {
         ))}
       </div>
 
+        <img src={podves} alt="" className={styles.podves} />
       <div className={styles.courses}>
         {visibleCards.map((card, index) => (
           <Card

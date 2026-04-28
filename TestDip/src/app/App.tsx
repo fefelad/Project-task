@@ -8,6 +8,7 @@ import TeacherDetailPage from '../page/TeachersPage/ui/TeacherDetailPage/Teacher
 import PortfolioPage from '../page/PortfolioPage/PortfolioPage';
 import AboutPage from '../page/AboutPage/AboutPage';
 import ContactPage from '../page/ContactPage/ContactPage';
+import NotFoundPage from '../page/PageNotFound/PageNotFound';
 import styles from  './App.module.css';
 import { Footer } from '../shared/ui/Footer/Footer';
 
@@ -26,6 +27,7 @@ export const AppRoutes: RouteConfig[] = [
   { path: '/portfolio', name: 'Портфолио', component: PortfolioPage },
   { path: '/about', name: 'О школе', component: AboutPage },
   { path: '/contact', name: 'Контакты', component: ContactPage },
+  { path: '/404', name: '404', component: NotFoundPage}
 ];
 
 function App() {
