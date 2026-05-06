@@ -3,7 +3,7 @@ import FormCheckbox from '../FormCheckbox/FormCheckbox';
 import Btn from '../Btn/Btn';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import styles from './Feedback.module.css';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -26,6 +26,8 @@ export default function Feedback({
     onSubmitSuccess,
     textBtn,
 }: FeedbackProps) {
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+
     const {
         control,
         handleSubmit,
@@ -47,6 +49,24 @@ export default function Feedback({
     const name = watch('name');
     const email = watch('email');
 
+    useEffect(() => {
+        if (!isSuccessModalOpen) return;
+
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsSuccessModalOpen(false);
+            }
+        };
+
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', handleEsc);
+
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [isSuccessModalOpen]);
+
     const onSubmit = async (data: FeedbackFormData) => {
         try {
             console.log('Данные формы:', data);
@@ -55,8 +75,8 @@ export default function Feedback({
                 onSubmitSuccess(data);
             }
 
-            alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
             reset();
+            setIsSuccessModalOpen(true);
         } catch (error) {
             console.error('Ошибка отправки формы:', error);
             alert('Произошла ошибка при отправке формы. Попробуйте еще раз.');
@@ -71,99 +91,149 @@ export default function Feedback({
         .join(' ');
 
     return (
-        <div className={wrapperClasses}>
-            <div className={styles.FeedbackContent}>
-                <div className={styles.FeedbackGrid}>
-                    <div className={styles.TextColumn}>
+        <>
+            <div className={wrapperClasses}>
+                <div className={styles.FeedbackContent}>
+                    <div className={styles.FeedbackGrid}>
+                        <div className={styles.TextColumn}>
+                            <Text
+                                className={styles.FeedbackContentTitle}
+                                fontFamily="involve"
+                                weight={TextWeight.REGULAR}
+                                size={TextSizes.XL5}
+                            >
+                                {title}
+                            </Text>
+
+                            <Text
+                                className={styles.FeedbackContentDescription}
+                                fontFamily="onest"
+                                weight={TextWeight.REGULAR}
+                                size={TextSizes.XL}
+                            >
+                                {children}
+                            </Text>
+                        </div>
+
+                        {showForm && (
+                            <div className={styles.FormColumn}>
+                                <form
+                                    className={styles.FeedbackForm}
+                                    onSubmit={handleSubmit(onSubmit)}
+                                    noValidate
+                                >
+                                    <div className={styles.FormGroup}>
+                                        <label className={styles.FormLabel}>
+                                            Введите ваше имя
+                                        </label>
+                                        <Input
+                                            plasholder="Ваше имя"
+                                            {...register('name')}
+                                            error={errors.name?.message}
+                                        />
+                                    </div>
+
+                                    <div className={styles.FormGroup}>
+                                        <label className={styles.FormLabel}>
+                                            Введите вашу почту
+                                        </label>
+                                        <Input
+                                            plasholder="example@mail.ru"
+                                            type="email"
+                                            {...register('email')}
+                                            error={errors.email?.message}
+                                        />
+                                    </div>
+
+                                    <div className={styles.CheckboxGroup}>
+                                        <Controller
+                                            name="agreement"
+                                            control={control}
+                                            render={({ field }) => (
+                                                <FormCheckbox
+                                                    label="Согласен на обработку персональных данных"
+                                                    checked={field.value}
+                                                    onChange={(e) =>
+                                                        field.onChange(e.target.checked)
+                                                    }
+                                                    error={errors.agreement?.message}
+                                                />
+                                            )}
+                                        />
+                                    </div>
+
+                                    <div className={styles.ButtonContainer}>
+                                        <Btn
+                                            color="orange"
+                                            type="submit"
+                                            disabled={
+                                                !agreement ||
+                                                isSubmitting ||
+                                                !isValid ||
+                                                name.length < 2 ||
+                                                !email
+                                            }
+                                            className={styles.SubmitButton}
+                                        >
+                                            {isSubmitting
+                                                ? 'Отправка...'
+                                                : textBtn || 'Оставить заявку'}
+                                        </Btn>
+                                    </div>
+                                </form>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {isSuccessModalOpen && (
+                <div
+                    className={styles.ModalOverlay}
+                    onClick={() => setIsSuccessModalOpen(false)}
+                >
+                    <div
+                        className={styles.Modal}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            className={styles.ModalClose}
+                            onClick={() => setIsSuccessModalOpen(false)}
+                            aria-label="Закрыть окно"
+                        >
+                            ×
+                        </button>
+
                         <Text
-                            className={styles.FeedbackContentTitle}
+                            className={styles.ModalTitle}
                             fontFamily="involve"
                             weight={TextWeight.REGULAR}
                             size={TextSizes.XL5}
                         >
-                            {title}
+                            Заявка отправлена!
                         </Text>
 
                         <Text
-                            className={styles.FeedbackContentDescription}
+                            className={styles.ModalDescription}
                             fontFamily="onest"
                             weight={TextWeight.REGULAR}
                             size={TextSizes.XL}
                         >
-                            {children}
+                            Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время.
                         </Text>
+
+                        <Btn
+                            color="orange"
+                            type="button"
+                            className={styles.ModalButton}
+                            onClick={() => setIsSuccessModalOpen(false)}
+                        >
+                            Хорошо
+                        </Btn>
                     </div>
-
-                    {showForm && (
-                        <div className={styles.FormColumn}>
-                            <form
-                                className={styles.FeedbackForm}
-                                onSubmit={handleSubmit(onSubmit)}
-                                noValidate
-                            >
-                                <div className={styles.FormGroup}>
-                                    <label className={styles.FormLabel}>
-                                        Введите ваше имя
-                                    </label>
-                                    <Input
-                                        plasholder="Ваше имя"
-                                        {...register('name')}
-                                        error={errors.name?.message}
-                                    />
-                                </div>
-
-                                <div className={styles.FormGroup}>
-                                    <label className={styles.FormLabel}>
-                                        Введите вашу почту
-                                    </label>
-                                    <Input
-                                        plasholder="example@mail.ru"
-                                        type="email"
-                                        {...register('email')}
-                                        error={errors.email?.message}
-                                    />
-                                </div>
-
-                                <div className={styles.CheckboxGroup}>
-                                    <Controller
-                                        name="agreement"
-                                        control={control}
-                                        render={({ field }) => (
-                                            <FormCheckbox
-                                                label="Согласен на обработку персональных данных"
-                                                checked={field.value}
-                                                onChange={(e) =>
-                                                    field.onChange(e.target.checked)
-                                                }
-                                                error={errors.agreement?.message}
-                                            />
-                                        )}
-                                    />
-                                </div>
-
-                                <div className={styles.ButtonContainer}>
-                                    <Btn
-                                        color="orange"
-                                        type="submit"
-                                        disabled={
-                                            !agreement ||
-                                            isSubmitting ||
-                                            !isValid ||
-                                            name.length < 2 ||
-                                            !email
-                                        }
-                                        className={styles.SubmitButton}
-                                    >
-                                        {isSubmitting
-                                            ? 'Отправка...'
-                                            : textBtn || 'Оставить заявку'}
-                                    </Btn>
-                                </div>
-                            </form>
-                        </div>
-                    )}
                 </div>
-            </div>
-        </div>
+            )}
+        </>
     );
 }

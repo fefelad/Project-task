@@ -123,6 +123,87 @@
     margin-left: 3px;
 }
 
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+.ModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.Modal {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    padding: 56px 48px 44px;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    box-sizing: border-box;
+    animation: modalShow 0.25s ease;
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ModalClose {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: #000;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ModalTitle {
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.ModalDescription {
+    margin-bottom: 34px;
+    color: #000;
+}
+
+.ModalButton {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    color: #ffffff;
+    border-radius: 15px;
+    font-family: var(--font-onest);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-regular);
+}
+
+/* ========================= */
+/* ADAPTIVE */
+/* ========================= */
 
 @media (max-width: 1440px) {
     .FeedbackWrapper {
@@ -156,8 +237,21 @@
     .SubmitButton {
         padding: 16px 32px;
     }
-}
 
+    .Modal {
+        max-width: 540px;
+        padding: 52px 44px 40px;
+        border-radius: 30px;
+    }
+
+    .ModalTitle {
+        font-size: 42px;
+    }
+
+    .ModalDescription {
+        font-size: 22px;
+    }
+}
 
 @media (max-width: 1200px) {
     .FeedbackWrapper.fullWidth .FeedbackContent {
@@ -178,6 +272,29 @@
         font-size: 20px;
         border-radius: 10px;
     }
+
+    .Modal {
+        max-width: 500px;
+        padding: 48px 40px 38px;
+        border-radius: 28px;
+    }
+
+    .ModalTitle {
+        font-size: 36px;
+        margin-bottom: 18px;
+    }
+
+    .ModalDescription {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .ModalButton {
+        max-width: 240px;
+        padding: 14px 28px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -194,6 +311,30 @@
     .FeedbackContentTitle,
     .FeedbackContentDescription {
         width: 100%;
+    }
+
+    .ModalOverlay {
+        padding: 22px;
+    }
+
+    .Modal {
+        max-width: 480px;
+        padding: 46px 36px 36px;
+        border-radius: 26px;
+    }
+
+    .ModalClose {
+        top: 18px;
+        right: 22px;
+        font-size: 34px;
+    }
+
+    .ModalTitle {
+        font-size: 34px;
+    }
+
+    .ModalDescription {
+        font-size: 19px;
     }
 }
 
@@ -217,10 +358,32 @@
     .FeedbackGrid {
         gap: 36px;
     }
+
+    .Modal {
+        max-width: 460px;
+        padding: 44px 34px 34px;
+        border-radius: 24px;
+    }
+
+    .ModalTitle {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .ModalDescription {
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+
+    .ModalButton {
+        max-width: 230px;
+        height: 52px;
+        padding: 10px 24px;
+        font-size: 19px;
+    }
 }
 
 @media (max-width: 768px) {
-
     .FeedbackWrapper.fullWidth .FeedbackContent {
         padding: 0 16px;
     }
@@ -240,6 +403,40 @@
 
     .FormGroup {
         min-height: 85px;
+    }
+
+    .ModalOverlay {
+        padding: 18px;
+    }
+
+    .Modal {
+        max-width: 430px;
+        padding: 42px 28px 32px;
+        border-radius: 22px;
+    }
+
+    .ModalClose {
+        top: 16px;
+        right: 18px;
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+    }
+
+    .ModalTitle {
+        font-size: 30px;
+    }
+
+    .ModalDescription {
+        font-size: 17px;
+        margin-bottom: 26px;
+    }
+
+    .ModalButton {
+        max-width: 220px;
+        height: 50px;
+        font-size: 18px;
+        border-radius: 10px;
     }
 }
 
@@ -275,6 +472,64 @@
     }
 
     .ButtonContainer {
-        margin-top: 0px;
+        margin-top: 0;
+    }
+
+    .ModalOverlay {
+        padding: 16px;
+        align-items: center;
+    }
+
+    .Modal {
+        max-width: 100%;
+        padding: 46px 22px 28px;
+        border-radius: 20px;
+    }
+
+    .ModalClose {
+        top: 14px;
+        right: 16px;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+    }
+
+    .ModalTitle {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+
+    .ModalDescription {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+
+    .ModalButton {
+        width: 100%;
+        max-width: 100%;
+        height: 48px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 390px) {
+    .Modal {
+        padding: 44px 18px 26px;
+        border-radius: 18px;
+    }
+
+    .ModalTitle {
+        font-size: 25px;
+    }
+
+    .ModalDescription {
+        font-size: 15px;
+    }
+
+    .ModalButton {
+        height: 46px;
+        font-size: 16px;
     }
 }
