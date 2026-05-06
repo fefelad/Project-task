@@ -14,6 +14,20 @@ import niuphoto5 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 209.png
 import niuphoto6 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 210.png';
 import niuphoto7 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 212.png';
 
+import ph1 from '../../assets/PortfolioPage/uiPortfioloi/1.png';
+import ph2 from '../../assets/PortfolioPage/uiPortfioloi/2.png';
+import ph3 from '../../assets/PortfolioPage/uiPortfioloi/3.png';
+import ph4 from '../../assets/PortfolioPage/uiPortfioloi/4.png';
+import ph5 from '../../assets/PortfolioPage/uiPortfioloi/5.png';
+import ph6 from '../../assets/PortfolioPage/uiPortfioloi/6.png';
+import ph7 from '../../assets/PortfolioPage/uiPortfioloi/7.png';
+import ph8 from '../../assets/PortfolioPage/uiPortfioloi/8.png';
+import ph9 from '../../assets/PortfolioPage/uiPortfioloi/9.png';
+import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
+
+
+
+
 import Btn from '../../shared/ui/Btn/Btn';
 
 type PortfolioItem = {
@@ -26,43 +40,43 @@ type PortfolioItem = {
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    img: niuphoto,
+    img: ph4,
     alt: 'Постер Пёс и Кот',
     text: 'Постер для компании «Пёс&Кот» — компании, примиряющей пёсиков и котиков во всём пушистом мире.',
   },
   {
     id: 2,
-    img: niuphoto2,
+    img: ph5,
     alt: 'Яркий плакат',
     text: 'Плакат в яркой палитре: учились делать акцент и не перегружать композицию деталями.',
   },
   {
     id: 3,
-    img: niuphoto3,
+    img: ph6,
     alt: 'Карточки и баннеры',
     text: 'Карточки и баннеры для конвертов: отработали сетку, отступы и типографику. Такие навыки сразу делают работу лучше.',
   },
   {
     id: 4,
-    img: niuphoto4,
+    img: ph7,
     alt: 'Кошачий постер',
     text: 'Изящные когти, грациозная походка и роскошные усы — у каждого уважающего себя представителя кошачьих должна быть возможность показать себя с лучшей стороны.',
   },
   {
     id: 5,
-    img: niuphoto5,
+    img: ph8,
     alt: 'Heco System',
     text: 'Heco System — это лаборатория, которая создаёт товарные знаки в виде лошадей. В данном проекте разработаны несколько таких знаков.',
   },
   {
     id: 6,
-    img: niuphoto6,
+    img: ph9,
     alt: 'Bionic',
     text: 'Bionic — кибер-зоопарк, в котором реальные животные заменены робо-копиями. Благодаря этому посетители могут не только смотреть на зверей, но и изучать необычный мир технологий.',
   },
   {
     id: 7,
-    img: niuphoto7,
+    img: ph10,
     alt: 'Постер для магазина',
     text: 'Постер для магазина, связанного с товарами для животных.',
   },
@@ -79,7 +93,7 @@ export default function PortfolioPage() {
       </div>
       <div className={styles.WrapperPromo}>
         <div className={styles.pauk}>
-          <img src={pauk} alt="#" />
+          <img src={ph1} alt="#" />
         </div>
 
         <div className={styles.wrapperPromoRow}>
@@ -92,11 +106,11 @@ export default function PortfolioPage() {
               <path d="M103.964 0.776289C102.427 1.8307 99.3258 4.06 95.9605 6.60915C62.4024 32.0208 34.4993 45.6547 34.0556 37.0017C33.8376 33.0441 41.9091 22.6724 48.4251 18.4508C50.7095 16.9596 48.8159 16.4219 46.7361 17.4654C42.6033 19.5461 34.522 26.8202 32.0278 31.2065C28.7449 37.0351 30.7792 41.0937 37.2058 41.5584C44.4702 42.0763 65.6636 32.5686 78.8395 22.8393C82.4605 20.1714 100.52 5.70541 105.271 1.71181C107.788 -0.34761 105.164 -0.0258952 103.964 0.776289Z" fill="#FF0000" />
             </svg>
           </div>
-          <img src={niuphoto6} alt="#" />
+          <img src={ph2} alt="#" />
         </div>
 
         <div className={styles.wrapperPromoRow2}>
-          <img src={losh} alt="#" />
+          <img src={ph3} alt="#" />
           <div>
             <Btn width='100%'  color='blue'>
               Подробнее

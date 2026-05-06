@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import styles from './CoursPage.module.css'
 import { Btn } from '../../shared/ui/Btn/Btn'
 import Text from '../../shared/ui/Text/Text'
 import Card from '../../shared/ui/Card/Card'
 import { courseCards, tabs, getInfoTexts } from './modal'
 import { useNavigate } from 'react-router-dom'
-import podves from '../../assets/CoursePage/podves.svg';
+import podves from '../../assets/CoursePage/podves.svg'
 
 export default function CoursPage() {
   const [activeTab, setActiveTab] = useState('Все')
@@ -14,13 +14,25 @@ export default function CoursPage() {
 
   const navigate = useNavigate()
 
-  const filteredCards = courseCards
+  const filteredCards = useMemo(() => {
+    if (activeTab === 'Все') {
+      return courseCards
+    }
+
+    return courseCards.filter(card => {
+      if (Array.isArray(card.directions)) {
+        return card.directions.includes(activeTab)
+      }
+      return card.directions === activeTab
+    })
+  }, [activeTab])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 992px) and (min-width: 577px)')
 
     const updateLayout = () => {
       const matches = mediaQuery.matches
+
       setIsTabletRange(matches)
       setVisibleCount(matches ? 3 : filteredCards.length)
     }
@@ -63,7 +75,10 @@ export default function CoursPage() {
         ))}
       </div>
 
+      {activeTab === 'Все' && (
         <img src={podves} alt="" className={styles.podves} />
+      )}
+
       <div className={styles.courses}>
         {visibleCards.map((card, index) => (
           <Card

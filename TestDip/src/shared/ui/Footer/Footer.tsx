@@ -1,12 +1,13 @@
 import Text from '../Text/Text';
 import styles from './Footer.module.css';
+import logo from '../../../assets/Logo/logo.png'
 
 export const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.inner}>
                 <Text fontFamily="onest" className={styles.logo}>
-                    Лого
+                    <img src={logo} alt="logo" />
                 </Text>
 
                 <nav className={styles.nav}>

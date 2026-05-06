@@ -8,11 +8,11 @@ import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
 import Lenta from '../../assets/HomePage/lenta.svg';
 import HomeCoursesBlock from '../../shared/ui/HomeCoursesBlock/HomeCoursesBlock';
 
-import work1 from '../../assets/HomePage/work1.png';
-import work2 from '../../assets/HomePage/work2.png';
-import work3 from '../../assets/HomePage/work3.png';
-import work4 from '../../assets/HomePage/work4.png';
-import work5 from '../../assets/HomePage/wokr5.png';
+import work1 from '../../assets/HomePage/work11.png';
+import work2 from '../../assets/HomePage/work22.png';
+import work3 from '../../assets/HomePage/work33.png';
+import work4 from '../../assets/HomePage/work44.png';
+import work5 from '../../assets/HomePage/work55.png';
 import { FAQItem } from '../../shared/ui/FAQItem/FAQItem';
 
 
