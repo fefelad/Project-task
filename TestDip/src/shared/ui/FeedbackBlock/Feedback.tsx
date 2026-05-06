@@ -9,6 +9,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { feedbackSchema, type FeedbackFormData } from './schemas/feedback.schema';
 
+import { supabase } from '../../../components/supabase/supabase.ts';
+
 interface FeedbackProps {
     title: string;
     children: ReactNode;
@@ -69,7 +71,17 @@ export default function Feedback({
 
     const onSubmit = async (data: FeedbackFormData) => {
         try {
-            console.log('Данные формы:', data);
+            const { error } = await supabase
+                .from('feedback_requests')
+                .insert({
+                    name: data.name.trim(),
+                    email: data.email.trim(),
+                    agreement: data.agreement,
+                });
+
+            if (error) {
+                throw error;
+            }
 
             if (onSubmitSuccess) {
                 onSubmitSuccess(data);
