@@ -58,7 +58,7 @@
 }
 
 .coursesBtn {
-    border-radius: 15px;
+    /* border-radius: 15px; */
     width: 480px;
     height: 62px;
     font-weight: 400;
@@ -352,7 +352,7 @@
         width: 58%;
         height: 100%;
         object-fit: cover;
-        border-radius: 15px;
+        /* border-radius: 15px; */
     }
 
     .row1 {
@@ -366,9 +366,9 @@
 
     .row1 img {
         width: 100%;
-        height: calc((100% - 20px) / 2);
+        /* height: calc((100% - 20px) / 2); */
         object-fit: none;
-        border-radius: 15px;
+        /* border-radius: 15px; */
     }
 
     .row2 {
@@ -381,11 +381,11 @@
         width: 100%;
         height: auto;
         object-fit: none;
-        border-radius: 15px;
+        /* border-radius: 15px; */
     }
 
     .row2 img:last-child {
-        min-height: 260px;
+        /* min-height: 260px; */
         object-fit: cover;
     }
 
@@ -509,9 +509,9 @@
     }
 
     .containerRow img {
-        height: 100%;
+        /* height: 100%; */
         object-fit: cover;
-        border-radius: 15px;
+        /* border-radius: 15px; */
     }
 
     .WorkKids {
@@ -533,7 +533,23 @@
     }
 
     .row2 {
-        gap: 35px;
+        gap: 32px;
+    }
+
+}
+
+
+@media (max-width: 1024px) {
+    .WorkKids {
+        font-size: 38px;
+    }
+
+    .row2 {
+        min-width: 294px;
+    }
+
+    .mainRow {
+        height: 445px;
     }
 
 }
@@ -688,7 +704,7 @@
 
     .containerRow {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         gap: 16px;
         margin-top: 100px;
     }
@@ -714,7 +730,7 @@
     .row1 img:first-child {
         grid-column: 1;
         grid-row: 4;
-        height: 258px;
+        /* height: 258px; */
     }
 
     .row1 img:last-child {
@@ -736,13 +752,13 @@
     .row2 img:last-child {
         grid-column: 2;
         grid-row: 4;
-        height: 180px;
+        /* height: 180px; */
     }
 
     .containerRow img {
         width: 100%;
         object-fit: cover;
-        border-radius: 15px;
+        /* border-radius: 15px; */
     }
 }
 

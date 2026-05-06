@@ -202,6 +202,18 @@
 
 /* ===== ADAPTIVE ===== */
 
+@media (max-width: 1440px) {
+    .navLink {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    .routeName {
+        font-size: 20px;
+    }
+
+}
+
 @media (max-width: 1200px) {
     .navigation_list {
         display: none;

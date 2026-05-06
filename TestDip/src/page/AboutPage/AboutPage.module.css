@@ -111,7 +111,12 @@
 
     .TitleText {
         font-size: 20px;
+        width: 100%;
 
+    }
+
+    .mobileBreak2 {
+        display: none;
     }
 
     .CreateShoolText {
@@ -134,7 +139,8 @@
     }
 
     .ArrowElements svg {
-        width: 380px;
+        display: none;
+        width: 306px;
         height: 200px;
     }
 

@@ -55,7 +55,16 @@
 
     .checkboxColumn {
         flex: auto;
+        gap: 20px;
     }
+
+    .checkboxContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
 }
 
 @media (max-width: 834px) {

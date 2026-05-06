@@ -71,9 +71,19 @@
 
 /* 1193 */
 @media (max-width: 1193px) {
+
     .Btn {
         font-size: 20px;
+        padding: 15px;
     }
+}
+
+@media (max-width: 1024px) {
+    .Btn {
+        font-size: 18px;
+        padding: 12px;
+    }
+
 }
 
 /* 834 */

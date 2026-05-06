@@ -69,6 +69,7 @@ export default function CoursPage() {
             color={activeTab === tab ? 'orange' : 'blue'}
             hasBackground={activeTab === tab}
             onClick={() => setActiveTab(tab)}
+            className={styles.tabsClass}
           >
             {tab}
           </Btn>
