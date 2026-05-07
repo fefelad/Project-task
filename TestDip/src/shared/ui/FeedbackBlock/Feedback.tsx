@@ -221,7 +221,7 @@ export default function Feedback({
                             className={styles.ModalTitle}
                             fontFamily="involve"
                             weight={TextWeight.REGULAR}
-                            size={TextSizes.XL5}
+                            size={TextSizes.XL4}
                         >
                             Заявка отправлена!
                         </Text>
