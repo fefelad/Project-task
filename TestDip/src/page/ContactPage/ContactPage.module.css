@@ -25,6 +25,20 @@
     flex: 1;
 }
 
+.addressSelector {
+    position: relative;
+}
+
+.cat2Contanct {
+    position: absolute;
+    top: -69px;
+    right: 20px;
+}
+
+.cat2Contanct img {
+    width: 260px;
+}
+
 @media (max-width: 1440px) {
     .ContacPageContainer {
         margin-top: 120px;
@@ -36,6 +50,16 @@
 
     .MainContentContactPage {
         margin-top: 40px;
+    }
+
+    .cat2Contanct {
+        position: absolute;
+        top: -89px;
+        right: 3px;
+    }
+
+    .cat2Contanct img {
+        width: 280px;
     }
 
 }
@@ -64,7 +88,22 @@
         gap: 20px;
     }
 
+    .cat2Contanct img {
+        width: 400px;
+    }
 
+
+}
+
+@media (max-width: 1024px) {
+    .cat2Contanct img {
+        width: 300px;
+    }
+
+    .cat2Contanct {
+        top: -9px;
+        right: 3px;
+    }
 }
 
 @media (max-width: 834px) {
@@ -89,9 +128,23 @@
     .checkboxColumn {
         gap: 20px;
     }
+
+    .cat2Contanct img {
+        width: 260px;
+    }
+
+    .cat2Contanct {
+        top: -9px;
+        right: 3px;
+    }
 }
 
 @media (max-width: 576px) {
+
+    .cat2Contanct {
+        display: none;
+    }
+
     .ContacPageContainer {
         margin-top: 60px;
     }

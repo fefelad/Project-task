@@ -5,6 +5,7 @@ import ContactMap from '../../components/Map/ContactMap';
 import { addressOptions } from './modal/data';
 import styles from './ContactPage.module.css';
 import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
+import cat2 from '../../assets/cats//cat2Contanct.svg';
 
 export default function ContactPage() {
     const [selectedAddress, setSelectedAddress] = useState(
@@ -63,6 +64,9 @@ export default function ContactPage() {
                             />
                         ))}
                     </div>
+                </div>
+                <div className={styles.cat2Contanct}>
+                    <img src={cat2} alt="#" />
                 </div>
             </div>
             
