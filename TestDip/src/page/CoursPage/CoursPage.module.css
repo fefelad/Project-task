@@ -1,83 +1,38 @@
 .container {
+    position: relative;
     padding-top: 140px;
+    /* overflow: hidden; */
 }
 
 .TitleCourse {
+    position: relative;
+    z-index: 3;
     font-size: 86px;
     font-weight: 400;
     margin-bottom: 20px;
 }
 
 .tabs {
+    position: relative;
+    z-index: 3;
     display: flex;
     margin-bottom: 20px;
     gap: 10px;
 }
 
-.topCard {
+.tabsClass {
     position: relative;
-    z-index: 5;
-    /* выше чем у svg */
-}
-
-.tab {
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.tab:hover {
-    background: #f0f0f0;
-}
-
-.active {
-    background: #007bff;
-    color: white;
-    border-color: #007bff;
+    z-index: 3;
 }
 
 .courses {
+    position: relative;
+    z-index: 3;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding-top: 100px;
     align-items: stretch;
-}
-
-.courseCard {
-    width: 480px;
-    height: 518px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.cardTitle {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.cardDescription {
-    font-size: 16px;
-    line-height: 1.5;
-    flex-grow: 1;
-}
-
-.infoContainer {
-    display: flex;
-    gap: 10px;
-}
-
-.course p {
-    margin: 0;
-    color: #666;
 }
 
 .offsetCard {
@@ -106,31 +61,30 @@
     text-align: center;
 }
 
-.courses {
-    position: relative;
-}
-
 .podves {
     position: absolute;
-    width: 1920px;
-    top: 520px;
-    left: 0;
-    z-index: 2;
+    top: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1920px, 100vw);
+    max-width: 1920px;
+    z-index: 11111;
     pointer-events: none;
+    user-select: none;
 }
 
 /* Большие десктопы */
 @media (max-width: 1440px) {
-    .courses {
-        padding-top: 50px;
+    .container {
+        padding-top: 120px;
     }
 
     .TitleCourse {
         font-size: 72px;
     }
 
-    .container {
-        padding-top: 120px;
+    .courses {
+        padding-top: 50px;
     }
 
     .podves {
@@ -140,16 +94,16 @@
 
 /* Ноутбуки / маленькие десктопы */
 @media (max-width: 1200px) {
-    .courses {
-        padding-top: 40px;
+    .container {
+        padding-top: 100px;
     }
 
     .TitleCourse {
         font-size: 64px;
     }
 
-    .container {
-        padding-top: 100px;
+    .courses {
+        padding-top: 40px;
     }
 
     .podves {
@@ -159,41 +113,41 @@
 
 /* Планшеты горизонтально */
 @media (max-width: 992px) {
-    .courses {
-        grid-template-columns: repeat(2, 1fr);
-        padding-top: 60px;
+    .container {
+        padding-top: 80px;
     }
 
     .TitleCourse {
         font-size: 48px;
     }
 
-    .container {
-        padding-top: 80px;
+    .tabs {
+        flex-wrap: wrap;
+    }
+
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 60px;
     }
 
     .offsetCard {
         margin-top: 0;
     }
-
-    .tabs {
-        flex-wrap: wrap;
-    }
 }
 
 /* Планшеты вертикально / большие телефоны */
 @media (max-width: 768px) {
-    .courses {
-        grid-template-columns: repeat(2, 1fr);
-        padding-top: 40px;
+    .container {
+        padding-top: 60px;
     }
 
     .TitleCourse {
         font-size: 40px;
     }
 
-    .container {
-        padding-top: 60px;
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 40px;
     }
 
     .showMoreText {
@@ -207,17 +161,17 @@
 
 /* Мобильные */
 @media (max-width: 576px) {
-    .courses {
-        grid-template-columns: 1fr;
-        padding-top: 20px;
+    .container {
+        padding-top: 60px;
     }
 
     .TitleCourse {
         font-size: 40px;
     }
 
-    .container {
-        padding-top: 60px;
+    .courses {
+        grid-template-columns: 1fr;
+        padding-top: 20px;
     }
 
     .offsetCard {

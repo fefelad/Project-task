@@ -5,7 +5,7 @@ import Text from '../../shared/ui/Text/Text'
 import Card from '../../shared/ui/Card/Card'
 import { courseCards, tabs, getInfoTexts } from './modal'
 import { useNavigate } from 'react-router-dom'
-import podves from '../../assets/CoursePage/podves.svg'
+import podves2 from '../../assets/CoursePage/podvers2.png'
 
 export default function CoursPage() {
   const [activeTab, setActiveTab] = useState('Все')
@@ -23,12 +23,15 @@ export default function CoursPage() {
       if (Array.isArray(card.directions)) {
         return card.directions.includes(activeTab)
       }
+
       return card.directions === activeTab
     })
   }, [activeTab])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 992px) and (min-width: 577px)')
+    const mediaQuery = window.matchMedia(
+      '(max-width: 992px) and (min-width: 577px)'
+    )
 
     const updateLayout = () => {
       const matches = mediaQuery.matches
@@ -44,7 +47,7 @@ export default function CoursPage() {
     return () => {
       mediaQuery.removeEventListener('change', updateLayout)
     }
-  }, [filteredCards.length, activeTab])
+  }, [filteredCards.length])
 
   const visibleCards = isTabletRange
     ? filteredCards.slice(0, visibleCount)
@@ -57,8 +60,14 @@ export default function CoursPage() {
   }
 
   return (
-    <div className={styles.container}>
-      <Text fontFamily='involve' className={styles.TitleCourse}>
+    <section className={styles.container}>
+      {activeTab === 'Все' && (
+        <div className={styles.podvesLayer}>
+          <img src={podves2} alt="" className={styles.podves} />
+        </div>
+      )}
+
+      <Text fontFamily="involve" className={styles.TitleCourse}>
         Наши курсы
       </Text>
 
@@ -76,10 +85,6 @@ export default function CoursPage() {
         ))}
       </div>
 
-      {activeTab === 'Все' && (
-        <img src={podves} alt="" className={styles.podves} />
-      )}
-
       <div className={styles.courses}>
         {visibleCards.map((card, index) => (
           <Card
@@ -89,23 +94,23 @@ export default function CoursPage() {
             description={card.description}
             infoTexts={getInfoTexts(card.title)}
             directions={card.directions}
-            className={(index === 1 || index === 4) ? styles.offsetCard : ''}
+            className={index === 1 || index === 4 ? styles.offsetCard : ''}
             onClick={() => navigate(`/cours/${card.id}`)}
           />
         ))}
 
         {hasMoreCards && (
           <button
-            type='button'
+            type="button"
             className={styles.showMoreCard}
             onClick={handleShowMore}
           >
-            <Text fontFamily='onest' className={styles.showMoreText}>
+            <Text fontFamily="onest" className={styles.showMoreText}>
               Показать еще
             </Text>
           </button>
         )}
       </div>
-    </div>
+    </section>
   )
 }
