@@ -263,6 +263,7 @@
 }
 
 .teacherCoursesPhoto {
+    position: relative;
     padding-top: 100px;
 }
 
@@ -284,6 +285,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .teacherCoursesfooterContainer {
@@ -292,6 +294,18 @@
     gap: 20px;
     padding-left: 250px;
     padding-top: 20px;
+}
+
+.catTeachers {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.lenta1 {
+    position: absolute;
+    top: 350px;
+    left: -680px;
 }
 
 
@@ -319,9 +333,34 @@
     .photo3 {
         width: 680px;
     }
+
+    .lenta1 {
+        position: absolute;
+        top: 280px;
+        left: -680px;
+    }
 }
 
 @media (max-width: 1200px) {
+
+    .catTeachers {
+        position: absolute;
+        right: -19px;
+        top: -62px;
+    }
+
+    .catTeachers img {
+        width: 300px;
+    }
+
+    .lenta1 {
+        display: none;
+    }
+
+    .lenta1 img {
+        width: 400px;
+    }
+
     .teacherHero {
         grid-template-columns: 320px minmax(0, 1fr);
     }
@@ -378,6 +417,11 @@
 }
 
 @media (max-width: 900px) {
+
+    .catTeachers {
+        display: none;
+    }
+
     .container {
         padding-top: 100px;
     }

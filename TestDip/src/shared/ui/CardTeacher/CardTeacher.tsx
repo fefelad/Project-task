@@ -3,6 +3,7 @@ import Text, { TextSizes, TextWeight } from '../Text/Text';
 import styles from './CardTeacher.module.css';
 import Btn from '../Btn/Btn';
 import Feedback from '../FeedbackBlock/Feedback';
+import cat4 from '../../../assets/cats/catOnlyTeacherSpicok.svg';
 import {teachers } from './modal/teacher.ts'
 
 export default function CardTeacher() {
@@ -65,7 +66,13 @@ export default function CardTeacher() {
             </div>
           </div>
         ))}
+
+        <div className={styles.catContainerTeacherSpicok}>
+          <img src={cat4} alt="#" />
+        </div>
       </div>
+
+      
 
       <div>
         <Feedback

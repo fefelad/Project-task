@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
+import cat3 from '../../../../assets/cats//catOnlyTeacher.svg';
+import lenta1 from '../../../../assets/TeacherPage/TeacherDetailPege/lenta1.svg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -283,6 +285,9 @@ export default function TeacherDetailPage() {
         <Text className={styles.teacherCoursesTitle} weight={TextWeight.REGULAR}>
           Фотографии занятий
         </Text>
+        <div className={styles.catTeachers}>
+          <img src={cat3} alt="" />
+        </div>
         <div className={styles.rowContainer}>
           <div className={styles.teacherCoursesContainer}>
             <img className={styles.photo1} src={photo1} alt="#" />
@@ -296,6 +301,9 @@ export default function TeacherDetailPage() {
               собственный результат.
             </Text>
             <img className={styles.photo2} src={photo2} alt="#" />
+            <div className={styles.lenta1}>
+              <img src={lenta1} alt="#" />
+            </div>
           </div>
         </div>
         <div className={styles.teacherCoursesfooterContainer}>

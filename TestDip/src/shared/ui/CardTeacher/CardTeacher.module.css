@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 90px;
+    position: relative;
 }
 
 .CardTeacher {
@@ -36,6 +37,16 @@
     margin-top: auto;
 }
 
+.catContainerTeacherSpicok {
+    position: absolute;
+    bottom: -158px;
+    right: 0px;
+}
+
+.catContainerTeacherSpicok img {
+    width: 450px;
+}
+
 @media (max-width: 1440px) {
     .CardTeacherWrapper {
         padding-top: 50px;
@@ -48,6 +59,16 @@
     .TeacherDescDesktop,
     .TeacherDesc {
         font-size: 24px;
+    }
+
+    .catContainerTeacherSpicok img {
+        width: 400px;
+    }
+
+    .catContainerTeacherSpicok {
+        position: absolute;
+        bottom: -130px;
+        right: 0px;
     }
 }
 
@@ -63,6 +84,21 @@
     .TeacherDescDesktop,
     .TeacherDesc {
         font-size: 20px;
+    }
+
+    .catContainerTeacherSpicok img {
+        width: 300px;
+    }
+
+    .catContainerTeacherSpicok {
+        bottom: -82px;
+        right: -75px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .catContainerTeacherSpicok {
+        display: none;
     }
 }
 
