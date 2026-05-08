@@ -9,7 +9,7 @@ import PortfolioPage from '../page/PortfolioPage/PortfolioPage';
 import AboutPage from '../page/AboutPage/AboutPage';
 import ContactPage from '../page/ContactPage/ContactPage';
 import NotFoundPage from '../page/PageNotFound/PageNotFound';
-import styles from  './App.module.css';
+import styles from './App.module.css';
 import { Footer } from '../shared/ui/Footer/Footer';
 
 interface RouteConfig  {
@@ -32,23 +32,21 @@ export const AppRoutes: RouteConfig[] = [
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <div className={styles.container_main}>
-          <Header/>
-          <Routes>
-            {AppRoutes.map((route) =>(
-              <Route
-                key={route.path}
-                path={route.path}
-                element={<route.component />} 
-              />
-            ))}
-          </Routes>
-          <Footer/>
-        </div>
-      </BrowserRouter>
-    </>
+    <BrowserRouter basename="/Project-task">
+      <div className={styles.container_main}>
+        <Header />
+        <Routes>
+          {AppRoutes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.component />} 
+            />
+          ))}
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 
