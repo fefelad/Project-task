@@ -2,17 +2,8 @@ import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
 
 import Text from '../../shared/ui/Text/Text';
-import pauk from '../../assets/PortfolioPage/uiPortfioloi/pauk.png';
-import losh from '../../assets/PortfolioPage/3124123421.png';
 import styles from './PortfolioPage.module.css';
 
-import niuphoto from '../../assets/PortfolioPage/uiPortfioloi/1231.png';
-import niuphoto2 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 203.png';
-import niuphoto3 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 205.png';
-import niuphoto4 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 207.png';
-import niuphoto5 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 209.png';
-import niuphoto6 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 210.png';
-import niuphoto7 from '../../assets/PortfolioPage/uiPortfioloi/Rectangle 212.png';
 
 import ph1 from '../../assets/PortfolioPage/uiPortfioloi/1.png';
 import ph2 from '../../assets/PortfolioPage/uiPortfioloi/2.png';

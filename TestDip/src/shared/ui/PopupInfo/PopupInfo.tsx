@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { CSSProperties } from 'react';
 import classNames from 'classnames';
-import Text, { TextSizes, type TextSizesType } from '../Text/Text';
+import Text, { type TextSizesType } from '../Text/Text';
 import styles from './PopupInfo.module.css';
 
 export type PopupInfoColor = 'blue' | 'orange';

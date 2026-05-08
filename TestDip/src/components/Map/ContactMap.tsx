@@ -54,7 +54,7 @@ export default function ContactMap({ address, zoom = 16 }: ContactMapProps) {
     return (
         <div className={styles.mapContainer}>
             <MapContainer
-                enter={coordinates}
+                center={coordinates}
                 zoom={zoom}
                 className={styles.map}
                 scrollWheelZoom={true}

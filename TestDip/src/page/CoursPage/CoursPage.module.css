@@ -66,7 +66,7 @@
     top: 400px;
     left: 50%;
     transform: translateX(-50%);
-    width: min(1920px, 100vw);
+    width: min(1900px, 100vw);
     max-width: 1920px;
     z-index: 11111;
     pointer-events: none;

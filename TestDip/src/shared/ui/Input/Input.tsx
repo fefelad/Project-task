@@ -1,5 +1,5 @@
 import styles from './Input.module.css';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, type InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     plasholder: string;

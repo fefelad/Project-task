@@ -3,7 +3,7 @@ import FormCheckbox from '../FormCheckbox/FormCheckbox';
 import Btn from '../Btn/Btn';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import styles from './Feedback.module.css';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

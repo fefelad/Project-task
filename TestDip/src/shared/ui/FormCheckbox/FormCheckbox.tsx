@@ -1,5 +1,5 @@
 import styles from './FormCheckbox.module.css';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, type InputHTMLAttributes } from 'react';
 
 interface FormCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
