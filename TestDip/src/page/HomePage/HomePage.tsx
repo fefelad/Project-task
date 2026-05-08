@@ -7,6 +7,7 @@ import HomePageCrad from '../../shared/ui/HomePageCard/HomePageCrad';
 import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
 import Lenta from '../../assets/HomePage/lenta.svg';
 import HomeCoursesBlock from '../../shared/ui/HomeCoursesBlock/HomeCoursesBlock';
+import { useNavigate } from 'react-router-dom';
 
 import work1 from '../../assets/HomePage/work11.png';
 import work2 from '../../assets/HomePage/work22.png';
@@ -17,6 +18,7 @@ import { FAQItem } from '../../shared/ui/FAQItem/FAQItem';
 
 
 export default function HomePage() {
+   const navigate = useNavigate();
   return (
     <>
       <div className={styles.container_homepage}>
@@ -48,7 +50,7 @@ export default function HomePage() {
         </Text>
 
         <div className={styles.buttonContainer}>
-          <Btn color="blue" className={styles.coursesBtn}>
+          <Btn color="blue" className={styles.coursesBtn} onClick={() => navigate('/cours')}>
             Посмотреть все курсы
           </Btn>
         </div>
@@ -89,7 +91,7 @@ export default function HomePage() {
           </div>
 
           <div className={styles.centerBtn}>
-            <Btn width="100%" color="blue">Все преподаватели</Btn>
+            <Btn width="100%" color="blue" onClick={() => navigate('/teachers')} >Все преподаватели</Btn>
           </div>
 
           <div className={styles.card3}>

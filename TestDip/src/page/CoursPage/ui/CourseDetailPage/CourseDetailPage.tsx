@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -24,6 +25,8 @@ export default function CourseDetailPage() {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
 
+  const feedbackRef = useRef<HTMLDivElement>(null);
+
   const card = courseCards.find(c => c.id === parseInt(courseId || '0'));
 
   if (!card) return <div>Курс не найден</div>;
@@ -36,6 +39,13 @@ export default function CourseDetailPage() {
     Carusel1,
     Carusel3,
   ];
+
+  const scrollToFeedback = () => {
+    feedbackRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -79,7 +89,7 @@ export default function CourseDetailPage() {
               </div>
 
               <div className={styles.buttonWrapper}>
-                <Btn color="orange" width="100%">
+                <Btn color="orange" width="100%" onClick={scrollToFeedback}>
                   Записаться на курс
                 </Btn>
               </div>
@@ -121,7 +131,7 @@ export default function CourseDetailPage() {
               slidesPerView: 1,
               spaceBetween: 16,
             },
-            380:{
+            380: {
               slidesPerView: 2,
               spaceBetween: 16,
             },
@@ -148,7 +158,6 @@ export default function CourseDetailPage() {
           ))}
         </Swiper>
 
-        {/* стрелки по центру */}
         <div className={styles.bottomNavigation}>
           <button
             type="button"
@@ -194,13 +203,15 @@ export default function CourseDetailPage() {
         </div>
       </section>
 
-      <Feedback
-        fullWidth
-        title="Если не смогли найти нужную информацию"
-        textBtn="Отправить свои данные"
-      >
-        Наш оператор свяжется с вами в течении часа. Ответы на все ваши вопросы, которые будут.
-      </Feedback>
+      <div ref={feedbackRef} className={styles.feedbackScrollTarget}>
+        <Feedback
+          fullWidth
+          title="Если не смогли найти нужную информацию"
+          textBtn="Отправить свои данные"
+        >
+          Наш оператор свяжется с вами в течении часа. Ответы на все ваши вопросы, которые будут.
+        </Feedback>
+      </div>
     </div>
   );
 }

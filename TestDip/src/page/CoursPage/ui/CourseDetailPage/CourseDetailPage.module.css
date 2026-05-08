@@ -163,6 +163,10 @@ li {
     cursor: default;
 }
 
+.feedbackScrollTarget {
+    scroll-margin-top: 100px;
+}
+
 @media (max-width: 1440px) {
     .contentBlock {
         width: 130%;

@@ -1,10 +1,7 @@
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
-
 import Text from '../../shared/ui/Text/Text';
 import styles from './PortfolioPage.module.css';
-
-
 import ph1 from '../../assets/PortfolioPage/uiPortfioloi/1.png';
 import ph2 from '../../assets/PortfolioPage/uiPortfioloi/2.png';
 import ph3 from '../../assets/PortfolioPage/uiPortfioloi/3.png';
@@ -15,11 +12,8 @@ import ph7 from '../../assets/PortfolioPage/uiPortfioloi/7.png';
 import ph8 from '../../assets/PortfolioPage/uiPortfioloi/8.png';
 import ph9 from '../../assets/PortfolioPage/uiPortfioloi/9.png';
 import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
-
-
-
-
 import Btn from '../../shared/ui/Btn/Btn';
+import { useNavigate } from 'react-router-dom';
 
 type PortfolioItem = {
   id: number;
@@ -74,6 +68,8 @@ const portfolioItems: PortfolioItem[] = [
 ];
 
 export default function PortfolioPage() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.continerPortfolio}>
 
@@ -103,7 +99,7 @@ export default function PortfolioPage() {
         <div className={styles.wrapperPromoRow2}>
           <img src={ph3} alt="#" />
           <div>
-            <Btn width='100%'  color='blue'>
+            <Btn width='100%'  color='blue' onClick={() => navigate('/about')}>
               Подробнее
             </Btn>
           </div>
@@ -148,7 +144,7 @@ export default function PortfolioPage() {
       </div>
 
       <div className={styles.promoblockBtnfooter}>
-        <Btn width="480px" color="blue">
+        <Btn width="480px" color="blue" onClick={() => navigate('/about')}>
           Подробнее
         </Btn>
       </div>

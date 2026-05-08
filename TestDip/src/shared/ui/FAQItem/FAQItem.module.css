@@ -60,7 +60,7 @@
 @media (max-width: 500px) {
     .title {
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         color: #000;
     }
 
@@ -69,5 +69,33 @@
         font-size: 16px;
         color: #000;
         padding: 0 20px 20px 20px;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 16px;
+        color: #000;
+    }
+
+    .text {
+        font-weight: 400;
+        font-size: 16px;
+        color: #000;
+        padding: 0 20px 20px 20px;
+    }
+
+    .header {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .icon svg {
+        width: 18px;
+        height: 18px;
     }
 }

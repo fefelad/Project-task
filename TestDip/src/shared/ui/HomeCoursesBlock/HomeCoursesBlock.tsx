@@ -84,7 +84,7 @@ export default function HomeCoursesBlock() {
 
       </div>
         <div className={styles.buttonWrapper}>
-            <Btn color="blue" width="100%">
+            <Btn color="blue" width="100%" onClick={() => navigate('/cours')}>
             Посмотреть все курсы
             </Btn>
         </div>
