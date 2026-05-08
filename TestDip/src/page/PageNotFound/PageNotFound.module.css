@@ -112,9 +112,6 @@
 
 
 @media (max-width: 500px) {
-    .container {
-        min-height: 50vh;
-    }
 
     .code {
         font-size: 120px;

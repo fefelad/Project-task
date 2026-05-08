@@ -118,7 +118,19 @@ export default function PortfolioPage() {
 
       <div className={styles.portfolioGallery}>
         <Box sx={{ width: '100%' }}>
-          <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={3}>
+          <Masonry
+            columns={{ xs: 1, sm: 2, md: 3 }}
+            spacing={3}
+            sx={{
+              width: '100%',
+              '@media (max-width: 576px)': {
+                margin: '0 !important',
+                '& > *': {
+                  padding: '0 !important',
+                },
+              },
+            }}
+          >
             {portfolioItems.map((item) => (
               <div key={item.id} className={styles.portfolioCard}>
                 <img

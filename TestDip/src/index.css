@@ -22,41 +22,47 @@
   font-display: swap;
 }
 
-:root{
-    --font-onest: 'Onest', system-ui, sans-serif;
-    --font-involve: 'Involve', var(--font-onest);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-    /* Жирность шрифтов */
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semibold: 600;
-    --fw-bold: 700;
-    
-    /* Размеры шрифтов */
-    --fs-xs: 12px;
-    --fs-sm: 14px;
-    --fs-base: 16px;
-    --fs-lg: 18px;
-    --fs-xl: 20px;
-    --fs-xl22: 22px;
-    --fs-2xl: 24px;
-    --fs-3xl: 32px;
-    --fs-4xl: 40px;
-    --fs-5xl: 48px;
-    --fs-9xl: 96px;
+:root {
+  --font-onest: 'Onest', system-ui, sans-serif;
+  --font-involve: 'Involve', var(--font-onest);
 
-    /*Цвета*/
-    --color-black: #000000;
-    --color-white: #FFFFFF;
-    --color-orange: #F1642E;
-    --color-blue: #5758A6;
-    --color-opasity-blue: #EAE9F5;
+  /* Жирность шрифтов */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 
-    /* Hover btn */
-    --color-blue-hover: #6263d8;
-    --color-orange-hover:  #e4551e;
+  /* Размеры шрифтов */
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-xl22: 22px;
+  --fs-2xl: 24px;
+  --fs-3xl: 32px;
+  --fs-4xl: 40px;
+  --fs-5xl: 48px;
+  --fs-9xl: 96px;
 
-    /*active */
-    --color-blue-active :#222373;
-    --color-orange-active: #cf4510;
+  /*Цвета*/
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-orange: #F1642E;
+  --color-blue: #5758A6;
+  --color-opasity-blue: #EAE9F5;
+
+  /* Hover btn */
+  --color-blue-hover: #6263d8;
+  --color-orange-hover: #e4551e;
+
+  /*active */
+  --color-blue-active: #222373;
+  --color-orange-active: #cf4510;
 }

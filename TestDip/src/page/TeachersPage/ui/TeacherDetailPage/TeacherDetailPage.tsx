@@ -84,6 +84,7 @@ export default function TeacherDetailPage() {
                 size={TextSizes.XL2}
                 weight={TextWeight.MEDIUM}
                 className={styles.role}
+                fontFamily='onest'
               >
                 {teacher.role}
               </Text>
@@ -95,6 +96,7 @@ export default function TeacherDetailPage() {
                   weight={TextWeight.MEDIUM}
                   size={TextSizes.XL2}
                   className={styles.blockTitle}
+                  fontFamily='onest'
                 >
                   Образование
                 </Text>
@@ -102,7 +104,7 @@ export default function TeacherDetailPage() {
                 {teacher.education.map((edu, index) => (
                   <div key={index} className={styles.educationItem}>
                     <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
-                    <Text className={styles.specialization}>
+                    <Text fontFamily='onest' className={styles.specialization}>
                       Направление: {edu.specialization}
                     </Text>
                   </div>
@@ -116,6 +118,7 @@ export default function TeacherDetailPage() {
                   weight={TextWeight.MEDIUM}
                   size={TextSizes.XL2}
                   className={styles.blockTitle}
+                  fontFamily='onest'
                 >
                   Повышение квалификации
                 </Text>
@@ -123,7 +126,7 @@ export default function TeacherDetailPage() {
                 <ul className={styles.qualificationsList}>
                   {teacher.qualifications.map((qual, index) => (
                     <li key={index}>
-                      <Text>• {qual}</Text>
+                      <Text fontFamily='onest'>• {qual}</Text>
                     </li>
                   ))}
                 </ul>
@@ -140,7 +143,7 @@ export default function TeacherDetailPage() {
 
                 <div className={styles.textGroup}>
                   {teacher.professionalPath.split('\n').map((item, index) => (
-                    <Text key={index}>{item}</Text>
+                    <Text fontFamily='onest' key={index}>{item}</Text>
                   ))}
                 </div>
               </div>
@@ -150,27 +153,28 @@ export default function TeacherDetailPage() {
                   weight={TextWeight.MEDIUM}
                   size={TextSizes.XL2}
                   className={styles.blockTitle}
+                  fontFamily='onest'
                 >
                   Как строит обучение
                 </Text>
 
-                <Text className={styles.textParagraph}>
+                <Text fontFamily='onest' className={styles.textParagraph}>
                   {teacher.teachingApproach}
                 </Text>
 
                 <div className={styles.learningPoints}>
-                  <Text weight={TextWeight.MEDIUM}>Дети:</Text>
+                  <Text fontFamily='onest' weight={TextWeight.MEDIUM}>Дети:</Text>
                   <ul className={styles.learningList}>
                     {teacher.learningPoints.map((point, index) => (
                       <li key={index}>
-                        <Text>— {point}</Text>
+                        <Text fontFamily='onest'>— {point}</Text>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 {teacher.approachNote && (
-                  <Text className={styles.approachNote}>
+                  <Text  className={styles.approachNote}>
                     {teacher.approachNote}
                   </Text>
                 )}
