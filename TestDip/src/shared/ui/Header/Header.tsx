@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import logo from '../../../assets/Logo/logo.png';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
-import { AppRoutes } from '../../../app/App';
+import { AppRoutes } from '../../../app/routesConfig';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
