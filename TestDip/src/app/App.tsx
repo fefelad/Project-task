@@ -11,12 +11,21 @@ import ContactPage from '../page/ContactPage/ContactPage';
 import NotFoundPage from '../page/PageNotFound/PageNotFound';
 import styles from './App.module.css';
 import { Footer } from '../shared/ui/Footer/Footer';
+import AdminLoginPage from '../page/AdminLoginPage/AdminLoginPage';
+import AdminPage from '../page/AdminPage/AdminPage';
+import ProtectedAdminRoute from './ProtectedAdminRoute';
 
 interface RouteConfig  {
   path: string;
   name: string;
   component: React.ComponentType;
 };
+
+const ProtectedAdminPage = () => (
+  <ProtectedAdminRoute>
+    <AdminPage />
+  </ProtectedAdminRoute>
+);
 
 export const AppRoutes: RouteConfig[] = [
   { path: '/', name: 'Главная', component: HomePage },
@@ -27,7 +36,9 @@ export const AppRoutes: RouteConfig[] = [
   { path: '/portfolio', name: 'Портфолио', component: PortfolioPage },
   { path: '/about', name: 'О школе', component: AboutPage },
   { path: '/contact', name: 'Контакты', component: ContactPage },
-  { path: '/404', name: '404', component: NotFoundPage}
+  { path: '/404', name: '404', component: NotFoundPage},
+  { path: '/admin/login', name: 'Вход в админку', component: AdminLoginPage },
+  { path: '/admin', name: 'Админка', component: ProtectedAdminPage },
 ];
 
 function App() {
