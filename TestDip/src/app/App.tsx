@@ -9,6 +9,7 @@ import AdminRequestsPage from '../page/AdminRequestsPage/AdminRequestsPage';
 import ProtectedAdminRoute from './ProtectedAdminRoute';
 import AdminLayout from './AdminLayout/AdminLayout';
 import AdminCoursesPage from '../page/AdminCoursesPage/AdminCoursesPage';
+import AdminPortfolioPage from '../page/AdminPortfolioPage/AdminPortfolioPage';
 
 function AppContent() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function AppContent() {
           <Route index element={<AdminPage />} />
           <Route path="requests" element={<AdminRequestsPage />} />
           <Route path="courses" element={<AdminCoursesPage />} />
+          <Route path="portfolio" element={<AdminPortfolioPage />} />
         </Route>
       </Routes>
 
