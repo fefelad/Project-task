@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../components/supabase/supabase'
 import styles from './AdminRequestsPage.module.css';
+import Loader from '../../shared/ui/Loader/Loader';
 
 type RequestStatus = 'new' | 'in_process' | 'done' | 'cancelled';
 type PaymentStatus = 'not_paid' | 'paid' | 'refunded';
@@ -98,7 +99,7 @@ export default function AdminRequestsPage() {
     };
 
     if (isLoading) {
-        return <div className={styles.page}>Загружаем заявки...</div>;
+        return <Loader text="Загружаем заявки..." fullPage />;
     }
 
     return (

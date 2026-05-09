@@ -2,8 +2,9 @@ import Input from '../Input/Input';
 import FormCheckbox from '../FormCheckbox/FormCheckbox';
 import Btn from '../Btn/Btn';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
+import ModalPopup from '../ModalPopup/ModalPopup';
 import styles from './Feedback.module.css';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -29,6 +30,7 @@ export default function Feedback({
     textBtn,
 }: FeedbackProps) {
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
 
     const {
         control,
@@ -50,24 +52,6 @@ export default function Feedback({
     const agreement = watch('agreement');
     const name = watch('name');
     const email = watch('email');
-
-    useEffect(() => {
-        if (!isSuccessModalOpen) return;
-
-        const handleEsc = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                setIsSuccessModalOpen(false);
-            }
-        };
-
-        document.body.style.overflow = 'hidden';
-        window.addEventListener('keydown', handleEsc);
-
-        return () => {
-            document.body.style.overflow = '';
-            window.removeEventListener('keydown', handleEsc);
-        };
-    }, [isSuccessModalOpen]);
 
     const onSubmit = async (data: FeedbackFormData) => {
         try {
@@ -91,7 +75,7 @@ export default function Feedback({
             setIsSuccessModalOpen(true);
         } catch (error) {
             console.error('Ошибка отправки формы:', error);
-            alert('Произошла ошибка при отправке формы. Попробуйте еще раз.');
+            setIsErrorModalOpen(true);
         }
     };
 
@@ -138,6 +122,7 @@ export default function Feedback({
                                         <label className={styles.FormLabel}>
                                             Введите ваше имя
                                         </label>
+
                                         <Input
                                             plasholder="Ваше имя"
                                             {...register('name')}
@@ -149,6 +134,7 @@ export default function Feedback({
                                         <label className={styles.FormLabel}>
                                             Введите вашу почту
                                         </label>
+
                                         <Input
                                             plasholder="example@mail.ru"
                                             type="email"
@@ -165,8 +151,8 @@ export default function Feedback({
                                                 <FormCheckbox
                                                     label="Согласен на обработку персональных данных"
                                                     checked={field.value}
-                                                    onChange={(e) =>
-                                                        field.onChange(e.target.checked)
+                                                    onChange={(event) =>
+                                                        field.onChange(event.target.checked)
                                                     }
                                                     error={errors.agreement?.message}
                                                 />
@@ -199,53 +185,21 @@ export default function Feedback({
                 </div>
             </div>
 
-            {isSuccessModalOpen && (
-                <div
-                    className={styles.ModalOverlay}
-                    onClick={() => setIsSuccessModalOpen(false)}
-                >
-                    <div
-                        className={styles.Modal}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <button
-                            type="button"
-                            className={styles.ModalClose}
-                            onClick={() => setIsSuccessModalOpen(false)}
-                            aria-label="Закрыть окно"
-                        >
-                            ×
-                        </button>
+            <ModalPopup
+                isOpen={isSuccessModalOpen}
+                title="Заявка отправлена!"
+                description="Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время."
+                confirmText="Хорошо"
+                onClose={() => setIsSuccessModalOpen(false)}
+            />
 
-                        <Text
-                            className={styles.ModalTitle}
-                            fontFamily="involve"
-                            weight={TextWeight.REGULAR}
-                            size={TextSizes.XL4}
-                        >
-                            Заявка отправлена!
-                        </Text>
-
-                        <Text
-                            className={styles.ModalDescription}
-                            fontFamily="onest"
-                            weight={TextWeight.REGULAR}
-                            size={TextSizes.XL}
-                        >
-                            Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время.
-                        </Text>
-
-                        <Btn
-                            color="orange"
-                            type="button"
-                            className={styles.ModalButton}
-                            onClick={() => setIsSuccessModalOpen(false)}
-                        >
-                            Хорошо
-                        </Btn>
-                    </div>
-                </div>
-            )}
+            <ModalPopup
+                isOpen={isErrorModalOpen}
+                title="Ошибка отправки"
+                description="Произошла ошибка при отправке формы. Попробуйте ещё раз."
+                confirmText="Хорошо"
+                onClose={() => setIsErrorModalOpen(false)}
+            />
         </>
     );
 }

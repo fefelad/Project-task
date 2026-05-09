@@ -1,0 +1,219 @@
+.ModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.Modal {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    padding: 56px 48px 44px;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    box-sizing: border-box;
+    animation: modalShow 0.25s ease;
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ModalClose {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: #000;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ModalTitle {
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.ModalDescription {
+    margin-bottom: 34px;
+    color: #000;
+}
+
+.ModalContent {
+    margin-bottom: 34px;
+}
+
+.ModalActions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.ConfirmButton,
+.CancelButton {
+    min-width: 160px;
+    height: 52px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 15px;
+    font-family: var(--font-onest);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-regular);
+    cursor: pointer;
+}
+
+.ConfirmButton {
+    background: var(--color-orange);
+    color: #ffffff;
+}
+
+.CancelButton {
+    background: #f1f1f1;
+    color: #000000;
+}
+
+.ConfirmButton:disabled,
+.CancelButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+    .Modal {
+        max-width: 500px;
+        padding: 48px 40px 38px;
+        border-radius: 28px;
+    }
+
+    .ModalTitle {
+        font-size: 36px;
+        margin-bottom: 18px;
+    }
+
+    .ModalDescription {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .ConfirmButton,
+    .CancelButton {
+        height: 50px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ModalOverlay {
+        padding: 18px;
+    }
+
+    .Modal {
+        max-width: 430px;
+        padding: 42px 28px 32px;
+        border-radius: 22px;
+    }
+
+    .ModalClose {
+        top: 16px;
+        right: 18px;
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+    }
+
+    .ModalTitle {
+        font-size: 30px;
+    }
+
+    .ModalDescription {
+        font-size: 17px;
+        margin-bottom: 26px;
+    }
+
+    .ModalActions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .ConfirmButton,
+    .CancelButton {
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ModalOverlay {
+        padding: 16px;
+    }
+
+    .Modal {
+        max-width: 100%;
+        padding: 46px 22px 28px;
+        border-radius: 20px;
+    }
+
+    .ModalClose {
+        top: 14px;
+        right: 16px;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+    }
+
+    .ModalTitle {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+
+    .ModalDescription {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 390px) {
+    .Modal {
+        padding: 44px 18px 26px;
+        border-radius: 18px;
+    }
+
+    .ModalTitle {
+        font-size: 25px;
+    }
+
+    .ModalDescription {
+        font-size: 15px;
+    }
+
+    .ConfirmButton,
+    .CancelButton {
+        height: 46px;
+        font-size: 16px;
+    }
+}

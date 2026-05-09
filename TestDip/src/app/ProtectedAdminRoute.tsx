@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { supabase } from '../components/supabase/supabase';
+import Loader from '../shared/ui/Loader/Loader';
 
 interface ProtectedAdminRouteProps {
     children: ReactNode;
@@ -44,7 +45,7 @@ export default function ProtectedAdminRoute({ children }: ProtectedAdminRoutePro
     }, []);
 
     if (isLoading) {
-        return <div style={{ padding: '40px' }}>Проверяем доступ...</div>;
+        return <Loader text="Проверяем доступ..." fullPage />;
     }
 
     if (!isAdmin) {

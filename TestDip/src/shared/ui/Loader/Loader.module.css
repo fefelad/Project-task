@@ -1,0 +1,72 @@
+.wrapper {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.fullPage {
+    min-height: 90vh;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dots span {
+    display: block;
+    border-radius: 50%;
+    background: #111;
+    animation: loaderBounce 0.8s infinite ease-in-out;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.dots span:nth-child(3) {
+    animation-delay: 0.24s;
+}
+
+.small span {
+    width: 8px;
+    height: 8px;
+}
+
+.medium span {
+    width: 14px;
+    height: 14px;
+}
+
+.large span {
+    width: 20px;
+    height: 20px;
+}
+
+.text {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+}
+
+@keyframes loaderBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+
+    40% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}

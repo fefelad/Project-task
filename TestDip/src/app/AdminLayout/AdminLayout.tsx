@@ -5,6 +5,7 @@ import styles from './AdminLayout.module.css';
 const adminLinks = [
   { to: '/admin', label: 'Главная' },
   { to: '/admin/requests', label: 'Заявки' },
+  { to: '/admin/courses', label: 'Курсы' },
 ];
 
 export default function AdminLayout() {
