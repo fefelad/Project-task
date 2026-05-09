@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
-import logo from '../../../assets/Logo/logo.png'
+import logo from '../../../assets/Logo/logo.png';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/App';
@@ -8,9 +8,7 @@ import { AppRoutes } from '../../../app/App';
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const navRoutes = AppRoutes.filter(
-        (route) => route.path !== '/' && !route.path.includes(':')
-    );
+    const navRoutes = AppRoutes.filter((route) => route.showInHeader);
 
     const closeMenu = () => setIsMenuOpen(false);
     const toggleMenu = () => setIsMenuOpen((prev) => !prev);
