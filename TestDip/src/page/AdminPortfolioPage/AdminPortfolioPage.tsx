@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../../components/supabase/supabase';
 import Loader from '../../shared/ui/Loader/Loader';
 import ModalPopup from '../../shared/ui/ModalPopup/ModalPopup';
@@ -38,6 +39,47 @@ const initialForm: PortfolioForm = {
     student_age: '',
     course_id: '',
     imageFile: null,
+};
+
+const PORTFOLIO_QUERY_KEY = ['admin', 'portfolio'] as const;
+const COURSES_QUERY_KEY = ['admin', 'courses'] as const;
+
+const withTimeoutSignal = (signal: AbortSignal, timeoutMs = 15000) => {
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, timeoutMs);
+
+    const abortHandler = () => {
+        controller.abort();
+    };
+
+    if (signal.aborted) {
+        controller.abort();
+    } else {
+        signal.addEventListener('abort', abortHandler, { once: true });
+    }
+
+    return {
+        signal: controller.signal,
+        clear: () => {
+            window.clearTimeout(timeoutId);
+            signal.removeEventListener('abort', abortHandler);
+        },
+    };
+};
+
+const getErrorMessage = (error: unknown) => {
+    if (error instanceof Error) {
+        return error.message;
+    }
+
+    if (typeof error === 'object' && error !== null && 'message' in error) {
+        return String((error as { message?: unknown }).message);
+    }
+
+    return 'Неизвестная ошибка';
 };
 
 const getStoragePathFromPublicUrl = (url: string | null) => {
@@ -117,7 +159,7 @@ const prepareImageForUpload = async (file: File): Promise<File> => {
 };
 
 const uploadImageDirect = async (filePath: string, file: File) => {
-    const timeoutMs = 8000;
+    const timeoutMs = 15000;
 
     const {
         data: { session },
@@ -128,7 +170,9 @@ const uploadImageDirect = async (filePath: string, file: File) => {
     }
 
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    const supabaseAnonKey =
+        import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+        import.meta.env.VITE_SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
         throw new Error('Не найдены переменные Supabase в .env');
@@ -182,56 +226,190 @@ const uploadImageDirect = async (filePath: string, file: File) => {
     }
 };
 
+const fetchPortfolioItems = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal);
+
+    try {
+        const { data, error } = await supabase
+            .from('portfolio')
+            .select('*')
+            .order('id', { ascending: false })
+            .abortSignal(timeout.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return (data || []) as PortfolioItem[];
+    } finally {
+        timeout.clear();
+    }
+};
+
+const fetchCourses = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal);
+
+    try {
+        const { data, error } = await supabase
+            .from('courses')
+            .select('*')
+            .order('id', { ascending: false })
+            .abortSignal(timeout.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return (data || []) as Course[];
+    } finally {
+        timeout.clear();
+    }
+};
+
+const createPortfolioItem = async (form: PortfolioForm) => {
+    if (!form.imageFile) {
+        throw new Error('Выберите изображение');
+    }
+
+    const preparedImage = await prepareImageForUpload(form.imageFile);
+    const filePath = `works/${Date.now()}-${crypto.randomUUID()}.jpg`;
+
+    const uploadResult = await uploadImageDirect(filePath, preparedImage);
+
+    if (uploadResult.timeout) {
+        console.warn(
+            'Продолжаем создание записи, потому что файл мог уже загрузиться:',
+            filePath
+        );
+    }
+
+    const { data: publicUrlData } = supabase.storage
+        .from('portfolio')
+        .getPublicUrl(filePath);
+
+    const imageUrl = publicUrlData.publicUrl;
+
+    const newPortfolioItem = {
+        title: form.title.trim(),
+        description: form.description.trim() || null,
+        image_url: imageUrl,
+        student_name: form.student_name.trim() || null,
+        student_age: form.student_age ? Number(form.student_age) : null,
+        course_id: Number(form.course_id),
+    };
+
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, 15000);
+
+    try {
+        const { data, error } = await supabase
+            .from('portfolio')
+            .insert(newPortfolioItem)
+            .select('*')
+            .single()
+            .abortSignal(controller.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return data as PortfolioItem;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+};
+
+const removePortfolioItem = async (item: PortfolioItem) => {
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, 15000);
+
+    try {
+        const { error } = await supabase
+            .from('portfolio')
+            .delete()
+            .eq('id', item.id)
+            .abortSignal(controller.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        const storagePath = getStoragePathFromPublicUrl(item.image_url);
+
+        if (storagePath) {
+            const { error: storageError } = await supabase.storage
+                .from('portfolio')
+                .remove([storagePath]);
+
+            if (storageError) {
+                console.warn('Работа удалена из базы, но файл не удалился:', storageError);
+            }
+        }
+
+        return item.id;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+};
+
 export default function AdminPortfolioPage() {
-    const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-    const [courses, setCourses] = useState<Course[]>([]);
+    const queryClient = useQueryClient();
+
     const [form, setForm] = useState<PortfolioForm>(initialForm);
     const [previewUrl, setPreviewUrl] = useState('');
     const [fileInputKey, setFileInputKey] = useState(0);
-
-    const [isLoading, setIsLoading] = useState(true);
-    const [isSaving, setIsSaving] = useState(false);
-    const [deletingId, setDeletingId] = useState<Id | null>(null);
     const [itemToDelete, setItemToDelete] = useState<PortfolioItem | null>(null);
-    const [error, setError] = useState('');
+    const [localError, setLocalError] = useState('');
 
     const isSubmitLockedRef = useRef(false);
 
-    const getCourseTitle = (courseId: Id) => {
-        const course = courses.find((item) => String(item.id) === String(courseId));
+    const portfolioQuery = useQuery({
+        queryKey: PORTFOLIO_QUERY_KEY,
+        queryFn: ({ signal }) => fetchPortfolioItems(signal),
+        retry: false,
+    });
 
-        return course?.title || 'Курс не найден';
-    };
+    const coursesQuery = useQuery({
+        queryKey: COURSES_QUERY_KEY,
+        queryFn: ({ signal }) => fetchCourses(signal),
+        retry: false,
+    });
 
-    const loadData = async () => {
-        setIsLoading(true);
-        setError('');
+    const createPortfolioMutation = useMutation({
+        mutationFn: createPortfolioItem,
+        onSuccess: (newItem) => {
+            queryClient.setQueryData<PortfolioItem[]>(
+                PORTFOLIO_QUERY_KEY,
+                (prev = []) => [newItem, ...prev]
+            );
 
-        const [portfolioResult, coursesResult] = await Promise.all([
-            supabase.from('portfolio').select('*').order('id', { ascending: false }),
-            supabase.from('courses').select('id, title').order('id', { ascending: false }),
-        ]);
+            setForm(initialForm);
+            setPreviewUrl('');
+            setFileInputKey((prev) => prev + 1);
+        },
+        onSettled: () => {
+            isSubmitLockedRef.current = false;
+        },
+    });
 
-        if (portfolioResult.error) {
-            setError(`Не удалось загрузить портфолио: ${portfolioResult.error.message}`);
-            setIsLoading(false);
-            return;
-        }
+    const deletePortfolioMutation = useMutation({
+        mutationFn: removePortfolioItem,
+        onSuccess: (deletedId) => {
+            queryClient.setQueryData<PortfolioItem[]>(
+                PORTFOLIO_QUERY_KEY,
+                (prev = []) =>
+                    prev.filter((item) => String(item.id) !== String(deletedId))
+            );
 
-        if (coursesResult.error) {
-            setError(`Не удалось загрузить курсы: ${coursesResult.error.message}`);
-            setIsLoading(false);
-            return;
-        }
-
-        setPortfolioItems((portfolioResult.data || []) as PortfolioItem[]);
-        setCourses((coursesResult.data || []) as Course[]);
-        setIsLoading(false);
-    };
-
-    useEffect(() => {
-        loadData();
-    }, []);
+            setItemToDelete(null);
+        },
+    });
 
     useEffect(() => {
         return () => {
@@ -241,7 +419,44 @@ export default function AdminPortfolioPage() {
         };
     }, [previewUrl]);
 
+    const portfolioItems = portfolioQuery.data || [];
+    const courses = coursesQuery.data || [];
+
+    const isInitialLoading = portfolioQuery.isLoading || coursesQuery.isLoading;
+    const isFetching = portfolioQuery.isFetching || coursesQuery.isFetching;
+
+    const deletingId = deletePortfolioMutation.isPending
+        ? deletePortfolioMutation.variables?.id || null
+        : null;
+
+    const error =
+        localError ||
+        (portfolioQuery.isError
+            ? `Не удалось загрузить портфолио: ${getErrorMessage(portfolioQuery.error)}`
+            : coursesQuery.isError
+              ? `Не удалось загрузить курсы: ${getErrorMessage(coursesQuery.error)}`
+              : createPortfolioMutation.isError
+                ? `Не удалось добавить работу: ${getErrorMessage(createPortfolioMutation.error)}`
+                : deletePortfolioMutation.isError
+                  ? `Не удалось удалить работу: ${getErrorMessage(deletePortfolioMutation.error)}`
+                  : '');
+
+    const getCourseTitle = (courseId: Id) => {
+        const course = courses.find((item) => String(item.id) === String(courseId));
+
+        return course?.title || 'Курс не найден';
+    };
+
+    const refreshData = () => {
+        void Promise.all([
+            portfolioQuery.refetch(),
+            coursesQuery.refetch(),
+        ]);
+    };
+
     const updateForm = (field: keyof PortfolioForm, value: string | File | null) => {
+        setLocalError('');
+
         setForm((prev) => ({
             ...prev,
             [field]: value,
@@ -253,10 +468,6 @@ export default function AdminPortfolioPage() {
 
         updateForm('imageFile', file);
 
-        if (previewUrl) {
-            URL.revokeObjectURL(previewUrl);
-        }
-
         if (file) {
             setPreviewUrl(URL.createObjectURL(file));
         } else {
@@ -264,119 +475,42 @@ export default function AdminPortfolioPage() {
         }
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (isSubmitLockedRef.current) {
+        if (isSubmitLockedRef.current || createPortfolioMutation.isPending) {
             return;
         }
 
+        setLocalError('');
+
         if (!form.title.trim()) {
-            setError('Введите название работы');
+            setLocalError('Введите название работы');
             return;
         }
 
         if (!form.course_id) {
-            setError('Выберите курс');
+            setLocalError('Выберите курс');
             return;
         }
 
         if (!form.imageFile) {
-            setError('Выберите изображение');
+            setLocalError('Выберите изображение');
             return;
         }
 
         isSubmitLockedRef.current = true;
-        setIsSaving(true);
-        setError('');
-
-        try {
-            const preparedImage = await prepareImageForUpload(form.imageFile);
-            const filePath = `works/${Date.now()}-${crypto.randomUUID()}.jpg`;
-
-            const uploadResult = await uploadImageDirect(filePath, preparedImage);
-
-            if (uploadResult.timeout) {
-                console.warn(
-                    'Продолжаем создание записи, потому что файл мог уже загрузиться:',
-                    filePath
-                );
-            }
-
-            const { data: publicUrlData } = supabase.storage
-                .from('portfolio')
-                .getPublicUrl(filePath);
-
-            const imageUrl = publicUrlData.publicUrl;
-
-            const newPortfolioItem = {
-                title: form.title.trim(),
-                description: form.description.trim() || null,
-                image_url: imageUrl,
-                student_name: form.student_name.trim() || null,
-                student_age: form.student_age ? Number(form.student_age) : null,
-                course_id: Number(form.course_id),
-            };
-
-            const { data: insertedData, error: insertError } = await supabase
-                .from('portfolio')
-                .insert(newPortfolioItem)
-                .select('*')
-                .single();
-
-            if (insertError) {
-                setError(`Не удалось добавить работу: ${insertError.message}`);
-                return;
-            }
-
-            if (insertedData) {
-                setPortfolioItems((prev) => [insertedData as PortfolioItem, ...prev]);
-            }
-
-            setForm(initialForm);
-            setPreviewUrl('');
-            setFileInputKey((prev) => prev + 1);
-        } catch (error) {
-            setError(
-                error instanceof Error
-                    ? error.message
-                    : 'Не удалось загрузить изображение'
-            );
-        } finally {
-            setIsSaving(false);
-            isSubmitLockedRef.current = false;
-        }
+        createPortfolioMutation.mutate(form);
     };
 
-    const deletePortfolioItem = async () => {
-        if (!itemToDelete) return;
+    const deletePortfolioItem = () => {
+        if (!itemToDelete || deletePortfolioMutation.isPending) return;
 
-        setDeletingId(itemToDelete.id);
-        setError('');
-
-        const { error: deleteDbError } = await supabase
-            .from('portfolio')
-            .delete()
-            .eq('id', itemToDelete.id);
-
-        if (deleteDbError) {
-            setError(`Не удалось удалить работу: ${deleteDbError.message}`);
-            setDeletingId(null);
-            return;
-        }
-
-        const storagePath = getStoragePathFromPublicUrl(itemToDelete.image_url);
-
-        if (storagePath) {
-            await supabase.storage.from('portfolio').remove([storagePath]);
-        }
-
-        setPortfolioItems((prev) => prev.filter((item) => item.id !== itemToDelete.id));
-        setDeletingId(null);
-        setItemToDelete(null);
+        setLocalError('');
+        deletePortfolioMutation.mutate(itemToDelete);
     };
 
-    if (isLoading) {
+    if (isInitialLoading) {
         return <Loader text="Загружаем портфолио..." />;
     }
 
@@ -390,8 +524,12 @@ export default function AdminPortfolioPage() {
                     </p>
                 </div>
 
-                <button className={styles.refreshButton} onClick={loadData}>
-                    Обновить
+                <button
+                    className={styles.refreshButton}
+                    onClick={refreshData}
+                    disabled={isFetching}
+                >
+                    {isFetching ? 'Обновляем...' : 'Обновить'}
                 </button>
             </div>
 
@@ -480,8 +618,12 @@ export default function AdminPortfolioPage() {
                     </div>
                 )}
 
-                <button className={styles.submitButton} type="submit" disabled={isSaving}>
-                    {isSaving ? 'Добавляем...' : 'Добавить работу'}
+                <button
+                    className={styles.submitButton}
+                    type="submit"
+                    disabled={createPortfolioMutation.isPending}
+                >
+                    {createPortfolioMutation.isPending ? 'Добавляем...' : 'Добавить работу'}
                 </button>
             </form>
 
@@ -518,9 +660,11 @@ export default function AdminPortfolioPage() {
                                     <button
                                         className={styles.deleteButton}
                                         onClick={() => setItemToDelete(item)}
-                                        disabled={deletingId === item.id}
+                                        disabled={String(deletingId) === String(item.id)}
                                     >
-                                        {deletingId === item.id ? 'Удаляем...' : 'Удалить'}
+                                        {String(deletingId) === String(item.id)
+                                            ? 'Удаляем...'
+                                            : 'Удалить'}
                                     </button>
                                 </div>
                             </article>
@@ -535,9 +679,9 @@ export default function AdminPortfolioPage() {
                 description={`Работа «${itemToDelete?.title || ''}» будет удалена. Это действие нельзя отменить.`}
                 confirmText="Удалить"
                 cancelText="Отмена"
-                isLoading={!!itemToDelete && deletingId === itemToDelete.id}
+                isLoading={deletePortfolioMutation.isPending}
                 onClose={() => {
-                    if (deletingId) return;
+                    if (deletePortfolioMutation.isPending) return;
                     setItemToDelete(null);
                 }}
                 onConfirm={deletePortfolioItem}

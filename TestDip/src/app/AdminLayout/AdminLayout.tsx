@@ -1,5 +1,5 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { supabase } from '../../components/supabase/supabase';
+import { NavLink, Outlet } from 'react-router-dom';
+import { forceLocalLogout } from '../../shared/lib/auth/forceLocalLogout';
 import styles from './AdminLayout.module.css';
 
 const adminLinks = [
@@ -10,12 +10,10 @@ const adminLinks = [
 ];
 
 export default function AdminLayout() {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    navigate('/admin/login', { replace: true });
+    forceLocalLogout();
 
-    void supabase.auth.signOut({ scope: 'local' });
+    window.location.replace(`${import.meta.env.BASE_URL}admin/login`);
   };
 
   return (

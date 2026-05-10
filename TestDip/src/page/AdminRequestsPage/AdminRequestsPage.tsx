@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../../components/supabase/supabase'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { supabase } from '../../components/supabase/supabase';
 import styles from './AdminRequestsPage.module.css';
 import Loader from '../../shared/ui/Loader/Loader';
 
@@ -30,56 +30,57 @@ const paymentLabels: Record<PaymentStatus, string> = {
     refunded: 'Возврат',
 };
 
-export default function AdminRequestsPage() {
-    const [requests, setRequests] = useState<FeedbackRequest[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [savingId, setSavingId] = useState<string | number | null>(null);
-    const [error, setError] = useState('');
+const REQUESTS_QUERY_KEY = ['admin', 'feedback_requests'];
 
-    const loadRequests = async () => {
-        setIsLoading(true);
-        setError('');
+const withTimeoutSignal = (signal: AbortSignal, timeoutMs = 15000) => {
+    const controller = new AbortController();
 
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, timeoutMs);
+
+    signal.addEventListener(
+        'abort',
+        () => {
+            controller.abort();
+        },
+        { once: true }
+    );
+
+    return {
+        signal: controller.signal,
+        clear: () => window.clearTimeout(timeoutId),
+    };
+};
+
+const fetchRequests = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal, 15000);
+
+    try {
         const { data, error } = await supabase
             .from('feedback_requests')
             .select('*')
-            .order('created_at', { ascending: false });
+            .order('created_at', { ascending: false })
+            .abortSignal(timeout.signal);
 
         if (error) {
-            setError('Не удалось загрузить заявки');
-            setIsLoading(false);
-            return;
+            throw error;
         }
 
-        setRequests((data || []) as FeedbackRequest[]);
-        setIsLoading(false);
-    };
+        return (data || []) as FeedbackRequest[];
+    } finally {
+        timeout.clear();
+    }
+};
 
-    useEffect(() => {
-        loadRequests();
-    }, []);
+const saveRequestToSupabase = async (request: FeedbackRequest) => {
+    const controller = new AbortController();
 
-    const updateLocalRequest = (
-        id: string | number,
-        field: keyof FeedbackRequest,
-        value: string
-    ) => {
-        setRequests((prev) =>
-            prev.map((request) =>
-                request.id === id
-                    ? {
-                          ...request,
-                          [field]: value,
-                      }
-                    : request
-            )
-        );
-    };
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, 15000);
 
-    const saveRequest = async (request: FeedbackRequest) => {
-        setSavingId(request.id);
-        setError('');
-
+    try {
         const { error } = await supabase
             .from('feedback_requests')
             .update({
@@ -87,15 +88,65 @@ export default function AdminRequestsPage() {
                 payment_status: request.payment_status,
                 admin_comment: request.admin_comment,
             })
-            .eq('id', request.id);
+            .eq('id', request.id)
+            .abortSignal(controller.signal);
 
         if (error) {
-            setError('Не удалось сохранить заявку');
-            setSavingId(null);
-            return;
+            throw error;
         }
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+};
 
-        setSavingId(null);
+export default function AdminRequestsPage() {
+    const queryClient = useQueryClient();
+
+    const {
+        data: requests = [],
+        isLoading,
+        isFetching,
+        error,
+        refetch,
+    } = useQuery({
+        queryKey: REQUESTS_QUERY_KEY,
+        queryFn: ({ signal }) => fetchRequests(signal),
+        staleTime: 1000 * 60 * 2,
+        gcTime: 1000 * 60 * 10,
+        refetchOnWindowFocus: false,
+        retry: 1,
+    });
+
+    const saveMutation = useMutation({
+        mutationFn: saveRequestToSupabase,
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: REQUESTS_QUERY_KEY,
+            });
+        },
+    });
+
+    const updateLocalRequest = (
+        id: string | number,
+        field: keyof FeedbackRequest,
+        value: string
+    ) => {
+        queryClient.setQueryData<FeedbackRequest[]>(
+            REQUESTS_QUERY_KEY,
+            (prev = []) =>
+                prev.map((request) =>
+                    request.id === id
+                        ? {
+                              ...request,
+                              [field]: value,
+                          }
+                        : request
+                )
+        );
+    };
+
+    const saveRequest = (request: FeedbackRequest) => {
+        saveMutation.mutate(request);
     };
 
     if (isLoading) {
@@ -112,12 +163,26 @@ export default function AdminRequestsPage() {
                     </p>
                 </div>
 
-                <button className={styles.refreshButton} onClick={loadRequests}>
-                    Обновить
+                <button
+                    className={styles.refreshButton}
+                    onClick={() => refetch()}
+                    disabled={isFetching}
+                >
+                    {isFetching ? 'Обновляем...' : 'Обновить'}
                 </button>
             </div>
 
-            {error && <p className={styles.error}>{error}</p>}
+            {error && (
+                <p className={styles.error}>
+                    Не удалось загрузить заявки
+                </p>
+            )}
+
+            {saveMutation.isError && (
+                <p className={styles.error}>
+                    Не удалось сохранить заявку
+                </p>
+            )}
 
             {requests.length === 0 ? (
                 <p className={styles.empty}>Заявок пока нет.</p>
@@ -204,9 +269,11 @@ export default function AdminRequestsPage() {
                                 <button
                                     className={styles.saveButton}
                                     onClick={() => saveRequest(request)}
-                                    disabled={savingId === request.id}
+                                    disabled={saveMutation.isPending}
                                 >
-                                    {savingId === request.id ? 'Сохраняем...' : 'Сохранить'}
+                                    {saveMutation.isPending
+                                        ? 'Сохраняем...'
+                                        : 'Сохранить'}
                                 </button>
                             </div>
                         </div>

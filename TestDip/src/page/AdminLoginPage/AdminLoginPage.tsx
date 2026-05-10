@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../components/supabase/supabase';
+import { forceLocalLogout } from '../../shared/lib/auth/forceLocalLogout';
 import styles from './AdminLoginPage.module.css';
 
 export default function AdminLoginPage() {
@@ -17,33 +18,43 @@ export default function AdminLoginPage() {
         setError('');
         setIsLoading(true);
 
-        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
+        try {
+            forceLocalLogout();
 
-        if (loginError || !loginData.user) {
-            setError('Неверный email или пароль');
+            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (loginError || !loginData.user) {
+                setError('Неверный email или пароль');
+                return;
+            }
+
+            const { data: adminData, error: adminError } = await supabase
+                .from('admins')
+                .select('id, role')
+                .eq('auth_user_id', loginData.user.id)
+                .eq('role', 'admin')
+                .maybeSingle();
+
+            if (adminError || !adminData) {
+                forceLocalLogout();
+
+                setError('У вас нет доступа к админке');
+                return;
+            }
+
+            navigate('/admin', { replace: true });
+        } catch (error) {
+            console.error('Ошибка входа в админку:', error);
+
+            forceLocalLogout();
+
+            setError('Не удалось войти. Попробуйте ещё раз.');
+        } finally {
             setIsLoading(false);
-            return;
         }
-
-        const { data: adminData, error: adminError } = await supabase
-            .from('admins')
-            .select('id, role')
-            .eq('auth_user_id', loginData.user.id)
-            .eq('role', 'admin')
-            .single();
-
-        if (adminError || !adminData) {
-            await supabase.auth.signOut();
-            setError('У вас нет доступа к админке');
-            setIsLoading(false);
-            return;
-        }
-
-        setIsLoading(false);
-        navigate('/admin');
     };
 
     return (

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../../components/supabase/supabase';
 import Loader from '../../shared/ui/Loader/Loader';
 import ModalPopup from '../../shared/ui/ModalPopup/ModalPopup';
@@ -62,19 +63,255 @@ const initialForm: CourseForm = {
     category_id: '',
 };
 
-export default function AdminCoursesPage() {
-    const [courses, setCourses] = useState<Course[]>([]);
-    const [teachers, setTeachers] = useState<Teacher[]>([]);
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [form, setForm] = useState<CourseForm>(initialForm);
+const COURSES_QUERY_KEY = ['admin', 'courses'] as const;
+const TEACHERS_QUERY_KEY = ['admin', 'teachers'] as const;
+const CATEGORIES_QUERY_KEY = ['admin', 'categories'] as const;
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [isSaving, setIsSaving] = useState(false);
-    const [deletingId, setDeletingId] = useState<Id | null>(null);
+const withTimeoutSignal = (signal: AbortSignal, timeoutMs = 15000) => {
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, timeoutMs);
+
+    const abortHandler = () => {
+        controller.abort();
+    };
+
+    if (signal.aborted) {
+        controller.abort();
+    } else {
+        signal.addEventListener('abort', abortHandler, { once: true });
+    }
+
+    return {
+        signal: controller.signal,
+        clear: () => {
+            window.clearTimeout(timeoutId);
+            signal.removeEventListener('abort', abortHandler);
+        },
+    };
+};
+
+const getErrorMessage = (error: unknown) => {
+    if (error instanceof Error) {
+        return error.message;
+    }
+
+    if (typeof error === 'object' && error !== null && 'message' in error) {
+        return String((error as { message?: unknown }).message);
+    }
+
+    return 'Неизвестная ошибка';
+};
+
+const normalizeId = (value: string) => {
+    if (!value) return null;
+
+    const numberValue = Number(value);
+
+    return Number.isNaN(numberValue) ? value : numberValue;
+};
+
+const fetchCourses = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal);
+
+    try {
+        const { data, error } = await supabase
+            .from('courses')
+            .select('*')
+            .order('id', { ascending: false })
+            .abortSignal(timeout.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return (data || []) as Course[];
+    } finally {
+        timeout.clear();
+    }
+};
+
+const fetchTeachers = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal);
+
+    try {
+        const { data, error } = await supabase
+            .from('teachers')
+            .select('*')
+            .order('id', { ascending: true })
+            .abortSignal(timeout.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return (data || []) as Teacher[];
+    } finally {
+        timeout.clear();
+    }
+};
+
+const fetchCategories = async (signal: AbortSignal) => {
+    const timeout = withTimeoutSignal(signal);
+
+    try {
+        const { data, error } = await supabase
+            .from('categories')
+            .select('*')
+            .order('id', { ascending: true })
+            .abortSignal(timeout.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return (data || []) as Category[];
+    } finally {
+        timeout.clear();
+    }
+};
+
+const createCourse = async (form: CourseForm) => {
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, 15000);
+
+    try {
+        const { data, error } = await supabase
+            .from('courses')
+            .insert({
+                title: form.title.trim(),
+                description: form.description.trim() || null,
+                age_group: form.age_group.trim() || null,
+                direction: form.direction.trim() || null,
+                price: form.price ? Number(form.price) : null,
+                schedule: form.schedule.trim() || null,
+                format: form.format.trim() || null,
+                duration: form.duration.trim() || null,
+                start_date: form.start_date || null,
+                teacher_id: normalizeId(form.teacher_id),
+                category_id: normalizeId(form.category_id),
+            })
+            .select('*')
+            .single()
+            .abortSignal(controller.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return data as Course;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+};
+
+const removeCourse = async (courseId: Id) => {
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, 15000);
+
+    try {
+        const { error } = await supabase
+            .from('courses')
+            .delete()
+            .eq('id', courseId)
+            .abortSignal(controller.signal);
+
+        if (error) {
+            throw error;
+        }
+
+        return courseId;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+};
+
+export default function AdminCoursesPage() {
+    const queryClient = useQueryClient();
+
+    const [form, setForm] = useState<CourseForm>(initialForm);
     const [courseToDelete, setCourseToDelete] = useState<Course | null>(null);
-    const [error, setError] = useState('');
 
     const isSubmitLockedRef = useRef(false);
+
+    const coursesQuery = useQuery({
+        queryKey: COURSES_QUERY_KEY,
+        queryFn: ({ signal }) => fetchCourses(signal),
+        retry: false,
+    });
+
+    const teachersQuery = useQuery({
+        queryKey: TEACHERS_QUERY_KEY,
+        queryFn: ({ signal }) => fetchTeachers(signal),
+        retry: false,
+    });
+
+    const categoriesQuery = useQuery({
+        queryKey: CATEGORIES_QUERY_KEY,
+        queryFn: ({ signal }) => fetchCategories(signal),
+        retry: false,
+    });
+
+    const createCourseMutation = useMutation({
+        mutationFn: createCourse,
+        onSuccess: (newCourse) => {
+            queryClient.setQueryData<Course[]>(COURSES_QUERY_KEY, (prev = []) => [
+                newCourse,
+                ...prev,
+            ]);
+
+            setForm(initialForm);
+        },
+        onSettled: () => {
+            isSubmitLockedRef.current = false;
+        },
+    });
+
+    const deleteCourseMutation = useMutation({
+        mutationFn: removeCourse,
+        onSuccess: (deletedCourseId) => {
+            queryClient.setQueryData<Course[]>(COURSES_QUERY_KEY, (prev = []) =>
+                prev.filter((course) => String(course.id) !== String(deletedCourseId))
+            );
+
+            setCourseToDelete(null);
+        },
+    });
+
+    const courses = coursesQuery.data || [];
+    const teachers = teachersQuery.data || [];
+    const categories = categoriesQuery.data || [];
+
+    const isInitialLoading =
+        coursesQuery.isLoading || teachersQuery.isLoading || categoriesQuery.isLoading;
+
+    const isFetching =
+        coursesQuery.isFetching || teachersQuery.isFetching || categoriesQuery.isFetching;
+
+    const deletingId = deleteCourseMutation.isPending
+        ? deleteCourseMutation.variables
+        : null;
+
+    const error =
+        coursesQuery.isError
+            ? `Не удалось загрузить курсы: ${getErrorMessage(coursesQuery.error)}`
+            : teachersQuery.isError
+              ? `Не удалось загрузить преподавателей: ${getErrorMessage(teachersQuery.error)}`
+              : categoriesQuery.isError
+                ? `Не удалось загрузить категории: ${getErrorMessage(categoriesQuery.error)}`
+                : createCourseMutation.isError
+                  ? `Не удалось добавить курс: ${getErrorMessage(createCourseMutation.error)}`
+                  : deleteCourseMutation.isError
+                    ? `Не удалось удалить курс: ${getErrorMessage(deleteCourseMutation.error)}`
+                    : '';
 
     const getTeacherName = (teacherId: Id | null) => {
         if (!teacherId) return 'Не выбран';
@@ -92,43 +329,13 @@ export default function AdminCoursesPage() {
         return category?.title || category?.name || 'Не найдена';
     };
 
-    const loadData = async () => {
-        setIsLoading(true);
-        setError('');
-
-        const [coursesResult, teachersResult, categoriesResult] = await Promise.all([
-            supabase.from('courses').select('*').order('id', { ascending: false }),
-            supabase.from('teachers').select('*').order('id', { ascending: true }),
-            supabase.from('categories').select('*').order('id', { ascending: true }),
+    const refreshData = () => {
+        void Promise.all([
+            coursesQuery.refetch(),
+            teachersQuery.refetch(),
+            categoriesQuery.refetch(),
         ]);
-
-        if (coursesResult.error) {
-            setError(`Не удалось загрузить курсы: ${coursesResult.error.message}`);
-            setIsLoading(false);
-            return;
-        }
-
-        if (teachersResult.error) {
-            setError(`Не удалось загрузить преподавателей: ${teachersResult.error.message}`);
-            setIsLoading(false);
-            return;
-        }
-
-        if (categoriesResult.error) {
-            setError(`Не удалось загрузить категории: ${categoriesResult.error.message}`);
-            setIsLoading(false);
-            return;
-        }
-
-        setCourses((coursesResult.data || []) as Course[]);
-        setTeachers((teachersResult.data || []) as Teacher[]);
-        setCategories((categoriesResult.data || []) as Category[]);
-        setIsLoading(false);
     };
-
-    useEffect(() => {
-        loadData();
-    }, []);
 
     const updateForm = (field: keyof CourseForm, value: string) => {
         setForm((prev) => ({
@@ -137,68 +344,24 @@ export default function AdminCoursesPage() {
         }));
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (isSubmitLockedRef.current) {
+        if (isSubmitLockedRef.current || createCourseMutation.isPending) {
             return;
         }
 
         isSubmitLockedRef.current = true;
-        setIsSaving(true);
-        setError('');
-
-        try {
-            const { error } = await supabase.from('courses').insert({
-                title: form.title.trim(),
-                description: form.description.trim() || null,
-                age_group: form.age_group.trim() || null,
-                direction: form.direction.trim() || null,
-                price: form.price ? Number(form.price) : null,
-                schedule: form.schedule.trim() || null,
-                format: form.format.trim() || null,
-                duration: form.duration.trim() || null,
-                start_date: form.start_date || null,
-                teacher_id: form.teacher_id ? Number(form.teacher_id) : null,
-                category_id: form.category_id ? Number(form.category_id) : null,
-            });
-
-            if (error) {
-                setError(`Не удалось добавить курс: ${error.message}`);
-                return;
-            }
-
-            setForm(initialForm);
-            await loadData();
-        } finally {
-            setIsSaving(false);
-            isSubmitLockedRef.current = false;
-        }
+        createCourseMutation.mutate(form);
     };
 
-    const deleteCourse = async () => {
-        if (!courseToDelete) return;
+    const deleteCourse = () => {
+        if (!courseToDelete || deleteCourseMutation.isPending) return;
 
-        setDeletingId(courseToDelete.id);
-        setError('');
-
-        const { error } = await supabase
-            .from('courses')
-            .delete()
-            .eq('id', courseToDelete.id);
-
-        if (error) {
-            setError(`Не удалось удалить курс: ${error.message}`);
-            setDeletingId(null);
-            return;
-        }
-
-        setCourses((prev) => prev.filter((course) => course.id !== courseToDelete.id));
-        setDeletingId(null);
-        setCourseToDelete(null);
+        deleteCourseMutation.mutate(courseToDelete.id);
     };
 
-    if (isLoading) {
+    if (isInitialLoading) {
         return <Loader text="Загружаем курсы..." />;
     }
 
@@ -212,8 +375,12 @@ export default function AdminCoursesPage() {
                     </p>
                 </div>
 
-                <button className={styles.refreshButton} onClick={loadData}>
-                    Обновить
+                <button
+                    className={styles.refreshButton}
+                    onClick={refreshData}
+                    disabled={isFetching}
+                >
+                    {isFetching ? 'Обновляем...' : 'Обновить'}
                 </button>
             </div>
 
@@ -316,7 +483,10 @@ export default function AdminCoursesPage() {
                             <option value="">Выберите преподавателя</option>
                             {teachers.map((teacher) => (
                                 <option key={teacher.id} value={teacher.id}>
-                                    {teacher.full_name || teacher.name || teacher.title || `ID ${teacher.id}`}
+                                    {teacher.full_name ||
+                                        teacher.name ||
+                                        teacher.title ||
+                                        `ID ${teacher.id}`}
                                 </option>
                             ))}
                         </select>
@@ -350,8 +520,12 @@ export default function AdminCoursesPage() {
                     />
                 </label>
 
-                <button className={styles.submitButton} type="submit" disabled={isSaving}>
-                    {isSaving ? 'Добавляем...' : 'Добавить курс'}
+                <button
+                    className={styles.submitButton}
+                    type="submit"
+                    disabled={createCourseMutation.isPending}
+                >
+                    {createCourseMutation.isPending ? 'Добавляем...' : 'Добавить курс'}
                 </button>
             </form>
 
@@ -383,9 +557,11 @@ export default function AdminCoursesPage() {
                                 <button
                                     className={styles.deleteButton}
                                     onClick={() => setCourseToDelete(course)}
-                                    disabled={deletingId === course.id}
+                                    disabled={String(deletingId) === String(course.id)}
                                 >
-                                    {deletingId === course.id ? 'Удаляем...' : 'Удалить'}
+                                    {String(deletingId) === String(course.id)
+                                        ? 'Удаляем...'
+                                        : 'Удалить'}
                                 </button>
                             </article>
                         ))}
@@ -399,9 +575,9 @@ export default function AdminCoursesPage() {
                 description={`Курс «${courseToDelete?.title || ''}» будет удалён. Это действие нельзя отменить.`}
                 confirmText="Удалить"
                 cancelText="Отмена"
-                isLoading={!!courseToDelete && deletingId === courseToDelete.id}
+                isLoading={deleteCourseMutation.isPending}
                 onClose={() => {
-                    if (deletingId) return;
+                    if (deleteCourseMutation.isPending) return;
                     setCourseToDelete(null);
                 }}
                 onConfirm={deleteCourse}
