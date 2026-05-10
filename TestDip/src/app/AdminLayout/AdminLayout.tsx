@@ -12,9 +12,10 @@ const adminLinks = [
 export default function AdminLayout() {
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate('/admin/login');
+  const handleLogout = () => {
+    navigate('/admin/login', { replace: true });
+
+    void supabase.auth.signOut({ scope: 'local' });
   };
 
   return (
