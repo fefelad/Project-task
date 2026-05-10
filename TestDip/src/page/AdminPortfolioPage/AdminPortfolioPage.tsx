@@ -58,13 +58,20 @@ const prepareImageForUpload = async (file: File): Promise<File> => {
         const objectUrl = URL.createObjectURL(file);
 
         image.onload = () => {
+            const maxSide = 1200;
+
+            const scale = Math.min(
+                1,
+                maxSide / image.width,
+                maxSide / image.height
+            );
+
+            const width = Math.round(image.width * scale);
+            const height = Math.round(image.height * scale);
+
             const canvas = document.createElement('canvas');
-
-            const maxWidth = 1600;
-            const scale = image.width > maxWidth ? maxWidth / image.width : 1;
-
-            canvas.width = Math.round(image.width * scale);
-            canvas.height = Math.round(image.height * scale);
+            canvas.width = width;
+            canvas.height = height;
 
             const ctx = canvas.getContext('2d');
 
@@ -74,7 +81,9 @@ const prepareImageForUpload = async (file: File): Promise<File> => {
                 return;
             }
 
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+            ctx.drawImage(image, 0, 0, width, height);
 
             canvas.toBlob(
                 (blob) => {
@@ -94,7 +103,7 @@ const prepareImageForUpload = async (file: File): Promise<File> => {
                     resolve(normalizedFile);
                 },
                 'image/jpeg',
-                0.85
+                0.75
             );
         };
 
@@ -105,6 +114,72 @@ const prepareImageForUpload = async (file: File): Promise<File> => {
 
         image.src = objectUrl;
     });
+};
+
+const uploadImageDirect = async (filePath: string, file: File) => {
+    const timeoutMs = 8000;
+
+    const {
+        data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session) {
+        throw new Error('Нет активной сессии админа');
+    }
+
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error('Не найдены переменные Supabase в .env');
+    }
+
+    const controller = new AbortController();
+
+    const timeoutId = window.setTimeout(() => {
+        controller.abort();
+    }, timeoutMs);
+
+    try {
+        const cleanSupabaseUrl = supabaseUrl.replace(/\/$/, '');
+        const uploadUrl = `${cleanSupabaseUrl}/storage/v1/object/portfolio/${filePath}`;
+
+        const response = await fetch(uploadUrl, {
+            method: 'POST',
+            headers: {
+                apikey: supabaseAnonKey,
+                Authorization: `Bearer ${session.access_token}`,
+                'Content-Type': file.type || 'image/jpeg',
+                'Cache-Control': '3600',
+            },
+            body: file,
+            signal: controller.signal,
+        });
+
+        const responseText = await response.text();
+
+        if (!response.ok) {
+            throw new Error(responseText || `Ошибка загрузки: ${response.status}`);
+        }
+
+        return {
+            success: true,
+            timeout: false,
+        };
+    } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+            console.warn('Upload timeout, but file may already be uploaded:', filePath);
+
+            return {
+                success: true,
+                timeout: true,
+            };
+        }
+
+        throw error;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
 };
 
 export default function AdminPortfolioPage() {
@@ -217,20 +292,15 @@ export default function AdminPortfolioPage() {
 
         try {
             const preparedImage = await prepareImageForUpload(form.imageFile);
-
             const filePath = `works/${Date.now()}-${crypto.randomUUID()}.jpg`;
 
-            const { error: uploadError } = await supabase.storage
-                .from('portfolio')
-                .upload(filePath, preparedImage, {
-                    cacheControl: '3600',
-                    upsert: true,
-                    contentType: 'image/jpeg',
-                });
+            const uploadResult = await uploadImageDirect(filePath, preparedImage);
 
-            if (uploadError) {
-                setError(`Не удалось загрузить изображение: ${uploadError.message}`);
-                return;
+            if (uploadResult.timeout) {
+                console.warn(
+                    'Продолжаем создание записи, потому что файл мог уже загрузиться:',
+                    filePath
+                );
             }
 
             const { data: publicUrlData } = supabase.storage
@@ -239,30 +309,38 @@ export default function AdminPortfolioPage() {
 
             const imageUrl = publicUrlData.publicUrl;
 
-            const { error: insertError } = await supabase.from('portfolio').insert({
+            const newPortfolioItem = {
                 title: form.title.trim(),
                 description: form.description.trim() || null,
                 image_url: imageUrl,
                 student_name: form.student_name.trim() || null,
                 student_age: form.student_age ? Number(form.student_age) : null,
                 course_id: Number(form.course_id),
-            });
+            };
+
+            const { data: insertedData, error: insertError } = await supabase
+                .from('portfolio')
+                .insert(newPortfolioItem)
+                .select('*')
+                .single();
 
             if (insertError) {
                 setError(`Не удалось добавить работу: ${insertError.message}`);
                 return;
             }
 
+            if (insertedData) {
+                setPortfolioItems((prev) => [insertedData as PortfolioItem, ...prev]);
+            }
+
             setForm(initialForm);
             setPreviewUrl('');
             setFileInputKey((prev) => prev + 1);
-
-            await loadData();
         } catch (error) {
             setError(
                 error instanceof Error
                     ? error.message
-                    : 'Не удалось обработать изображение'
+                    : 'Не удалось загрузить изображение'
             );
         } finally {
             setIsSaving(false);
