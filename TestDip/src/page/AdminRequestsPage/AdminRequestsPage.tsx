@@ -262,9 +262,6 @@ export default function AdminRequestsPage() {
                             </label>
 
                             <div className={styles.footer}>
-                                <span className={styles.agreement}>
-                                    Согласие: {request.agreement ? 'да' : 'нет'}
-                                </span>
 
                                 <button
                                     className={styles.saveButton}

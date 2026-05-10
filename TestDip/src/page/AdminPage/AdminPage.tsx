@@ -14,12 +14,17 @@ export default function AdminPage() {
 
         <Link className={styles.card} to="/admin/courses">
           <h2>Курсы</h2>
-          <p>Скоро добавим управление курсами</p>
+          <p>Добавляй новые курсы и управляй списком.</p>
         </Link>
 
         <Link className={styles.card} to="/admin/portfolio">
           <h2>Портфолио</h2>
-          <p>Скоро добавим загрузку работ</p>
+          <p>Добавляй новые работы учеников и изображения</p>
+        </Link>
+
+        <Link className={styles.card} to="/admin/teachers">
+          <h2>Преподаватели</h2>
+          <p>Добавляй преподавателей, фото и информацию для карточек.</p>
         </Link>
       </div>
     </div>
