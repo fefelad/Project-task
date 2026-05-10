@@ -10,6 +10,7 @@ import ProtectedAdminRoute from './ProtectedAdminRoute';
 import AdminLayout from './AdminLayout/AdminLayout';
 import AdminCoursesPage from '../page/AdminCoursesPage/AdminCoursesPage';
 import AdminPortfolioPage from '../page/AdminPortfolioPage/AdminPortfolioPage';
+import AdminTeachersPage from '../page/AdminTeachersPage/AdminTeachersPage';
 
 function AppContent() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function AppContent() {
           <Route path="requests" element={<AdminRequestsPage />} />
           <Route path="courses" element={<AdminCoursesPage />} />
           <Route path="portfolio" element={<AdminPortfolioPage />} />
+          <Route path="teachers" element={<AdminTeachersPage />} />
         </Route>
       </Routes>
 

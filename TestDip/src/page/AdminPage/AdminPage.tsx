@@ -11,15 +11,16 @@ export default function AdminPage() {
           <p>Просмотр заявок и статусов оплаты</p>
         </Link>
 
-        <div className={styles.card}>
+
+        <Link className={styles.card} to="/admin/courses">
           <h2>Курсы</h2>
           <p>Скоро добавим управление курсами</p>
-        </div>
+        </Link>
 
-        <div className={styles.card}>
+        <Link className={styles.card} to="/admin/portfolio">
           <h2>Портфолио</h2>
           <p>Скоро добавим загрузку работ</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
