@@ -1,6 +1,7 @@
 import Text from '../Text/Text';
 import styles from './Footer.module.css';
-import logo from '../../../assets/Logo/logo.png'
+import logo from '../../../assets/Logo/logo.png';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
     return (
@@ -19,6 +20,12 @@ export const Footer = () => {
                     <a href="#portfolio">Портфолио</a>
                     <a href="#about">О школе</a>
                     <a href="#contacts">Контакты</a>
+                    <Link
+                        to="/privacy"
+                        rel="noopener noreferrer"
+                    >
+                        Политика обработки персональных данных
+                    </Link>
                 </nav>
 
                 <div className={styles.contacts}>

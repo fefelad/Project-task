@@ -9,6 +9,7 @@ import PortfolioPage from '../page/PortfolioPage/PortfolioPage';
 import AboutPage from '../page/AboutPage/AboutPage';
 import ContactPage from '../page/ContactPage/ContactPage';
 import NotFoundPage from '../page/PageNotFound/PageNotFound';
+import PolisPage from '../page/PolisPage/PolisPage';
 
 export interface RouteConfig {
   path: string;
@@ -28,6 +29,7 @@ export const AppRoutes: RouteConfig[] = [
 
   { path: '/cours/:courseId', name: 'Курс', component: CourseDetailPage },
   { path: '/teachers/:teacherId', name: 'Преподаватель', component: TeacherDetailPage },
+  { path: '/privacy', name: 'Политика', component: PolisPage, showInHeader: false },
 
   { path: '/404', name: '404', component: NotFoundPage },
 ];

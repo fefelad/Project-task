@@ -1,0 +1,111 @@
+.personalDataPolicyPage {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    color: #000000;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+    box-sizing: border-box;
+}
+
+.title {
+    display: block;
+    padding: 150px 0 60px;
+    font-size: 64px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sectionTitle {
+    display: block;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.intro {
+    display: block;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 300;
+}
+
+.point {
+    display: block;
+    padding-left: 50px;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 28px 90px;
+    }
+
+    .title {
+        padding: 110px 0 48px;
+        font-size: 52px;
+    }
+
+    .sectionTitle {
+        font-size: 30px;
+    }
+
+    .intro,
+    .point {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 16px 64px;
+    }
+
+    .title {
+        padding: 80px 0 36px;
+        font-size: 38px;
+        line-height: 1.1;
+    }
+
+    .content {
+        gap: 32px;
+    }
+
+    .section {
+        gap: 16px;
+    }
+
+    .sectionTitle {
+        font-size: 26px;
+    }
+
+    .intro,
+    .point {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .point {
+        padding-left: 24px;
+    }
+}
