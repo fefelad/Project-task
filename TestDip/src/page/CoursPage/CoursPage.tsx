@@ -63,7 +63,7 @@ export default function CoursPage() {
     <section className={styles.container}>
       {activeTab === 'Все' && (
         <div className={styles.podvesLayer}>
-          <img src={podves2} alt="" className={styles.podves} />
+          <img src={podves2} alt="Линия для курсов" className={styles.podves} />
         </div>
       )}
 

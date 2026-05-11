@@ -33,9 +33,9 @@ export default function HomeCoursesBlock() {
         </Text>
 
         <div className={styles.arrows}>
-          <img src={arrow1} className={styles.arrow1} alt="" />
-          <img src={arrow2} className={styles.arrow2} alt="" />
-          <img src={arrow3} className={styles.arrow3} alt="" />
+          <img src={arrow1} className={styles.arrow1} alt="Стрелка" />
+          <img src={arrow2} className={styles.arrow2} alt="Стрелка" />
+          <img src={arrow3} className={styles.arrow3} alt="Стрелка" />
         </div>
 
         <div className={styles.cardsRow}>

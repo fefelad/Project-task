@@ -78,7 +78,7 @@ export default function HomePage() {
         </Text>
 
         <div className={styles.lenta}>
-          <img src={Lenta} alt="" />
+          <img src={Lenta} alt="Лента у преподавателей" />
         </div>
 
         <div className={styles.teacherGrid}>
@@ -120,21 +120,21 @@ export default function HomePage() {
             </Text>
           </div>
           <div className={styles.mainRow}>
-            <img src={work1} alt="#" />
+            <img src={work1} alt="Работа 1" />
             <div className={styles.row1}>
-              <img src={work2} alt="#" />
-              <img src={work3} alt="#" />
+              <img src={work2} alt="Работа 2" />
+              <img src={work3} alt="Работа 3" />
             </div>
           </div>
         </div>
 
         <div className={styles.row2}>
-          <img src={work4} alt="#" />
+          <img src={work4} alt="Работа 4" />
           <Text className={styles.row2Text} fontFamily='onest'>
             Мы гордимся прогрессом наших учеников! 
               В этих работах — не только навыки, но и первый шаг в профессию
           </Text>
-          <img src={work5} alt="#" />
+          <img src={work5} alt="Работа 5" />
         </div>
       </div>
 

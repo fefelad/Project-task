@@ -68,7 +68,7 @@ export default function CardTeacher() {
         ))}
 
         <div className={styles.catContainerTeacherSpicok}>
-          <img src={cat4} alt="#" />
+          <img src={cat4} alt="Фото кота" />
         </div>
       </div>
 

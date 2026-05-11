@@ -80,7 +80,7 @@ export default function PortfolioPage() {
       </div>
       <div className={styles.WrapperPromo}>
         <div className={styles.pauk}>
-          <img src={ph1} alt="#" />
+          <img src={ph1} alt="Фото первое в портфолио" />
         </div>
 
         <div className={styles.wrapperPromoRow}>
@@ -93,11 +93,11 @@ export default function PortfolioPage() {
               <path d="M103.964 0.776289C102.427 1.8307 99.3258 4.06 95.9605 6.60915C62.4024 32.0208 34.4993 45.6547 34.0556 37.0017C33.8376 33.0441 41.9091 22.6724 48.4251 18.4508C50.7095 16.9596 48.8159 16.4219 46.7361 17.4654C42.6033 19.5461 34.522 26.8202 32.0278 31.2065C28.7449 37.0351 30.7792 41.0937 37.2058 41.5584C44.4702 42.0763 65.6636 32.5686 78.8395 22.8393C82.4605 20.1714 100.52 5.70541 105.271 1.71181C107.788 -0.34761 105.164 -0.0258952 103.964 0.776289Z" fill="#FF0000" />
             </svg>
           </div>
-          <img src={ph2} alt="#" />
+          <img src={ph2} alt="Фото второе в портфолио" />
         </div>
 
         <div className={styles.wrapperPromoRow2}>
-          <img src={ph3} alt="#" />
+          <img src={ph3} alt="Фото третье в портфолио" />
           <div>
             <Btn width='100%'  color='blue' onClick={() => navigate('/about')}>
               Подробнее

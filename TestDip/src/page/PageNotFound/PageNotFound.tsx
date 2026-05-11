@@ -12,7 +12,7 @@ export default function NotFoundPage() {
       </Text>
 
       <div className={styles.catContainer}>
-        <img src={cat} alt="#" />
+        <img src={cat} alt="Фото кота" />
       </div>
 
       <Text fontFamily="onest" className={styles.description}>

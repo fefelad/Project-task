@@ -93,10 +93,10 @@ export default function LearningSteps() {
         </div>
 
         {/* Стрелки */}
-        <img src={arrow1} className={styles.arrow1} alt="" />
-        <img src={arrow2} className={styles.arrow2} alt="" />
-        <img src={arrow3} className={styles.arrow3} alt="" />
-        <img src={arrow4} className={styles.arrow4} alt="" />
+        <img src={arrow1} className={styles.arrow1} alt="Стрелка" />
+        <img src={arrow2} className={styles.arrow2} alt="Стрелка" />
+        <img src={arrow3} className={styles.arrow3} alt="Стрелка" />
+        <img src={arrow4} className={styles.arrow4} alt="Стрелка" />
       </div>
     </section>
   );
