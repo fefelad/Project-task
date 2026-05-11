@@ -5,19 +5,12 @@
     color: #000000;
 }
 
-.container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 40px 120px;
-    box-sizing: border-box;
-}
 
 .title {
     display: block;
     padding: 150px 0 60px;
-    font-size: 64px;
-    line-height: 1.05;
+    font-size: 36px;
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -43,7 +36,7 @@
 
 .intro {
     display: block;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.35;
     font-weight: 300;
 }
@@ -51,44 +44,88 @@
 .point {
     display: block;
     padding-left: 50px;
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.35;
     font-weight: 300;
 }
 
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 28px 90px;
-    }
+@media (max-width: 1200px) {
 
     .title {
-        padding: 110px 0 48px;
-        font-size: 52px;
+        font-size: 32px;
     }
 
     .sectionTitle {
-        font-size: 30px;
+        font-size: 28px;
     }
 
-    .intro,
+    .intro {
+        font-size: 22px;
+    }
+
     .point {
-        font-size: 24px;
+        font-size: 28px;
     }
 }
 
-@media (max-width: 640px) {
-    .container {
-        padding: 0 16px 64px;
-    }
+@media (max-width: 1024px) {
 
     .title {
-        padding: 80px 0 36px;
-        font-size: 38px;
-        line-height: 1.1;
+        font-size: 30px;
+    }
+
+    .sectionTitle {
+        font-size: 26px;
+    }
+
+    .intro {
+        font-size: 20px;
+    }
+
+    .point {
+        font-size: clamp(24px, 2.5vw, 26px);
+    }
+}
+
+@media (max-width: 834px) {
+
+    .title {
+        padding: 110px 0 48px;
+        font-size: 28px;
     }
 
     .content {
-        gap: 32px;
+        gap: 36px;
+    }
+
+    .section {
+        gap: 20px;
+    }
+
+    .sectionTitle {
+        font-size: 22px;
+    }
+
+    .intro {
+        font-size: clamp(18px, 2.35vw, 20px);
+    }
+
+    .point {
+        padding-left: 36px;
+        font-size: clamp(20px, 2.65vw, 22px);
+    }
+}
+
+@media (max-width: 576px) {
+
+    .title {
+        padding: 80px 0 36px;
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .content {
+        gap: 30px;
     }
 
     .section {
@@ -96,16 +133,17 @@
     }
 
     .sectionTitle {
-        font-size: 26px;
+        font-size: 18px;
     }
 
-    .intro,
-    .point {
-        font-size: 20px;
+    .intro {
+        font-size: clamp(16px, 4vw, 18px);
         line-height: 1.4;
     }
 
     .point {
         padding-left: 24px;
+        font-size: clamp(16px, 4vw, 18px);
+        line-height: 1.4;
     }
 }
