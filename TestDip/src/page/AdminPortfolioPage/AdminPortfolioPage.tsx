@@ -4,6 +4,8 @@ import { supabase } from '../../components/supabase/supabase';
 import Loader from '../../shared/ui/Loader/Loader';
 import ModalPopup from '../../shared/ui/ModalPopup/ModalPopup';
 import styles from './AdminPortfolioPage.module.css';
+import applyAbortSignal from '../../shared/lib/applyAbortSignal/applyAbortSignal';
+
 
 type Id = string | number;
 
@@ -230,11 +232,12 @@ const fetchPortfolioItems = async (signal: AbortSignal) => {
     const timeout = withTimeoutSignal(signal);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('portfolio')
             .select('*')
-            .order('id', { ascending: false })
-            .abortSignal(timeout.signal);
+            .order('id', { ascending: false });
+
+        const { data, error } = await applyAbortSignal(query, timeout.signal);
 
         if (error) {
             throw error;
@@ -250,11 +253,12 @@ const fetchCourses = async (signal: AbortSignal) => {
     const timeout = withTimeoutSignal(signal);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('courses')
             .select('*')
-            .order('id', { ascending: false })
-            .abortSignal(timeout.signal);
+            .order('id', { ascending: false });
+
+        const { data, error } = await applyAbortSignal(query, timeout.signal);
 
         if (error) {
             throw error;
@@ -305,12 +309,13 @@ const createPortfolioItem = async (form: PortfolioForm) => {
     }, 15000);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('portfolio')
             .insert(newPortfolioItem)
             .select('*')
-            .single()
-            .abortSignal(controller.signal);
+            .single();
+
+        const { data, error } = await applyAbortSignal(query, controller.signal);
 
         if (error) {
             throw error;
@@ -330,11 +335,12 @@ const removePortfolioItem = async (item: PortfolioItem) => {
     }, 15000);
 
     try {
-        const { error } = await supabase
+        const query = supabase
             .from('portfolio')
             .delete()
-            .eq('id', item.id)
-            .abortSignal(controller.signal);
+            .eq('id', item.id);
+
+        const { error } = await applyAbortSignal(query, controller.signal);
 
         if (error) {
             throw error;

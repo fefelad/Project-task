@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Text from '../../shared/ui/Text/Text';
 import style from './Polis.module.css'
 

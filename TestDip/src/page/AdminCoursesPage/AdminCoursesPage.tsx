@@ -1,8 +1,11 @@
 import { useRef, useState, type FormEvent } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
 import { supabase } from '../../components/supabase/supabase';
+import applyAbortSignal from '../../shared/lib/applyAbortSignal/applyAbortSignal';
 import Loader from '../../shared/ui/Loader/Loader';
 import ModalPopup from '../../shared/ui/ModalPopup/ModalPopup';
+
 import styles from './AdminCoursesPage.module.css';
 
 type Id = string | number;
@@ -117,11 +120,12 @@ const fetchCourses = async (signal: AbortSignal) => {
     const timeout = withTimeoutSignal(signal);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('courses')
             .select('*')
-            .order('id', { ascending: false })
-            .abortSignal(timeout.signal);
+            .order('id', { ascending: false });
+
+        const { data, error } = await applyAbortSignal(query, timeout.signal);
 
         if (error) {
             throw error;
@@ -137,11 +141,12 @@ const fetchTeachers = async (signal: AbortSignal) => {
     const timeout = withTimeoutSignal(signal);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('teachers')
             .select('*')
-            .order('id', { ascending: true })
-            .abortSignal(timeout.signal);
+            .order('id', { ascending: true });
+
+        const { data, error } = await applyAbortSignal(query, timeout.signal);
 
         if (error) {
             throw error;
@@ -157,11 +162,12 @@ const fetchCategories = async (signal: AbortSignal) => {
     const timeout = withTimeoutSignal(signal);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('categories')
             .select('*')
-            .order('id', { ascending: true })
-            .abortSignal(timeout.signal);
+            .order('id', { ascending: true });
+
+        const { data, error } = await applyAbortSignal(query, timeout.signal);
 
         if (error) {
             throw error;
@@ -181,7 +187,7 @@ const createCourse = async (form: CourseForm) => {
     }, 15000);
 
     try {
-        const { data, error } = await supabase
+        const query = supabase
             .from('courses')
             .insert({
                 title: form.title.trim(),
@@ -197,8 +203,9 @@ const createCourse = async (form: CourseForm) => {
                 category_id: normalizeId(form.category_id),
             })
             .select('*')
-            .single()
-            .abortSignal(controller.signal);
+            .single();
+
+        const { data, error } = await applyAbortSignal(query, controller.signal);
 
         if (error) {
             throw error;
@@ -218,11 +225,12 @@ const removeCourse = async (courseId: Id) => {
     }, 15000);
 
     try {
-        const { error } = await supabase
+        const query = supabase
             .from('courses')
             .delete()
-            .eq('id', courseId)
-            .abortSignal(controller.signal);
+            .eq('id', courseId);
+
+        const { error } = await applyAbortSignal(query, controller.signal);
 
         if (error) {
             throw error;
