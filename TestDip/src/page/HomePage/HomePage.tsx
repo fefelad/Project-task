@@ -3,6 +3,7 @@ import Text, { TextSizes } from '../../shared/ui/Text/Text';
 import PopupInfo from '../../shared/ui/PopupInfo/PopupInfo';
 import styles from './HomePage.module.css';
 import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
+import Media500 from '../../assets/HomePage/media500.png';
 import HomePageCrad from '../../shared/ui/HomePageCard/HomePageCrad';
 import { homePageTeachers } from '../../shared/ui/HomePageCard/modal';
 import Lenta from '../../assets/HomePage/lenta.svg';
@@ -23,25 +24,40 @@ export default function HomePage() {
     <>
       <div className={styles.container_homepage}>
         <div className={styles.imageWrapper}>
-          <img
-            src={PeopleHomePage}
-            alt="Ребенок"
-            className={styles.peopleImage}
-          />
+          <picture>
+            <source media="(max-width: 500px)" srcSet={Media500} />
+            <img
+              src={PeopleHomePage}
+              alt="Ребенок"
+              className={styles.peopleImage}
+            />
+          </picture>
         </div>
 
-        <Text className={styles.HomePageTitle} size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
-          Повысьте уровень ребенка <br className={styles.br1} /> с помощью нашей
-        </Text>
+        <div className={styles.heroTitleGroup}>
+          <Text className={styles.HomePageTitle} size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
+            <span className={styles.heroMobOnly}>
+              <span className={styles.heroLine1}>Повысьте уровень</span>
+              <span className={styles.heroLine2}>ребенка с помощью</span>
+            </span>
+            <span className={styles.heroDeskOnly}>
+              Повысьте уровень ребенка <br className={styles.br1} /> с помощью{' '}
+              <span className={styles.heroOurDesk}>нашей</span>
+            </span>
+          </Text>
 
-        <div className={styles.schoolsContainer}>
-          <div className={styles.schoolsBlock}>
-            <Text size={TextSizes.XL9} className={styles.schoolsText}>
-              школы
-            </Text>
+          <div className={styles.heroLine3}>
+            <span className={styles.heroOurMob}>нашей</span>
+            <div className={styles.schoolsContainer}>
+              <div className={styles.schoolsBlock}>
+                <Text size={TextSizes.XL9} className={styles.schoolsText}>
+                  школы
+                </Text>
+              </div>
+
+              <Text className={styles.shoolsTextDesign} size={TextSizes.XL9}>дизайна</Text>
+            </div>
           </div>
-
-          <Text className={styles.shoolsTextDesign} size={TextSizes.XL9}>дизайна</Text>
         </div>
 
         <Text size={TextSizes.XL2} className={styles.shoolText_desc}>

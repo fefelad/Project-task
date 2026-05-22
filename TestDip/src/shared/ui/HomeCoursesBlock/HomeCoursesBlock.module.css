@@ -420,7 +420,7 @@
 
     .title {
         font-weight: 400;
-        font-size: 28px;
+        font-size: 26px;
         color: #fff;
         border-radius: 10px;
         height: 64px;
@@ -430,6 +430,6 @@
 
     .coursesSection {
         overflow: visible;
-        margin-top: 60px;
+        margin-top: 52px;
     }
 }
