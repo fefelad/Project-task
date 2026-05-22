@@ -131,7 +131,6 @@ li {
     height: 420px;
     object-fit: cover;
     display: block;
-    border-radius: 20px;
 }
 
 /* стрелки по центру */
@@ -303,7 +302,7 @@ li {
     }
 
     .buttonWrapper {
-        margin-top: 0px;
+        margin-top: 20px;
     }
 
     .CoursInfoStep {
@@ -317,6 +316,11 @@ li {
     }
 
     .bottomNavigation {
-        gap: 16px;
+        gap: 50px;
+    }
+
+    .bottomNavIcon {
+        width: 68px;
+        height: 10px;
     }
 }

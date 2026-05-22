@@ -85,7 +85,7 @@ export default function PortfolioPage() {
 
         <div className={styles.wrapperPromoRow}>
           <Text className={styles.deskPortfolio} fontFamily='onest'>
-            Работы наших учеников — это не “просто картинки”, а продуманные проекты, где видно рост: от идеи и наброска до аккуратного digital‑результата.
+            Работы наших учеников — это не просто картинки, а продуманные проекты, где видно рост: от идеи и наброска до аккуратного digital‑результата.
           </Text>
           <div className={styles.possvg}>
             <svg width="113" height="44" viewBox="0 0 113 44" fill="none" xmlns="http://www.w3.org/2000/svg">

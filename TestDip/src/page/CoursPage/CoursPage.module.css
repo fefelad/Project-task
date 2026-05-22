@@ -166,7 +166,8 @@
     }
 
     .TitleCourse {
-        font-size: 40px;
+        font-size: 48px;
+        font-weight: 500;
     }
 
     .courses {
