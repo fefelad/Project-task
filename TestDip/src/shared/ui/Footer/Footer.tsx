@@ -8,18 +8,20 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.inner}>
                 <Text fontFamily="onest" className={styles.logo}>
-                    <img src={logo} alt="logo" />
+                    <img className={styles.logo_img} src={logo} alt="logo" />
                 </Text>
 
                 <nav className={styles.nav}>
-                    <a href="#courses">Курсы</a>
-                    <a href="#teachers">Преподаватели</a>
+                    <Link to="/cours">Курсы</Link>
+                    <Link to="/teachers">Преподаватели</Link>
                 </nav>
 
                 <nav className={styles.nav}>
-                    <a href="#portfolio">Портфолио</a>
-                    <a href="#about">О школе</a>
-                    <a href="#contacts">Контакты</a>
+                    <Link to="/cours">Курсы</Link>
+                    <Link to="/teachers">Преподаватели</Link>
+                    <Link to="/portfolio">Портфолио</Link>
+                    <Link to="/about">О школе</Link>
+                    <Link to="/contact">Контакты</Link>
                     <Link
                         to="/privacy"
                         rel="noopener noreferrer"

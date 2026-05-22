@@ -43,7 +43,7 @@ function Header() {
         <>
             <header className={styles.container_header}>
                 <Link to="/" onClick={closeMenu} className={styles.logo_link}>
-                    <img src={logo} alt="logo" />
+                    <img className={styles.logo_img} src={logo} alt="logo" />
                 </Link>
 
                 <nav className={styles.navigation_list}>

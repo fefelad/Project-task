@@ -138,6 +138,10 @@
         row-gap: 22px;
     }
 
+    .logo_img {
+        width: 140px;
+    }
+
     .logo,
     .contacts {
         grid-column: 1;
