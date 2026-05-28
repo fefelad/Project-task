@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 
 import Text, { TextSizes } from '../../../../shared/ui/Text/Text';
 import Card from '../../../../shared/ui/Card/Card';
-import { courseCards, getInfoTexts } from '../../modal';
+import { courseCards, getCoursePageDetail, getInfoTexts } from '../../modal';
 import Btn from '../../../../shared/ui/Btn/Btn';
 import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 
@@ -29,8 +29,9 @@ export default function CourseDetailPage() {
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   const card = courseCards.find(c => c.id === parseInt(courseId || '0'));
+  const pageDetail = card ? getCoursePageDetail(card.id) : undefined;
 
-  if (!card) return <div>Курс не найден</div>;
+  if (!card || !pageDetail) return <div>Курс не найден</div>;
 
   const lessonSlides = [
     Carusel1,
@@ -48,19 +49,19 @@ export default function CourseDetailPage() {
       </Btn>
 
       <div className={styles.cardWrapper}>
-        <Card
-          title={card.title}
-          secondtitle={card.secodetitle}
-          description={card.description}
-          infoTexts={getInfoTexts(card.title)}
-          widthPercent={80}
-        />
+        <div className={styles.courseCardWrap}>
+          <Card
+            title={card.title}
+            secondtitle={card.secodetitle}
+            description={card.description}
+            infoTexts={getInfoTexts(card.title)}
+            className={styles.detailCourseCard}
+          />
+        </div>
 
         <div className={styles.contentBlock}>
           <Text fontFamily="onest" className={styles.DetailCardDecription}>
-            Ребенок учится видеть в изображении структуру, а не просто красивую картинку.
-            Он начинает понимать, из чего состоит визуальная работа и почему одни решения
-            выглядят гармонично, а другие — нет.
+            {pageDetail.detailDescription}
           </Text>
 
           <div className={styles.WrapperColums}>
@@ -74,12 +75,16 @@ export default function CourseDetailPage() {
               </div>
 
               <div className={styles.WrapperText}>
-                <Text className={styles.hestag} size={TextSizes.XL2} fontFamily="onest">
-                  #ЮныйВебДизайнер
-                </Text>
-                <Text className={styles.hestag} size={TextSizes.XL2} fontFamily="onest">
-                  #ГрафДизайнДетям
-                </Text>
+                {pageDetail.hashtags.map((tag) => (
+                  <Text
+                    key={tag}
+                    className={styles.hestag}
+                    size={TextSizes.XL2}
+                    fontFamily="onest"
+                  >
+                    {tag}
+                  </Text>
+                ))}
               </div>
 
               <div className={styles.buttonWrapper}>
@@ -101,7 +106,10 @@ export default function CourseDetailPage() {
       </div>
 
       <div>
-        <LearningSteps />
+        <LearningSteps
+          steps={pageDetail.steps}
+          resultText={pageDetail.resultText}
+        />
       </div>
 
       <section className={styles.stepsSection}>

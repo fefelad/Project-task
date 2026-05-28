@@ -34,7 +34,7 @@ export default function AboutPage() {
                 Занятия в нашей школе
               </Text>
               <Text className={styles.TextDesctiption} fontFamily='onest' weight={TextWeight.REGULAR} size={TextSizes.XL2}>
-                Занятия проходят онлайн или офлайн, в комфортном темпе<br className={styles.mobileBreak} />
+                Занятия проходят быстро и в комфортном темпе<br className={styles.mobileBreak} />
                 и с большим количеством практики. По ходу обучения ребенок собирает готовые работы, 
                 а родители видят прогресс по понятным результатам, а не по ощущениям.
               </Text>
