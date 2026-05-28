@@ -19,6 +19,8 @@ interface FeedbackProps {
     showForm?: boolean;
     onSubmitSuccess?: (data: FeedbackFormData) => void;
     textBtn?: string;
+    adminComment?: string;
+    successDescription?: string;
 }
 
 export default function Feedback({
@@ -28,6 +30,8 @@ export default function Feedback({
     showForm = true,
     onSubmitSuccess,
     textBtn,
+    adminComment,
+    successDescription,
 }: FeedbackProps) {
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
@@ -61,6 +65,7 @@ export default function Feedback({
                     name: data.name.trim(),
                     email: data.email.trim(),
                     agreement: data.agreement,
+                    ...(adminComment ? { admin_comment: adminComment } : {}),
                 });
 
             if (error) {
@@ -188,7 +193,10 @@ export default function Feedback({
             <ModalPopup
                 isOpen={isSuccessModalOpen}
                 title="Заявка отправлена!"
-                description="Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время."
+                description={
+                    successDescription
+                    || 'Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее время.'
+                }
                 confirmText="Хорошо"
                 onClose={() => setIsSuccessModalOpen(false)}
             />

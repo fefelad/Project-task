@@ -1,0 +1,49 @@
+.enrollModal {
+    padding: 20px;
+}
+
+@media (max-width: 1200px),
+    (max-width: 768px),
+    (max-width: 576px),
+    (max-width: 390px) {
+    .enrollModal {
+        padding: 20px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formLabel {
+    font-family: var(--font-onest);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    color: #000;
+}
+
+.formLabel::after {
+    content: '*';
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.checkboxGroup {
+    margin-top: 4px;
+}
+
+.submitButton {
+    margin-top: 8px;
+    width: 100%;
+}

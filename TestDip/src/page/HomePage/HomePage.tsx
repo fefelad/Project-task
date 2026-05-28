@@ -16,6 +16,7 @@ import work3 from '../../assets/HomePage/work33.png';
 import work4 from '../../assets/HomePage/work44.png';
 import work5 from '../../assets/HomePage/work55.png';
 import { FAQItem } from '../../shared/ui/FAQItem/FAQItem';
+import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 
 
 export default function HomePage() {
@@ -153,6 +154,15 @@ export default function HomePage() {
           <img src={work5} alt="Работа 5" />
         </div>
       </div>
+
+      <Feedback
+        title="Хотите узнать больше о наших курсах?"
+        fullWidth
+        textBtn="Оставить заявку"
+      >
+        Оставьте контакты — мы перезвоним, ответим на вопросы и поможем подобрать
+        курс под возраст и интересы ребёнка. Первая консультация бесплатная.
+      </Feedback>
 
       <div className={styles.containerFaq}>
         <Text fontFamily='involve' className={styles.faqTitle}>

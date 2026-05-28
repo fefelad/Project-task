@@ -5,6 +5,7 @@ import content2 from '../../assets/AboutPage/2.png';
 import content3 from '../../assets/AboutPage/3.png';
 import content4 from '../../assets/AboutPage/4.png';
 import classNames from 'classnames';
+import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 
 
 export default function AboutPage() {
@@ -63,6 +64,17 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      <Feedback
+        fullWidth
+        title="Готовы познакомиться со школой поближе?"
+        textBtn="Оставить заявку"
+        adminComment="Заявка со страницы «О школе»"
+        successDescription="Спасибо! Мы получили вашу заявку и свяжемся с вами, чтобы рассказать о школе и подобрать курс."
+      >
+        Оставьте контакты — расскажем о форматах занятий, курсах и расписании,
+        ответим на вопросы и поможем выбрать направление для вашего ребёнка.
+      </Feedback>
     </div>
-  )
+  );
 }

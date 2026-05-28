@@ -11,6 +11,7 @@ import AdminLayout from './AdminLayout/AdminLayout';
 import AdminCoursesPage from '../page/AdminCoursesPage/AdminCoursesPage';
 import AdminPortfolioPage from '../page/AdminPortfolioPage/AdminPortfolioPage';
 import AdminTeachersPage from '../page/AdminTeachersPage/AdminTeachersPage';
+import ScrollToTop from './ScrollToTop';
 
 function AppContent() {
   const location = useLocation();
@@ -60,6 +61,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter basename="/Project-task">
+      <ScrollToTop />
       <AppContent />
     </BrowserRouter>
   );

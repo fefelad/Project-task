@@ -28,7 +28,7 @@ export const Card = memo(({
 
     return (
         <div
-            className={`${styles.card} ${className || ''}`}
+            className={`${styles.card} ${onClick ? styles.cardClickable : ''} ${className || ''}`}
             onClick={onClick}
             style={
                 widthPercent

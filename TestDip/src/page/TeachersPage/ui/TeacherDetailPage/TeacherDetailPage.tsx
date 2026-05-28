@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 import Text, { TextSizes, TextWeight } from '../../../../shared/ui/Text/Text';
 import Btn from '../../../../shared/ui/Btn/Btn';
 import Card from '../../../../shared/ui/Card/Card';
+import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 import styles from './TeacherDetailPage.module.css';
 import photo1 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo1.png';
 import photo2 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo2.png';
@@ -312,11 +313,19 @@ export default function TeacherDetailPage() {
         </div>
         <div className={styles.teacherCoursesfooterContainer}>
           <img className={styles.photo3} src={photo3} alt="Фото преподавателя" />
-          <Btn  width='100%' color='blue'>
-            Записаться
-          </Btn>
         </div>
       </div>
+
+      <Feedback
+        fullWidth
+        title={`Запишитесь к ${teacher.nameDative}`}
+        textBtn="Записаться на пробное занятие"
+        adminComment={`Заявка к преподавателю: ${teacher.name} (${teacher.role}, id: ${teacher.id})`}
+        successDescription={`Спасибо! Мы получили вашу заявку к ${teacher.nameDative} и свяжемся с вами в ближайшее время.`}
+      >
+        Оставьте контакты — мы перезвоним, ответим на вопросы и подберём удобное
+        расписание занятий у {teacher.namePrepositional}. Первая консультация бесплатная.
+      </Feedback>
     </div>
   );
 }

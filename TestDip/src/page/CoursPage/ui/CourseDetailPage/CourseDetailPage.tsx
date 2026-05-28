@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -20,12 +20,13 @@ import Carusel3 from './../../../../assets/CoursePage/CoursePageDeatil/carusel3.
 
 import styles from './CourseDetailPage.module.css';
 import LearningSteps from '../../../../shared/ui/LearningSteps/LearningSteps';
+import CourseEnrollModal from './CourseEnrollModal/CourseEnrollModal';
 
 export default function CourseDetailPage() {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
 
-  const feedbackRef = useRef<HTMLDivElement>(null);
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   const card = courseCards.find(c => c.id === parseInt(courseId || '0'));
 
@@ -39,13 +40,6 @@ export default function CourseDetailPage() {
     Carusel1,
     Carusel3,
   ];
-
-  const scrollToFeedback = () => {
-    feedbackRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
 
   return (
     <div className={styles.container}>
@@ -89,7 +83,7 @@ export default function CourseDetailPage() {
               </div>
 
               <div className={styles.buttonWrapper}>
-                <Btn color="orange" width="100%" onClick={scrollToFeedback}>
+                <Btn color="orange" width="100%" onClick={() => setIsEnrollModalOpen(true)}>
                   Записаться на курс
                 </Btn>
               </div>
@@ -203,7 +197,14 @@ export default function CourseDetailPage() {
         </div>
       </section>
 
-      <div ref={feedbackRef} className={styles.feedbackScrollTarget}>
+      <CourseEnrollModal
+        isOpen={isEnrollModalOpen}
+        courseId={card.id}
+        courseTitle={card.title}
+        onClose={() => setIsEnrollModalOpen(false)}
+      />
+
+      <div className={styles.feedbackScrollTarget}>
         <Feedback
           fullWidth
           title="Если не смогли найти нужную информацию"

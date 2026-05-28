@@ -10,6 +10,9 @@ interface ModalPopupProps {
     confirmText?: string;
     cancelText?: string;
     isLoading?: boolean;
+    hideActions?: boolean;
+    contentClassName?: string;
+    modalClassName?: string;
     onClose: () => void;
     onConfirm?: () => void;
 }
@@ -22,6 +25,9 @@ function ModalPopup({
     confirmText = 'Хорошо',
     cancelText,
     isLoading = false,
+    hideActions = false,
+    contentClassName,
+    modalClassName,
     onClose,
     onConfirm,
 }: ModalPopupProps) {
@@ -58,7 +64,10 @@ function ModalPopup({
 
     return (
         <div className={styles.ModalOverlay} onClick={onClose}>
-            <div className={styles.Modal} onClick={(event) => event.stopPropagation()}>
+            <div
+                className={`${styles.Modal} ${modalClassName || ''}`}
+                onClick={(event) => event.stopPropagation()}
+            >
                 <button
                     type="button"
                     className={styles.ModalClose}
@@ -88,8 +97,13 @@ function ModalPopup({
                     </Text>
                 )}
 
-                {children && <div className={styles.ModalContent}>{children}</div>}
+                {children && (
+                    <div className={`${styles.ModalContent} ${contentClassName || ''}`}>
+                        {children}
+                    </div>
+                )}
 
+                {!hideActions && (
                 <div className={styles.ModalActions}>
                     {cancelText && (
                         <button
@@ -111,6 +125,7 @@ function ModalPopup({
                         {isLoading ? 'Подождите...' : confirmText}
                     </button>
                 </div>
+                )}
             </div>
         </div>
     );

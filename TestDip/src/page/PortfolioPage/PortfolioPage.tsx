@@ -13,6 +13,7 @@ import ph8 from '../../assets/PortfolioPage/uiPortfioloi/8.png';
 import ph9 from '../../assets/PortfolioPage/uiPortfioloi/9.png';
 import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
 import Btn from '../../shared/ui/Btn/Btn';
+import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 import { useNavigate } from 'react-router-dom';
 
 type PortfolioItem = {
@@ -148,6 +149,18 @@ export default function PortfolioPage() {
           Подробнее
         </Btn>
       </div>
+
+      <Feedback
+        fullWidth
+        title="Хотите, чтобы работа вашего ребёнка была здесь?"
+        textBtn="Записаться на курс"
+        adminComment="Заявка со страницы портфолио"
+        successDescription="Спасибо! Мы получили вашу заявку и скоро свяжемся с вами, чтобы рассказать о курсах и записи."
+      >
+        Каждая работа в этой галерее — проект нашего ученика. Запишите ребёнка на курс:
+        он освоит навыки, создаст свои проекты, а лучшие из них мы с радостью
+        покажем в портфолио школы.
+      </Feedback>
     </div>
   );
 }

@@ -10,6 +10,8 @@ export interface TeacherEducation {
 export interface TeacherData {
   id: string;
   name: string;
+  nameDative: string;
+  namePrepositional: string;
   role: string;
   experience: string;
   teachingExperience?: string;
@@ -27,6 +29,8 @@ export const teachersData: TeacherData[] = [
   {
     id: 'aleksandra-volkova',
     name: 'Александра Волкова',
+    nameDative: 'Александре Волковой',
+    namePrepositional: 'Александры Волковой',
     role: 'Графический дизайнер',
     experience: '8 лет',
     image: ImgAlexsandra,
@@ -59,6 +63,8 @@ export const teachersData: TeacherData[] = [
   {
     id: 'mark-belov',
     name: 'Марк Белов',
+    nameDative: 'Марку Белову',
+    namePrepositional: 'Марка Белова',
     role: 'UX/UI дизайнер',
     experience: 'более 10 лет',
     teachingExperience: '3 года',
@@ -94,6 +100,8 @@ export const teachersData: TeacherData[] = [
   {
     id: 'vera-shilina',
     name: 'Вера Шилина',
+    nameDative: 'Вере Шалиной',
+    namePrepositional: 'Веры Шалиной',
     role: 'Иллюстратор и арт-наставник',
     experience: '7 лет',
     teachingExperience: '2 года',
