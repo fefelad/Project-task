@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import styles from './HomeCoursesBlock.module.css';
-import { courseCards } from '../../../page/CoursPage/modal';
+import { courseCards, sortCourseCards } from '../../../page/CoursPage/modal';
 import Text from '../Text/Text';
 import HomeCourseCard from './ui/HomeCourseCard';
 import Btn from '../Btn/Btn';
@@ -13,7 +13,9 @@ import arrow3 from '../../../assets/HomePage/arrow3.svg';
 export default function HomeCoursesBlock() {
   const navigate = useNavigate();
 
-  const homeCourses = courseCards.slice(0, 3);
+  const homeCourses = sortCourseCards(
+    courseCards.filter(card => card.directions[0] === 'Веб-дизайн')
+  );
 
   return (
     <section className={styles.coursesSection}>

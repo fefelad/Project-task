@@ -45,7 +45,7 @@ export const homePageTeachers: HomePageTeacher[] = [
   },
   {
     id: 'ivan-petrov',
-    name: 'Иван Волков',
+    name: 'Иван Петров',
     image: prep3,
     tags: [
       'Макеты как у профи',

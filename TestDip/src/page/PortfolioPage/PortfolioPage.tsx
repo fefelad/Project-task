@@ -2,9 +2,6 @@ import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
 import Text from '../../shared/ui/Text/Text';
 import styles from './PortfolioPage.module.css';
-import ph1 from '../../assets/PortfolioPage/uiPortfioloi/1.png';
-import ph2 from '../../assets/PortfolioPage/uiPortfioloi/2.png';
-import ph3 from '../../assets/PortfolioPage/uiPortfioloi/3.png';
 import ph4 from '../../assets/PortfolioPage/uiPortfioloi/4.png';
 import ph5 from '../../assets/PortfolioPage/uiPortfioloi/5.png';
 import ph6 from '../../assets/PortfolioPage/uiPortfioloi/6.png';
@@ -15,12 +12,16 @@ import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
 import Btn from '../../shared/ui/Btn/Btn';
 import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 import { useNavigate } from 'react-router-dom';
+import { type DesignDirection } from '../CoursPage/modal';
 
 type PortfolioItem = {
   id: number;
   img: string;
   alt: string;
   text: string;
+  direction: DesignDirection;
+  childName: string;
+  age: number;
 };
 
 const portfolioItems: PortfolioItem[] = [
@@ -29,42 +30,63 @@ const portfolioItems: PortfolioItem[] = [
     img: ph4,
     alt: 'Постер Пёс и Кот',
     text: 'Постер для компании «Пёс&Кот» — компании, примиряющей пёсиков и котиков во всём пушистом мире.',
+    direction: 'Графический дизайн',
+    childName: 'Артём',
+    age: 8,
   },
   {
     id: 2,
     img: ph5,
     alt: 'Яркий плакат',
     text: 'Плакат в яркой палитре: учились делать акцент и не перегружать композицию деталями.',
+    direction: 'Графический дизайн',
+    childName: 'Мила',
+    age: 7,
   },
   {
     id: 3,
     img: ph6,
     alt: 'Карточки и баннеры',
     text: 'Карточки и баннеры для конвертов: отработали сетку, отступы и типографику. Такие навыки сразу делают работу лучше.',
+    direction: 'Веб-дизайн',
+    childName: 'Кирилл',
+    age: 10,
   },
   {
     id: 4,
     img: ph7,
     alt: 'Кошачий постер',
     text: 'Изящные когти, грациозная походка и роскошные усы — у каждого уважающего себя представителя кошачьих должна быть возможность показать себя с лучшей стороны.',
+    direction: 'Графический дизайн',
+    childName: 'София',
+    age: 9,
   },
   {
     id: 5,
     img: ph8,
     alt: 'Heco System',
     text: 'Heco System — это лаборатория, которая создаёт товарные знаки в виде лошадей. В данном проекте разработаны несколько таких знаков.',
+    direction: 'Моушин дизайн',
+    childName: 'Максим',
+    age: 7,
   },
   {
     id: 6,
     img: ph9,
     alt: 'Bionic',
     text: 'Bionic — кибер-зоопарк, в котором реальные животные заменены робо-копиями. Благодаря этому посетители могут не только смотреть на зверей, но и изучать необычный мир технологий.',
+    direction: 'Моушин дизайн',
+    childName: 'Алиса',
+    age: 10,
   },
   {
     id: 7,
     img: ph10,
     alt: 'Постер для магазина',
     text: 'Постер для магазина, связанного с товарами для животных.',
+    direction: 'Веб-дизайн',
+    childName: 'Даниил',
+    age: 8,
   },
 ];
 
@@ -73,43 +95,9 @@ export default function PortfolioPage() {
 
   return (
     <div className={styles.continerPortfolio}>
-
-      <div>
-        <Text fontFamily='involve' className={styles.titlePortfolio}>
-          Работы детей
-        </Text>
-      </div>
-      <div className={styles.WrapperPromo}>
-        <div className={styles.pauk}>
-          <img src={ph1} alt="Фото первое в портфолио" />
-        </div>
-
-        <div className={styles.wrapperPromoRow}>
-          <Text className={styles.deskPortfolio} fontFamily='onest'>
-            Работы наших учеников — это не просто картинки, а продуманные проекты, где видно рост: от идеи и наброска до аккуратного digital‑результата.
-          </Text>
-          <div className={styles.possvg}>
-            <svg width="113" height="44" viewBox="0 0 113 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M72.12 6.43672C79.8841 7.3742 60.0375 19.6273 53.2628 23.4848C40.6426 30.6906 43.7868 30.755 48.4263 28.182C50.0827 27.2693 54.9639 24.6379 59.2458 22.3505C72.2664 15.3892 75.6429 13.1214 77.529 10.2191C81.7966 3.64034 64.5882 1.40392 51.2109 6.77344C33.4819 13.9068 10.333 30.1449 5.7109 35.7286C3.49107 38.4273 4.24509 39.7805 11.4064 34.4642C37.1596 15.2356 59.4925 4.9124 72.12 6.43672Z" fill="#FF0000" />
-              <path d="M103.964 0.776289C102.427 1.8307 99.3258 4.06 95.9605 6.60915C62.4024 32.0208 34.4993 45.6547 34.0556 37.0017C33.8376 33.0441 41.9091 22.6724 48.4251 18.4508C50.7095 16.9596 48.8159 16.4219 46.7361 17.4654C42.6033 19.5461 34.522 26.8202 32.0278 31.2065C28.7449 37.0351 30.7792 41.0937 37.2058 41.5584C44.4702 42.0763 65.6636 32.5686 78.8395 22.8393C82.4605 20.1714 100.52 5.70541 105.271 1.71181C107.788 -0.34761 105.164 -0.0258952 103.964 0.776289Z" fill="#FF0000" />
-            </svg>
-          </div>
-          <img src={ph2} alt="Фото второе в портфолио" />
-        </div>
-
-        <div className={styles.wrapperPromoRow2}>
-          <img src={ph3} alt="Фото третье в портфолио" />
-          <div>
-            <Btn width='100%'  color='blue' onClick={() => navigate('/about')}>
-              Подробнее
-            </Btn>
-          </div>
-        </div>
-      </div>
-
       <div className={styles.wrapperrTopworkText}>
-        <Text className={styles.topWork}>
-          Лучшие работы
+        <Text className={styles.topWork} fontFamily='involve'>
+          Работы наших учеников        
         </Text>
       </div>
 
@@ -135,6 +123,16 @@ export default function PortfolioPage() {
                   alt={item.alt}
                   className={styles.portfolioCardImage}
                 />
+
+                <div className={styles.portfolioCardMeta}>
+                  <Text fontFamily="onest" className={styles.portfolioCardDirection}>
+                    {item.direction}
+                  </Text>
+                  <Text fontFamily="onest" className={styles.portfolioCardAuthor}>
+                    {item.childName}, {item.age} лет
+                  </Text>
+                </div>
+
                 <Text fontFamily="onest" className={styles.portfolioCardText}>
                   {item.text}
                 </Text>
@@ -146,7 +144,7 @@ export default function PortfolioPage() {
 
       <div className={styles.promoblockBtnfooter}>
         <Btn width="480px" color="blue" onClick={() => navigate('/about')}>
-          Подробнее
+          Узнать о школе
         </Btn>
       </div>
 

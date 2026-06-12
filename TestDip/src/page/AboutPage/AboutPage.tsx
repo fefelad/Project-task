@@ -16,7 +16,7 @@ export default function AboutPage() {
       </Text>
       <div className={styles.MainContent}>
         <Text className={styles.TitleText} fontFamily='onest' size={TextSizes.XL2}>
-          Мы — школа дизайна для детей 7–12 лет, где творчество превращается в понятный навык 
+          Мы — школа дизайна для детей 7–10 лет, где творчество превращается в понятный навык 
           и реальный результат. Обучаем веб и графическому дизайну через практику:<br className={styles.mobileBreak2}/>
           от первых идей до аккуратных digital‑проектов.
         </Text>

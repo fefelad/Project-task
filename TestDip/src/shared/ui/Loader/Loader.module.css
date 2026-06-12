@@ -22,7 +22,7 @@
 .dots span {
     display: block;
     border-radius: 50%;
-    background: #111;
+    background: var(--color-blue);
     animation: loaderBounce 0.8s infinite ease-in-out;
 }
 

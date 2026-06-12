@@ -228,7 +228,7 @@ export default function TeacherDetailPage() {
                     title={card.title}
                     secondtitle={card.secodetitle}
                     description={card.description}
-                    infoTexts={getInfoTexts(card.title)}
+                    infoTexts={getInfoTexts(card.id)}
                     onClick={() => navigate(`/cours/${card.id}`)}
                   />
                 </SwiperSlide>

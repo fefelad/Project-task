@@ -34,7 +34,7 @@ export const teachersData: TeacherData[] = [
     role: 'Графический дизайнер',
     experience: '8 лет',
     image: ImgAlexsandra,
-    courseIds: [1, 2, 3, 4, 5],
+    courseIds: [4, 5, 6],
     education: [
       {
         institution:
@@ -69,7 +69,7 @@ export const teachersData: TeacherData[] = [
     experience: 'более 10 лет',
     teachingExperience: '3 года',
     image: ImgMark,
-    courseIds: [2, 3, 4, 5, 6],
+    courseIds: [1, 2, 3, 7, 8, 9],
     education: [
       {
         institution:
@@ -106,7 +106,7 @@ export const teachersData: TeacherData[] = [
     experience: '7 лет',
     teachingExperience: '2 года',
     image: ImgVera,
-    courseIds: [1, 3, 4, 5, 6],
+    courseIds: [4, 5, 6, 7, 8, 9],
     education: [
       {
         institution:

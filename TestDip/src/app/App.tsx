@@ -12,6 +12,7 @@ import AdminCoursesPage from '../page/AdminCoursesPage/AdminCoursesPage';
 import AdminPortfolioPage from '../page/AdminPortfolioPage/AdminPortfolioPage';
 import AdminTeachersPage from '../page/AdminTeachersPage/AdminTeachersPage';
 import ScrollToTop from './ScrollToTop';
+import { SiteImageGate } from '../shared/ui/PageImageGate/PageImageGate';
 
 function AppContent() {
   const location = useLocation();
@@ -19,42 +20,44 @@ function AppContent() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className={isAdminRoute ? styles.container_admin : styles.container_main}>
-      {!isAdminRoute && <Header />}
+    <SiteImageGate enabled={!isAdminRoute}>
+      <div className={isAdminRoute ? styles.container_admin : styles.container_main}>
+        {!isAdminRoute && <Header />}
 
-      <Routes>
-        {AppRoutes.map((route) => {
-          const Component = route.component;
+        <Routes>
+          {AppRoutes.map((route) => {
+            const Component = route.component;
 
-          return (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={<Component />}
-            />
-          );
-        })}
+            return (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<Component />}
+              />
+            );
+          })}
 
-        <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
 
-        <Route
-          path="/admin"
-          element={
-            <ProtectedAdminRoute>
-              <AdminLayout />
-            </ProtectedAdminRoute>
-          }
-        >
-          <Route index element={<AdminPage />} />
-          <Route path="requests" element={<AdminRequestsPage />} />
-          <Route path="courses" element={<AdminCoursesPage />} />
-          <Route path="portfolio" element={<AdminPortfolioPage />} />
-          <Route path="teachers" element={<AdminTeachersPage />} />
-        </Route>
-      </Routes>
+          <Route
+            path="/admin"
+            element={
+              <ProtectedAdminRoute>
+                <AdminLayout />
+              </ProtectedAdminRoute>
+            }
+          >
+            <Route index element={<AdminPage />} />
+            <Route path="requests" element={<AdminRequestsPage />} />
+            <Route path="courses" element={<AdminCoursesPage />} />
+            <Route path="portfolio" element={<AdminPortfolioPage />} />
+            <Route path="teachers" element={<AdminTeachersPage />} />
+          </Route>
+        </Routes>
 
-      {!isAdminRoute && <Footer />}
-    </div>
+        {!isAdminRoute && <Footer />}
+      </div>
+    </SiteImageGate>
   );
 }
 

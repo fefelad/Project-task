@@ -54,7 +54,8 @@ export default function CourseDetailPage() {
             title={card.title}
             secondtitle={card.secodetitle}
             description={card.description}
-            infoTexts={getInfoTexts(card.title)}
+            infoTexts={getInfoTexts(card.id)}
+            directions={[...card.directions]}
             className={styles.detailCourseCard}
           />
         </div>

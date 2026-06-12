@@ -68,6 +68,27 @@
     height: auto;
 }
 
+.portfolioCardMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+}
+
+.portfolioCardDirection {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--color-blue);
+}
+
+.portfolioCardAuthor {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #000;
+}
+
 .portfolioCardText {
     font-weight: 400;
     font-size: 22px;
