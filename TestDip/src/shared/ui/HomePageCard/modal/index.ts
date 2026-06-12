@@ -59,7 +59,7 @@ export const homePageTeachers: HomePageTeacher[] = [
   },
   {
     id: 'aleksandra-volkova',
-    name: 'Александра Волкова',
+    name: 'Вера Шилина',
     image: prep4,
     tags: [
       'Поддержка и мотивация',

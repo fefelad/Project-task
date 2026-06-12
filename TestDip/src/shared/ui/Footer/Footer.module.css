@@ -27,6 +27,11 @@
     color: #000;
 }
 
+.logo_img {
+    grid-area: logo;
+    display: block;
+}
+
 .leftColumn {
     display: contents;
 }
@@ -64,8 +69,13 @@
     gap: 18px;
 }
 
+.navAllCol {
+    display: none;
+}
+
 .navColLeft a,
 .navColRight a,
+.navAllCol a,
 .legalCol a,
 .contactsCol a {
     font-family: var(--font-onest);
@@ -104,6 +114,7 @@
 
     .navColLeft a,
     .navColRight a,
+    .navAllCol a,
     .legalCol a,
     .contactsCol a,
     .contactsTitle {
@@ -122,12 +133,42 @@
         padding-bottom: 28px;
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
-            "logo logo"
-            "navL navR"
-            "contacts contacts"
-            "legal legal";
+            "logo navAll"
+            "contacts legal";
         column-gap: 40px;
         row-gap: 32px;
+        align-items: start;
+    }
+
+    .leftColumn {
+        display: contents;
+    }
+
+    .navAllCol {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 18px;
+        grid-area: navAll;
+    }
+
+    .navAllSubCol {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .navColLeft,
+    .colRightStack {
+        display: none;
+    }
+
+    .contactsCol {
+        grid-area: contacts;
+    }
+
+    .legalCol {
+        grid-area: legal;
     }
 }
 
@@ -142,11 +183,17 @@
         padding-bottom: 26px;
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
-            "logo logo"
             "leftCol navR"
-            ". contacts";
+            "logo contacts";
         column-gap: 20px;
         row-gap: 24px;
+        align-items: start;
+    }
+
+    .logo_img {
+        grid-area: logo;
+        width: 225px;
+        align-self: end;
     }
 
     .leftColumn {
@@ -157,7 +204,12 @@
         min-width: 0;
     }
 
+    .navAllCol {
+        display: none;
+    }
+
     .navColLeft {
+        display: flex;
         grid-area: unset;
         gap: 14px;
     }
@@ -182,13 +234,10 @@
 
     .navColLeft a,
     .navColRight a,
+    .navAllCol a,
     .legalCol a,
     .contactsCol a,
     .contactsTitle {
         font-size: 16px;
-    }
-
-    .logo_img {
-        width: 140px;
     }
 }

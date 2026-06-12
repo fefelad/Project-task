@@ -7,9 +7,19 @@ export const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.inner}>
-                <Text fontFamily="onest" className={styles.logo}>
-                    <img className={styles.logo_img} src={logo} alt="logo" />
-                </Text>
+                <img className={styles.logo_img} src={logo} alt="logo" />
+
+                <nav className={styles.navAllCol} aria-label="Все страницы">
+                    <div className={styles.navAllSubCol}>
+                        <Link to="/cours">Курсы</Link>
+                        <Link to="/teachers">Преподаватели</Link>
+                    </div>
+                    <div className={styles.navAllSubCol}>
+                        <Link to="/portfolio">Портфолио</Link>
+                        <Link to="/about">О школе</Link>
+                        <Link to="/contact">Контакты</Link>
+                    </div>
+                </nav>
 
                 <div className={styles.leftColumn}>
                     <nav className={styles.navColLeft} aria-label="Навигация">

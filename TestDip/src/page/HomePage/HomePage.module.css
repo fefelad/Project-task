@@ -676,10 +676,10 @@
 
     .shoolText_desc {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 16px;
         color: #000;
         margin-top: 40px;
-        max-width: 420px;
+        max-width: 370px;
     }
 
     .buttonContainer {
@@ -703,7 +703,7 @@
     }
 
     .MyTeacher {
-        font-size: 52px;
+        font-size: 36px;
     }
 
     .teacherGrid {
@@ -736,10 +736,6 @@
         display: none;
     }
 
-    .containerRow {
-        margin-top: 100px;
-    }
-
     .WorkKids {
         font-weight: 400;
         font-size: 28px;
@@ -768,10 +764,14 @@
     }
 
     .containerRow {
+        --row2-column-width: 418px;
         display: grid;
-        /* grid-template-columns: 1fr 1fr; */
-        gap: 16px;
-        margin-top: 100px;
+        grid-template-columns: minmax(0, 1fr) var(--row2-column-width);
+        gap: 20px;
+        margin-top: 120px;
+        width: 100%;
+        align-items: stretch;
+        min-width: 0;
     }
 
     .wrapperRowOne,
@@ -822,8 +822,25 @@
 
     .containerRow img {
         width: 100%;
-        object-fit: cover;
-        /* border-radius: 15px; */
+
+    }
+
+    .row2Text {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .containerRow {
+        --row2-column-width: 436px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) var(--row2-column-width);
+        gap: 20px;
+        margin-top: 120px;
+        width: 100%;
+        align-items: stretch;
+        min-width: 0;
     }
 }
 
@@ -834,6 +851,10 @@
         height: auto;
         display: flex;
         flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: clip;
     }
 
     .heroTitleGroup {
@@ -844,13 +865,18 @@
         gap: 0;
         width: 100%;
         max-width: 100%;
+        min-width: 0;
+        container-type: inline-size;
     }
 
     .HomePageTitle {
         font-weight: 400;
-        font-size: 32px;
+        font-size: min(32px, max(16px, calc(100cqw / 15)));
+        line-height: 1.25;
         color: #000;
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .heroDeskOnly,
@@ -860,72 +886,25 @@
 
     .heroMobOnly {
         display: block;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .heroLine1,
     .heroLine2 {
         display: block;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 1.3;
+        font-size: min(32px, max(16px, calc(100cqw / 15)));
+        line-height: 1.25;
         color: #000;
-    }
-
-    .heroLine3 {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        gap: 6px;
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        margin-top: 0;
     }
 
-    .heroOurMob {
-        display: inline;
-        flex-shrink: 0;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 1.3;
-        color: #000;
-        white-space: nowrap;
-        font-family: var(--font-involve);
-    }
-
-    .schoolsContainer {
-        display: inline-flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        flex-shrink: 1;
-        min-width: 0;
-        gap: 6px;
-        margin-top: 0;
-    }
-
-    .schoolsBlock {
-        flex-shrink: 0;
-        width: 88px;
-        height: 34px;
-        border-radius: 6px;
-        transform: none;
-    }
-
-    .schoolsText {
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 1;
-        color: #fff;
-        margin-top: 0;
-    }
-
-    .shoolsTextDesign {
-        flex-shrink: 0;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 1;
-        color: #000;
-        white-space: nowrap;
+    .heroLine3 {
+        display: none;
     }
 
     .imageWrapper {
@@ -1007,7 +986,98 @@
     }
 
     .containerRow {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         margin-top: 70px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .wrapperRowOne {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .containerText {
+        width: 100%;
+        max-width: 100%;
+        grid-column: unset;
+    }
+
+    .mainRow {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+    }
+
+    .mainRow>img {
+        grid-column: 1 / -1;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .row1 {
+        display: contents;
+    }
+
+    .row1 img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .row1 img:first-child {
+        grid-column: 1;
+        grid-row: unset;
+        display: block;
+    }
+
+    .row1 img:last-child {
+        grid-column: 2;
+        grid-row: unset;
+        display: block;
+    }
+
+    .row2 {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 100%;
+        align-self: stretch;
+    }
+
+    .row2 img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        grid-column: unset;
+        grid-row: unset;
+    }
+
+    .row2Text {
+        width: 100%;
+        font-size: 13px;
+        line-height: 1.35;
+        grid-column: unset;
+        grid-row: unset;
+        align-self: unset;
+    }
+
+    .containerRow img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 
     .WorkKids {
@@ -1017,10 +1087,6 @@
     .WorkKidsDesk,
     .row2Text {
         font-size: 13px;
-    }
-
-    .row1 {
-        flex-direction: column;
     }
 
     .containerFaq {
@@ -1036,31 +1102,12 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 375px) {
+    .WorkKids {
+        font-size: 28px;
+    }
 
-    .HomePageTitle,
-    .heroLine1,
-    .heroLine2,
-    .heroOurMob,
-    .shoolsTextDesign {
+    .faqTitle {
         font-size: 26px;
-    }
-
-    .heroLine3 {
-        gap: 4px;
-    }
-
-    .schoolsContainer {
-        gap: 4px;
-    }
-
-    .schoolsBlock {
-        width: 76px;
-        height: 30px;
-        border-radius: 6px;
-    }
-
-    .schoolsText {
-        font-size: 18px;
     }
 }

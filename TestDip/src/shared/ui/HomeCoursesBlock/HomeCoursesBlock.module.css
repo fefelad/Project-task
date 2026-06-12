@@ -412,6 +412,11 @@
         position: static;
         width: 100%;
         margin: 20px 0 0 0;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 32px;
     }
 
     .hashTitle,
@@ -426,6 +431,7 @@
 
     .descriptionBottom {
         order: 2;
+        max-width: 100%;
     }
 
     .cardsRow {
@@ -456,9 +462,9 @@
         font-size: 26px;
         color: #fff;
         border-radius: 10px;
-        height: 64px;
+        height: auto;
         background: #f1642e;
-        transform: rotate(-1deg);
+        transform: none;
     }
 
     .coursesSection {

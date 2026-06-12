@@ -90,6 +90,7 @@
 @media (max-width: 992px) {
     .Btn {
         font-size: 18px;
+        border-radius: 6px;
     }
 }
 
