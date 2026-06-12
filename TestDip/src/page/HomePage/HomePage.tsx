@@ -26,7 +26,7 @@ export default function HomePage() {
       <div className={styles.container_homepage}>
         <div className={styles.imageWrapper}>
           <picture>
-            <source media="(max-width: 500px)" srcSet={Media500} />
+            <source media="(max-width: 768px)" srcSet={Media500} />
             <img
               src={PeopleHomePage}
               alt="Ребенок"
