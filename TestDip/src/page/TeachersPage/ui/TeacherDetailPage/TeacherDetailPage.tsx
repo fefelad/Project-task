@@ -52,43 +52,35 @@ export default function TeacherDetailPage() {
 
       <div className={styles.teacherWrapper}>
         <div className={styles.teacherHero}>
-          <div className={styles.leftColumn}>
+          <div className={styles.teacherTitle}>
+            <Text
+              size={TextSizes.XL}
+              weight={TextWeight.BOLD}
+              className={styles.name}
+              fontFamily="involve"
+            >
+              {teacher.name}
+            </Text>
+
+            <span className={styles.palka}>|</span>
+
+            <Text
+              size={TextSizes.XL2}
+              weight={TextWeight.MEDIUM}
+              className={styles.role}
+              fontFamily='onest'
+            >
+              {teacher.role}
+            </Text>
+          </div>
+
+          <div className={styles.heroContent}>
             <div className={styles.imageSection}>
               <img
                 src={teacher.image}
                 alt={teacher.name}
                 className={styles.image}
               />
-            </div>
-
-            <div className={styles.videoButtonWrap}>
-              <Btn color="blue" width="100%">
-                Видеовизитка
-              </Btn>
-            </div>
-          </div>
-
-          <div className={styles.rightColumn}>
-            <div className={styles.teacherTitle}>
-              <Text
-                size={TextSizes.XL}
-                weight={TextWeight.BOLD}
-                className={styles.name}
-                fontFamily="involve"
-              >
-                {teacher.name}
-              </Text>
-
-              <span className={styles.palka}>|</span>
-
-              <Text
-                size={TextSizes.XL2}
-                weight={TextWeight.MEDIUM}
-                className={styles.role}
-                fontFamily='onest'
-              >
-                {teacher.role}
-              </Text>
             </div>
 
             <div className={styles.infoGrid}>
@@ -102,19 +94,19 @@ export default function TeacherDetailPage() {
                   Образование
                 </Text>
 
-                {teacher.education.map((edu, index) => (
-                  <div key={index} className={styles.educationItem}>
-                    <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
-                    <Text fontFamily='onest' className={styles.specialization}>
-                      Направление: {edu.specialization}
-                    </Text>
-                  </div>
-                ))}
+                <div className={styles.blockContent}>
+                  {teacher.education.map((edu, index) => (
+                    <div key={index} className={styles.educationItem}>
+                      <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
+                      <Text fontFamily='onest' className={styles.specialization}>
+                        Направление: {edu.specialization}
+                      </Text>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div
-                className={`${styles.infoBlock} ${styles.qualificationsBlock}`}
-              >
+              <div className={`${styles.infoBlock} ${styles.qualificationsBlock}`}>
                 <Text
                   weight={TextWeight.MEDIUM}
                   size={TextSizes.XL2}
@@ -124,7 +116,7 @@ export default function TeacherDetailPage() {
                   Повышение квалификации
                 </Text>
 
-                <ul className={styles.qualificationsList}>
+                <ul className={`${styles.qualificationsList} ${styles.blockContent}`}>
                   {teacher.qualifications.map((qual, index) => (
                     <li key={index}>
                       <Text fontFamily='onest'>• {qual}</Text>
@@ -142,44 +134,40 @@ export default function TeacherDetailPage() {
                   Профессиональный путь
                 </Text>
 
-                <div className={styles.textGroup}>
+                <div className={`${styles.textGroup} ${styles.blockContent}`}>
                   {teacher.professionalPath.split('\n').map((item, index) => (
                     <Text fontFamily='onest' key={index}>{item}</Text>
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
 
-              <div className={`${styles.infoBlock} ${styles.approachBlock}`}>
-                <Text
-                  weight={TextWeight.MEDIUM}
-                  size={TextSizes.XL2}
-                  className={styles.blockTitle}
-                  fontFamily='onest'
-                >
-                  Как строит обучение
-                </Text>
+        <div className={`${styles.infoBlock} ${styles.approachBlock}`}>
+          <Text
+            weight={TextWeight.MEDIUM}
+            size={TextSizes.XL2}
+            className={styles.blockTitle}
+            fontFamily='onest'
+          >
+            Как строит обучение
+          </Text>
 
-                <Text fontFamily='onest' className={styles.textParagraph}>
-                  {teacher.teachingApproach}
-                </Text>
+          <div className={styles.approachContent}>
+            <Text fontFamily='onest' className={styles.textParagraph}>
+              {teacher.teachingApproach}
+            </Text>
 
-                <div className={styles.learningPoints}>
-                  <Text fontFamily='onest' weight={TextWeight.MEDIUM}>Дети:</Text>
-                  <ul className={styles.learningList}>
-                    {teacher.learningPoints.map((point, index) => (
-                      <li key={index}>
-                        <Text fontFamily='onest'>— {point}</Text>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {teacher.approachNote && (
-                  <Text  className={styles.approachNote}>
-                    {teacher.approachNote}
-                  </Text>
-                )}
-              </div>
+            <div className={styles.learningPoints}>
+              <Text fontFamily='onest' weight={TextWeight.MEDIUM}>Дети:</Text>
+              <ul className={styles.learningList}>
+                {teacher.learningPoints.map((point, index) => (
+                  <li key={index}>
+                    <Text fontFamily='onest'>— {point}</Text>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -229,6 +217,7 @@ export default function TeacherDetailPage() {
                     secondtitle={card.secodetitle}
                     description={card.description}
                     infoTexts={getInfoTexts(card.id)}
+                    directions={[...card.directions]}
                     onClick={() => navigate(`/cours/${card.id}`)}
                   />
                 </SwiperSlide>
