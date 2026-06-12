@@ -1,7 +1,11 @@
 import { memo } from 'react';
+import classNames from 'classnames';
 import styles from './Card.module.css';
 import Text from '../Text/Text';
 import Info from '../Info/Info';
+
+const isStartDateLabel = (text: string): boolean =>
+  text.trim().toLowerCase().startsWith('старт');
 
 interface CardProps {
     title: string;
@@ -27,6 +31,8 @@ export const Card = memo(({
     isDisabled = false
 }: CardProps) => {
     const [info1, info2] = infoTexts;
+    const shouldWidenPrimaryTab =
+      info1.trim().length > 0 && !isStartDateLabel(info1);
 
     return (
         <div
@@ -65,14 +71,33 @@ export const Card = memo(({
             </Text>
             {!isDisabled && (
                 <>
-                <div className={styles.infoContainer}>
-                    <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>
-                        {info1}
-                    </Info>
+                <div
+                    className={classNames(
+                        styles.infoContainer,
+                        shouldWidenPrimaryTab && styles.infoContainerWidePrimary
+                    )}
+                >
+                    <div
+                        className={classNames(
+                            styles.infoTab,
+                            shouldWidenPrimaryTab && styles.infoTabPrimary
+                        )}
+                    >
+                        <Info
+                            hasWhiteBg={true}
+                            isTextWhite={true}
+                            fullWidth={true}
+                            singleLine={shouldWidenPrimaryTab}
+                        >
+                            {info1}
+                        </Info>
+                    </div>
 
-                    <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>
-                        {info2}
-                    </Info>
+                    <div className={classNames(styles.infoTab, styles.infoTabSecondary)}>
+                        <Info hasWhiteBg={false} isTextWhite={false} fullWidth={true}>
+                            {info2}
+                        </Info>
+                    </div>
                 </div>
                 </>
             )}

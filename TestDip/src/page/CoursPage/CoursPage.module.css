@@ -68,7 +68,8 @@
 
 .showMoreCard {
     width: 100%;
-    height: 518px;
+    height: 100%;
+    min-height: 518px;
     border: none;
     border-radius: 8px;
     background: #EAE9F5;
@@ -78,6 +79,7 @@
     cursor: pointer;
     box-sizing: border-box;
     padding: 20px;
+    align-self: stretch;
 }
 
 .showMoreText {
@@ -147,7 +149,7 @@
 }
 
 /* Планшеты горизонтально */
-@media (max-width: 992px) {
+@media (max-width: 999px) {
     .container {
         padding-top: 80px;
     }
@@ -180,6 +182,10 @@
 
     .offsetCard {
         margin-top: 0;
+    }
+
+    .showMoreCard {
+        min-height: 0;
     }
 }
 

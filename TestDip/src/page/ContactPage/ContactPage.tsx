@@ -65,9 +65,6 @@ export default function ContactPage() {
                         ))}
                     </div>
                 </div>
-                <div className={styles.cat2Contanct}>
-                    <img src={cat2} alt="Кот с домами" />
-                </div>
             </div>
             
             <ContactMap address={selectedAddress} />

@@ -70,6 +70,7 @@
 
 .FormColumn {
     width: 100%;
+    min-width: 0;
 }
 
 .FeedbackForm {
@@ -101,6 +102,8 @@
 
 .ButtonContainer {
     margin-top: 30px;
+    width: 100%;
+    min-width: 0;
 }
 
 .SubmitButton {
@@ -115,6 +118,9 @@
     transition: background-color 0.3s;
     width: 100%;
     max-width: 480px;
+    min-width: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .FormNote {
@@ -274,8 +280,9 @@
     }
 
     .SubmitButton {
-        height: 52px;
-        padding: 10px;
+        min-height: 52px;
+        height: auto;
+        padding: 10px 16px;
         font-size: 20px;
         border-radius: 10px;
     }
@@ -467,6 +474,8 @@
 
     .SubmitButton {
         width: 100%;
+        font-size: clamp(18px, 3.8vw, 18px);
+        padding: 12px 14px;
     }
 
     .FeedbackContentTitle {
@@ -521,6 +530,11 @@
 }
 
 @media (max-width: 390px) {
+    .SubmitButton {
+        font-size: clamp(16px, 2.9vw, 16px);
+        padding: 12px 8px;
+    }
+
     .Modal {
         padding: 44px 18px 26px;
         border-radius: 18px;

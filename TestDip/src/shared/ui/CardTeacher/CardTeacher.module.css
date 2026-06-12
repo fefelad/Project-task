@@ -4,25 +4,34 @@
     flex-direction: column;
     gap: 90px;
     position: relative;
+    overflow-x: clip;
 }
 
 .CardTeacher {
+    --teacher-photo-height: 480px;
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 
 .CardTeacherContent {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 40px;
+    min-width: 0;
+    min-height: var(--teacher-photo-height);
 }
 
 .ImgTeacher {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 400px;
+    max-width: 38%;
+    flex-shrink: 0;
+    height: var(--teacher-photo-height);
     border-radius: 8px;
     object-fit: cover;
+    object-position: top center;
 }
 
 .TeacherDescDesktop {
@@ -35,6 +44,11 @@
 
 .BtnFooterContent {
     margin-top: auto;
+}
+
+.FeedbackSection {
+    width: 100%;
+    min-width: 0;
 }
 
 .catContainerTeacherSpicok {
@@ -77,6 +91,15 @@
         padding-top: 50px;
     }
 
+    .CardTeacher {
+        --teacher-photo-height: 400px;
+    }
+
+    .ImgTeacher {
+        width: 320px;
+        max-width: 36%;
+    }
+
     .TeacherName {
         font-size: 36px;
     }
@@ -105,6 +128,24 @@
 @media (max-width: 992px) {
     .CardTeacherWrapper {
         padding-top: 40px;
+        gap: 56px;
+    }
+
+    .CardTeacher {
+        align-items: stretch;
+        --teacher-photo-height: auto;
+    }
+
+    .ImgTeacher {
+        width: 260px;
+        max-width: 34%;
+        align-self: stretch;
+        min-height: 280px;
+    }
+
+    .CardTeacherContent {
+        gap: 24px;
+        min-height: auto;
     }
 
     .TeacherName {
@@ -126,21 +167,28 @@
     }
 }
 
-@media (max-width: 800px) {
-    .CardTeacher {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .CardTeacherWrapper {
-        padding-top: 40px;
-        gap: 40px;
+        gap: 48px;
+    }
+
+    .CardTeacher {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 16px;
+        --teacher-photo-height: auto;
+    }
+
+    .ImgTeacher {
+        width: 212px;
+        max-width: 42%;
+        align-self: stretch;
+        min-height: 220px;
     }
 
     .CardTeacherContent {
-        gap: 20px;
+        gap: 18px;
+        min-height: auto;
     }
 
     .TeacherName {
@@ -151,11 +199,108 @@
         font-size: 16px;
     }
 
+    .BtnFooter {
+        width: 100% !important;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .CardTeacherWrapper {
+        padding-top: 32px;
+        gap: 32px;
+    }
+
+    .CardTeacher {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        --teacher-photo-height: auto;
+    }
+
+    .ImgTeacher {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        align-self: stretch;
+        min-height: 0;
+    }
+
+    .CardTeacherContent {
+        gap: 14px;
+        min-height: auto;
+        width: 100%;
+    }
+
+    .BtnFooterContent {
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .TeacherName {
+        font-size: 26px;
+        line-height: 1.15;
+    }
+
+    .TeacherDesc {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
     .TeacherDescMobile {
-        gap: 12px;
+        gap: 10px;
     }
 
     .BtnFooter {
         width: 100% !important;
+        max-width: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .CardTeacherWrapper {
+        gap: 28px;
+    }
+
+    .CardTeacher {
+        gap: 14px;
+    }
+
+    .ImgTeacher {
+        aspect-ratio: 1 / 1.05;
+    }
+
+    .TeacherName {
+        font-size: 24px;
+    }
+
+    .TeacherDesc {
+        font-size: 14px;
+    }
+
+    .CardTeacherContent {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .CardTeacherWrapper {
+        padding-top: 24px;
+        gap: 24px;
+    }
+
+
+    .TeacherName {
+        font-size: 22px;
+    }
+
+    .TeacherDesc {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .TeacherDescMobile {
+        gap: 8px;
     }
 }

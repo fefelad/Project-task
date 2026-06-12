@@ -2,7 +2,7 @@
     width: var(--card-width, auto);
     height: 518px;
     border: 1px solid #ddd;
-    padding: 20px;
+    padding: 16px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,27 @@
 .infoContainer {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    width: 100%;
+}
+
+.infoContainer>* {
+    flex: 1;
+    min-width: 0;
+}
+
+.infoTab {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+.infoContainerWidePrimary .infoTabPrimary {
+    flex: 1.75;
+}
+
+.infoContainerWidePrimary .infoTabSecondary {
+    flex: 1;
+    flex-shrink: 0;
 }
 
 .directions {
@@ -83,10 +103,6 @@
 
     .cardDescription {
         font-size: 20px;
-    }
-
-    .infoContainer {
-        flex-direction: column;
     }
 }
 

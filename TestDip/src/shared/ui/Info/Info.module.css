@@ -11,7 +11,9 @@
 }
 
 .fullWidth {
+    width: 100%;
     padding: 10px;
+    text-align: center;
 }
 
 .withPadding {
@@ -35,6 +37,16 @@
 
 .blackText {
     color: black;
+}
+
+.singleLine {
+    overflow: hidden;
+}
+
+.singleLineText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

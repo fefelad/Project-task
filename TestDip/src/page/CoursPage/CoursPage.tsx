@@ -79,7 +79,7 @@ export default function CoursPage() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(
-      '(max-width: 992px) and (min-width: 577px)'
+      '(max-width: 999px) and (min-width: 577px)'
     )
 
     const updateLayout = () => {
@@ -108,6 +108,18 @@ export default function CoursPage() {
     setVisibleCount(prev => Math.min(prev + CARDS_PER_DIRECTION, filteredCards.length))
   }
 
+  const renderShowMoreButton = () => (
+    <button
+      type="button"
+      className={styles.showMoreCard}
+      onClick={handleShowMore}
+    >
+      <Text fontFamily="onest" className={styles.showMoreText}>
+        Показать еще
+      </Text>
+    </button>
+  )
+
   return (
     <section className={styles.container}>
       <Text fontFamily="involve" className={styles.TitleCourse}>
@@ -130,41 +142,36 @@ export default function CoursPage() {
 
       {isAllTab && visibleDirectionGroups ? (
         <div className={styles.coursesList}>
-          {visibleDirectionGroups.map((group, groupIndex) => (
-            <section key={group.direction} className={styles.directionSection}>
-              <Text fontFamily="involve" className={styles.directionTitle}>
-                {group.direction}
-              </Text>
+          {visibleDirectionGroups.map((group, groupIndex) => {
+            const isLastVisibleGroup =
+              groupIndex === visibleDirectionGroups.length - 1
 
-              <div className={styles.coursesWrapper}>
-                {groupIndex === 0 && (
-                  <img
-                    src={podves2}
-                    alt="Линия для курсов"
-                    className={styles.podves}
-                  />
-                )}
+            return (
+              <section key={group.direction} className={styles.directionSection}>
+                <Text fontFamily="involve" className={styles.directionTitle}>
+                  {group.direction}
+                </Text>
 
-                <div className={styles.courses}>
-                  {group.cards.map((card, index) =>
-                    renderCourseCard(card, index, navigate)
+                <div className={styles.coursesWrapper}>
+                  {groupIndex === 0 && (
+                    <img
+                      src={podves2}
+                      alt="Линия для курсов"
+                      className={styles.podves}
+                    />
                   )}
-                </div>
-              </div>
-            </section>
-          ))}
 
-          {hasMoreCards && (
-            <button
-              type="button"
-              className={styles.showMoreCard}
-              onClick={handleShowMore}
-            >
-              <Text fontFamily="onest" className={styles.showMoreText}>
-                Показать еще
-              </Text>
-            </button>
-          )}
+                  <div className={styles.courses}>
+                    {group.cards.map((card, index) =>
+                      renderCourseCard(card, index, navigate)
+                    )}
+
+                    {hasMoreCards && isLastVisibleGroup && renderShowMoreButton()}
+                  </div>
+                </div>
+              </section>
+            )
+          })}
         </div>
       ) : (
         <div className={styles.courses}>
@@ -172,17 +179,7 @@ export default function CoursPage() {
             renderCourseCard(card, index, navigate)
           )}
 
-          {hasMoreCards && (
-            <button
-              type="button"
-              className={styles.showMoreCard}
-              onClick={handleShowMore}
-            >
-              <Text fontFamily="onest" className={styles.showMoreText}>
-                Показать еще
-              </Text>
-            </button>
-          )}
+          {hasMoreCards && renderShowMoreButton()}
         </div>
       )}
     </section>

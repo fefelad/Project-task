@@ -74,7 +74,7 @@ export default function CardTeacher() {
 
       
 
-      <div>
+      <div className={styles.FeedbackSection}>
         <Feedback
           title="Поможем раскрыть талант вашего ребёнка!"
           fullWidth={true}
