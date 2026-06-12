@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
-import logo from '../../../assets/Logo/logoFinal.png';
+import logo from '../../../assets/Logo/logo1.png';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/routesConfig';

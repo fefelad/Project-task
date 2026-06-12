@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -14,6 +14,9 @@ import { supabase } from '../../../../../components/supabase/supabase';
 
 import styles from './CourseEnrollModal.module.css';
 
+const SUBMIT_ERROR_MESSAGE =
+    'Не удалось отправить заявку. Попробуйте ещё раз.';
+
 interface CourseEnrollModalProps {
     isOpen: boolean;
     courseId: number;
@@ -28,7 +31,7 @@ export default function CourseEnrollModal({
     onClose,
 }: CourseEnrollModalProps) {
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
 
     const {
         control,
@@ -51,13 +54,28 @@ export default function CourseEnrollModal({
     const name = watch('name');
     const email = watch('email');
 
+    useEffect(() => {
+        if (!isOpen) {
+            setSubmitError(null);
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (submitError) {
+            setSubmitError(null);
+        }
+    }, [name, email, agreement]);
+
     const handleClose = () => {
         if (isSubmitting) return;
+        setSubmitError(null);
         reset();
         onClose();
     };
 
     const onSubmit = async (data: FeedbackFormData) => {
+        setSubmitError(null);
+
         try {
             const { error } = await supabase.from('feedback_requests').insert({
                 name: data.name.trim(),
@@ -75,7 +93,7 @@ export default function CourseEnrollModal({
             setIsSuccessModalOpen(true);
         } catch (error) {
             console.error('Ошибка записи на курс:', error);
-            setIsErrorModalOpen(true);
+            setSubmitError(SUBMIT_ERROR_MESSAGE);
         }
     };
 
@@ -87,6 +105,7 @@ export default function CourseEnrollModal({
                 description="Оставьте контакты — мы свяжемся с вами и подтвердим запись."
                 hideActions
                 modalClassName={styles.enrollModal}
+                contentClassName={styles.enrollModalContent}
                 onClose={handleClose}
             >
                 <form
@@ -130,6 +149,12 @@ export default function CourseEnrollModal({
                         />
                     </div>
 
+                    {submitError && (
+                        <p className={styles.submitError} role="alert">
+                            {submitError}
+                        </p>
+                    )}
+
                     <Btn
                         color="orange"
                         type="submit"
@@ -153,14 +178,6 @@ export default function CourseEnrollModal({
                 description="Спасибо! Мы получили вашу заявку на курс и свяжемся с вами в ближайшее время."
                 confirmText="Хорошо"
                 onClose={() => setIsSuccessModalOpen(false)}
-            />
-
-            <ModalPopup
-                isOpen={isErrorModalOpen}
-                title="Ошибка отправки"
-                description="Не удалось отправить заявку. Попробуйте ещё раз."
-                confirmText="Хорошо"
-                onClose={() => setIsErrorModalOpen(false)}
             />
         </>
     );

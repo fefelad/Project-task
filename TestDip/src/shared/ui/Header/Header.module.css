@@ -3,7 +3,7 @@
 }
 
 .logo_img {
-    width: 225px;
+    width: 300px;
 }
 
 .logo_link {
@@ -234,7 +234,7 @@
 
 @media (max-width: 560px) {
     .logo_img {
-        width: 180px;
+        width: 230px;
     }
 
 }
