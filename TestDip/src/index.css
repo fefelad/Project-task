@@ -28,6 +28,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: clip;
+}
+
 :root {
   --font-onest: 'Onest', system-ui, sans-serif;
   --font-involve: 'Involve', var(--font-onest);
@@ -65,4 +69,35 @@
   /*active */
   --color-blue-active: #222373;
   --color-orange-active: #cf4510;
+
+  /* Main layout grid (App container + full-width sections) */
+  --layout-max-width: 1480px;
+  --layout-padding-x: 0px;
+  --layout-padding-top: 30px;
+}
+
+@media (max-width: 1440px) {
+  :root {
+    --layout-max-width: 1240px;
+    --layout-padding-x: 0px;
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --layout-max-width: 100%;
+    --layout-padding-x: 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --layout-padding-x: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --layout-padding-x: 16px;
+  }
 }

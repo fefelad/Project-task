@@ -65,11 +65,16 @@
     color: #666;
 }
 
+@media (max-width: 1920px) {
+    .card {
+        height: 500px;
+    }
+}
+
 /* ❗ начиная с 1440 — отключаем пропс */
 @media (max-width: 1440px) {
     .card {
-        /* width: 380px; */
-        /* 👈 перебивает var */
+        height: auto;
     }
 
     .cardTitle {

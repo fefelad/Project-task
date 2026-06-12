@@ -30,8 +30,8 @@ export const homePageTeachers: HomePageTeacher[] = [
     startText: 'Старт 15 октября',
   },
   {
-    id: 'german-labuzin',
-    name: 'Герман Лабузин',
+    id: 'mark-belov',
+    name: 'Марк Белов',
     image: prep2,
     tags: [
       'Практика каждый урок',
@@ -44,7 +44,7 @@ export const homePageTeachers: HomePageTeacher[] = [
     startText: 'Старт 23 октября',
   },
   {
-    id: 'alexander-volkov',
+    id: 'ivan-petrov',
     name: 'Иван Волков',
     image: prep3,
     tags: [
@@ -58,7 +58,7 @@ export const homePageTeachers: HomePageTeacher[] = [
     startText: 'Старт 5 сентября',
   },
   {
-    id: 'teacher-4',
+    id: 'aleksandra-volkova',
     name: 'Александра Волкова',
     image: prep4,
     tags: [

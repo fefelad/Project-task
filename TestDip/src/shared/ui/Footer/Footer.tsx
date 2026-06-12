@@ -11,18 +11,10 @@ export const Footer = () => {
                     <img className={styles.logo_img} src={logo} alt="logo" />
                 </Text>
 
-                <nav className={styles.navColLeft} aria-label="Навигация">
-                    <Link to="/cours">Курсы</Link>
-                    <Link to="/teachers">Преподаватели</Link>
-                </nav>
-
-                <div className={styles.colRightStack}>
-                    <nav className={styles.navColRight} aria-label="Разделы">
+                <div className={styles.leftColumn}>
+                    <nav className={styles.navColLeft} aria-label="Навигация">
                         <Link to="/cours">Курсы</Link>
                         <Link to="/teachers">Преподаватели</Link>
-                        <Link to="/portfolio">Портфолио</Link>
-                        <Link to="/about">О школе</Link>
-                        <Link to="/contact">Контакты</Link>
                     </nav>
 
                     <div className={styles.legalCol}>
@@ -30,6 +22,14 @@ export const Footer = () => {
                             Политика обработки персональных данных
                         </Link>
                     </div>
+                </div>
+
+                <div className={styles.colRightStack}>
+                    <nav className={styles.navColRight} aria-label="Разделы">
+                        <Link to="/portfolio">Портфолио</Link>
+                        <Link to="/about">О школе</Link>
+                        <Link to="/contact">Контакты</Link>
+                    </nav>
                 </div>
 
                 <div className={styles.contactsCol}>

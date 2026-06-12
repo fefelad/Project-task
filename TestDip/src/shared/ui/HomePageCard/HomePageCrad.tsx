@@ -1,13 +1,23 @@
+import { useNavigate } from 'react-router-dom';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
-import Info from '../Info/Info';
+import Btn from '../Btn/Btn';
 import styles from './HomePageCard.module.css';
 import type { HomePageTeacher } from './modal';
 
 interface HomePageCradProps {
   teacher: HomePageTeacher;
+  buttonClassName?: string;
 }
 
-export default function HomePageCrad({ teacher }: HomePageCradProps) {
+export default function HomePageCrad({
+  teacher,
+  buttonClassName,
+}: HomePageCradProps) {
+  const navigate = useNavigate();
+
+  const handleDetailsClick = () => {
+    navigate(`/teachers/${teacher.id}`);
+  };
   return (
     <div className={styles.card}>
       <div className={styles.top}>
@@ -50,13 +60,14 @@ export default function HomePageCrad({ teacher }: HomePageCradProps) {
       </Text>
 
       <div className={styles.infoContainer}>
-        <Info hasWhiteBg={false} isTextWhite={false} fullWidth={false}>
-          {teacher.ageText}
-        </Info>
-
-        <Info hasWhiteBg={true} isTextWhite={true} fullWidth={false}>
-          {teacher.startText}
-        </Info>
+        <Btn
+          color="blue"
+          width="100%"
+          className={buttonClassName ?? styles.detailsBtn}
+          onClick={handleDetailsClick}
+        >
+          Подробнее
+        </Btn>
       </div>
     </div>
   );

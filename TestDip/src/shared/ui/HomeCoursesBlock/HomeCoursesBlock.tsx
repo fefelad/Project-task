@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
 import styles from './HomeCoursesBlock.module.css';
-import { courseCards, getInfoTexts } from '../../../page/CoursPage/modal';
+import { courseCards } from '../../../page/CoursPage/modal';
 import Text from '../Text/Text';
-import Card from '../Card/Card';
+import HomeCourseCard from './ui/HomeCourseCard';
 import Btn from '../Btn/Btn';
 import PopupInfo from '../PopupInfo/PopupInfo';
 import arrow1 from '../../../assets/HomePage/arrow1.svg';
@@ -21,6 +21,7 @@ export default function HomeCoursesBlock() {
         Курсы для ваших детей
       </Text>
 
+      <div className={styles.coursesLayout}>
       <div className={styles.coursesGrid}>
         <Text fontFamily="onest" className={styles.descriptionTop}>
           Выберите курс под текущий уровень ребенка — от первых шагов до уверенных
@@ -40,32 +41,26 @@ export default function HomeCoursesBlock() {
 
         <div className={styles.cardsRow}>
           <div className={styles.card1}>
-            <Card
+            <HomeCourseCard
               title={homeCourses[0].title}
               secondtitle={homeCourses[0].secodetitle}
               description={homeCourses[0].description}
-              infoTexts={getInfoTexts(homeCourses[0].title)}
-              onClick={() => navigate(`/cours/${homeCourses[0].id}`)}
             />
           </div>
 
           <div className={styles.card2}>
-            <Card
+            <HomeCourseCard
               title={homeCourses[1].title}
               secondtitle={homeCourses[1].secodetitle}
               description={homeCourses[1].description}
-              infoTexts={getInfoTexts(homeCourses[1].title)}
-              onClick={() => navigate(`/cours/${homeCourses[1].id}`)}
             />
           </div>
 
           <div className={styles.card3}>
-            <Card
+            <HomeCourseCard
               title={homeCourses[2].title}
               secondtitle={homeCourses[2].secodetitle}
               description={homeCourses[2].description}
-              infoTexts={getInfoTexts(homeCourses[2].title)}
-              onClick={() => navigate(`/cours/${homeCourses[2].id}`)}
             />
           </div>
         </div>
@@ -81,13 +76,14 @@ export default function HomeCoursesBlock() {
           можно собрать в небольшое портфолио. Подходит для онлайн и офлайн формата —
           в удобном темпе и с понятной обратной связью.
         </Text>
-
       </div>
+
         <div className={styles.buttonWrapper}>
-            <Btn color="blue" width="100%" onClick={() => navigate('/cours')}>
+          <Btn color="blue" width="100%" onClick={() => navigate('/cours')}>
             Посмотреть все курсы
-            </Btn>
+          </Btn>
         </div>
+      </div>
     </section>
   );
 }

@@ -15,7 +15,6 @@
 
 .coursesGrid {
     position: relative;
-    margin-top: 40px;
     min-height: 1250px;
 }
 
@@ -83,7 +82,13 @@
     color: #000;
 }
 
+.coursesLayout {
+    margin-top: 40px;
+}
+
 .buttonWrapper {
+    position: relative;
+    z-index: 6;
     width: 360px;
     margin-left: 520px;
 }
@@ -125,11 +130,15 @@
 
     .title {
         font-size: 56px;
+        transform: none;
+    }
+
+    .coursesLayout {
+        margin-top: 36px;
     }
 
     .coursesGrid {
-        min-height: 1160px;
-        margin-top: 36px;
+        min-height: 1060px;
     }
 
     .cardsRow {
@@ -164,23 +173,23 @@
     }
 
     .bestLabel {
-        top: 820px;
-        left: 110px;
+        top: 700px;
+        left: 215px;
     }
 
     .descriptionBottom {
-        bottom: 40px;
+        bottom: 60px;
         max-width: 600px;
         font-size: 22px;
     }
 
     .buttonWrapper {
-        width: 340px;
         margin-left: calc((100% - 40px) / 3 + 20px);
+        width: 340px;
     }
 
     .arrow1 {
-        top: 550px;
+        top: 360px;
         left: 10px;
     }
 
@@ -192,7 +201,7 @@
 
     .arrow3 {
         width: 229px;
-        top: 960px;
+        top: 790px;
         left: 49%;
     }
 
@@ -210,14 +219,19 @@
         margin-left: 0;
     }
 
-    .coursesGrid {
+    .coursesLayout {
         margin-top: 32px;
-        min-height: 620px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 22px;
         row-gap: 24px;
         position: relative;
+        min-height: 620px;
+    }
+
+    .coursesGrid {
+        display: contents;
+        min-height: auto;
     }
 
     .cardsRow {
@@ -250,7 +264,7 @@
 
     .bestLabel {
         position: absolute;
-        top: 200px;
+        top: 160px;
         right: 30px;
         left: auto;
         z-index: 5;
@@ -285,38 +299,41 @@
     }
 
     .buttonWrapper {
-        width: 460px;
-        margin-left: auto;
-        margin-right: 0;
-        margin-top: -60px;
+        position: relative;
+        grid-column: 2;
+        grid-row: 3;
+        z-index: 6;
+        align-self: end;
+        justify-self: stretch;
+        width: 100%;
+        max-width: 525px;
+        margin: 0;
+        margin-left: 0;
+    }
+
+    .card1,
+    .card2,
+    .card3 {
+        z-index: auto;
     }
 
     .arrows {
         position: absolute;
         inset: 0;
+        pointer-events: none;
     }
 
     .arrow1 {
-        width: 222px;
-        top: 252px;
-        left: 463px;
-        transform: rotate(239deg) scaleX(-1) translateX(10px);
+        display: none;
     }
 
     .arrow2 {
-        width: 230px;
-        top: 629px;
-        left: 218px;
-        right: auto;
-        transform: rotate(7deg) scaleX(-1) translateX(10px);
+        display: none;
 
     }
 
     .arrow3 {
-        width: 230px;
-        top: 998px;
-        left: 483px;
-        transform: rotate(-2deg) scaleX(-1) translateX(10px);
+        display: none;
     }
 }
 
@@ -324,15 +341,28 @@
 @media (max-width: 1024px) {
     .bestLabel {
         position: absolute;
-        top: 294px;
-        right: 148px;
+        top: 447px;
+        right: 456px;
         left: auto;
         z-index: 5;
+    }
+
+    .descriptionBottom,
+    .descriptionTop {
+        font-size: 20px;
     }
 
 }
 
 @media (max-width: 834px) {
+    .coursesLayout {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: static;
+        min-height: auto;
+    }
+
     .coursesGrid {
         display: flex;
         flex-direction: column;
@@ -379,6 +409,7 @@
 
     /* кнопка */
     .buttonWrapper {
+        position: static;
         width: 100%;
         margin: 20px 0 0 0;
     }
@@ -403,6 +434,8 @@
 
     .buttonWrapper {
         order: 4;
+        z-index: auto;
+        width: 100%;
     }
 }
 

@@ -94,6 +94,13 @@
     }
 }
 
+
+@media (max-width: 1024px) {
+    .labelText {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 576px) {
     .labelText {
         font-size: 16px;

@@ -1,0 +1,78 @@
+.card {
+    --card-padding: 20px;
+    --card-gap: 20px;
+
+    width: 100%;
+    height: auto;
+    min-height: var(--card-min-height, auto);
+    border: 1px solid #ddd;
+    padding: var(--card-padding);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+    justify-content: flex-start;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.cardTitle {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 109%;
+    color: #000;
+}
+
+.cardSecondTitle {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 109%;
+    color: #000;
+}
+
+.cardDescription {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #000;
+}
+
+@media (max-width: 1440px) {
+    .cardDescription {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cardTitle {
+        font-size: 40px;
+    }
+
+    .cardSecondTitle {
+        font-size: 20px;
+    }
+
+    .cardDescription {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        --card-padding: 15px;
+        --card-gap: 10px;
+    }
+
+    .cardTitle {
+        font-size: 36px;
+    }
+
+    .cardSecondTitle {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .cardDescription {
+        font-size: 18px;
+    }
+}

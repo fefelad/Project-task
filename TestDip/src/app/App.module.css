@@ -1,68 +1,22 @@
-.container_main {
-    width: 100%;
-    max-width: 1480px;
-    margin: 0 auto;
-    padding: 30px 0px;
-    box-sizing: border-box;
-}
-
-.container_admin {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.header {
-    font-family: var(--font-involve);
-    font-weight: var(--fw-regular);
-    font-size: var(--fs-2xl);
-    color: #000;
-}
-
-
-/* Большие десктопы */
-@media (max-width: 1440px) {
-    .container_main {
-        max-width: 1240px;
-        padding-top: 30px;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-}
-
-/* Ноутбуки / маленькие десктопы */
-@media (max-width: 1200px) {
-    .container_main {
-        width: 100%;
-        max-width: 100%;
-        padding: 30px 128px 0;
-        box-sizing: border-box;
-    }
-}
-
-/* Планшеты горизонтально */
-@media (max-width: 992px) {
-    .container_main {
-        width: 100%;
-        max-width: 100%;
-        padding: 30px 60px 0;
-        box-sizing: border-box;
-    }
-}
-
-/* Планшеты вертикально / большие телефоны */
-@media (max-width: 768px) {
-    .container_main {
-        max-width: 100%;
-        padding: 16px 16px;
-    }
-}
-
-/* Мобильные */
-@media (max-width: 576px) {
-    .container_main {
-        padding: 16px 16px;
-    }
-}
+.container_main {
+    width: 100%;
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--layout-padding-top) var(--layout-padding-x) 0;
+    box-sizing: border-box;
+}
+
+.container_admin {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    font-family: var(--font-involve);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-2xl);
+    color: #000;
+}
