@@ -1026,6 +1026,12 @@
     }
 }
 
+@media (max-width: 650px) {
+    .imageWrapper {
+        display: block;
+    }
+}
+
 @media (max-width: 500px) {
     .container_homepage {
         margin-top: 60px;
@@ -1045,6 +1051,7 @@
     }
 
     .imageWrapper {
+        display: block;
         margin: 16px auto 0;
         border-radius: 8px;
     }
