@@ -52,7 +52,7 @@
 .text {
     margin: 0;
     font-size: 16px;
-    color: #555;
+    color: var(--theme-text-subtle);
     text-align: center;
 }
 

@@ -1,8 +1,7 @@
 .personalDataPolicyPage {
     width: 100%;
     min-height: 100vh;
-    background: #ffffff;
-    color: #000000;
+    color: var(--theme-text-primary);
 }
 
 

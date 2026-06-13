@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(0, 0, 0, 0.45);
+    background: var(--theme-overlay);
     box-sizing: border-box;
 }
 
@@ -15,7 +15,7 @@
     width: 100%;
     max-width: 560px;
     padding: 56px 48px 44px;
-    background: #ffffff;
+    background: var(--theme-bg-elevated);
     border-radius: 32px;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -43,7 +43,7 @@
     height: 36px;
     border: none;
     background: transparent;
-    color: #000;
+    color: var(--theme-text-primary);
     font-size: 36px;
     line-height: 1;
     cursor: pointer;
@@ -52,12 +52,12 @@
 
 .ModalTitle {
     margin-bottom: 20px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .ModalDescription {
     margin-bottom: 34px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .ModalContent {
@@ -86,12 +86,12 @@
 
 .ConfirmButton {
     background: var(--color-orange);
-    color: #ffffff;
+    color: var(--color-on-primary);
 }
 
 .CancelButton {
-    background: #f1f1f1;
-    color: #000000;
+    background: var(--theme-bg-hover);
+    color: var(--theme-text-primary);
 }
 
 .ConfirmButton:disabled,

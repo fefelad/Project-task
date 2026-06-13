@@ -1,6 +1,5 @@
 .footer {
-    background: #fff;
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--theme-border-strong);
     margin-top: 150px;
 }
 
@@ -24,7 +23,7 @@
     grid-area: logo;
     font-weight: 400;
     font-size: 14px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .logo_img {
@@ -81,14 +80,14 @@
     font-family: var(--font-onest);
     font-weight: 400;
     font-size: 20px;
-    color: #000;
+    color: var(--theme-text-primary);
     text-decoration: none;
 }
 
 .contactsTitle {
     font-weight: 600;
     font-size: 20px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 /* 1440 */

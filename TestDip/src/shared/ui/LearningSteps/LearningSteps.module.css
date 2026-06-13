@@ -5,7 +5,7 @@
 .learnTitle {
     font-weight: 400;
     font-size: 50px;
-    color: #000;
+    color: var(--theme-text-primary);
     margin-bottom: 50px;
 }
 
@@ -17,10 +17,10 @@
 .learnCard,
 .resultCard {
     position: absolute;
-    border: 1px solid #000;
+    border: 1px solid var(--theme-border-strong);
     border-radius: 15px;
     padding: 24px;
-    background: #fff;
+    background: var(--theme-bg-elevated);
     font-family: var(--font-onest);
     box-sizing: border-box;
 }
@@ -69,13 +69,13 @@
 .cardTitle {
     font-size: 24px;
     font-weight: 600;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .cardText {
     font-size: 22px;
     line-height: 1.4;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 /* стрелки */

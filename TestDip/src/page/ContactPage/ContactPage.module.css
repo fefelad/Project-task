@@ -5,7 +5,7 @@
 .ContactPageTitle {
     font-size: 64px;
     font-weight: var(--fw-regular);
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .MainContentContactPage {

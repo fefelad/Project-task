@@ -7,19 +7,19 @@
     width: 100%;
     height: 60px;
     box-sizing: border-box;
-    background-color: var(--color-white);
+    background-color: var(--theme-bg-elevated);
     border-radius: 15px;
     padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--theme-border);
     transition: border-color 0.3s ease;
 
     font-size: var(--fs-base);
     font-family: var(--font-onest), sans-serif;
-    color: #000;
+    color: var(--theme-text-primary);
     font-weight: 400;
 
     &::placeholder {
-        color: #666;
+        color: var(--theme-text-muted);
         opacity: 1;
         font-family: inherit;
         font-size: inherit;
@@ -33,7 +33,7 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-        -webkit-text-fill-color: #000;
+        -webkit-text-fill-color: var(--theme-text-primary);
         -webkit-box-shadow: 0 0 0px 1000px white inset;
     }
 }

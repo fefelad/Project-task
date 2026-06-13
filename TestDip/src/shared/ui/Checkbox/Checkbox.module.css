@@ -16,7 +16,7 @@
 .customCheckbox {
     width: 38px;
     height: 38px;
-    background-color: var(--color-black);
+    background-color: var(--theme-text-primary);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
 
 
 .CheckboxWrapper input:checked~.customCheckbox {
-    background-color: var(--color-black);
+    background-color: var(--theme-text-primary);
 }
 
 .checkIcon {
@@ -60,7 +60,7 @@
 }
 
 .CheckboxWrapper.disabled .customCheckbox {
-    background-color: #ccc;
+    background-color: var(--theme-border-medium);
 }
 
 @media (max-width: 1200px) {

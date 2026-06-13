@@ -70,6 +70,36 @@ html {
   --color-blue-active: #222373;
   --color-orange-active: #cf4510;
 
+  /* Текст на акцентных кнопках — не меняется в тёмной теме */
+  --color-on-primary: #FFFFFF;
+
+  /* Семантические переменные темы (светлая) */
+  --theme-bg: #FFFFFF;
+  --theme-bg-secondary: #f8f9fa;
+  --theme-bg-tertiary: #f5f5f5;
+  --theme-bg-elevated: #FFFFFF;
+  --theme-bg-muted: #f9f9f9;
+  --theme-bg-hover: #f1f1f1;
+  --theme-bg-disabled: #EBEFF3;
+  --theme-text-primary: #000000;
+  --theme-text-secondary: #575757;
+  --theme-text-muted: #666666;
+  --theme-text-subtle: #555555;
+  --theme-border: #e0e0e0;
+  --theme-border-light: #dddddd;
+  --theme-border-medium: #cccccc;
+  --theme-border-strong: #222222;
+  --theme-surface-accent: #EAE9F5;
+  --theme-warning-bg: #fff3cd;
+  --theme-warning-border: #ffeaa7;
+  --theme-warning-text: #856404;
+  --theme-overlay: rgba(0, 0, 0, 0.45);
+  --theme-shadow: rgba(0, 0, 0, 0.15);
+  --theme-faq-icon: var(--color-black);
+  --theme-slider-arrow: var(--color-black);
+
+  color-scheme: light;
+
   /* Main layout grid (App container + full-width sections) */
   --layout-max-width: 1480px;
   --layout-padding-x: 0px;
@@ -102,6 +132,39 @@ html {
   }
 }
 
+[data-theme='dark'] {
+  --color-opasity-blue: #2a2a4a;
+
+  --theme-bg: #121218;
+  --theme-bg-secondary: #1a1a22;
+  --theme-bg-tertiary: #22222c;
+  --theme-bg-elevated: #1e1e28;
+  --theme-bg-muted: #252530;
+  --theme-bg-hover: #2a2a36;
+  --theme-bg-disabled: #2c2c38;
+  --theme-text-primary: #c2c6d0;
+  --theme-text-secondary: #949aa8;
+  --theme-text-muted: #757d8a;
+  --theme-text-subtle: #858b97;
+  --theme-border: #3a3a48;
+  --theme-border-light: #333340;
+  --theme-border-medium: #454550;
+  --theme-border-strong: #5a5a68;
+  --theme-surface-accent: #2a2a4a;
+  --theme-warning-bg: #3d3520;
+  --theme-warning-border: #5c4f2a;
+  --theme-warning-text: #d4b86a;
+  --theme-overlay: rgba(0, 0, 0, 0.65);
+  --theme-shadow: rgba(0, 0, 0, 0.4);
+  --theme-faq-icon: var(--color-on-primary);
+  --theme-slider-arrow: var(--color-on-primary);
+
+  color-scheme: dark;
+}
+
 body {
   text-wrap: pretty;
+  background-color: var(--theme-bg);
+  color: var(--theme-text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }

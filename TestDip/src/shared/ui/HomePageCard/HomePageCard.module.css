@@ -1,10 +1,10 @@
 .card {
-    border: 0.78px solid #000;
+    border: 0.78px solid var(--theme-border-strong);
     border-radius: 15px;
     width: 480px;
     /* height: 484px; */
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--theme-bg-elevated);
 
     position: relative;
     z-index: 3;
@@ -33,7 +33,7 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 109%;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .tags {
@@ -45,7 +45,7 @@
 .tag {
     font-weight: 400;
     font-size: 15px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .description {
@@ -53,7 +53,7 @@
     font-weight: 300;
     font-size: 22px;
     line-height: 109%;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .infoContainer {
@@ -87,7 +87,7 @@
         font-weight: 500;
         font-size: 22px;
         line-height: 109%;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .description {
@@ -97,7 +97,7 @@
     .tag {
         font-weight: 400;
         font-size: 14px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .infoContainer {
@@ -124,7 +124,7 @@
         font-weight: 500;
         font-size: 24px;
         line-height: 109%;
-        color: #000
+        color: var(--theme-text-primary)
     }
 
     .infoContainer {

@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="ru">
   <head>
+    <script>
+      (function () {
+        var storageKey = 'testdip-theme';
+        var savedTheme = localStorage.getItem(storageKey);
+        var theme = savedTheme === 'light' || savedTheme === 'dark'
+          ? savedTheme
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

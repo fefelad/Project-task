@@ -53,7 +53,7 @@
     left: 520px;
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .hashTitle {
@@ -62,7 +62,7 @@
     left: 520px;
     font-weight: 400;
     font-size: 64px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .bestLabel {
@@ -79,7 +79,7 @@
     max-width: 640px;
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .coursesLayout {
@@ -450,7 +450,7 @@
     .descriptionTop {
         font-weight: 400;
         font-size: 16px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .descriptionBottom {

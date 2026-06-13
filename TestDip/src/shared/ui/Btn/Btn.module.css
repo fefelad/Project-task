@@ -53,13 +53,13 @@
 }
 
 .noBackground {
-    border: 1px solid black;
+    border: 1px solid var(--theme-border-strong);
     background-color: transparent;
-    color: var(--color-black);
+    color: var(--theme-text-primary);
 }
 
 .noBackground:hover {
-    background-color: #EBEFF3;
+    background-color: var(--theme-bg-disabled);
 }
 
 /* 1440 */

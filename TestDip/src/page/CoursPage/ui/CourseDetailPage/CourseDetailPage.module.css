@@ -230,6 +230,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--theme-slider-arrow);
 }
 
 .bottomNavIcon {

@@ -4,6 +4,7 @@ import logo from '../../../assets/Logo/logo1.png';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/routesConfig';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,41 +47,45 @@ function Header() {
                     <img className={styles.logo_img} src={logo} alt="logo" />
                 </Link>
 
-                <nav className={styles.navigation_list}>
-                    <ul className={styles.list_item}>
-                        {navRoutes.map((route) => (
-                            <li className={styles.header_items} key={route.path}>
-                                <NavLink
-                                    to={route.path}
-                                    className={({ isActive }) =>
-                                        `${styles.navLink} ${isActive ? styles.active : ''}`
-                                    }
-                                >
-                                    <Text
-                                        className={styles.routeName}
-                                        size={TextSizes.XL2}
-                                        weight={TextWeight.REGULAR}
+                <div className={styles.header_actions}>
+                    <nav className={styles.navigation_list}>
+                        <ul className={styles.list_item}>
+                            {navRoutes.map((route) => (
+                                <li className={styles.header_items} key={route.path}>
+                                    <NavLink
+                                        to={route.path}
+                                        className={({ isActive }) =>
+                                            `${styles.navLink} ${isActive ? styles.active : ''}`
+                                        }
                                     >
-                                        {route.name}
-                                    </Text>
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+                                        <Text
+                                            className={styles.routeName}
+                                            size={TextSizes.XL2}
+                                            weight={TextWeight.REGULAR}
+                                        >
+                                            {route.name}
+                                        </Text>
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
 
-                <button
-                    type="button"
-                    className={`${styles.burger} ${isMenuOpen ? styles.burger_active : ''}`}
-                    onClick={toggleMenu}
-                    aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
-                    aria-expanded={isMenuOpen}
-                    aria-controls="mobile-drawer-menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                    <ThemeToggle />
+
+                    <button
+                        type="button"
+                        className={`${styles.burger} ${isMenuOpen ? styles.burger_active : ''}`}
+                        onClick={toggleMenu}
+                        aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-drawer-menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </header>
 
             <div

@@ -5,14 +5,14 @@
     width: 100%;
     height: auto;
     min-height: var(--card-min-height, auto);
-    border: 1px solid #ddd;
+    border: 1px solid var(--theme-border-light);
     padding: var(--card-padding);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: var(--card-gap);
     justify-content: flex-start;
-    background-color: white;
+    background-color: var(--theme-bg-elevated);
     box-sizing: border-box;
 }
 
@@ -20,21 +20,21 @@
     font-weight: 400;
     font-size: 48px;
     line-height: 109%;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .cardSecondTitle {
     font-weight: 500;
     font-size: 24px;
     line-height: 109%;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .cardDescription {
     font-weight: 400;
     font-size: 24px;
     line-height: 1.25;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 @media (max-width: 1440px) {

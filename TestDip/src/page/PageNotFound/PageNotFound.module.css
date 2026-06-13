@@ -12,7 +12,7 @@
 .code {
     font-size: 200px;
     line-height: 1;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .description {
@@ -20,7 +20,7 @@
     margin-top: 20px;
     font-size: 24px;
     max-width: 700px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .popup {

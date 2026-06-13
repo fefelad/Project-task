@@ -5,7 +5,7 @@
 .PageTitle {
     font-weight: 400;
     font-size: 64px;
-    color: #000;
+    color: var(--theme-text-primary);
     line-height: 1.1;
 }
 
@@ -48,7 +48,7 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 1.35;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .portfolioGallery {
@@ -86,14 +86,14 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 1.3;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .portfolioCardText {
     font-weight: 400;
     font-size: 22px;
     line-height: 1.35;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .promoblockBtn {
@@ -110,7 +110,7 @@
 .topWork {
     font-weight: 400;
     font-size: 52px;
-    color: #000;
+    color: var(--theme-text-primary);
     line-height: 1.1;
 }
 
@@ -124,7 +124,7 @@
 .deskPortfolio {
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .titlePortfolio {
@@ -169,7 +169,7 @@
 .deskPortfolio {
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
     line-height: 1.35;
     flex-shrink: 0;
 }

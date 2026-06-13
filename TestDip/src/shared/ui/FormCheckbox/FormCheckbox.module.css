@@ -22,7 +22,7 @@
 .customCheckbox {
     width: 28px;
     height: 28px;
-    background-color: var(--color-black);
+    background-color: var(--theme-text-primary);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -32,11 +32,11 @@
 }
 
 .customCheckbox:hover {
-    background-color: #333;
+    background-color: var(--theme-text-subtle);
 }
 
 .FormCheckboxWrapper input:checked~.customCheckbox {
-    background-color: var(--color-black);
+    background-color: var(--theme-text-primary);
 }
 
 .checkIcon {
@@ -49,7 +49,7 @@
     font-size: var(--fs-base);
     font-weight: var(--fw-regular);
     line-height: 1.4;
-    color: #333;
+    color: var(--theme-text-subtle);
     position: relative;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .FormCheckboxWrapper.disabled .customCheckbox {
-    background-color: #ccc;
+    background-color: var(--theme-border-medium);
 }
 
 @media (max-width: 1440px) {

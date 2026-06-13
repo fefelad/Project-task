@@ -1,6 +1,6 @@
 .FeedbackWrapper {
     padding: 40px;
-    background: #f8f9fa;
+    background: var(--theme-bg-secondary);
     margin-top: 150px;
     box-sizing: border-box;
 }
@@ -91,7 +91,7 @@
     font-family: var(--font-onest);
     font-size: var(--fs-base);
     font-weight: var(--fw-regular);
-    color: #000;
+    color: var(--theme-text-primary);
     display: block;
     margin-bottom: 10px;
 }
@@ -126,10 +126,10 @@
 .FormNote {
     margin-top: 15px;
     padding: 10px;
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
+    background: var(--theme-warning-bg);
+    border: 1px solid var(--theme-warning-border);
     border-radius: 5px;
-    color: #856404;
+    color: var(--theme-warning-text);
     font-size: 14px;
     font-family: var(--font-onest);
 }
@@ -160,7 +160,7 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(0, 0, 0, 0.45);
+    background: var(--theme-overlay);
     box-sizing: border-box;
 }
 
@@ -169,7 +169,7 @@
     width: 100%;
     max-width: 560px;
     padding: 56px 48px 44px;
-    background: #ffffff;
+    background: var(--theme-bg-elevated);
     border-radius: 32px;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -197,7 +197,7 @@
     height: 36px;
     border: none;
     background: transparent;
-    color: #000;
+    color: var(--theme-text-primary);
     font-size: 36px;
     line-height: 1;
     cursor: pointer;
@@ -206,12 +206,12 @@
 
 .ModalTitle {
     margin-bottom: 20px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .ModalDescription {
     margin-bottom: 34px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .ModalButton {
@@ -219,7 +219,7 @@
     max-width: 260px;
     margin: 0 auto;
     padding: 16px 32px;
-    color: #ffffff;
+    color: var(--color-on-primary);
     border-radius: 15px;
     font-family: var(--font-onest);
     font-size: var(--fs-xl);

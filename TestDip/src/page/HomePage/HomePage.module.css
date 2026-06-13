@@ -100,7 +100,7 @@
 .MyTeacher {
     font-weight: 400;
     font-size: 86px;
-    color: #000;
+    color: var(--theme-text-primary);
     position: relative;
     z-index: 3;
 }
@@ -185,13 +185,13 @@
 .WorkKids {
     font-weight: 400;
     font-size: 56px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .WorkKidsDesk {
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
     margin-top: 20px;
 }
 
@@ -215,7 +215,7 @@
 .row2Text {
     font-weight: 400;
     font-size: 24px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .containerFaq {
@@ -225,7 +225,7 @@
 .faqTitle {
     font-weight: 400;
     font-size: 50px;
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .faqContainer {
@@ -277,7 +277,7 @@
     .HomePageTitle {
         font-weight: 400;
         font-size: 72px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .schoolsBlock {
@@ -305,7 +305,7 @@
         width: 677px;
         font-weight: 400;
         font-size: 20px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .buttonContainer {
@@ -412,7 +412,7 @@
     .HomePageTitle {
         font-weight: 400;
         font-size: 56px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .schoolsText {
@@ -424,7 +424,7 @@
     .shoolsTextDesign {
         font-weight: 400;
         font-size: 56px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .container_homepage {
@@ -490,7 +490,7 @@
     .MyTeacher {
         font-weight: 400;
         font-size: 52px;
-        color: #000
+        color: var(--theme-text-primary)
     }
 
     .lenta {
@@ -561,19 +561,19 @@
     .WorkKids {
         font-weight: 400;
         font-size: 40px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .WorkKidsDesk {
         font-weight: 400;
         font-size: 22px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .row2Text {
         font-weight: 400;
         font-size: 22px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .row2 {
@@ -680,7 +680,7 @@
     .HomePageTitle {
         font-weight: 400;
         font-size: 40px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .schoolsText {
@@ -694,7 +694,7 @@
     .shoolsTextDesign {
         font-weight: 400;
         font-size: 40px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .imageWrapper {
@@ -741,7 +741,7 @@
     .shoolText_desc {
         font-weight: 400;
         font-size: 16px;
-        color: #000;
+        color: var(--theme-text-primary);
         margin-top: 40px;
         max-width: 370px;
     }
@@ -803,7 +803,7 @@
     .WorkKids {
         font-weight: 400;
         font-size: 28px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .WorkKidsDesk,
@@ -922,7 +922,7 @@
         font-weight: 400;
         font-size: clamp(28px, 5vw, 40px);
         line-height: 1.25;
-        color: #000;
+        color: var(--theme-text-primary);
         width: 100%;
         max-width: 100%;
         min-width: 0;
@@ -946,7 +946,7 @@
         font-weight: 400;
         font-size: clamp(28px, 5vw, 40px);
         line-height: 1.25;
-        color: #000;
+        color: var(--theme-text-primary);
         width: 100%;
         max-width: 100%;
         min-width: 0;
@@ -1077,7 +1077,7 @@
     .MyTeacher {
         font-weight: 400;
         font-size: 30px;
-        color: #000;
+        color: var(--theme-text-primary);
     }
 
     .teacherGrid {

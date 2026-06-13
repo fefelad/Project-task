@@ -4,7 +4,7 @@
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    background: white;
+    background: var(--theme-bg-elevated);
 }
 
 .map {
@@ -14,7 +14,7 @@
 
 .addressCard {
     padding: 24px 32px;
-    background: white;
+    background: var(--theme-bg-elevated);
     border-top: 1px solid #f0f0f0;
 }
 
@@ -32,13 +32,13 @@
 .cardTitle {
     font-size: 20px;
     font-weight: 600;
-    color: #000;
+    color: var(--theme-text-primary);
     margin: 0;
 }
 
 .cardAddress {
     font-size: 16px;
-    color: #333;
+    color: var(--theme-text-subtle);
     line-height: 1.6;
     margin-bottom: 20px;
     padding-left: 36px;
@@ -79,13 +79,13 @@
 .popupTitle {
     font-size: 16px;
     font-weight: 600;
-    color: #000;
+    color: var(--theme-text-primary);
     margin: 0 0 8px 0;
 }
 
 .popupAddress {
     font-size: 14px;
-    color: #666;
+    color: var(--theme-text-muted);
     margin: 0 0 12px 0;
     line-height: 1.4;
 }
