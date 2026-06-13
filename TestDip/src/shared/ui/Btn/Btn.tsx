@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import classNames from 'classnames';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 import styles from './Btn.module.css'
 
 export type BtnColor = 'blue' | 'orange';
@@ -35,7 +36,7 @@ export const Btn = memo(({
       type={type}
       disabled={disabled}
     >
-      {children}
+      {fixHangingPrepositions(children)}
     </button>
   )
 });

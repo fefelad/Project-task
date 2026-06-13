@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { forceLocalLogout } from '../../shared/lib/auth/forceLocalLogout';
+import { TypographyProvider } from '../../shared/lib/typography/TypographyProvider';
 import styles from './AdminLayout.module.css';
 
 const adminLinks = [
@@ -18,35 +19,37 @@ export default function AdminLayout() {
   };
 
   return (
-    <div className={styles.layout}>
-      <aside className={styles.sidebar}>
-        <div>
-          <h2 className={styles.logo}>Админ панель</h2>
+    <TypographyProvider>
+      <div className={styles.layout}>
+        <aside className={styles.sidebar}>
+          <div>
+            <h2 className={styles.logo}>Админ панель</h2>
 
-          <nav className={styles.nav}>
-            {adminLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === '/admin'}
-                className={({ isActive }) =>
-                  `${styles.navLink} ${isActive ? styles.active : ''}`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
+            <nav className={styles.nav}>
+              {adminLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === '/admin'}
+                  className={({ isActive }) =>
+                    `${styles.navLink} ${isActive ? styles.active : ''}`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
 
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          Выйти
-        </button>
-      </aside>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            Выйти
+          </button>
+        </aside>
 
-      <main className={styles.content}>
-        <Outlet />
-      </main>
-    </div>
+        <main className={styles.content}>
+          <Outlet />
+        </main>
+      </div>
+    </TypographyProvider>
   );
 }

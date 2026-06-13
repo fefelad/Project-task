@@ -1,4 +1,5 @@
 import Text from '../Text/Text';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 import styles from './Footer.module.css';
 import logo from '../../../assets/Logo/logo1.png';
 import { Link } from 'react-router-dom';
@@ -11,34 +12,34 @@ export const Footer = () => {
 
                 <nav className={styles.navAllCol} aria-label="Все страницы">
                     <div className={styles.navAllSubCol}>
-                        <Link to="/cours">Курсы</Link>
-                        <Link to="/teachers">Преподаватели</Link>
+                        <Link to="/cours">{fixHangingPrepositions('Курсы')}</Link>
+                        <Link to="/teachers">{fixHangingPrepositions('Преподаватели')}</Link>
                     </div>
                     <div className={styles.navAllSubCol}>
-                        <Link to="/portfolio">Портфолио</Link>
-                        <Link to="/about">О школе</Link>
-                        <Link to="/contact">Контакты</Link>
+                        <Link to="/portfolio">{fixHangingPrepositions('Портфолио')}</Link>
+                        <Link to="/about">{fixHangingPrepositions('О школе')}</Link>
+                        <Link to="/contact">{fixHangingPrepositions('Контакты')}</Link>
                     </div>
                 </nav>
 
                 <div className={styles.leftColumn}>
                     <nav className={styles.navColLeft} aria-label="Навигация">
-                        <Link to="/cours">Курсы</Link>
-                        <Link to="/teachers">Преподаватели</Link>
+                        <Link to="/cours">{fixHangingPrepositions('Курсы')}</Link>
+                        <Link to="/teachers">{fixHangingPrepositions('Преподаватели')}</Link>
                     </nav>
 
                     <div className={styles.legalCol}>
                         <Link to="/privacy" rel="noopener noreferrer">
-                            Политика обработки персональных данных
+                            {fixHangingPrepositions('Политика обработки персональных данных')}
                         </Link>
                     </div>
                 </div>
 
                 <div className={styles.colRightStack}>
                     <nav className={styles.navColRight} aria-label="Разделы">
-                        <Link to="/portfolio">Портфолио</Link>
-                        <Link to="/about">О школе</Link>
-                        <Link to="/contact">Контакты</Link>
+                        <Link to="/portfolio">{fixHangingPrepositions('Портфолио')}</Link>
+                        <Link to="/about">{fixHangingPrepositions('О школе')}</Link>
+                        <Link to="/contact">{fixHangingPrepositions('Контакты')}</Link>
                     </nav>
                 </div>
 

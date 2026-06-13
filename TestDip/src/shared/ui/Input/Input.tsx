@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import type { InputHTMLAttributes } from 'react';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 import styles from './Input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -23,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
             />
             {error && (
                 <span className={styles.ErrorText} role="alert">
-                    {error}
+                    {fixHangingPrepositions(error)}
                 </span>
             )}
         </div>

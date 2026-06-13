@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import styles from './ModalPopup.module.css';
 
@@ -112,7 +113,7 @@ function ModalPopup({
                             onClick={onClose}
                             disabled={isLoading}
                         >
-                            {cancelText}
+                            {fixHangingPrepositions(cancelText)}
                         </button>
                     )}
 
@@ -122,7 +123,9 @@ function ModalPopup({
                         onClick={handleConfirm}
                         disabled={isLoading}
                     >
-                        {isLoading ? 'Подождите...' : confirmText}
+                        {fixHangingPrepositions(
+                            isLoading ? 'Подождите...' : confirmText,
+                        )}
                     </button>
                 </div>
                 )}

@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { feedbackSchema, type FeedbackFormData } from './schemas/feedback.schema';
 
 import { supabase } from '../../../components/supabase/supabase.ts';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 
 interface FeedbackProps {
     title: string;
@@ -125,7 +126,7 @@ export default function Feedback({
                                 >
                                     <div className={styles.FormGroup}>
                                         <label className={styles.FormLabel}>
-                                            Введите ваше имя
+                                            {fixHangingPrepositions('Введите ваше имя')}
                                         </label>
 
                                         <Input
@@ -137,7 +138,7 @@ export default function Feedback({
 
                                     <div className={styles.FormGroup}>
                                         <label className={styles.FormLabel}>
-                                            Введите вашу почту
+                                            {fixHangingPrepositions('Введите вашу почту')}
                                         </label>
 
                                         <Input

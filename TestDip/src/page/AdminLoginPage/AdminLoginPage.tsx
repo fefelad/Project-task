@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../components/supabase/supabase';
 import { forceLocalLogout } from '../../shared/lib/auth/forceLocalLogout';
+import { TypographyProvider } from '../../shared/lib/typography/TypographyProvider';
 import styles from './AdminLoginPage.module.css';
 
 export default function AdminLoginPage() {
@@ -58,7 +59,8 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <div className={styles.page}>
+        <TypographyProvider>
+            <div className={styles.page}>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <h1 className={styles.title}>Вход в админку</h1>
 
@@ -94,6 +96,7 @@ export default function AdminLoginPage() {
                     {isLoading ? 'Входим...' : 'Войти'}
                 </button>
             </form>
-        </div>
+            </div>
+        </TypographyProvider>
     );
 }

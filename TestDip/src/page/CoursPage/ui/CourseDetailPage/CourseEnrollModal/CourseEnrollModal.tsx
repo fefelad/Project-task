@@ -11,6 +11,7 @@ import {
     type FeedbackFormData,
 } from '../../../../../shared/ui/FeedbackBlock/schemas/feedback.schema';
 import { supabase } from '../../../../../components/supabase/supabase';
+import { fixHangingPrepositions } from '../../../../../shared/lib/typography/fixHangingPrepositions';
 
 import styles from './CourseEnrollModal.module.css';
 
@@ -114,7 +115,9 @@ export default function CourseEnrollModal({
                     noValidate
                 >
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Ваше имя</label>
+                        <label className={styles.formLabel}>
+                            {fixHangingPrepositions('Ваше имя')}
+                        </label>
                         <Input
                             plasholder="Ваше имя"
                             {...register('name')}
@@ -123,7 +126,9 @@ export default function CourseEnrollModal({
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Ваша почта</label>
+                        <label className={styles.formLabel}>
+                            {fixHangingPrepositions('Ваша почта')}
+                        </label>
                         <Input
                             plasholder="example@mail.ru"
                             type="email"

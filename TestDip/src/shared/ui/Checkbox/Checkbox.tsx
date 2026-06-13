@@ -1,3 +1,4 @@
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
 import styles from './Checkbox.module.css';
 
 interface CheckboxProps {
@@ -54,7 +55,9 @@ export default function Checkbox({
                     </svg>
                 )}
             </div>
-            {label && <span className={styles.labelText}>{label}</span>}
+            {label && (
+                <span className={styles.labelText}>{fixHangingPrepositions(label)}</span>
+            )}
         </label>
     );
 }

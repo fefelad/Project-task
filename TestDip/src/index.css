@@ -101,3 +101,7 @@ html {
     --layout-padding-x: 16px;
   }
 }
+
+body {
+  text-wrap: pretty;
+}

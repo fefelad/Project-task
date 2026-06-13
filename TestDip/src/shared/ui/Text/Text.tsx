@@ -1,6 +1,7 @@
 import { memo, useMemo } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
+import { fixTypographyChildren } from '../../lib/typography/fixHangingPrepositions';
 import styles from './Text.module.css';
 
 
@@ -101,12 +102,17 @@ export const Text = memo((props: TextProps) => {
         ...style,
     };
 
+    const typographyChildren = useMemo(
+        () => fixTypographyChildren(children),
+        [children],
+    );
+
     return (
         <p
             className={classNames(styles.Text, mods, className)}
             style={combinedStyles}
         >
-            {children}
+            {typographyChildren}
         </p>
     );
 });

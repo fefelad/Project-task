@@ -1,5 +1,6 @@
-import styles from './FormCheckbox.module.css';
 import { forwardRef, type InputHTMLAttributes } from 'react';
+import { fixHangingPrepositions } from '../../lib/typography/fixHangingPrepositions';
+import styles from './FormCheckbox.module.css';
 
 interface FormCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
@@ -54,7 +55,7 @@ const FormCheckbox = forwardRef<HTMLInputElement, FormCheckboxProps>(({
                 </div>
                 {label && (
                     <span className={styles.labelText}>
-                        {label}
+                        {fixHangingPrepositions(label)}
                         <span className={styles.requiredStar}> *</span>
                     </span>
                 )}

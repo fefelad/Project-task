@@ -1,6 +1,7 @@
 import Btn from '../../shared/ui/Btn/Btn';
 import Text, { TextSizes } from '../../shared/ui/Text/Text';
 import PopupInfo from '../../shared/ui/PopupInfo/PopupInfo';
+import { fixHangingPrepositions } from '../../shared/lib/typography/fixHangingPrepositions';
 import styles from './HomePage.module.css';
 import PeopleHomePage from '../../assets/HomePage/peopleHomepage.png';
 import Media500 from '../../assets/HomePage/media500.png';
@@ -38,8 +39,12 @@ export default function HomePage() {
         <div className={styles.heroTitleGroup}>
           <Text className={styles.HomePageTitle} size={TextSizes.XL9} style={{ lineHeight: '1.3' }}>
             <span className={styles.heroMobOnly}>
-              <span className={styles.heroLine1}>Повысьте уровень ребенка</span>
-              <span className={styles.heroLine2}>с помощью школы дизайна</span>
+              <span className={styles.heroLine1}>
+                {fixHangingPrepositions('Повысьте уровень ребенка')}
+              </span>
+              <span className={styles.heroLine2}>
+                {fixHangingPrepositions('с помощью школы дизайна')}
+              </span>
             </span>
             <span className={styles.heroDeskOnly}>
               Повысьте уровень ребенка <br className={styles.br1} /> с помощью{' '}
