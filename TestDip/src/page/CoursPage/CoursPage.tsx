@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import styles from './CoursPage.module.css'
 import { Btn } from '../../shared/ui/Btn/Btn'
-import Text from '../../shared/ui/Text/Text'
+import Text, { TextWeight } from '../../shared/ui/Text/Text'
 import Card from '../../shared/ui/Card/Card'
 import {
   courseCards,
@@ -148,7 +148,11 @@ export default function CoursPage() {
 
             return (
               <section key={group.direction} className={styles.directionSection}>
-                <Text fontFamily="involve" className={styles.directionTitle}>
+                <Text
+                  fontFamily="involve"
+                  weight={TextWeight.MEDIUM}
+                  className={styles.directionTitle}
+                >
                   {group.direction}
                 </Text>
 

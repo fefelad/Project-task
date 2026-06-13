@@ -49,6 +49,20 @@
     text-overflow: ellipsis;
 }
 
+.compact {
+    min-width: 0;
+    overflow: hidden;
+    padding: clamp(6px, 1.5cqi, 10px);
+}
+
+.compactText {
+    font-size: clamp(11px, 3.5cqi, 14px) !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 @media (max-width: 1440px) {
     .infoText {

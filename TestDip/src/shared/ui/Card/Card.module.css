@@ -9,6 +9,7 @@
     justify-content: flex-start;
     background-color: white;
     transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    container-type: inline-size;
 }
 
 .cardClickable {
@@ -48,28 +49,26 @@
 
 .infoContainer {
     display: flex;
-    gap: 10px;
+    flex-wrap: nowrap;
+    gap: clamp(6px, 1.2cqi, 10px);
     width: 100%;
+    min-width: 0;
 }
 
 .infoContainer>* {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
 }
 
 .infoTab {
     display: flex;
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
+    overflow: hidden;
 }
 
-.infoContainerWidePrimary .infoTabPrimary {
-    flex: 1.75;
-}
-
-.infoContainerWidePrimary .infoTabSecondary {
-    flex: 1;
-    flex-shrink: 0;
+.infoTabSecondary {
+    flex: 1 1 0;
 }
 
 .directions {

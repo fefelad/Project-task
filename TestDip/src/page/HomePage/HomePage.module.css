@@ -250,7 +250,7 @@
     }
 
     .peopleImage {
-        width: 100%;
+        width: 90%;
     }
 
     .popupInfoBestCourse {
@@ -434,7 +434,7 @@
     .imageWrapper {
         width: 420px;
         top: 78px;
-        left: 630px;
+        left: 560px;
     }
 
     .containerRow {
@@ -464,7 +464,7 @@
     }
 
     .shoolText_desc {
-        max-width: 600px;
+        max-width: 470px;
     }
 
     .coursesBtn {
@@ -499,13 +499,16 @@
 
     .teacherGrid {
         grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
     }
 
     .card1,
     .card2,
     .card3,
     .card4 {
+        display: flex;
         height: 100%;
+        min-height: 0;
     }
 
     .card1 {
@@ -606,7 +609,7 @@
     }
 
     .containerRow {
-        --row2-column-width: 347px;
+        --row2-column-width: 300px;
 
         display: grid;
         grid-template-columns: minmax(0, 1fr) var(--row2-column-width);
@@ -615,6 +618,53 @@
         width: 100%;
         align-items: stretch;
         min-width: 0;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .imageWrapper {
+        left: 469px;
+    }
+
+    .peopleImage {
+        width: 80%;
+    }
+
+    .popupInfo {
+        display: none;
+    }
+
+
+    .shoolsTextDesign {
+        font-size: 48px;
+    }
+
+    .schoolsBlock {
+        transform: rotate(0deg);
+    }
+
+    .schoolsContainer {
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .HomePageTitle {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 900px) {
+    .imageWrapper {
+        display: none;
+    }
+
+    .shoolText_desc {
+        max-width: 100%;
+        width: 100%;
     }
 
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -6,7 +6,7 @@ import { Navigation, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import Text, { TextSizes } from '../../../../shared/ui/Text/Text';
+import Text from '../../../../shared/ui/Text/Text';
 import Card from '../../../../shared/ui/Card/Card';
 import { courseCards, getCoursePageDetail, getInfoTexts } from '../../modal';
 import Btn from '../../../../shared/ui/Btn/Btn';
@@ -22,11 +22,34 @@ import styles from './CourseDetailPage.module.css';
 import LearningSteps from '../../../../shared/ui/LearningSteps/LearningSteps';
 import CourseEnrollModal from './CourseEnrollModal/CourseEnrollModal';
 
+const COURSE_STEPS_SLIDES_BREAKPOINTS = {
+  TABLET: 768,
+  DESKTOP: 1001,
+} as const;
+
+const getCourseStepsSlidesPerView = (width: number): number => {
+  if (width < COURSE_STEPS_SLIDES_BREAKPOINTS.TABLET) return 1;
+  if (width < COURSE_STEPS_SLIDES_BREAKPOINTS.DESKTOP) return 2;
+  return 3;
+};
+
 export default function CourseDetailPage() {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
 
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(() =>
+    getCourseStepsSlidesPerView(window.innerWidth)
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesPerView(getCourseStepsSlidesPerView(window.innerWidth));
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const card = courseCards.find(c => c.id === parseInt(courseId || '0'));
   const pageDetail = card ? getCoursePageDetail(card.id) : undefined;
@@ -65,8 +88,8 @@ export default function CourseDetailPage() {
             {pageDetail.detailDescription}
           </Text>
 
-          <div className={styles.WrapperColums}>
-            <div className={styles.WrapperColumsOne}>
+          <div className={styles.mediaArea}>
+            <div className={styles.leftPart}>
               <div className={styles.imageBox}>
                 <img
                   src={photoCur1}
@@ -74,20 +97,6 @@ export default function CourseDetailPage() {
                   className={styles.coursePhoto}
                 />
               </div>
-
-              <div className={styles.WrapperText}>
-                {pageDetail.hashtags.map((tag) => (
-                  <Text
-                    key={tag}
-                    className={styles.hestag}
-                    size={TextSizes.XL2}
-                    fontFamily="onest"
-                  >
-                    {tag}
-                  </Text>
-                ))}
-              </div>
-
               <div className={styles.buttonWrapper}>
                 <Btn color="orange" width="100%" onClick={() => setIsEnrollModalOpen(true)}>
                   Записаться на курс
@@ -119,34 +128,17 @@ export default function CourseDetailPage() {
         </Text>
 
         <Swiper
+          key={slidesPerView}
           modules={[Navigation, A11y]}
           className={styles.courseStepsSwiper}
           navigation={{
             prevEl: '.course-steps-prev',
             nextEl: '.course-steps-next',
           }}
-          loop={true}
-          spaceBetween={20}
-          slidesPerView={3}
+          loop={slidesPerView < lessonSlides.length}
+          spaceBetween={slidesPerView === 1 ? 16 : 20}
+          slidesPerView={slidesPerView}
           slidesPerGroup={1}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 16,
-            },
-            380: {
-              slidesPerView: 2,
-              spaceBetween: 16,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            1200: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-          }}
         >
           {lessonSlides.map((slide, index) => (
             <SwiperSlide key={index} className={styles.courseStepSlide}>

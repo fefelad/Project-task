@@ -9,6 +9,7 @@ interface InfoProps {
     isTextWhite?: boolean;
     fullWidth?: boolean;
     singleLine?: boolean;
+    compact?: boolean;
 }
 
 export const Info = memo(({
@@ -17,6 +18,7 @@ export const Info = memo(({
     isTextWhite = false,
     fullWidth = false,
     singleLine = false,
+    compact = false,
 }: InfoProps) => {
     return (
         <div
@@ -24,7 +26,8 @@ export const Info = memo(({
                 styles.Info,
                 hasWhiteBg ? styles.orangeBg : styles.whiteBg,
                 fullWidth ? styles.fullWidth : styles.withPadding,
-                singleLine && styles.singleLine
+                singleLine && styles.singleLine,
+                compact && styles.compact
             )}
         >
             <Text
@@ -32,7 +35,8 @@ export const Info = memo(({
                 className={classNames(
                     styles.infoText,
                     isTextWhite ? styles.whiteText : styles.blackText,
-                    singleLine && styles.singleLineText
+                    singleLine && styles.singleLineText,
+                    compact && styles.compactText
                 )}
             >
                 {children}

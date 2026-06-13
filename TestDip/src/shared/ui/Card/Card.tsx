@@ -4,9 +4,6 @@ import styles from './Card.module.css';
 import Text from '../Text/Text';
 import Info from '../Info/Info';
 
-const isStartDateLabel = (text: string): boolean =>
-  text.trim().toLowerCase().startsWith('старт');
-
 interface CardProps {
     title: string;
     description: string;
@@ -31,8 +28,6 @@ export const Card = memo(({
     isDisabled = false
 }: CardProps) => {
     const [info1, info2] = infoTexts;
-    const shouldWidenPrimaryTab =
-      info1.trim().length > 0 && !isStartDateLabel(info1);
 
     return (
         <div
@@ -71,30 +66,27 @@ export const Card = memo(({
             </Text>
             {!isDisabled && (
                 <>
-                <div
-                    className={classNames(
-                        styles.infoContainer,
-                        shouldWidenPrimaryTab && styles.infoContainerWidePrimary
-                    )}
-                >
-                    <div
-                        className={classNames(
-                            styles.infoTab,
-                            shouldWidenPrimaryTab && styles.infoTabPrimary
-                        )}
-                    >
+                <div className={styles.infoContainer}>
+                    <div className={styles.infoTab}>
                         <Info
                             hasWhiteBg={true}
                             isTextWhite={true}
                             fullWidth={true}
-                            singleLine={shouldWidenPrimaryTab}
+                            singleLine={true}
+                            compact={true}
                         >
                             {info1}
                         </Info>
                     </div>
 
                     <div className={classNames(styles.infoTab, styles.infoTabSecondary)}>
-                        <Info hasWhiteBg={false} isTextWhite={false} fullWidth={true}>
+                        <Info
+                            hasWhiteBg={false}
+                            isTextWhite={false}
+                            fullWidth={true}
+                            singleLine={true}
+                            compact={true}
+                        >
                             {info2}
                         </Info>
                     </div>

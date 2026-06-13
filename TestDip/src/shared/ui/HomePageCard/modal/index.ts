@@ -58,7 +58,7 @@ export const homePageTeachers: HomePageTeacher[] = [
     startText: 'Старт 5 сентября',
   },
   {
-    id: 'aleksandra-volkova',
+    id: 'vera-shilina',
     name: 'Вера Шилина',
     image: prep4,
     tags: [

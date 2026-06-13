@@ -109,6 +109,77 @@
     left: 244px;
 }
 
+@media (max-width: 1440px) {
+    .learnTitle {
+        font-size: 42px;
+        margin-bottom: 40px;
+    }
+
+    .learnGrid {
+        min-height: clamp(820px, 72vw, 1050px);
+    }
+
+    .learnCard {
+        width: clamp(280px, 32%, 400px);
+        height: auto;
+        min-height: 210px;
+        padding: 20px;
+    }
+
+    .step2 {
+        top: 12%;
+        left: 34%;
+    }
+
+    .step3 {
+        top: 24%;
+    }
+
+    .step4 {
+        top: 46%;
+        left: 34%;
+    }
+
+    .cardTitle {
+        font-size: 22px;
+    }
+
+    .cardText {
+        font-size: 20px;
+    }
+
+    .arrow1 {
+        top: 24%;
+        left: 8%;
+        width: clamp(90px, 12%, 140px);
+    }
+
+    .arrow2 {
+        top: 8%;
+        right: 12%;
+        width: clamp(90px, 12%, 140px);
+    }
+
+    .arrow3 {
+        top: 48%;
+        right: 12%;
+        width: clamp(90px, 12%, 140px);
+    }
+
+    .arrow4 {
+        top: 47%;
+        left: 18%;
+        width: clamp(90px, 12%, 140px);
+    }
+
+    .arrow1,
+    .arrow2,
+    .arrow3,
+    .arrow4 {
+        height: auto;
+    }
+}
+
 /* адаптив */
 @media (max-width: 1200px) {
     .learnGrid {

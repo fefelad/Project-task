@@ -170,6 +170,10 @@ export default function TeacherDetailPage() {
               </ul>
             </div>
           </div>
+
+          <div className={styles.catTeachers}>
+            <img src={cat3} alt="Фото кота" />
+          </div>
         </div>
       </div>
 
@@ -218,6 +222,7 @@ export default function TeacherDetailPage() {
                     description={card.description}
                     infoTexts={getInfoTexts(card.id)}
                     directions={[...card.directions]}
+                    className={styles.courseCard}
                     onClick={() => navigate(`/cours/${card.id}`)}
                   />
                 </SwiperSlide>
@@ -279,9 +284,6 @@ export default function TeacherDetailPage() {
         <Text className={styles.teacherCoursesTitle} weight={TextWeight.REGULAR}>
           Фотографии занятий
         </Text>
-        <div className={styles.catTeachers}>
-          <img src={cat3} alt="Фото кота" />
-        </div>
         <div className={styles.rowContainer}>
           <div className={styles.teacherCoursesContainer}>
             <img className={styles.photo1} src={photo1} alt="Фото преподавателя" />

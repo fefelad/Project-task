@@ -127,10 +127,14 @@
 }
 
 .approachBlock {
+    position: relative;
+    overflow: visible;
     width: 100%;
 }
 
 .approachBlock .blockTitle {
+    position: relative;
+    z-index: 1;
     font-size: clamp(20px, 1.25vw, 24px);
 }
 
@@ -140,6 +144,9 @@
     gap: clamp(16px, 1.25vw, 24px);
     align-items: start;
     font-size: clamp(14px, 0.83vw, 16px);
+    position: relative;
+    z-index: 1;
+    padding-right: clamp(120px, 14vw, 280px);
 }
 
 .infoBlock {
@@ -237,14 +244,21 @@
 .courseSlide {
     min-width: 0;
     height: auto;
+    display: flex;
 }
 
 .teacherCoursesSwiper :global(.swiper-slide) {
     height: auto;
+    display: flex;
 }
 
 .teacherCoursesSwiper :global(.swiper-wrapper) {
     align-items: stretch;
+}
+
+.courseSlide .courseCard {
+    width: 100%;
+    height: 100%;
 }
 
 /* стандартные стрелки swiper не показываем */
@@ -303,9 +317,24 @@
     gap: 30px;
 }
 
+.catTeachers {
+    position: absolute;
+    top: clamp(-48px, -3vw, -20px);
+    right: clamp(-24px, -1.5vw, 8px);
+    width: clamp(180px, 20vw, 360px);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.catTeachers img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .teacherCoursesPhoto {
     position: relative;
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .teacherCoursesTitle {
@@ -335,12 +364,6 @@
     gap: 20px;
     padding-left: 250px;
     padding-top: 20px;
-}
-
-.catTeachers {
-    position: absolute;
-    right: 20px;
-    top: 20px;
 }
 
 .lenta1 {
@@ -387,15 +410,14 @@
 }
 
 @media (max-width: 1220px) {
-
     .catTeachers {
-        position: absolute;
-        right: -19px;
-        top: -62px;
+        top: clamp(-36px, -4vw, -16px);
+        right: clamp(-16px, -2vw, 4px);
+        width: clamp(150px, 22vw, 260px);
     }
 
-    .catTeachers img {
-        width: 300px;
+    .approachContent {
+        padding-right: clamp(90px, 12vw, 180px);
     }
 
     .lenta1 {
@@ -463,12 +485,12 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .teacherCoursesPhoto {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        padding-top: 140px;
+        padding-top: 80px;
     }
 
     .rowContainer,
@@ -511,12 +533,17 @@
     }
 }
 
-@media (max-width: 900px) {
-
+@media (max-width: 1000px) {
     .catTeachers {
         display: none;
     }
 
+    .approachContent {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 900px) {
     .container {
         padding-top: 100px;
     }
@@ -604,7 +631,6 @@
 }
 
 @media (max-width: 576px) {
-
     .teacherCoursesSection {
         margin-top: 60px;
     }

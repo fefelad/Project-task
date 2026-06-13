@@ -36,7 +36,7 @@
 .directionSection {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
 }
 
 .coursesWrapper {
@@ -44,9 +44,12 @@
 }
 
 .directionTitle {
-    font-size: 48px;
-    font-weight: 400;
-    line-height: 109%;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
 }
 
 .courses {
@@ -117,7 +120,7 @@
     }
 
     .directionTitle {
-        font-size: 40px;
+        font-size: 52px;
     }
 
     .podves {
@@ -140,7 +143,7 @@
     }
 
     .directionTitle {
-        font-size: 36px;
+        font-size: 46px;
     }
 
     .podves {
@@ -168,7 +171,7 @@
     }
 
     .directionTitle {
-        font-size: 32px;
+        font-size: 42px;
     }
 
     .courses {
@@ -205,7 +208,7 @@
     }
 
     .directionTitle {
-        font-size: 28px;
+        font-size: 44px;
     }
 
     .courses {
@@ -243,7 +246,7 @@
     }
 
     .directionTitle {
-        font-size: 24px;
+        font-size: 38px;
     }
 
     .courses {
