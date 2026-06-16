@@ -1,6 +1,5 @@
 .card {
     --card-padding: 20px;
-    --card-gap: 20px;
 
     width: 100%;
     height: auto;
@@ -10,36 +9,43 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: var(--card-gap);
+    gap: 16px;
     justify-content: flex-start;
     background-color: var(--theme-bg-elevated);
     box-sizing: border-box;
 }
 
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .cardTitle {
-    font-weight: 400;
     font-size: 48px;
-    line-height: 109%;
+    line-height: 1.05;
     color: var(--theme-text-primary);
 }
 
 .cardSecondTitle {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 109%;
+    font-size: 22px;
+    line-height: 1.35;
     color: var(--theme-text-primary);
 }
 
 .cardDescription {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1.25;
-    color: var(--theme-text-primary);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--theme-text-secondary);
 }
 
 @media (max-width: 1440px) {
-    .cardDescription {
+    .cardSecondTitle {
         font-size: 20px;
+    }
+
+    .cardDescription {
+        font-size: 17px;
     }
 }
 
@@ -49,32 +55,40 @@
     }
 
     .cardSecondTitle {
-        font-size: 20px;
-    }
-
-    .cardDescription {
         font-size: 18px;
-    }
-}
-
-@media (max-width: 576px) {
-    .card {
-        --card-padding: 15px;
-        --card-gap: 10px;
-    }
-
-    .cardTitle {
-        font-size: 24px;
-        font-weight: 500;
-    }
-
-    .cardSecondTitle {
-        font-size: 18px;
-        font-weight: 400;
     }
 
     .cardDescription {
         font-size: 16px;
-        font-weight: 300;
+    }
+
+    .cardHeader {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        --card-padding: 15px;
+        gap: 12px;
+    }
+
+    .cardHeader {
+        gap: 6px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--theme-border);
+    }
+
+    .cardTitle {
+        font-size: 24px;
+    }
+
+    .cardSecondTitle {
+        font-size: 17px;
+    }
+
+    .cardDescription {
+        font-size: 15px;
+        line-height: 1.45;
     }
 }

@@ -262,3 +262,72 @@
         margin-top: 0;
     }
 }
+
+/* Табы: 2 колонки (475–321px), 1 колонка (320px и меньше) */
+@media (max-width: 475px) {
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 32px;
+    }
+
+    .tabsClass {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tabs button {
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs button {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* Табы: 2 колонки (475–321px), 1 колонка (320px и меньше) */
+@media (max-width: 475px) {
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 32px;
+    }
+
+    .tabsClass {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tabs button {
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .TitleCourse {
+        font-size: 46px;
+    }
+
+    .tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs button {
+        font-size: 15px;
+        padding: 12px;
+    }
+}

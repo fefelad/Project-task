@@ -134,7 +134,7 @@ export default function HomePage() {
         <div className={styles.wrapperRowOne}>
           <div className={styles.containerText}>
             <Text fontFamily='involve' className={styles.WorkKids}>
-              Работы сделанные нашими учениками
+              Работы наших учеников
             </Text>
             <Text fontFamily='onest' className={styles.WorkKidsDesk}>
               Это не просто домашние задания, а полноценные проекты, которые 

@@ -3,6 +3,7 @@ import Text, { TextSizes, TextWeight } from '../Text/Text';
 import Btn from '../Btn/Btn';
 import styles from './HomePageCard.module.css';
 import type { HomePageTeacher } from './modal';
+import { getTeacherCourseTags } from '../../lib/teachers/getTeacherCourseTags';
 
 interface HomePageCradProps {
   teacher: HomePageTeacher;
@@ -14,6 +15,7 @@ export default function HomePageCrad({
   buttonClassName,
 }: HomePageCradProps) {
   const navigate = useNavigate();
+  const courseTags = getTeacherCourseTags(teacher.id);
 
   const handleDetailsClick = () => {
     navigate(`/teachers/${teacher.id}`);
@@ -29,22 +31,32 @@ export default function HomePageCrad({
 
         <div className={styles.content}>
           <Text
-            className={styles.name}
+            className={`${styles.name} ${teacher.shortName ? styles.nameFull : ''}`}
             fontFamily="involve"
             weight={TextWeight.MEDIUM}
           >
             {teacher.name}
           </Text>
 
+          {teacher.shortName && (
+            <Text
+              className={`${styles.name} ${styles.nameShort}`}
+              fontFamily="involve"
+              weight={TextWeight.MEDIUM}
+            >
+              {teacher.shortName}
+            </Text>
+          )}
+
           <div className={styles.tags}>
-            {teacher.tags.map((tag, index) => (
+            {courseTags.map((tag) => (
               <Text
-                key={index}
+                key={tag}
                 className={styles.tag}
                 fontFamily="onest"
                 size={TextSizes.XL2}
               >
-                # {tag}
+                {tag}
               </Text>
             ))}
           </div>

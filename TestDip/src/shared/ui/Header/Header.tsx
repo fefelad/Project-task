@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
-import logo from '../../../assets/Logo/logo1.png';
+import logo from '../../../assets/Logo/logogogogogog.png';
 import Text, { TextSizes, TextWeight } from '../Text/Text';
 import { Link, NavLink } from 'react-router-dom';
 import { AppRoutes } from '../../../app/routesConfig';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
+// import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +71,7 @@ function Header() {
                         </ul>
                     </nav>
 
-                    <ThemeToggle />
+                    {/* <ThemeToggle /> */}
 
                     <button
                         type="button"

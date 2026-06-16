@@ -1,4 +1,4 @@
-import Text from '../../../Text/Text';
+import Text, { TextWeight } from '../../../Text/Text';
 import styles from './HomeCourseCard.module.css';
 
 export interface HomeCourseCardProps {
@@ -16,15 +16,28 @@ export default function HomeCourseCard({
 }: HomeCourseCardProps) {
   return (
     <div className={[styles.card, className].filter(Boolean).join(' ')}>
-      <Text fontFamily="onest" className={styles.cardTitle}>
-        {title}
-      </Text>
+      <div className={styles.cardHeader}>
+        <Text
+          fontFamily="involve"
+          className={styles.cardTitle}
+        >
+          {title}
+        </Text>
 
-      <Text fontFamily="onest" className={styles.cardSecondTitle}>
-        {secondtitle}
-      </Text>
+        <Text
+          fontFamily="onest"
+          className={styles.cardSecondTitle}
+          weight={TextWeight.MEDIUM}
+        >
+          {secondtitle}
+        </Text>
+      </div>
 
-      <Text fontFamily="onest" className={styles.cardDescription}>
+      <Text
+        fontFamily="onest"
+        className={styles.cardDescription}
+        weight={TextWeight.REGULAR}
+      >
         {description}
       </Text>
     </div>

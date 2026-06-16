@@ -108,7 +108,7 @@
 }
 
 .arrow1 {
-    top: 571px;
+    top: 312px;
     left: 54px;
 }
 
@@ -449,7 +449,7 @@
 
     .descriptionTop {
         font-weight: 400;
-        font-size: 16px;
+        font-size: 15px;
         color: var(--theme-text-primary);
     }
 

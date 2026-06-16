@@ -52,8 +52,12 @@
     margin-top: 20px;
     font-weight: 300;
     font-size: 22px;
-    line-height: 109%;
+    line-height: 1.35;
     color: var(--theme-text-primary);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
 }
 
 .infoContainer {
@@ -228,5 +232,19 @@
     .infoContainer {
         gap: 10px;
         margin-top: 20px;
+    }
+}
+
+.nameShort {
+    display: none;
+}
+
+@media (max-width: 350px) {
+    .nameFull {
+        display: none;
+    }
+
+    .nameShort {
+        display: block;
     }
 }
