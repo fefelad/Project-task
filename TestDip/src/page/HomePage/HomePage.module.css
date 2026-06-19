@@ -834,7 +834,7 @@
     }
 
     .containerRow {
-        --row2-column-width: 418px;
+        --row2-column-width: 450px;
         display: grid;
         grid-template-columns: minmax(0, 1fr) var(--row2-column-width);
         gap: 20px;

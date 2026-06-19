@@ -199,6 +199,7 @@
         position: static;
         width: 100%;
         height: auto;
+        min-height: 150px;
     }
 
     .arrow1,
@@ -230,6 +231,6 @@
     .learnCard,
     .resultCard {
         height: auto;
-        min-height: 180px;
+        min-height: 140px;
     }
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Text, { TextColor, TextSizes, TextWeight } from '../Text/Text';
+import Text, { TextSizes, TextWeight } from '../Text/Text';
 import styles from './CardTeacher.module.css';
 import Btn from '../Btn/Btn';
 import Feedback from '../FeedbackBlock/Feedback';

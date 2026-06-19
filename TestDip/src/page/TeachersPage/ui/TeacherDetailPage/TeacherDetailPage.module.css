@@ -155,7 +155,6 @@
     padding: clamp(16px, 1.04vw, 20px);
     display: flex;
     flex-direction: column;
-    gap: clamp(12px, 0.83vw, 16px);
 }
 
 .blockTitle {
@@ -741,6 +740,12 @@
     .bottomNavIcon {
         width: 68px;
         height: 10px;
+    }
+}
+
+@media (max-width: 834px) {
+    .teacherWrapper {
+        gap: 0px;
     }
 }
 

@@ -1,16 +1,18 @@
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Text from '../../shared/ui/Text/Text';
 import Btn from '../../shared/ui/Btn/Btn';
 import styles from './PortfolioPage.module.css';
-import ph4 from '../../assets/PortfolioPage/uiPortfioloi/4.png';
-import ph5 from '../../assets/PortfolioPage/uiPortfioloi/5.png';
-import ph6 from '../../assets/PortfolioPage/uiPortfioloi/6.png';
-import ph7 from '../../assets/PortfolioPage/uiPortfioloi/7.png';
 import ph8 from '../../assets/PortfolioPage/uiPortfioloi/8.png';
 import ph9 from '../../assets/PortfolioPage/uiPortfioloi/9.png';
-import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
+
+import newPhoto1 from '../../assets/PortfolioPage/newPhoto/1.png';
+import newPhoto2 from '../../assets/PortfolioPage/newPhoto/2.png';
+import newPhoto3 from '../../assets/PortfolioPage/newPhoto/4123132.png';
+import newPhoto4 from '../../assets/PortfolioPage/newPhoto/4.png';
+import newPhoto5 from '../../assets/PortfolioPage/newPhoto/5.png';
+
 import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 import { useNavigate } from 'react-router-dom';
 import { tabs, type DesignDirection } from '../CoursPage/modal';
@@ -23,50 +25,52 @@ type PortfolioItem = {
   direction: DesignDirection;
   childName: string;
   age: number;
+  preserveImageRatio?: boolean;
 };
 
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    img: ph4,
-    alt: 'Постер Пёс и Кот',
-    text: 'Постер для компании «Пёс&Кот» — компании, примиряющей пёсиков и котиков во всём пушистом мире.',
+    img: newPhoto1,
+    alt: 'Фирменный стиль для бренда пижам',
+    text: 'Фирменный стиль для бренда пижам.',
     direction: 'Графический дизайн',
-    childName: 'Артём',
-    age: 8,
+    childName: 'Анфиса',
+    age: 10,
   },
   {
     id: 2,
-    img: ph5,
-    alt: 'Яркий плакат',
-    text: 'Плакат в яркой палитре: учились делать акцент и не перегружать композицию деталями.',
+    img: newPhoto2,
+    alt: 'Иллюстрация для банка настроения',
+    text: 'Иллюстрация для банка настроения.',
     direction: 'Графический дизайн',
-    childName: 'Мила',
-    age: 7,
+    childName: 'Ира',
+    age: 10,
   },
   {
     id: 3,
-    img: ph6,
-    alt: 'Карточки и баннеры',
-    text: 'Карточки и баннеры для конвертов: отработали сетку, отступы и типографику. Такие навыки сразу делают работу лучше.',
+    img: newPhoto4,
+    alt: 'Сайт Tasmin Design',
+    text: 'Сайт Tasmin Design.',
     direction: 'Веб-дизайн',
     childName: 'Кирилл',
     age: 10,
   },
   {
     id: 4,
-    img: ph7,
-    alt: 'Кошачий постер',
-    text: 'Изящные когти, грациозная походка и роскошные усы — у каждого уважающего себя представителя кошачьих должна быть возможность показать себя с лучшей стороны.',
+    img: newPhoto3,
+    alt: 'Макет коробки для чая',
+    text: 'Макет коробки для кофе.',
     direction: 'Графический дизайн',
-    childName: 'София',
-    age: 9,
+    childName: 'Артём',
+    age: 10,
+    preserveImageRatio: true,
   },
   {
     id: 5,
     img: ph8,
     alt: 'Heco System',
-    text: 'Heco System — это лаборатория, которая создаёт товарные знаки в виде лошадей. В данном проекте разработаны несколько таких знаков.',
+    text: 'Heco System — это лаборатория, которая создаёт товарные знаки в виде кроликов. В данном проекте разработаны несколько таких знаков.',
     direction: 'Дизайн иллюстраций',
     childName: 'Максим',
     age: 7,
@@ -82,18 +86,36 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 7,
-    img: ph10,
-    alt: 'Постер для магазина',
-    text: 'Постер для магазина, связанного с товарами для животных.',
+    img: newPhoto5,
+    alt: 'Сайт для продажи новых домов',
+    text: 'Сайт для продажи новых домов.',
     direction: 'Веб-дизайн',
     childName: 'Даниил',
     age: 8,
   },
 ];
 
+const NARROW_MOBILE_BREAKPOINT = 500;
+
 export default function PortfolioPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Все');
+  const [isNarrowMobile, setIsNarrowMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${NARROW_MOBILE_BREAKPOINT}px)`);
+
+    const updateLayout = () => {
+      setIsNarrowMobile(mediaQuery.matches);
+    };
+
+    updateLayout();
+    mediaQuery.addEventListener('change', updateLayout);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateLayout);
+    };
+  }, []);
 
   const filteredItems = useMemo(() => {
     if (activeTab === 'Все') {
@@ -111,14 +133,14 @@ export default function PortfolioPage() {
         </Text>
       </div>
 
-      <div className={styles.filterTabs}>
+      <div className={styles.tabs}>
         {tabs.map((tab) => (
           <Btn
             key={tab}
             color={activeTab === tab ? 'orange' : 'blue'}
             hasBackground={activeTab === tab}
             onClick={() => setActiveTab(tab)}
-            className={styles.filterTabBtn}
+            className={styles.tabsClass}
           >
             {tab}
           </Btn>
@@ -134,23 +156,18 @@ export default function PortfolioPage() {
         <Box sx={{ width: '100%' }}>
           <Masonry
             columns={{ xs: 1, sm: 2, md: 3 }}
-            spacing={3}
-            sx={{
-              width: '100%',
-              '@media (max-width: 576px)': {
-                margin: '0 !important',
-                '& > *': {
-                  padding: '0 !important',
-                },
-              },
-            }}
+            spacing={isNarrowMobile ? 0 : 3}
+            className={styles.portfolioMasonry}
+            sx={{ width: '100%' }}
           >
             {filteredItems.map((item) => (
               <div key={item.id} className={styles.portfolioCard}>
                 <img
                   src={item.img}
                   alt={item.alt}
-                  className={styles.portfolioCardImage}
+                  className={`${styles.portfolioCardImage} ${
+                    item.preserveImageRatio ? styles.portfolioCardImageNatural : ''
+                  }`}
                 />
 
                 <div className={styles.portfolioCardMeta}>
