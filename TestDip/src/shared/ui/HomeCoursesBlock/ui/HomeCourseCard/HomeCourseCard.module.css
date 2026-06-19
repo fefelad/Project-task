@@ -81,10 +81,12 @@
 
     .cardTitle {
         font-size: 24px;
+        font-weight: 500;
     }
 
     .cardSecondTitle {
         font-size: 17px;
+        font-weight: 400;
     }
 
     .cardDescription {

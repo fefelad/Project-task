@@ -238,7 +238,7 @@
 @media (max-width: 576px) {
     .CardTeacherWrapper {
         padding-top: 32px;
-        gap: 32px;
+        gap: 80px;
     }
 
     .CardTeacher {

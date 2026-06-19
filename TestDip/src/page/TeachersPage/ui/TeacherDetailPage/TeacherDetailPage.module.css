@@ -192,6 +192,52 @@
     margin-bottom: 4px;
 }
 
+.collapsibleHeader {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.collapsibleToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    color: var(--color-blue);
+}
+
+.collapsibleToggleText {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-blue);
+}
+
+.collapsibleToggleIcon {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.collapsibleBlockOpen .collapsibleToggleIcon {
+    transform: rotate(180deg);
+}
+
+.collapsibleBody {
+    min-width: 0;
+}
+
+.collapsibleBodyClosed {
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
 .approachNote {
     margin-top: 8px;
     font-style: italic;
@@ -570,6 +616,31 @@
         padding-top: 80px;
     }
 
+    .infoGrid .collapsibleBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .collapsibleBlock .blockTitle {
+        white-space: normal;
+    }
+
+    .collapsibleBodyClosed .blockContent,
+    .collapsibleBodyClosed .qualificationsList,
+    .collapsibleBodyClosed .textGroup,
+    .collapsibleBodyClosed .approachContent {
+        margin-top: 0;
+    }
+
+    .collapsibleBlockOpen .collapsibleBody {
+        margin-top: 12px;
+    }
+
+    .collapsibleBlockOpen .approachContent {
+        padding-right: 0;
+    }
+
     .teacherTitle {
         gap: 12px;
     }
@@ -584,7 +655,6 @@
 
     .infoGrid .infoBlock {
         grid-template-columns: 1fr;
-        gap: 12px;
     }
 
     .infoGrid .blockTitle {
@@ -649,5 +719,11 @@
     .bottomNavIcon {
         width: 68px;
         height: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .teacherWrapper {
+        gap: 0px;
     }
 }

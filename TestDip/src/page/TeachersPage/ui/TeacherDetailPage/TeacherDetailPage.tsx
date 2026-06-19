@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -18,12 +18,31 @@ import photo2 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo2.png'
 import photo3 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo3.png';
 import { courseCards, getInfoTexts } from '../../../CoursPage/modal';
 import { getTeacherById } from '../modal/modal';
+import TeacherCollapsibleBlock from './TeacherCollapsibleBlock';
+
+const MOBILE_DETAILS_BREAKPOINT = 768;
 
 export default function TeacherDetailPage() {
   const { teacherId } = useParams();
   const navigate = useNavigate();
+  const [isMobileDetailsView, setIsMobileDetailsView] = useState(false);
 
   const teacher = getTeacherById(teacherId);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_DETAILS_BREAKPOINT}px)`);
+
+    const updateView = () => {
+      setIsMobileDetailsView(mediaQuery.matches);
+    };
+
+    updateView();
+    mediaQuery.addEventListener('change', updateView);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateView);
+    };
+  }, []);
 
   const teacherCourses = useMemo(() => {
     if (!teacher?.courseIds?.length) return [];
@@ -84,16 +103,11 @@ export default function TeacherDetailPage() {
             </div>
 
             <div className={styles.infoGrid}>
-              <div className={`${styles.infoBlock} ${styles.educationBlock}`}>
-                <Text
-                  weight={TextWeight.MEDIUM}
-                  size={TextSizes.XL2}
-                  className={styles.blockTitle}
-                  fontFamily='onest'
-                >
-                  Образование
-                </Text>
-
+              <TeacherCollapsibleBlock
+                title="Образование"
+                className={styles.educationBlock}
+                collapsible={isMobileDetailsView}
+              >
                 <div className={styles.blockContent}>
                   {teacher.education.map((edu, index) => (
                     <div key={index} className={styles.educationItem}>
@@ -101,18 +115,13 @@ export default function TeacherDetailPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </TeacherCollapsibleBlock>
 
-              <div className={`${styles.infoBlock} ${styles.qualificationsBlock}`}>
-                <Text
-                  weight={TextWeight.MEDIUM}
-                  size={TextSizes.XL2}
-                  className={styles.blockTitle}
-                  fontFamily='onest'
-                >
-                  Повышение квалификации
-                </Text>
-
+              <TeacherCollapsibleBlock
+                title="Повышение квалификации"
+                className={styles.qualificationsBlock}
+                collapsible={isMobileDetailsView}
+              >
                 <ul className={`${styles.qualificationsList} ${styles.blockContent}`}>
                   {teacher.qualifications.map((qual, index) => (
                     <li key={index}>
@@ -120,37 +129,28 @@ export default function TeacherDetailPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </TeacherCollapsibleBlock>
 
-              <div className={`${styles.infoBlock} ${styles.pathBlock}`}>
-                <Text
-                  weight={TextWeight.MEDIUM}
-                  size={TextSizes.XL2}
-                  className={styles.blockTitle}
-                >
-                  Профессиональный путь
-                </Text>
-
+              <TeacherCollapsibleBlock
+                title="Профессиональный путь"
+                className={styles.pathBlock}
+                collapsible={isMobileDetailsView}
+              >
                 <div className={`${styles.textGroup} ${styles.blockContent}`}>
                   {teacher.professionalPath.split('\n').map((item, index) => (
                     <Text fontFamily='onest' key={index}>{item}</Text>
                   ))}
                 </div>
-              </div>
+              </TeacherCollapsibleBlock>
             </div>
           </div>
         </div>
 
-        <div className={`${styles.infoBlock} ${styles.approachBlock}`}>
-          <Text
-            weight={TextWeight.MEDIUM}
-            size={TextSizes.XL2}
-            className={styles.blockTitle}
-            fontFamily='onest'
-          >
-            Как строит обучение
-          </Text>
-
+        <TeacherCollapsibleBlock
+          title="Как строит обучение"
+          className={styles.approachBlock}
+          collapsible={isMobileDetailsView}
+        >
           <div className={styles.approachContent}>
             <Text fontFamily='onest' className={styles.textParagraph}>
               {teacher.teachingApproach}
@@ -160,7 +160,7 @@ export default function TeacherDetailPage() {
           <div className={styles.catTeachers}>
             <img src={cat3} alt="Фото кота" />
           </div>
-        </div>
+        </TeacherCollapsibleBlock>
       </div>
 
       <div className={styles.teacherCoursesSection}>
