@@ -29,6 +29,12 @@
     gap: 20px;
 }
 
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .name {
     font-weight: 500;
     font-size: 30px;
@@ -37,14 +43,9 @@
 }
 
 .tags {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.tag {
     font-weight: 400;
     font-size: 15px;
+    line-height: 1.35;
     color: var(--theme-text-primary);
 }
 
@@ -98,10 +99,8 @@
         font-size: 20px;
     }
 
-    .tag {
-        font-weight: 400;
+    .tags {
         font-size: 14px;
-        color: var(--theme-text-primary);
     }
 
     .infoContainer {
@@ -135,7 +134,7 @@
         margin-top: auto;
     }
 
-    .tag {
+    .tags {
         font-size: 16px;
     }
 
@@ -217,10 +216,6 @@
     }
 
     .tags {
-        gap: 6px;
-    }
-
-    .tag {
         font-size: 14px;
     }
 

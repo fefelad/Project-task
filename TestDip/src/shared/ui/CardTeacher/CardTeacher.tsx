@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Text, { TextSizes, TextWeight } from '../Text/Text';
+import Text, { TextColor, TextSizes, TextWeight } from '../Text/Text';
 import styles from './CardTeacher.module.css';
 import Btn from '../Btn/Btn';
 import Feedback from '../FeedbackBlock/Feedback';
@@ -21,14 +21,25 @@ export default function CardTeacher() {
             <img className={styles.ImgTeacher} src={teacher.image} alt={teacher.name} />
 
             <div className={styles.CardTeacherContent}>
-              <Text
-                className={styles.TeacherName}
-                fontFamily="involve"
-                size={TextSizes.XL3}
-                weight={TextWeight.MEDIUM}
-              >
-                {teacher.name}
-              </Text>
+              <div className={styles.TeacherHeader}>
+                <Text
+                  className={styles.TeacherName}
+                  fontFamily="involve"
+                  size={TextSizes.XL3}
+                  weight={TextWeight.MEDIUM}
+                >
+                  {teacher.name}
+                </Text>
+
+                <Text
+                  className={styles.TeacherTags}
+                  fontFamily="onest"
+                  size={TextSizes.XL2}
+                  weight={TextWeight.REGULAR}
+                >
+                  {teacher.tags.join(' · ')}
+                </Text>
+              </div>
 
               <Text
                 className={styles.TeacherDescDesktop}

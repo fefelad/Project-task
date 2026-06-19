@@ -34,6 +34,18 @@
     object-position: top center;
 }
 
+.TeacherHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.TeacherTags {
+    line-height: 1.35;
+    color: #575757;
+}
+
 .TeacherDescDesktop {
     display: block;
 }
@@ -75,6 +87,10 @@
         font-size: 36px;
     }
 
+    .TeacherTags {
+        font-size: 20px;
+    }
+
     .TeacherDescDesktop,
     .TeacherDesc {
         font-size: 24px;
@@ -102,6 +118,10 @@
 
     .TeacherName {
         font-size: 36px;
+    }
+
+    .TeacherTags {
+        font-size: 18px;
     }
 
     .TeacherDescDesktop,
@@ -154,6 +174,10 @@
         font-size: 32px;
     }
 
+    .TeacherTags {
+        font-size: 16px;
+    }
+
     .TeacherDescDesktop {
         display: none;
     }
@@ -195,6 +219,10 @@
 
     .TeacherName {
         font-size: 28px;
+    }
+
+    .TeacherTags {
+        font-size: 15px;
     }
 
     .TeacherDesc {
@@ -245,6 +273,11 @@
         line-height: 1.15;
     }
 
+    .TeacherTags {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
     .TeacherDesc {
         font-size: 15px;
         line-height: 1.45;
@@ -277,6 +310,10 @@
         font-size: 24px;
     }
 
+    .TeacherTags {
+        font-size: 13px;
+    }
+
     .TeacherDesc {
         font-size: 14px;
     }
@@ -295,6 +332,10 @@
 
     .TeacherName {
         font-size: 22px;
+    }
+
+    .TeacherTags {
+        font-size: 12px;
     }
 
     .TeacherDesc {

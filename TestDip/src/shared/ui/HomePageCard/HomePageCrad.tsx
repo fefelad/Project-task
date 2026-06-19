@@ -3,7 +3,7 @@ import Text, { TextSizes, TextWeight } from '../Text/Text';
 import Btn from '../Btn/Btn';
 import styles from './HomePageCard.module.css';
 import type { HomePageTeacher } from './modal';
-import { getTeacherCourseTags } from '../../lib/teachers/getTeacherCourseTags';
+import { teachers } from '../CardTeacher/modal/teacher';
 
 interface HomePageCradProps {
   teacher: HomePageTeacher;
@@ -15,7 +15,9 @@ export default function HomePageCrad({
   buttonClassName,
 }: HomePageCradProps) {
   const navigate = useNavigate();
-  const courseTags = getTeacherCourseTags(teacher.id);
+  const teacherPageData = teachers.find((item) => item.id === teacher.id);
+  const description = teacherPageData?.descriptionDesktop ?? teacher.description;
+  const tags = teacherPageData?.tags ?? [];
 
   const handleDetailsClick = () => {
     navigate(`/teachers/${teacher.id}`);
@@ -30,35 +32,35 @@ export default function HomePageCrad({
         />
 
         <div className={styles.content}>
-          <Text
-            className={`${styles.name} ${teacher.shortName ? styles.nameFull : ''}`}
-            fontFamily="involve"
-            weight={TextWeight.MEDIUM}
-          >
-            {teacher.name}
-          </Text>
-
-          {teacher.shortName && (
+          <div className={styles.header}>
             <Text
-              className={`${styles.name} ${styles.nameShort}`}
+              className={`${styles.name} ${teacher.shortName ? styles.nameFull : ''}`}
               fontFamily="involve"
               weight={TextWeight.MEDIUM}
             >
-              {teacher.shortName}
+              {teacher.name}
             </Text>
-          )}
 
-          <div className={styles.tags}>
-            {courseTags.map((tag) => (
+            {teacher.shortName && (
               <Text
-                key={tag}
-                className={styles.tag}
+                className={`${styles.name} ${styles.nameShort}`}
+                fontFamily="involve"
+                weight={TextWeight.MEDIUM}
+              >
+                {teacher.shortName}
+              </Text>
+            )}
+
+            {tags.length > 0 && (
+              <Text
+                className={styles.tags}
                 fontFamily="onest"
                 size={TextSizes.XL2}
+                weight={TextWeight.REGULAR}
               >
-                {tag}
+                {tags.join(' · ')}
               </Text>
-            ))}
+            )}
           </div>
         </div>
       </div>
@@ -68,7 +70,7 @@ export default function HomePageCrad({
         fontFamily="onest"
         weight={TextWeight.REGULAR}
       >
-        {teacher.description}
+        {description}
       </Text>
 
       <div className={styles.infoContainer}>
