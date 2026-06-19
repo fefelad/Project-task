@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
+import { useMemo, useState } from 'react';
 import Text from '../../shared/ui/Text/Text';
+import Btn from '../../shared/ui/Btn/Btn';
 import styles from './PortfolioPage.module.css';
 import ph4 from '../../assets/PortfolioPage/uiPortfioloi/4.png';
 import ph5 from '../../assets/PortfolioPage/uiPortfioloi/5.png';
@@ -9,10 +11,9 @@ import ph7 from '../../assets/PortfolioPage/uiPortfioloi/7.png';
 import ph8 from '../../assets/PortfolioPage/uiPortfioloi/8.png';
 import ph9 from '../../assets/PortfolioPage/uiPortfioloi/9.png';
 import ph10 from '../../assets/PortfolioPage/uiPortfioloi/10.png';
-import Btn from '../../shared/ui/Btn/Btn';
 import Feedback from '../../shared/ui/FeedbackBlock/Feedback';
 import { useNavigate } from 'react-router-dom';
-import { type DesignDirection } from '../CoursPage/modal';
+import { tabs, type DesignDirection } from '../CoursPage/modal';
 
 type PortfolioItem = {
   id: number;
@@ -92,6 +93,15 @@ const portfolioItems: PortfolioItem[] = [
 
 export default function PortfolioPage() {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('Все');
+
+  const filteredItems = useMemo(() => {
+    if (activeTab === 'Все') {
+      return portfolioItems;
+    }
+
+    return portfolioItems.filter((item) => item.direction === activeTab);
+  }, [activeTab]);
 
   return (
     <div className={styles.continerPortfolio}>
@@ -101,7 +111,26 @@ export default function PortfolioPage() {
         </Text>
       </div>
 
+      <div className={styles.filterTabs}>
+        {tabs.map((tab) => (
+          <Btn
+            key={tab}
+            color={activeTab === tab ? 'orange' : 'blue'}
+            hasBackground={activeTab === tab}
+            onClick={() => setActiveTab(tab)}
+            className={styles.filterTabBtn}
+          >
+            {tab}
+          </Btn>
+        ))}
+      </div>
+
       <div className={styles.portfolioGallery}>
+        {filteredItems.length === 0 ? (
+          <Text fontFamily="onest" className={styles.emptyState}>
+            Пока нет работ по этому направлению
+          </Text>
+        ) : (
         <Box sx={{ width: '100%' }}>
           <Masonry
             columns={{ xs: 1, sm: 2, md: 3 }}
@@ -116,7 +145,7 @@ export default function PortfolioPage() {
               },
             }}
           >
-            {portfolioItems.map((item) => (
+            {filteredItems.map((item) => (
               <div key={item.id} className={styles.portfolioCard}>
                 <img
                   src={item.img}
@@ -140,6 +169,7 @@ export default function PortfolioPage() {
             ))}
           </Masonry>
         </Box>
+        )}
       </div>
 
       <div className={styles.promoblockBtnfooter}>

@@ -124,7 +124,7 @@ export default function CourseDetailPage() {
 
       <section className={styles.stepsSection}>
         <Text className={styles.CoursInfoStep}>
-          Как проходят занятия
+          Как проходят онлайн курсы
         </Text>
 
         <Swiper

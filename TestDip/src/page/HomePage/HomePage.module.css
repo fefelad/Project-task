@@ -168,8 +168,14 @@
 
 .containerRow {
     display: flex;
+    --row2-column-width: 560px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--row2-column-width);
     gap: 20px;
     margin-top: 150px;
+    width: 100%;
+    align-items: stretch;
+    min-width: 0;
 }
 
 .wrapperRowOne {
