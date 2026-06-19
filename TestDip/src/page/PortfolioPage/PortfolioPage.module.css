@@ -65,6 +65,23 @@
     width: 100%;
     display: block;
     height: auto;
+    border: 1px solid var(--theme-border-strong);
+    border-radius: 15px;
+}
+
+.portfolioCardImageFrame {
+    width: 100%;
+    border: 1px solid var(--theme-border-strong);
+    border-radius: 15px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.portfolioCardImageCropped {
+    border: none;
+    border-radius: 0;
+    transform: scale(1.18);
+    transform-origin: center center;
 }
 
 .portfolioCardImageNatural {
@@ -468,8 +485,9 @@
         gap: 12px;
     }
 
-    .portfolioCardImage {
-        /* border-radius: 16px; */
+    .portfolioCardImage,
+    .portfolioCardImageFrame {
+        border-radius: 12px;
     }
 
     .portfolioCardText {
@@ -540,10 +558,6 @@
     .portfolioCardText {
         font-size: 16px;
         line-height: 1.45;
-    }
-
-    .portfolioCardImage {
-        /* border-radius: 14px; */
     }
 
     .promoblockBtn {

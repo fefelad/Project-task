@@ -26,6 +26,7 @@ type PortfolioItem = {
   childName: string;
   age: number;
   preserveImageRatio?: boolean;
+  imageCrop?: boolean;
 };
 
 const portfolioItems: PortfolioItem[] = [
@@ -46,6 +47,7 @@ const portfolioItems: PortfolioItem[] = [
     direction: 'Графический дизайн',
     childName: 'Ира',
     age: 10,
+    imageCrop: true,
   },
   {
     id: 3,
@@ -162,13 +164,23 @@ export default function PortfolioPage() {
           >
             {filteredItems.map((item) => (
               <div key={item.id} className={styles.portfolioCard}>
-                <img
-                  src={item.img}
-                  alt={item.alt}
-                  className={`${styles.portfolioCardImage} ${
-                    item.preserveImageRatio ? styles.portfolioCardImageNatural : ''
-                  }`}
-                />
+                {item.imageCrop ? (
+                  <div className={styles.portfolioCardImageFrame}>
+                    <img
+                      src={item.img}
+                      alt={item.alt}
+                      className={`${styles.portfolioCardImage} ${styles.portfolioCardImageCropped}`}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={item.img}
+                    alt={item.alt}
+                    className={`${styles.portfolioCardImage} ${
+                      item.preserveImageRatio ? styles.portfolioCardImageNatural : ''
+                    }`}
+                  />
+                )}
 
                 <div className={styles.portfolioCardMeta}>
                   <Text fontFamily="onest" className={styles.portfolioCardDirection}>
