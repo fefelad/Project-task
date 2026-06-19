@@ -7,8 +7,6 @@ const adminLinks = [
   { to: '/admin', label: 'Главная' },
   { to: '/admin/requests', label: 'Заявки' },
   { to: '/admin/courses', label: 'Курсы' },
-  { to: '/admin/portfolio', label: 'Портфолио' },
-  { to: '/admin/teachers', label: 'Преподаватели' },
 ];
 
 export default function AdminLayout() {

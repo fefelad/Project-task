@@ -43,7 +43,6 @@ type CourseForm = {
     description: string;
     age_group: string;
     direction: string;
-    price: string;
     schedule: string;
     format: string;
     duration: string;
@@ -57,7 +56,6 @@ const initialForm: CourseForm = {
     description: '',
     age_group: '',
     direction: '',
-    price: '',
     schedule: '',
     format: '',
     duration: '',
@@ -194,7 +192,7 @@ const createCourse = async (form: CourseForm) => {
                 description: form.description.trim() || null,
                 age_group: form.age_group.trim() || null,
                 direction: form.direction.trim() || null,
-                price: form.price ? Number(form.price) : null,
+                price: null,
                 schedule: form.schedule.trim() || null,
                 format: form.format.trim() || null,
                 duration: form.duration.trim() || null,
@@ -415,7 +413,7 @@ export default function AdminCoursesPage() {
                             className={styles.input}
                             value={form.age_group}
                             onChange={(event) => updateForm('age_group', event.target.value)}
-                            placeholder="Например: 8–12 лет"
+                            placeholder="7-10"
                         />
                     </label>
 
@@ -426,17 +424,6 @@ export default function AdminCoursesPage() {
                             value={form.direction}
                             onChange={(event) => updateForm('direction', event.target.value)}
                             placeholder="Например: Графический дизайн"
-                        />
-                    </label>
-
-                    <label className={styles.label}>
-                        Цена
-                        <input
-                            className={styles.input}
-                            type="number"
-                            value={form.price}
-                            onChange={(event) => updateForm('price', event.target.value)}
-                            placeholder="Например: 12000"
                         />
                     </label>
 
@@ -456,7 +443,7 @@ export default function AdminCoursesPage() {
                             className={styles.input}
                             value={form.format}
                             onChange={(event) => updateForm('format', event.target.value)}
-                            placeholder="Онлайн / Офлайн"
+                            placeholder="Онлайн"
                         />
                     </label>
 
@@ -555,7 +542,6 @@ export default function AdminCoursesPage() {
 
                                     <div className={styles.meta}>
                                         <span>Возраст: {course.age_group || '—'}</span>
-                                        <span>Цена: {course.price ? `${course.price} ₽` : '—'}</span>
                                         <span>Формат: {course.format || '—'}</span>
                                         <span>Преподаватель: {getTeacherName(course.teacher_id)}</span>
                                         <span>Категория: {getCategoryName(course.category_id)}</span>
