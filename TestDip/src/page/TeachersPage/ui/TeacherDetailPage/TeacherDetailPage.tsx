@@ -98,9 +98,6 @@ export default function TeacherDetailPage() {
                   {teacher.education.map((edu, index) => (
                     <div key={index} className={styles.educationItem}>
                       <Text weight={TextWeight.MEDIUM}>— {edu.institution}</Text>
-                      <Text fontFamily='onest' className={styles.specialization}>
-                        Направление: {edu.specialization}
-                      </Text>
                     </div>
                   ))}
                 </div>
@@ -158,17 +155,6 @@ export default function TeacherDetailPage() {
             <Text fontFamily='onest' className={styles.textParagraph}>
               {teacher.teachingApproach}
             </Text>
-
-            <div className={styles.learningPoints}>
-              <Text fontFamily='onest' weight={TextWeight.MEDIUM}>Дети:</Text>
-              <ul className={styles.learningList}>
-                {teacher.learningPoints.map((point, index) => (
-                  <li key={index}>
-                    <Text fontFamily='onest'>— {point}</Text>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           <div className={styles.catTeachers}>
@@ -219,7 +205,7 @@ export default function TeacherDetailPage() {
                   <Card
                     title={card.title}
                     secondtitle={card.secodetitle}
-                    description={card.description}
+                    description={card.coursesPageDescription}
                     infoTexts={getInfoTexts(card.id)}
                     directions={[...card.directions]}
                     className={styles.courseCard}

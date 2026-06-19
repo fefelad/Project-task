@@ -70,7 +70,7 @@ export const Card = memo(({
                     <div className={styles.infoTab}>
                         <Info
                             hasWhiteBg={true}
-                            isTextWhite={true}
+                            isTextWhite={false}
                             fullWidth={true}
                             singleLine={true}
                             compact={true}

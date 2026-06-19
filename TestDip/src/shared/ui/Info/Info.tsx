@@ -34,7 +34,11 @@ export const Info = memo(({
                 fontFamily="onest"
                 className={classNames(
                     styles.infoText,
-                    isTextWhite ? styles.whiteText : styles.blackText,
+                    isTextWhite
+                        ? styles.whiteText
+                        : hasWhiteBg
+                          ? styles.orangeText
+                          : styles.blackText,
                     singleLine && styles.singleLineText,
                     compact && styles.compactText
                 )}

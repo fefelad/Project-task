@@ -76,7 +76,7 @@ export default function CourseDetailPage() {
           <Card
             title={card.title}
             secondtitle={card.secodetitle}
-            description={card.description}
+            description={card.coursesPageDescription}
             infoTexts={getInfoTexts(card.id)}
             directions={[...card.directions]}
             className={styles.detailCourseCard}
@@ -208,10 +208,14 @@ export default function CourseDetailPage() {
       <div className={styles.feedbackScrollTarget}>
         <Feedback
           fullWidth
-          title="Если не смогли найти нужную информацию"
-          textBtn="Отправить свои данные"
+          title="Запишитесь на курс через тестирование"
+          textBtn="Записаться на тестирование"
+          adminComment={`Заявка на тестирование: ${card.directions[0]} — ${card.title} (id: ${card.id})`}
+          successDescription="Спасибо! Мы получили вашу заявку и свяжемся с вами, чтобы назначить тестирование и подобрать подходящий уровень курса."
         >
-          Наш оператор свяжется с вами в течении часа. Ответы на все ваши вопросы, которые будут.
+          Чтобы записаться на этот курс, нужно пройти тестирование вашего ребёнка — так мы
+          определим подходящий уровень и программу занятий. Оставьте имя и почту, и мы
+          свяжемся с вами для записи на тестирование.
         </Feedback>
       </div>
     </div>

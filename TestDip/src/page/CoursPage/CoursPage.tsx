@@ -25,7 +25,7 @@ const renderCourseCard = (
     key={card.id}
     title={card.title}
     secondtitle={card.secodetitle}
-    description={card.description}
+    description={card.coursesPageDescription}
     infoTexts={getInfoTexts(card.id)}
     directions={[...card.directions]}
     className={index % 3 === 1 ? styles.offsetCard : ''}
