@@ -210,14 +210,14 @@
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    color: var(--color-blue);
+    color: var(--theme-text-muted);
 }
 
 .collapsibleToggleText {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-blue);
+    color: var(--theme-text-muted);
 }
 
 .collapsibleToggleIcon {
@@ -372,35 +372,71 @@
     font-size: 50px;
 }
 
-.rowContainer {
-    padding-top: 100px;
-    display: flex;
+.photosLayout {
+    position: relative;
+    padding-top: clamp(40px, 5vw, 100px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
     gap: 20px;
+    align-items: stretch;
 }
 
-.teacherCoursesContainer img {
-    max-width: none;
+.leftPhotosColumn,
+.rightPhotosColumn {
+    min-width: 0;
 }
 
-.teacherRow2 {
+.leftPhotosColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    grid-column: 1;
+}
+
+.rightPhotosColumn {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: relative;
+    grid-column: 2;
 }
 
-.teacherCoursesfooterContainer {
-    display: flex;
-    align-items: flex-end;
-    gap: 20px;
-    padding-left: 250px;
-    padding-top: 20px;
+.textTeacherRow {
+    font-size: 24px;
+    line-height: 1.35;
+}
+
+.textTeacherRowFooter {
+    margin-top: auto;
+    font-size: 24px;
+    line-height: 1.35;
+}
+
+.photo1,
+.photo2,
+.photo3 {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 24vw, 320px);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
 }
 
 .lenta1 {
+    display: none;
     position: absolute;
-    top: 350px;
-    left: -680px;
+    top: 400px;
+    left: 35%;
+    transform: translateX(calc(-58% - 28px));
+    width: clamp(180px, 34vw, 420px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lenta1 img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 
@@ -413,30 +449,18 @@
         font-size: 56px;
     }
 
-    .photo1 {
-        width: 620px;
-    }
-
-    .photo2 {
-        width: auto;
-    }
-
     .textTeacherRow {
         font-size: 22px;
     }
 
-    .teacherCoursesfooterContainer {
-        padding-left: 100px;
-    }
-
-    .photo3 {
-        width: 680px;
+    .textTeacherRowFooter {
+        font-size: 22px;
     }
 
     .lenta1 {
-        position: absolute;
-        top: 280px;
-        left: -680px;
+        top: clamp(175px, 23vw, 255px);
+        width: clamp(200px, 30vw, 360px);
+        transform: translateX(calc(-55% - 24px));
     }
 }
 
@@ -484,28 +508,16 @@
         font-size: 36px;
     }
 
-    .rowContainer {
+    .photosLayout {
         padding-top: 40px;
-    }
-
-    .photo1 {
-        width: 450px;
     }
 
     .textTeacherRow {
         font-size: 20px;
     }
 
-    .photo2 {
-        width: 450px;
-    }
-
-    .photo3 {
-        width: 450px;
-    }
-
-    .teacherCoursesfooterContainer {
-        padding-left: 0px;
+    .textTeacherRowFooter {
+        font-size: 20px;
     }
 }
 
@@ -517,13 +529,16 @@
         padding-top: 80px;
     }
 
-    .rowContainer,
-    .teacherRow2 {
-        display: contents;
+    .photosLayout {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 0;
     }
 
-    .rowContainer {
-        padding-top: 0;
+    .leftPhotosColumn,
+    .rightPhotosColumn {
+        display: contents;
     }
 
     .textTeacherRow {
@@ -532,28 +547,35 @@
         font-size: 18px;
     }
 
-    .teacherCoursesContainer {
+    .photo1 {
         order: 2;
-        width: 100%;
     }
 
     .photo1,
     .photo2,
     .photo3 {
         width: 100%;
-        height: auto;
-        display: block;
+        height: clamp(200px, 42vw, 260px);
+        object-fit: cover;
+        object-position: center;
     }
 
     .photo2 {
         order: 3;
     }
 
-    .teacherCoursesfooterContainer {
+    .photo3 {
         order: 4;
-        width: 100%;
-        padding-left: 0;
-        padding-top: 0;
+    }
+
+    .textTeacherRowFooter {
+        order: 5;
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    .lenta1 {
+        display: none;
     }
 }
 

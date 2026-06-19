@@ -22,13 +22,23 @@ interface CourseEnrollModalProps {
     isOpen: boolean;
     courseId: number;
     courseTitle: string;
+    courseDirection: string;
     onClose: () => void;
 }
+
+const TESTING_MODAL_TITLE = 'Запись на тестирование';
+
+const TESTING_MODAL_DESCRIPTION =
+    'Чтобы записаться на курс, сначала нужно пройти тестирование ребёнка. Так мы определим подходящий уровень и программу занятий. Оставьте контакты — мы свяжемся с вами и назначим удобное время для тестирования.';
+
+const TESTING_SUCCESS_DESCRIPTION =
+    'Спасибо! Мы получили вашу заявку и свяжемся с вами, чтобы назначить тестирование и подобрать подходящий уровень курса.';
 
 export default function CourseEnrollModal({
     isOpen,
     courseId,
     courseTitle,
+    courseDirection,
     onClose,
 }: CourseEnrollModalProps) {
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -82,7 +92,7 @@ export default function CourseEnrollModal({
                 name: data.name.trim(),
                 email: data.email.trim(),
                 agreement: data.agreement,
-                admin_comment: `Запись на курс: ${courseTitle} (id: ${courseId})`,
+                admin_comment: `Заявка на тестирование: ${courseDirection} — ${courseTitle} (id: ${courseId})`,
             });
 
             if (error) {
@@ -102,8 +112,8 @@ export default function CourseEnrollModal({
         <>
             <ModalPopup
                 isOpen={isOpen}
-                title="Запись на курс"
-                description="Оставьте контакты — мы свяжемся с вами и подтвердим запись."
+                title={TESTING_MODAL_TITLE}
+                description={TESTING_MODAL_DESCRIPTION}
                 hideActions
                 modalClassName={styles.enrollModal}
                 contentClassName={styles.enrollModalContent}
@@ -172,7 +182,7 @@ export default function CourseEnrollModal({
                             !email
                         }
                     >
-                        {isSubmitting ? 'Отправка...' : 'Записаться'}
+                        {isSubmitting ? 'Отправка...' : 'Записаться на тестирование'}
                     </Btn>
                 </form>
             </ModalPopup>
@@ -180,7 +190,7 @@ export default function CourseEnrollModal({
             <ModalPopup
                 isOpen={isSuccessModalOpen}
                 title="Заявка отправлена!"
-                description="Спасибо! Мы получили вашу заявку на курс и свяжемся с вами в ближайшее время."
+                description={TESTING_SUCCESS_DESCRIPTION}
                 confirmText="Хорошо"
                 onClose={() => setIsSuccessModalOpen(false)}
             />

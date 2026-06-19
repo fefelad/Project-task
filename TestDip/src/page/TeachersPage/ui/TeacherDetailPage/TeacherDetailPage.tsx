@@ -13,9 +13,13 @@ import Btn from '../../../../shared/ui/Btn/Btn';
 import Card from '../../../../shared/ui/Card/Card';
 import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 import styles from './TeacherDetailPage.module.css';
-import photo1 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo1.png';
-import photo2 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo2.png';
-import photo3 from '../../../../assets/TeacherPage/TeacherDetailPege/Photo3.png';
+
+
+import photo1 from '../../../../assets/TeacherPage/TeacherDetailPege/gdfgdfsgdfsgdsffgf.jpg';
+import photo2 from '../../../../assets/TeacherPage/TeacherDetailPege/gfgfgfgf.jpg';
+import photo3 from '../../../../assets/TeacherPage/TeacherDetailPege/3213213214444.jpg';
+
+
 import { courseCards, getInfoTexts } from '../../../CoursPage/modal';
 import { getTeacherById } from '../modal/modal';
 import TeacherCollapsibleBlock from './TeacherCollapsibleBlock';
@@ -270,11 +274,12 @@ export default function TeacherDetailPage() {
         <Text className={styles.teacherCoursesTitle} weight={TextWeight.REGULAR}>
           Фотографии занятий
         </Text>
-        <div className={styles.rowContainer}>
-          <div className={styles.teacherCoursesContainer}>
+        <div className={styles.photosLayout}>
+          <div className={styles.leftPhotosColumn}>
             <img className={styles.photo1} src={photo1} alt="Фото преподавателя" />
+            <img className={styles.photo3} src={photo3} alt="Фото преподавателя" />
           </div>
-          <div className={styles.teacherRow2}>
+          <div className={styles.rightPhotosColumn}>
             <Text className={styles.textTeacherRow} size={TextSizes.XL2}>
               На занятиях дети работают в живой и вовлечённой атмосфере:
               обсуждают идеи, учатся замечать детали, пробуют разные подходы и
@@ -283,13 +288,16 @@ export default function TeacherDetailPage() {
               собственный результат.
             </Text>
             <img className={styles.photo2} src={photo2} alt="Фото преподавателя" />
-            <div className={styles.lenta1}>
-              <img src={lenta1} alt="Фото ленты" />
-            </div>
+            <Text className={styles.textTeacherRowFooter} size={TextSizes.XL2}>
+              Преподаватель сопровождает ребёнка на каждом этапе: объясняет простыми
+              словами, показывает пример и поддерживает, когда нужно попробовать ещё раз.
+              Так дети не боятся ошибок, учатся доводить работу до конца и радуются
+              тому, что у них получается.
+            </Text>
           </div>
-        </div>
-        <div className={styles.teacherCoursesfooterContainer}>
-          <img className={styles.photo3} src={photo3} alt="Фото преподавателя" />
+          <div className={styles.lenta1}>
+            <img src={lenta1} alt="" aria-hidden="true" />
+          </div>
         </div>
       </div>
 

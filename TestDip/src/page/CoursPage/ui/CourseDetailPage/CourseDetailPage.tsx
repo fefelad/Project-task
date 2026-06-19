@@ -12,11 +12,11 @@ import { courseCards, getCoursePageDetail, getInfoTexts } from '../../modal';
 import Btn from '../../../../shared/ui/Btn/Btn';
 import Feedback from '../../../../shared/ui/FeedbackBlock/Feedback';
 
-import photoCur1 from './../../../../assets/CoursePage/CoursePageDeatil/photo1DetailCours.png';
-import photoCur2 from './../../../../assets/CoursePage/CoursePageDeatil/photo2DetailCours.png';
+import photoCur1 from './../../../../assets/CoursePage/CoursePageDeatil/2313213.jpg';
+import photoCur2 from './../../../../assets/CoursePage/CoursePageDeatil/3213444.jpg';
 import Carusel1 from './../../../../assets/CoursePage/CoursePageDeatil/carusel1.png';
 import Carusel2 from './../../../../assets/CoursePage/CoursePageDeatil/carusel2.png';
-import Carusel3 from './../../../../assets/CoursePage/CoursePageDeatil/carusel3.png';
+import Carusel3 from './../../../../assets/CoursePage/CoursePageDeatil/1.jpg';
 
 import styles from './CourseDetailPage.module.css';
 import LearningSteps from '../../../../shared/ui/LearningSteps/LearningSteps';
@@ -92,7 +92,7 @@ export default function CourseDetailPage() {
             <div className={styles.leftPart}>
               <div className={styles.imageBox}>
                 <img
-                  src={photoCur1}
+                  src={photoCur2}
                   alt="Фото курса 1"
                   className={styles.coursePhoto}
                 />
@@ -106,7 +106,7 @@ export default function CourseDetailPage() {
 
             <div className={styles.secondImageBox}>
               <img
-                src={photoCur2}
+                src={photoCur1}
                 alt="Фото курса 2"
                 className={styles.coursePhoto}
               />
@@ -202,6 +202,7 @@ export default function CourseDetailPage() {
         isOpen={isEnrollModalOpen}
         courseId={card.id}
         courseTitle={card.title}
+        courseDirection={card.directions[0]}
         onClose={() => setIsEnrollModalOpen(false)}
       />
 
